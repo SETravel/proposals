@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Johnson — Transatlantic Journey 2027 | Signature Elite Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #F5F0E8;
+    --parchment-dk: #EDE6D6;
+    --parchment-dkr: #E0D8C4;
+    --ink: #1A1610;
+    --ink-soft: #3A342A;
+    --ink-muted: #6B6254;
+    --gold: #B8963E;
+    --gold-lt: #D4AF6A;
+    --gold-pale: #F0E4C4;
+    --gold-deep: #8A6E28;
+    --white: #FDFAF4;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--parchment); color: var(--ink-soft); font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.6; }
+
+  /* MASTHEAD */
+  .masthead {
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    padding: 44px 40px 36px;
+    text-align: center;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(184,150,62,0.03) 0px, rgba(184,150,62,0.03) 1px, transparent 1px, transparent 12px);
+  }
+  .masthead-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .masthead-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .masthead-logo em { font-style: italic; color: var(--gold-lt); }
+  .masthead-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 400;
+    letter-spacing: 0.28em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 22px;
+  }
+  .rule { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 22px; }
+  .rule-diamond {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+  .masthead-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px; font-style: italic; font-weight: 400;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .masthead-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--gold-lt);
+    margin-bottom: 26px;
+  }
+  .meta-row {
+    display: flex; justify-content: center; gap: 0;
+    border-top: 1px solid rgba(184,150,62,0.25);
+    padding-top: 22px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    padding: 0 28px;
+    border-right: 1px solid rgba(184,150,62,0.2);
+    text-align: center;
+  }
+  .meta-item:last-child { border-right: none; }
+  .meta-label { font-size: 8px; font-weight: 600; letter-spacing: 0.3em; color: var(--gold); display: block; margin-bottom: 4px; }
+  .meta-value { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #fff; font-weight: 300; }
+  .masthead-border { height: 3px; background: linear-gradient(90deg, transparent, var(--gold-deep), var(--gold), var(--gold-deep), transparent); }
+
+  /* NAV */
+  .nav-section {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--parchment-dk);
+    border-bottom: 1px solid var(--parchment-dkr);
+    display: flex; justify-content: center;
+    padding: 0 20px;
+    overflow-x: auto;
+  }
+  .nav-tab {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    background: none; border: none;
+    border-bottom: 2px solid transparent;
+    padding: 14px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-tab:hover { color: var(--gold-deep); }
+  .nav-tab.active { color: var(--gold-deep); border-bottom-color: var(--gold); }
+
+  /* CONTENT */
+  .content-wrap { max-width: 920px; margin: 0 auto; padding: 0 40px 80px; }
+  .trip-panel { display: none; }
+  .trip-panel.active { display: block; animation: fadeUp 0.35s ease both; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* DEST HERO */
+  .dest-hero {
+    display: flex; align-items: flex-start; gap: 28px;
+    padding: 40px 0 32px;
+    border-bottom: 1px solid var(--parchment-dkr);
+    margin-bottom: 32px;
+  }
+  .dest-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 96px; font-weight: 300; line-height: 1;
+    color: var(--parchment-dkr);
+    flex-shrink: 0; margin-top: -10px;
+  }
+  .dest-badge {
+    font-size: 8px; font-weight: 600; letter-spacing: 0.28em;
+    color: var(--gold-deep);
+    background: var(--gold-pale);
+    display: inline-block;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .dest-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 300; line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .dest-title em { font-style: italic; color: var(--gold-deep); }
+  .dest-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-style: italic; font-weight: 300;
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+  }
+  .dest-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill {
+    font-size: 8px; font-weight: 500; letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    background: var(--parchment-dkr);
+    padding: 4px 10px;
+  }
+
+  /* SECTION HEAD */
+  .section-head {
+    display: flex; align-items: center; gap: 14px;
+    margin: 32px 0 18px;
+  }
+  .section-head-label {
+    font-size: 8px; font-weight: 600;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .section-head-rule { flex: 1; height: 1px; background: var(--parchment-dkr); }
+
+  /* LOGISTICS */
+  .logistics-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--parchment-dkr);
+    margin-bottom: 28px;
+  }
+  .logistics-item {
+    background: var(--white);
+    padding: 14px 16px;
+  }
+  .logistics-label { font-size: 8px; font-weight: 600; letter-spacing: 0.25em; color: var(--gold); display: block; margin-bottom: 4px; }
+  .logistics-value { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--ink); display: block; margin-bottom: 2px; }
+  .logistics-note { font-size: 9.5px; color: var(--ink-muted); }
+
+  /* HOTEL CARDS */
+  .hotel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
+  .hotel-card {
+    background: var(--white);
+    border: 1px solid var(--parchment-dkr);
+    padding: 18px 16px 16px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .hotel-card:hover { border-color: var(--gold-lt); }
+  .hotel-tier-flag {
+    position: absolute; top: 0; right: 0;
+    background: var(--ink);
+    color: var(--gold-lt);
+    font-size: 7.5px; font-weight: 600; letter-spacing: 0.18em;
+    padding: 4px 8px;
+  }
+  .hotel-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 3px; padding-right: 60px; line-height: 1.2; }
+  .hotel-location { font-size: 9px; font-weight: 500; letter-spacing: 0.15em; color: var(--ink-muted); text-transform: uppercase; margin-bottom: 12px; }
+  .hotel-price-row { display: flex; align-items: baseline; gap: 5px; margin-bottom: 4px; }
+  .hotel-from { font-size: 9px; color: var(--ink-muted); }
+  .hotel-price { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--gold-deep); }
+  .hotel-unit { font-size: 9px; color: var(--ink-muted); }
+  .hotel-total { font-size: 9.5px; color: var(--ink-muted); margin-bottom: 10px; }
+  .hotel-desc { font-size: 10.5px; font-weight: 300; color: var(--ink-muted); line-height: 1.55; }
+
+  /* ITINERARY */
+  .itin-day {
+    display: grid; grid-template-columns: 110px 1fr;
+    border-bottom: 1px solid var(--parchment-dkr);
+    padding: 14px 0;
+  }
+  .itin-left {
+    padding-right: 18px;
+    border-right: 1px solid var(--parchment-dkr);
+    margin-right: 18px;
+  }
+  .itin-day-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; display: block; }
+  .itin-date { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 300; color: var(--ink); }
+  .itin-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .itin-desc { font-size: 10.5px; font-weight: 300; color: var(--ink-muted); line-height: 1.55; }
+
+  /* ACTIVITY TABLE */
+  .activity-table { width: 100%; border-collapse: collapse; }
+  .activity-table tr { border-bottom: 1px solid var(--parchment-dkr); }
+  .activity-table tr:last-child { border-bottom: none; }
+  .activity-table td { padding: 10px 0; font-size: 11px; }
+  .activity-table td:first-child { color: var(--ink); font-weight: 400; padding-right: 20px; }
+  .activity-table td:last-child { text-align: right; font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--gold-deep); }
+  .activity-sub { font-size: 9.5px; color: var(--ink-muted); font-weight: 300; display: block; }
+
+  /* NOTICE */
+  .notice {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold);
+    padding: 16px 18px;
+    margin: 22px 0;
+  }
+  .notice-head { font-size: 8px; font-weight: 600; letter-spacing: 0.3em; color: var(--gold-deep); margin-bottom: 8px; }
+  .notice p { font-size: 10.5px; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
+
+  /* TOTAL BAR */
+  .total-bar {
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 28px;
+    margin-top: 28px;
+  }
+  .total-bar-label { font-size: 8px; font-weight: 600; letter-spacing: 0.28em; color: var(--gold); display: block; margin-bottom: 4px; }
+  .total-bar-note { font-size: 9px; color: rgba(255,255,255,0.4); }
+  .total-bar-amount { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #fff; font-weight: 300; }
+
+  /* GRAND TOTAL */
+  .grand-total-section { padding: 40px 0 20px; }
+  .grand-total-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; font-style: italic;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .summary-table { width: 100%; border-collapse: collapse; }
+  .summary-table tr { border-bottom: 1px solid var(--parchment-dkr); }
+  .summary-table td { padding: 11px 6px; font-size: 11px; }
+  .summary-table td:first-child { color: var(--ink); font-weight: 400; }
+  .summary-table td:last-child { text-align: right; font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--gold-deep); font-weight: 400; }
+  .summary-table .summary-total td { background: var(--ink); color: #fff; font-weight: 600; font-size: 12px; }
+  .summary-table .summary-total td:last-child { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold-lt); }
+
+  /* COMPARE TABLE */
+  .compare-panel { padding: 40px 0; }
+  .compare-center { text-align: center; margin-bottom: 32px; }
+  .compare-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-style: italic; color: var(--ink); margin: 16px 0 6px; }
+  .compare-sub { font-size: 10px; color: var(--ink-muted); letter-spacing: 0.1em; }
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table thead tr { background: var(--ink); }
+  .compare-table thead td { color: var(--gold-lt); font-size: 9px; font-weight: 600; letter-spacing: 0.2em; padding: 12px 14px; }
+  .compare-table tbody tr:nth-child(even) { background: var(--parchment-dk); }
+  .compare-table tbody td { padding: 11px 14px; font-size: 10.5px; vertical-align: top; }
+  .compare-table tbody td:first-child { font-size: 8px; font-weight: 600; letter-spacing: 0.18em; color: var(--ink-muted); text-transform: uppercase; background: var(--parchment-dk); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ink);
+    padding: 36px 40px;
+    text-align: center;
+    margin-top: 60px;
+  }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: #fff; margin-bottom: 4px; }
+  .footer-logo em { font-style: italic; color: var(--gold-lt); }
+  .footer-tagline { font-size: 8px; letter-spacing: 0.25em; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+  .footer-rule { height: 1px; background: linear-gradient(90deg, transparent, var(--gold-deep), var(--gold), var(--gold-deep), transparent); margin-bottom: 16px; }
+  .footer-disclaimer { font-size: 9px; color: rgba(255,255,255,0.3); line-height: 1.7; max-width: 600px; margin: 0 auto; }
+
+  @media (max-width: 700px) {
+    .hotel-grid { grid-template-columns: 1fr; }
+    .logistics-grid { grid-template-columns: repeat(2, 1fr); }
+    .masthead-title { font-size: 36px; }
+    .dest-number { font-size: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-eyebrow">SIGNATURE ELITE TRAVEL · CURATED JOURNEYS</div>
+  <div class="masthead-logo"><em>Signature</em> Elite</div>
+  <div class="masthead-tagline">BESPOKE TRAVEL DESIGN · EXCLUSIVELY YOURS</div>
+  <div class="rule">
+    <div class="rule-diamond"></div>
+    <div class="rule-diamond"></div>
+    <div class="rule-diamond"></div>
+  </div>
+  <div class="masthead-title">The Johnson Transatlantic</div>
+  <div class="masthead-subtitle">Barcelona · Norwegian Aura · Miami Beach · May–June 2027</div>
+  <div class="meta-row">
+    <div class="meta-item"><span class="meta-label">GUESTS</span><span class="meta-value">Mattie & Landry Johnson</span></div>
+    <div class="meta-item"><span class="meta-label">DEPART</span><span class="meta-value">May 24, 2027</span></div>
+    <div class="meta-item"><span class="meta-label">RETURN</span><span class="meta-value">June 12, 2027</span></div>
+    <div class="meta-item"><span class="meta-label">DURATION</span><span class="meta-value">20 Nights</span></div>
+  </div>
+</header>
+<div class="masthead-border"></div>
+
+<!-- NAV -->
+<nav class="nav-section">
+  <button class="nav-tab active" onclick="showPanel('barcelona', this)">BARCELONA</button>
+  <button class="nav-tab" onclick="showPanel('cruise', this)">NORWEGIAN AURA</button>
+  <button class="nav-tab" onclick="showPanel('miami', this)">MIAMI BEACH</button>
+  <button class="nav-tab" onclick="showPanel('totals', this)">TRIP TOTALS</button>
+</nav>
+
+<main class="content-wrap">
+
+  <!-- ===================== BARCELONA ===================== -->
+  <div id="barcelona" class="trip-panel active">
+    <div class="dest-hero">
+      <div class="dest-number">01</div>
+      <div class="dest-info">
+        <div class="dest-badge">International · Passport Required · Spain</div>
+        <div class="dest-title">Barcelona<br><em>& Catalunya</em></div>
+        <div class="dest-tagline">"Where Gaudí's dreamscapes rise from sun-drenched boulevards, and every evening smells of sea salt and sangria."</div>
+        <div class="dest-pills">
+          <div class="pill">Gaudí Architecture</div>
+          <div class="pill">Michelin Dining</div>
+          <div class="pill">Gothic Quarter</div>
+          <div class="pill">Las Ramblas</div>
+          <div class="pill">Mediterranean Beach</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">LOGISTICS</div><div class="section-head-rule"></div></div>
+    <div class="logistics-grid">
+      <div class="logistics-item">
+        <span class="logistics-label">FLIGHT</span>
+        <span class="logistics-value">DFW → BCN</span>
+        <span class="logistics-note">May 24–25 · ~10–11 hrs non-stop or 1 stop via Madrid or London</span>
+      </div>
+      <div class="logistics-item">
+        <span class="logistics-label">ARRIVAL AIRPORT</span>
+        <span class="logistics-value">El Prat (BCN)</span>
+        <span class="logistics-note">~30 min to city center by taxi or Aerobús</span>
+      </div>
+      <div class="logistics-item">
+        <span class="logistics-label">HOTEL DATES</span>
+        <span class="logistics-value">May 25–28</span>
+        <span class="logistics-note">3 nights · Embark Norwegian Aura May 28</span>
+      </div>
+      <div class="logistics-item">
+        <span class="logistics-label">CURRENCY / VISA</span>
+        <span class="logistics-value">Euro (€)</span>
+        <span class="logistics-note">No visa required for US citizens (ETIAS required by 2027 — verify)</span>
+      </div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">HOTEL OPTIONS — 3 NIGHTS · TARGET $1,200–$1,500</div><div class="section-head-rule"></div></div>
+    <div class="hotel-grid">
+      <div class="hotel-card">
+        <div class="hotel-tier-flag">BEST VALUE</div>
+        <div class="hotel-name">Ohla Eixample</div>
+        <div class="hotel-location">Eixample · Near La Pedrera & Casa Batlló</div>
+        <div class="hotel-price-row"><span class="hotel-from">from</span><span class="hotel-price">$370</span><span class="hotel-unit">/night</span></div>
+        <div class="hotel-total">~$1,110–$1,200 for 3 nights</div>
+        <div class="hotel-desc">A stunning year-round rooftop pool with city panoramas anchors this 5-star boutique, just a 10-minute walk from two of Gaudí's masterworks. The Michelin-starred Caelis restaurant is on-site, and the intimate scale (99 rooms) ensures personalized service without the crowd.</div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier-flag">RECOMMENDED</div>
+        <div class="hotel-name">Almanac Barcelona</div>
+        <div class="hotel-location">Eixample · Steps from Passeig de Gràcia</div>
+        <div class="hotel-price-row"><span class="hotel-from">from</span><span class="hotel-price">$420</span><span class="hotel-unit">/night</span></div>
+        <div class="hotel-total">~$1,260–$1,380 for 3 nights</div>
+        <div class="hotel-desc">Architect-owned and art-infused, every room displays a unique work by a local Barcelona artist. The rooftop terrace delivers panoramic city views and the innovative Virens restaurant below is sustainability-forward and celebrated. Steps from Gaudi, Gucci, and everything in between.</div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier-flag">PREMIUM</div>
+        <div class="hotel-name">Alma Barcelona</div>
+        <div class="hotel-location">Eixample · Jardín del Alma Garden</div>
+        <div class="hotel-price-row"><span class="hotel-from">from</span><span class="hotel-price">$490</span><span class="hotel-unit">/night</span></div>
+        <div class="hotel-total">~$1,470–$1,500 for 3 nights</div>
+        <div class="hotel-desc">One of Barcelona's few remaining private garden hotels, Alma occupies a landmark 1860 building with a tranquil hammam spa, heated pool, and fingerprint room entry. Understated luxury in a city that rarely does understated — perfect for couples who prize quiet elegance over scene.</div>
+      </div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">BARCELONA ITINERARY — MAY 25–28</div><div class="section-head-rule"></div></div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 1</span><span class="itin-date">May 25</span></div>
+      <div><div class="itin-title">Arrival & The Gothic Quarter</div><div class="itin-desc">Arrive at BCN after the overnight flight and check in to your hotel. Shake off the journey with a slow afternoon stroll through the Barri Gòtic — cobblestone lanes, Roman ruins just beneath the surface, and the magnificent Barcelona Cathedral. Let the evening unfold naturally with a glass of cava and tapas on a sidewalk terrace.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 2</span><span class="itin-date">May 26</span></div>
+      <div><div class="itin-title">Gaudí Day & Dinner at Lasarte</div><div class="itin-desc">Begin with a pre-booked morning visit to the Sagrada Família — its soaring interior of kaleidoscopic light is unlike anything else on Earth. Afternoon at Casa Batlló or La Pedrera, both within strolling distance on Passeig de Gràcia. That evening, dinner at Lasarte (3 Michelin stars, Monument Hotel) — Chef Martín Berasategui's Barcelona crown jewel, widely considered one of Spain's finest tables.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 3</span><span class="itin-date">May 27</span></div>
+      <div><div class="itin-title">Barceloneta, Picasso & Last Evening</div><div class="itin-desc">Morning at the Picasso Museum in El Born, then walk to Barceloneta Beach for a long Mediterranean lunch at a seafront chiringuito. The afternoon is yours — Montjuïc by cable car, the colorful Boqueria market, or simply a spa treatment back at the hotel. Final evening tapas crawl through El Born neighborhood, where the city's most vibrant bars and wine bars line every corner.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 4</span><span class="itin-date">May 28</span></div>
+      <div><div class="itin-title">Embarkation — Norwegian Aura</div><div class="itin-desc">A relaxed morning checkout, then transfer to the Port of Barcelona (approximately 20 minutes) to embark the brand-new Norwegian Aura for her inaugural transatlantic crossing to Miami. Raise a glass in The Haven Bar as you watch the Barcelona skyline fade behind you — the open Atlantic ahead.</div></div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">DINING & ATTRACTIONS</div><div class="section-head-rule"></div></div>
+    <table class="activity-table">
+      <tr>
+        <td><strong>Lasarte</strong><span class="activity-sub">3 Michelin Stars · Monument Hotel · Basque-Catalan tasting menu</span></td>
+        <td>€180–€220 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Disfrutar</strong><span class="activity-sub">3 Michelin Stars · Eixample · El Bulli alumni, legendary tasting experience</span></td>
+        <td>€190–€215 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Mont Bar</strong><span class="activity-sub">1 Michelin Star · Eixample · Refined tapas bar, more relaxed atmosphere</span></td>
+        <td>€60–€90 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Sagrada Família</strong><span class="activity-sub">Book towers access — most dramatic experience · Book 60+ days ahead</span></td>
+        <td>€32–€47 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Casa Batlló or La Pedrera</strong><span class="activity-sub">Evening "Magic Nights" experience especially recommended at La Pedrera</span></td>
+        <td>€35–€40 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Picasso Museum</strong><span class="activity-sub">El Born neighborhood · One of the world's finest Picasso collections</span></td>
+        <td>€15 pp</td>
+      </tr>
+    </table>
+
+    <div class="notice">
+      <div class="notice-head">AGENT'S NOTE</div>
+      <p>Barcelona in late May is ideal — warm, long evenings, and pre-peak summer crowds. The ETIAS travel authorization (Europe's equivalent of ESTA) is expected to be fully operational by 2027 for US passport holders. Confirm and apply online well in advance. Sagrada Família tickets, particularly tower access, must be reserved months ahead — this is not optional. For the Aura embarkation on May 28, Port of Barcelona is well-served by taxis; allow 45–60 minutes from Eixample hotels during late morning. Have luggage at the port by noon.</p>
+    </div>
+
+    <div class="total-bar">
+      <div class="total-bar-left">
+        <span class="total-bar-label">ESTIMATED HOTEL INVESTMENT · 2 GUESTS · 3 NIGHTS</span>
+        <span class="total-bar-note">Excludes flights, dining, and attractions</span>
+      </div>
+      <div class="total-bar-amount">$1,100 – $1,500</div>
+    </div>
+  </div>
+
+  <!-- ===================== CRUISE ===================== -->
+  <div id="cruise" class="trip-panel">
+    <div class="dest-hero">
+      <div class="dest-number">02</div>
+      <div class="dest-info">
+        <div class="dest-badge">Norwegian Aura · Inaugural Transatlantic · 13 Nights</div>
+        <div class="dest-title">Norwegian Aura<br><em>Transatlantic</em></div>
+        <div class="dest-tagline">"NCL's largest ship ever — her very first crossing of the Atlantic — Barcelona to Miami in The Haven."</div>
+        <div class="dest-pills">
+          <div class="pill">H6 Haven Family Suite</div>
+          <div class="pill">Unlimited Beverage Package</div>
+          <div class="pill">Motril · Cádiz · Gibraltar</div>
+          <div class="pill">9 Sea Days</div>
+          <div class="pill">Ocean Heights Complex</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">SAILING DETAILS</div><div class="section-head-rule"></div></div>
+    <div class="logistics-grid">
+      <div class="logistics-item">
+        <span class="logistics-label">SHIP</span>
+        <span class="logistics-value">Norwegian Aura</span>
+        <span class="logistics-note">NCL's flagship · 169,000 GT · 1,130 ft · 3,840 guests</span>
+      </div>
+      <div class="logistics-item">
+        <span class="logistics-label">DATES</span>
+        <span class="logistics-value">May 28 – Jun 10</span>
+        <span class="logistics-note">13 nights · Inaugural Transatlantic Repositioning</span>
+      </div>
+      <div class="logistics-item">
+        <span class="logistics-label">CABIN</span>
+        <span class="logistics-value">H6 Haven Family Suite</span>
+        <span class="logistics-note">Large balcony · King bed · Butler & concierge · Full Haven enclave access</span>
+      </div>
+      <div class="logistics-item">
+        <span class="logistics-label">INVESTMENT</span>
+        <span class="logistics-value">$22,000</span>
+        <span class="logistics-note">2 guests · Includes drink package · Priced by agent</span>
+      </div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">CRUISE ITINERARY — MAY 28 – JUNE 10, 2027</div><div class="section-head-rule"></div></div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 1</span><span class="itin-date">May 28</span></div>
+      <div><div class="itin-title">Embarkation — Barcelona, Spain</div><div class="itin-desc">Board the Norwegian Aura at Port of Barcelona and settle into your Haven suite — your private sanctuary for the crossing ahead. Explore the brand-new ship: the dramatic Ocean Heights activity complex, Ocean Boulevard promenade, and Haven's private sundeck and pool. Sail away as the sun sets behind Montjuïc.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 2</span><span class="itin-date">May 29</span></div>
+      <div><div class="itin-title">Motril (Granada), Spain</div><div class="itin-desc">Your first port call — the gateway to Granada and the incomparable Alhambra palace. An NCL excursion to the Alhambra is a rare bucket-list opportunity if you haven't been. Alternatively, explore the white-washed hilltop village of Nerja or simply stroll Motril's Mediterranean waterfront before rejoining the ship.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 3</span><span class="itin-date">May 30</span></div>
+      <div><div class="itin-title">Cádiz (Seville), Spain</div><div class="itin-desc">One of Europe's oldest continuously inhabited cities, luminous Cádiz sits at the end of a narrow Atlantic peninsula. Consider the full-day excursion to Seville — the Cathedral, the Alcázar, and the winding Barrio Santa Cruz — or explore Cádiz itself: its golden cathedral dome, fresh seafood market, and rooftop terrace views over two seas.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 4</span><span class="itin-date">May 31</span></div>
+      <div><div class="itin-title">Gibraltar, U.K.</div><div class="itin-desc">The Rock stands guard at the mouth of the Mediterranean — a unique slice of Britain on the Iberian coast. Take the cable car to the top for stunning views across to Africa and back into Europe. Meet the famous Barbary macaques (the only wild primates in Europe), explore St. Michael's Cave, and browse duty-free Main Street below.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Days 5–13</span><span class="itin-date">Jun 1–9</span></div>
+      <div><div class="itin-title">Nine Days at Sea — The Atlantic Crossing</div><div class="itin-desc">The heart of the transatlantic experience — long, languorous sea days with nowhere to be. Haven guests enjoy exclusive access to a private pool deck, sundeck, restaurant, lounge, and bar. By day: the Ocean Heights waterslides, ropes course, Mandara Spa treatments, cooking demonstrations, and enrichment lectures. By evening: Broadway-caliber entertainment, specialty dining, and stargazing on the open ocean far from any light pollution.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 14</span><span class="itin-date">Jun 10</span></div>
+      <div><div class="itin-title">Arrival — Miami, Florida</div><div class="itin-desc">Sail into PortMiami with the downtown skyline ahead and Biscayne Bay sparkling in the morning light. Haven guests receive priority disembarkation. Transfer to your Miami Beach hotel to begin two nights of well-earned Florida sunshine.</div></div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">H6 HAVEN FAMILY SUITE — EXCLUSIVE AMENITIES</div><div class="section-head-rule"></div></div>
+    <table class="activity-table">
+      <tr>
+        <td><strong>24-Hour Butler & Concierge Service</strong><span class="activity-sub">In-suite dining, priority reservations, escort on/off ship, private cocktail parties</span></td>
+        <td>Included</td>
+      </tr>
+      <tr>
+        <td><strong>Haven Private Restaurant</strong><span class="activity-sub">Exclusive white-tablecloth dining with signature dishes and curated wine list</span></td>
+        <td>Included</td>
+      </tr>
+      <tr>
+        <td><strong>Haven Sundeck & Infinity Pool</strong><span class="activity-sub">Adults 16+ only · Private bar, hot tubs, sun loungers, panoramic ocean views</span></td>
+        <td>Included</td>
+      </tr>
+      <tr>
+        <td><strong>Haven Lounge & Bar</strong><span class="activity-sub">Private indoor-outdoor lounge exclusively for Haven guests</span></td>
+        <td>Included</td>
+      </tr>
+      <tr>
+        <td><strong>Unlimited Premium Beverage Package</strong><span class="activity-sub">Cocktails, wine, beer, premium spirits, specialty coffees throughout the ship</span></td>
+        <td>Included</td>
+      </tr>
+    </table>
+
+    <div class="section-head"><div class="section-head-label">RECOMMENDED EXCURSIONS & ENTERTAINMENT</div><div class="section-head-rule"></div></div>
+    <table class="activity-table">
+      <tr>
+        <td><strong>Alhambra Palace — Motril/Granada</strong><span class="activity-sub">Full-day NCL excursion · One of the world's great architectural treasures — book immediately upon boarding</span></td>
+        <td>$120–$160 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Seville City & Alcázar — Cádiz</strong><span class="activity-sub">Full-day NCL excursion · Cathedral, Royal Alcázar palace, tapas in Santa Cruz</span></td>
+        <td>$95–$130 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Rock of Gibraltar Cable Car & Apes Tour</strong><span class="activity-sub">Half-day NCL excursion · St. Michael's Cave, Europa Point, Barbary macaques</span></td>
+        <td>$55–$80 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Mandara Spa — Couples Treatments</strong><span class="activity-sub">Two-story waterfall spa · Hot stone massage, facials, thermal suite access · Book early</span></td>
+        <td>$180–$280 per session</td>
+      </tr>
+      <tr>
+        <td><strong>Ocean Heights — Eclipse Racers & Aura Free Fall</strong><span class="activity-sub">Dueling waterslides + 10-deck plunge · Signature new attraction on Norwegian Aura</span></td>
+        <td>Complimentary</td>
+      </tr>
+      <tr>
+        <td><strong>Broadway-Style Production Shows</strong><span class="activity-sub">Award-caliber theatrical productions nightly in the main theater</span></td>
+        <td>Complimentary</td>
+      </tr>
+      <tr>
+        <td><strong>Prima Speedway (Racetrack at Sea)</strong><span class="activity-sub">Three-level go-kart track — first at sea in the NCL fleet</span></td>
+        <td>$10–$15 per session</td>
+      </tr>
+      <tr>
+        <td><strong>Specialty Dining — Cagney's Steakhouse</strong><span class="activity-sub">Premium Black Angus beef, exceptional seafood, extensive wine list · Reserve early</span></td>
+        <td>$40–$65 pp</td>
+      </tr>
+    </table>
+
+    <div class="notice">
+      <div class="notice-head">AGENT'S NOTE</div>
+      <p>This is the Norwegian Aura's very first transatlantic crossing — an inaugural voyage. Haven suites on repositioning crossings are extremely limited and in high demand; this booking should be confirmed and deposited immediately. Shore excursions (especially the Alhambra) sell out rapidly and should be pre-booked through NCL's My NCL portal as soon as the booking is confirmed. The drink package is already included — advise Mattie and Landry to also add specialty dining credits or a dining package pre-cruise for the best pricing on Cagney's and Onda by Scarpetta. Gratuities for Haven butler service (suggested $10–$15 pp/day) are separate from the auto-gratuity charge.</p>
+    </div>
+
+    <div class="total-bar">
+      <div class="total-bar-left">
+        <span class="total-bar-label">CRUISE INVESTMENT · 2 GUESTS · 13 NIGHTS · H6 HAVEN FAMILY SUITE + DRINKS</span>
+        <span class="total-bar-note">Agent-priced all-in · Excursions and spa additional</span>
+      </div>
+      <div class="total-bar-amount">$22,000</div>
+    </div>
+  </div>
+
+  <!-- ===================== MIAMI ===================== -->
+  <div id="miami" class="trip-panel">
+    <div class="dest-hero">
+      <div class="dest-number">03</div>
+      <div class="dest-info">
+        <div class="dest-badge">Domestic · No Passport Required · Florida</div>
+        <div class="dest-title">Miami Beach<br><em>& South Beach</em></div>
+        <div class="dest-tagline">"Art Deco boulevards, turquoise Atlantic, and the finest Latin cuisine in America — a sun-soaked landing after crossing an ocean."</div>
+        <div class="dest-pills">
+          <div class="pill">South Beach</div>
+          <div class="pill">Art Deco District</div>
+          <div class="pill">Ocean Drive</div>
+          <div class="pill">Latin Cuisine</div>
+          <div class="pill">Lincoln Road</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">LOGISTICS</div><div class="section-head-rule"></div></div>
+    <div class="logistics-grid">
+      <div class="logistics-item">
+        <span class="logistics-label">ARRIVAL</span>
+        <span class="logistics-value">PortMiami</span>
+        <span class="logistics-note">Jun 10 · ~15 min taxi to South Beach hotels</span>
+      </div>
+      <div class="logistics-item">
+        <span class="logistics-label">HOTEL DATES</span>
+        <span class="logistics-value">Jun 10–12</span>
+        <span class="logistics-note">2 nights · Fly home June 12</span>
+      </div>
+      <div class="logistics-item">
+        <span class="logistics-label">DEPARTURE</span>
+        <span class="logistics-value">MIA → DFW</span>
+        <span class="logistics-note">June 12 · ~2.5 hrs direct</span>
+      </div>
+      <div class="logistics-item">
+        <span class="logistics-label">GETTING AROUND</span>
+        <span class="logistics-value">Walkable + Uber</span>
+        <span class="logistics-note">South Beach highly walkable · Free trolley on Collins Ave</span>
+      </div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">HOTEL OPTIONS — 2 NIGHTS · TARGET UNDER $650</div><div class="section-head-rule"></div></div>
+    <div class="hotel-grid">
+      <div class="hotel-card">
+        <div class="hotel-tier-flag">BEST VALUE</div>
+        <div class="hotel-name">The Goodtime Hotel</div>
+        <div class="hotel-location">South Beach · Collins & 6th</div>
+        <div class="hotel-price-row"><span class="hotel-from">from</span><span class="hotel-price">$220</span><span class="hotel-unit">/night</span></div>
+        <div class="hotel-total">~$440–$520 for 2 nights</div>
+        <div class="hotel-desc">Just outside the South Beach bustle, the Goodtime leans into pure fun — daily pool parties with rotating DJs, complimentary bikes, a vibrant outdoor pool, and whimsically designed rooms in Miami's signature pastels. Walk to the beach in minutes. Prosecco on arrival is a nice touch.</div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier-flag">RECOMMENDED</div>
+        <div class="hotel-name">The Betsy — South Beach</div>
+        <div class="hotel-location">Ocean Drive · Art Deco Historic District</div>
+        <div class="hotel-price-row"><span class="hotel-from">from</span><span class="hotel-price">$285</span><span class="hotel-unit">/night</span></div>
+        <div class="hotel-total">~$570–$640 for 2 nights</div>
+        <div class="hotel-desc">A Travel + Leisure world's best hotel distinction, The Betsy anchors the quiet end of Ocean Drive with 130 rooms in an Art Deco landmark. Nightly live jazz at the Piano Bar, rooftop pool, private beach access, and the beloved LT Steak & Seafood restaurant make it the most soulful stay in South Beach.</div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier-flag">PREMIUM</div>
+        <div class="hotel-name">1 Hotel South Beach</div>
+        <div class="hotel-location">Collins Ave · Beachfront · Mid-Beach</div>
+        <div class="hotel-price-row"><span class="hotel-from">from</span><span class="hotel-price">$395</span><span class="hotel-unit">/night</span></div>
+        <div class="hotel-total">~$790 for 2 nights · slightly over budget</div>
+        <div class="hotel-desc">Set on 600 feet of beachfront with four pools and the 18,000 sq ft Bamford Wellness Spa, 1 Hotel is the eco-conscious luxury address in Miami. The rooftop pool bar (Watr 1 at the Rooftop) is must-see, and celebrated chef Michael Solomonov's AVIV restaurant is a culinary highlight. Note: slightly over the $650 target — an option if budget allows a stretch.</div>
+      </div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">MIAMI BEACH ITINERARY — JUNE 10–12</div><div class="section-head-rule"></div></div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 1</span><span class="itin-date">Jun 10</span></div>
+      <div><div class="itin-title">Arrival & Ocean Drive</div><div class="itin-desc">Disembark the Aura at PortMiami and taxi over to South Beach. After 13 days at sea, the first afternoon is about reacclimating — lunch on a sidewalk café on Ocean Drive, a slow walk through the Art Deco District, and perhaps a dip in the Atlantic. Dinner tonight at Coya Miami (modern Peruvian, beautiful interiors) or simply the hotel restaurant in flip-flops.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 2</span><span class="itin-date">Jun 11</span></div>
+      <div><div class="itin-title">South Beach & Farewell Dinner</div><div class="itin-desc">A proper Miami Beach morning — breakfast at Puerto Sagua (legendary Cuban counter), rent bikes on Lincoln Road, and spend the afternoon at the beach. Visit Wynwood Walls for Miami's world-famous street art murals before a standout farewell dinner at Carbone Miami (Italian-American), Zuma (Japanese), or KYU (Asian BBQ) in the Design District — the city's four hottest dinner tables.</div></div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-left"><span class="itin-day-label">Day 3</span><span class="itin-date">Jun 12</span></div>
+      <div><div class="itin-title">Departure — MIA to DFW</div><div class="itin-desc">A leisurely hotel checkout and one final Cuban coffee before heading to Miami International Airport (MIA). Allow 45–60 minutes from South Beach hotels. American, Southwest, and United all offer multiple daily direct flights from MIA to DFW.</div></div>
+    </div>
+
+    <div class="section-head"><div class="section-head-label">DINING & ATTRACTIONS</div><div class="section-head-rule"></div></div>
+    <table class="activity-table">
+      <tr>
+        <td><strong>Carbone Miami</strong><span class="activity-sub">South Beach icon · Italian-American · Book weeks ahead · Reservation required</span></td>
+        <td>$85–$130 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Zuma Miami</strong><span class="activity-sub">Japanese izakaya-style · Downtown waterfront · Exceptional sake program</span></td>
+        <td>$90–$140 pp</td>
+      </tr>
+      <tr>
+        <td><strong>KYU Miami</strong><span class="activity-sub">Asian-inspired wood-fired BBQ · Design District · Creative cocktails · Lauded nationally</span></td>
+        <td>$65–$95 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Wynwood Walls</strong><span class="activity-sub">World's premier outdoor street art museum · Free to walk; ticketed indoor galleries</span></td>
+        <td>$0–$12 pp</td>
+      </tr>
+      <tr>
+        <td><strong>Art Deco Historic District Walking Tour</strong><span class="activity-sub">Miami Design Preservation League guided tour · Ocean Drive through Collins Ave</span></td>
+        <td>$30 pp</td>
+      </tr>
+      <tr>
+        <td><strong>South Beach & Lummus Park</strong><span class="activity-sub">Chair rentals on the sand · Volleyball, lifeguard stands, the whole Miami Beach experience</span></td>
+        <td>$15–$20 (chairs)</td>
+      </tr>
+    </table>
+
+    <div class="notice">
+      <div class="notice-head">AGENT'S NOTE</div>
+      <p>June in Miami is the start of summer — warm, humid, and occasionally showery in the afternoons, but mornings and evenings are perfect. June 10 is also the beginning of Atlantic hurricane season (though storms in early June are historically rare). Restaurants like Carbone and Zuma book out weeks to months in advance, even for walk-ins; advise Mattie and Landry to secure reservations before they depart on the cruise. The Betsy is my top pick for their vibe — it's refined without being stuffy, and the nightly jazz and Ocean Drive location are the most "Miami" experience of the three options at the right price point.</p>
+    </div>
+
+    <div class="total-bar">
+      <div class="total-bar-left">
+        <span class="total-bar-label">ESTIMATED HOTEL INVESTMENT · 2 GUESTS · 2 NIGHTS</span>
+        <span class="total-bar-note">Excludes dining and attractions</span>
+      </div>
+      <div class="total-bar-amount">$440 – $650</div>
+    </div>
+  </div>
+
+  <!-- ===================== TOTALS ===================== -->
+  <div id="totals" class="trip-panel">
+    <div class="grand-total-section">
+      <div class="rule" style="margin-top:40px; margin-bottom:20px;">
+        <div class="rule-diamond"></div><div class="rule-diamond"></div><div class="rule-diamond"></div>
+      </div>
+      <div class="grand-total-title">Complete Journey Summary</div>
+      <div class="section-head"><div class="section-head-label">MATTIE & LANDRY JOHNSON · MAY 24 – JUNE 12, 2027</div><div class="section-head-rule"></div></div>
+
+      <table class="summary-table">
+        <tr>
+          <td><strong>Flights — DFW to BCN &amp; MIA to DFW</strong><br><span style="font-size:9.5px;color:var(--ink-muted);">2 guests · May 24–25 outbound · June 12 return · Agent-priced</span></td>
+          <td>$2,500</td>
+        </tr>
+        <tr>
+          <td><strong>Barcelona Hotel</strong><br><span style="font-size:9.5px;color:var(--ink-muted);">3 nights · May 25–28 · Ohla Eixample / Almanac / Alma (to be confirmed)</span></td>
+          <td>$1,100 – $1,500</td>
+        </tr>
+        <tr>
+          <td><strong>Norwegian Aura — H6 Haven Family Suite + Drink Package</strong><br><span style="font-size:9.5px;color:var(--ink-muted);">13 nights · May 28 – Jun 10 · Inaugural Transatlantic · Agent-priced</span></td>
+          <td>$22,000</td>
+        </tr>
+        <tr>
+          <td><strong>Miami Beach Hotel</strong><br><span style="font-size:9.5px;color:var(--ink-muted);">2 nights · Jun 10–12 · Goodtime / Betsy / 1 Hotel (to be confirmed)</span></td>
+          <td>$440 – $650</td>
+        </tr>
+        <tr class="summary-total">
+          <td>TOTAL INVESTMENT · 2 GUESTS · 20 NIGHTS</td>
+          <td>$26,040 – $26,650</td>
+        </tr>
+      </table>
+
+      <div class="notice" style="margin-top:28px;">
+        <div class="notice-head">AGENT'S NOTE — TOTALS</div>
+        <p>Total reflects confirmed and agent-priced components only — flights, hotels, and cruise. Dining, excursions, spa, onboard extras, ground transfers, and gratuities are not included and will vary by the Johnsons' choices in each destination. Hotel range reflects tier selection: Ohla Eixample + Goodtime on the low end; Alma + The Betsy on the high end. Hotel rates exclude taxes and resort fees.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-logo"><em>Signature</em> Elite</div>
+  <div class="footer-tagline">BESPOKE TRAVEL DESIGN · EXCLUSIVELY YOURS</div>
+  <div class="footer-rule"></div>
+  <div class="footer-disclaimer">
+    All pricing shown is estimated based on current market rates for the 2027 travel season and is subject to change. Hotel rates are per room per night and exclude taxes, resort fees, and incidentals. Norwegian Aura itinerary details are based on information available as of early 2026 and are subject to adjustment by Norwegian Cruise Line. ETIAS travel authorization requirements for US passport holders traveling to Europe should be confirmed and applied for prior to departure. Shore excursion availability and pricing are approximate. Signature Elite Travel recommends comprehensive travel insurance for all international itineraries of this scope.
+  </div>
+</footer>
+
+<script>
+function showPanel(id, btn) {
+  document.querySelectorAll('.trip-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.nav-section').offsetTop - 1, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
