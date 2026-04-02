@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1A1610;--inks:#3A342A;--inkm:#6B6254;--g:#B8963E;--gl:#D4AF6A;--gp:#F0E4C4;--gd:#8A6E28;--p:#F5F0E8;--pd:#EDE6D6;--pdr:#E0D8C4;--w:#FDFAF4}
+body{background:var(--p);font-family:'Montserrat',sans-serif;font-weight:300;font-size:13px;line-height:1.6;color:var(--inks)}
+
+.hero{background:var(--ink);padding:36px 24px 30px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(184,150,62,.03) 0,rgba(184,150,62,.03) 1px,transparent 1px,transparent 12px)}
+.ey{font-size:8px;font-weight:600;letter-spacing:.3em;color:var(--g);margin-bottom:10px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#fff;margin-bottom:16px}
+.logo em{font-style:italic;color:var(--gl)}
+.ship{font-family:'Cormorant Garamond',serif;font-size:42px;font-style:italic;color:#fff;line-height:1.1;margin-bottom:6px}
+.sub{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;letter-spacing:.06em;color:var(--gl);margin-bottom:20px}
+.diamonds{display:flex;justify-content:center;gap:8px;margin-bottom:20px}
+.d{width:5px;height:5px;background:var(--g);transform:rotate(45deg)}
+.guests{display:flex;justify-content:center;gap:0;flex-wrap:wrap;border-top:1px solid rgba(184,150,62,.25);padding-top:16px}
+.gi{padding:5px 18px;border-right:1px solid rgba(184,150,62,.2);text-align:center}
+.gi:last-child{border-right:none}
+.gl2{font-size:7px;font-weight:600;letter-spacing:.22em;color:var(--g);display:block;margin-bottom:2px}
+.gv{font-family:'Cormorant Garamond',serif;font-size:13px;color:#fff;font-weight:300}
+.mb{height:3px;background:linear-gradient(90deg,transparent,var(--gd),var(--g),var(--gd),transparent)}
+
+.body{max-width:780px;margin:0 auto;padding:0 20px 48px}
+
+.sh{display:flex;align-items:center;gap:12px;margin:28px 0 14px}
+.sl{font-size:7px;font-weight:600;letter-spacing:.28em;color:var(--g);white-space:nowrap}
+.sr{flex:1;height:1px;background:var(--pdr)}
+
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--pdr);margin-bottom:0}
+.fi{background:var(--w);padding:12px 16px}
+.fl2{font-size:7px;font-weight:600;letter-spacing:.22em;color:var(--g);display:block;margin-bottom:3px}
+.fv{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink);display:block;margin-bottom:2px}
+.fn{font-size:9px;color:var(--inkm)}
+
+.pkg{background:var(--w);border:1px solid var(--pdr);margin-top:0}
+.ph{background:var(--ink);padding:10px 16px;display:flex;justify-content:space-between;align-items:center}
+.pt{font-size:8px;font-weight:600;letter-spacing:.2em;color:var(--gl)}
+.pv{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gl)}
+.pr{display:flex;justify-content:space-between;align-items:baseline;padding:9px 16px;border-bottom:1px solid var(--pdr);font-size:10px}
+.pr:last-child{border-bottom:none}
+.pn{color:var(--inks);font-weight:400}
+.ps{font-size:8.5px;color:var(--inkm);display:block;margin-top:1px}
+.pa{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gd);white-space:nowrap;margin-left:12px}
+.pi{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--g);font-style:italic}
+
+.ports{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:0}
+.port{background:var(--w);border:1px solid var(--pdr);padding:14px}
+.pday{font-size:7px;font-weight:600;letter-spacing:.2em;color:var(--g);display:block;margin-bottom:4px}
+.pname{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--ink);display:block;margin-bottom:4px}
+.pdesc{font-size:9.5px;color:var(--inkm);line-height:1.5}
+
+.seas{background:var(--ink);padding:16px 20px;margin-top:10px;display:flex;align-items:center;gap:16px}
+.sea-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:rgba(184,150,62,.35);line-height:1;flex-shrink:0}
+.sea-text div:first-child{font-size:8px;font-weight:600;letter-spacing:.22em;color:var(--g);margin-bottom:4px}
+.sea-text p{font-size:10px;color:rgba(255,255,255,.6);line-height:1.55}
+
+.total{background:var(--ink);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:20px 24px;margin-top:28px}
+.tl{font-size:7px;font-weight:600;letter-spacing:.24em;color:var(--g);display:block;margin-bottom:4px}
+.tn{font-size:8px;color:rgba(255,255,255,.4)}
+.ta{font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;font-weight:300}
+
+.no{background:var(--gp);border-left:3px solid var(--g);padding:13px 16px;margin-top:20px}
+.nh{font-size:7px;font-weight:600;letter-spacing:.26em;color:var(--gd);margin-bottom:6px}
+.no p{font-size:10px;font-weight:300;color:var(--inks);line-height:1.6}
+
+footer{background:var(--ink);padding:20px;text-align:center;margin-top:40px}
+.flogo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#fff;margin-bottom:3px}
+.flogo em{font-style:italic;color:var(--gl)}
+.ftag{font-size:7px;letter-spacing:.2em;color:rgba(255,255,255,.3);margin-bottom:12px}
+.fline{height:1px;background:linear-gradient(90deg,transparent,var(--gd),var(--g),var(--gd),transparent);margin-bottom:10px}
+.fdis{font-size:8px;color:rgba(255,255,255,.22);line-height:1.6;max-width:520px;margin:0 auto}
+
+@media(min-width:560px){.facts{grid-template-columns:repeat(4,1fr)}.ports{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="ey">SIGNATURE ELITE TRAVEL · CURATED JOURNEYS</div>
+  <div class="logo"><em>Signature</em> Elite</div>
+  <div class="diamonds"><div class="d"></div><div class="d"></div><div class="d"></div></div>
+  <div class="ship">Norwegian Aura</div>
+  <div class="sub">Inaugural Transatlantic · Barcelona to Miami · May 28 – June 10, 2027</div>
+  <div class="guests">
+    <div class="gi"><span class="gl2">GUESTS</span><span class="gv">Mattie &amp; Landry Johnson</span></div>
+    <div class="gi"><span class="gl2">CABIN</span><span class="gv">Haven Penthouse #15824</span></div>
+    <div class="gi"><span class="gl2">DURATION</span><span class="gv">13 Nights</span></div>
+    <div class="gi"><span class="gl2">ALL-IN TOTAL</span><span class="gv">$21,811.80</span></div>
+  </div>
+</div>
+<div class="mb"></div>
+
+<div class="body">
+
+  <div class="sh"><div class="sl">SAILING DETAILS</div><div class="sr"></div></div>
+  <div class="facts">
+    <div class="fi"><span class="fl2">SHIP</span><span class="fv">Norwegian Aura</span><span class="fn">NCL's largest ever · 169,000 GT · 1,130 ft</span></div>
+    <div class="fi"><span class="fl2">EMBARK</span><span class="fv">Barcelona, Spain</span><span class="fn">May 28, 2027 · Port of Barcelona</span></div>
+    <div class="fi"><span class="fl2">DISEMBARK</span><span class="fv">Miami, Florida</span><span class="fn">June 10, 2027 · PortMiami</span></div>
+    <div class="fi"><span class="fl2">FLIGHTS</span><span class="fv">Roundtrip DFW</span><span class="fn">Included in package · Ground transport included</span></div>
+  </div>
+
+  <div class="sh"><div class="sl">PORTS OF CALL</div><div class="sr"></div></div>
+  <div class="ports">
+    <div class="port"><span class="pday">DAY 2 · MAY 29</span><span class="pname">Motril, Spain</span><span class="pdesc">Gateway to Granada and the Alhambra Palace — apply excursion credits here. One of the world's great architectural treasures.</span></div>
+    <div class="port"><span class="pday">DAY 3 · MAY 30</span><span class="pname">Cádiz, Spain</span><span class="pdesc">Gateway to Seville — the Cathedral, the Alcázar, and the Barrio Santa Cruz. Or explore Cádiz's own golden cathedral and Atlantic views.</span></div>
+    <div class="port"><span class="pday">DAY 4 · MAY 31</span><span class="pname">Gibraltar, U.K.</span><span class="pdesc">Cable car to the Rock's summit, Barbary macaques, St. Michael's Cave, and duty-free Main Street. Views to Africa and back.</span></div>
+  </div>
+  <div class="seas">
+    <div class="sea-num">9</div>
+    <div class="sea-text">
+      <div>DAYS AT SEA — JUNE 1–9</div>
+      <p>The heart of the transatlantic experience. Haven Penthouse guests enjoy exclusive access to The Haven's private pool deck, sundeck, restaurant, lounge, and bar. Ocean Heights waterslides and ropes course by day; Broadway-caliber entertainment and open-ocean stargazing by night.</p>
+    </div>
+  </div>
+
+  <div class="sh"><div class="sl">WHAT'S INCLUDED</div><div class="sr"></div></div>
+  <div class="pkg">
+    <div class="ph"><span class="pt">STATEROOM</span><span class="pv">$17,298</span></div>
+    <div class="pr"><span class="pn">Haven Penthouse with Balcony #15824<span class="ps">Free 2nd Guest applied · Original fare $34,596</span></span><span class="pa">$17,298</span></div>
+  </div>
+  <div class="pkg" style="margin-top:10px">
+    <div class="ph"><span class="pt">FREE AT SEA™ PACKAGE</span><span class="pv">$901</span></div>
+    <div class="pr"><span class="pn">Unlimited Open Bar (gratuities incl.)</span><span class="pa">$741</span></div>
+    <div class="pr"><span class="pn">Specialty Dining — 4 Meals (gratuities incl.)</span><span class="pa">$160</span></div>
+    <div class="pr"><span class="pn">Excursion Credits</span><span class="pi">Included</span></div>
+    <div class="pr"><span class="pn">Wi-Fi Package</span><span class="pi">Included</span></div>
+  </div>
+  <div class="pkg" style="margin-top:10px">
+    <div class="ph"><span class="pt">FLIGHTS &amp; TRANSPORT</span><span class="pv">$1,424</span></div>
+    <div class="pr"><span class="pn">Roundtrip Airfare — Dallas DFW<span class="ps">Airfare promotion applied</span></span><span class="pa">$1,290</span></div>
+    <div class="pr"><span class="pn">Ground Transportation</span><span class="pa">$134</span></div>
+  </div>
+  <div class="pkg" style="margin-top:10px">
+    <div class="ph"><span class="pt">TRAVEL PROTECTION &amp; OFFERS</span><span class="pv" style="font-style:italic;font-size:13px">Included</span></div>
+    <div class="pr"><span class="pn">NorwegianCare Travel Protection</span><span class="pa">$1,888.80</span></div>
+    <div class="pr"><span class="pn">2-For-1 Deposits</span><span class="pi">Included</span></div>
+    <div class="pr"><span class="pn">Risk-Free Cancellation</span><span class="pi">Included</span></div>
+    <div class="pr"><span class="pn">Free 2nd Guest</span><span class="pi">Included</span></div>
+  </div>
+
+  <div class="total">
+    <div>
+      <span class="tl">ALL-IN INVESTMENT · 2 GUESTS · 13 NIGHTS</span>
+      <span class="tn">Subtotal $21,511.80 · Gov. taxes, fees &amp; port expenses $300 · Total $21,811.80</span>
+    </div>
+    <div class="ta">$21,811.80</div>
+  </div>
+
+  <div class="no">
+    <div class="nh">AGENT'S NOTE</div>
+    <p>This is the Norwegian Aura's very first transatlantic crossing — an inaugural voyage on NCL's largest ship ever built. Haven Penthouses on repositioning sailings are extremely limited. Risk-Free Cancellation and 2-For-1 Deposits provide maximum flexibility. Apply excursion credits to the Alhambra at Motril — book immediately upon boarding as it sells out fast. The 4 specialty dining meals are best spread across the nine sea days at Cagney's Steakhouse and Onda by Scarpetta.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="flogo"><em>Signature</em> Elite</div>
+  <div class="ftag">BESPOKE TRAVEL DESIGN · EXCLUSIVELY YOURS</div>
+  <div class="fline"></div>
+  <div class="fdis">Pricing based on current NCL booking details. Subject to availability and NCL terms and conditions. NorwegianCare coverage terms apply. Signature Elite Travel · All rights reserved.</div>
+</footer>
+
+</body>
+</html>
