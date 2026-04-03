@@ -233,9 +233,9 @@ section{min-height:50vh;}
   <a href="javascript:void(0)" class="active" data-section="welcome" onclick="smoothScroll('welcome')"><div class="dot"></div><div class="lbl">Welcome</div></a>
   <a href="javascript:void(0)" data-section="glance" onclick="smoothScroll('glance')"><div class="dot"></div><div class="lbl">Your Trip</div></a>
   <a href="javascript:void(0)" data-section="itinerary" onclick="smoothScroll('itinerary')"><div class="dot"></div><div class="lbl">Itinerary</div></a>
-  <a href="javascript:void(0)" data-section="explore" onclick="smoothScroll('explore')"><div class="dot"></div><div class="lbl">Explore</div></a>
   <a href="javascript:void(0)" data-section="indigo" onclick="smoothScroll('indigo')"><div class="dot"></div><div class="lbl">Indigo</div></a>
   <a href="javascript:void(0)" data-section="pennywell" onclick="smoothScroll('pennywell')"><div class="dot"></div><div class="lbl">Pennywell</div></a>
+  <a href="javascript:void(0)" data-section="explore" onclick="smoothScroll('explore')"><div class="dot"></div><div class="lbl">Explore</div></a>
   <a href="javascript:void(0)" data-section="costs" onclick="smoothScroll('costs')"><div class="dot"></div><div class="lbl">Costs</div></a>
   <a href="javascript:void(0)" data-section="contact" onclick="smoothScroll('contact')"><div class="dot"></div><div class="lbl">Contact</div></a>
 </nav>
@@ -342,41 +342,6 @@ section{min-height:50vh;}
       <strong>6:30 PM</strong> &mdash; Depart STL &rarr; Arrive IAH 8:50 PM</p>
     </div>
 
-    <div class="cue" onclick="smoothScroll('explore')">
-      <span class="cue-txt">Next: Browse more dining &amp; attractions</span>
-      <span class="cue-ring"></span>
-    </div>
-  </div>
-</section>
-
-<!-- 3b. EXPLORE MORE -->
-<section id="explore" style="background:var(--white);">
-  <div class="guide fade-in">
-    <div class="guide-bubble">
-      Here are some additional restaurants and attractions that match your trip. <em>Tap any that interest you</em> &mdash; we&rsquo;ll include them when we finalize your plans.
-    </div>
-  </div>
-  <div class="sec">
-    <div class="sec-eye">EXPLORE MORE</div>
-    <div class="sec-h">Dining &amp; Attractions</div>
-
-    <div class="flight-group-label">DINING &mdash; CENTRAL WEST END</div>
-    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Brasserie by Niche</div><div class="fdetail">French bistro &middot; Escargot, steak frites, candlelit date night &middot; ~$30&ndash;50/pp</div></div></div>
-    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Bar Moro</div><div class="fdetail">Spanish tapas &middot; One of the best wine lists in the city &middot; ~$40&ndash;60/pp</div></div></div>
-    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Bormio</div><div class="fdetail">Alpine ratskeller under Noto &middot; Fondue, spaetzle, house-made wurst &middot; ~$35&ndash;55/pp</div></div></div>
-
-    <div class="flight-group-label">DINING &mdash; SPECIAL OCCASION</div>
-    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Sado</div><div class="fdetail">Modern sushi &middot; James Beard semifinalist Nick Bognar &middot; ~$60&ndash;90/pp</div></div></div>
-    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Eleven Eleven Mississippi</div><div class="fdetail">Tuscan cuisine &middot; Restored brick warehouse in Lafayette Square &middot; ~$40&ndash;65/pp</div></div></div>
-    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Three Sixty</div><div class="fdetail">26th-floor rooftop bar &middot; Panoramic skyline views &middot; ~$15&ndash;28/cocktail</div></div></div>
-
-    <div class="flight-group-label">ATTRACTIONS &amp; LANDMARKS</div>
-    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">St. Louis Zoo</div><div class="fdetail">Free admission &middot; Inside Forest Park &middot; Next to the Art Museum &middot; $0</div></div></div>
-    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Cathedral Basilica</div><div class="fdetail">One of the world&rsquo;s largest mosaic collections &middot; Walkable from CWE &middot; Free</div></div></div>
-    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Citygarden</div><div class="fdetail">Free sculpture park downtown &middot; Between the Arch &amp; City Museum &middot; Free</div></div></div>
-    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Union Station</div><div class="fdetail">Aquarium, Ferris wheel, Grand Hall light show &middot; ~$25/pp per attraction</div></div></div>
-    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">The Hill</div><div class="fdetail">STL&rsquo;s Italian neighborhood &middot; Toasted ravioli, cannoli, Imo&rsquo;s pizza &middot; ~$10&ndash;20/pp</div></div></div>
-
     <div class="cue" onclick="smoothScroll('indigo')">
       <span class="cue-txt">Next: Your first hotel option</span>
       <span class="cue-ring"></span>
@@ -457,6 +422,41 @@ section{min-height:50vh;}
       <div class="agent-note-head">AGENT&rsquo;S NOTE</div>
       <p>The big draw here is proximity to the fireworks &mdash; you&rsquo;re a short walk from the Arch grounds both nights. July 4th weekend rates run higher downtown (~$190/night), but the historic building with 12-foot ceilings is a genuine experience. Breakfast is included in the rate, and Hilton Honors members earn points. Parking is pricier at ~$30/day. Reviews highlight the grand lobby and helpful staff.</p>
     </div>
+    <div class="cue" onclick="smoothScroll('explore')">
+      <span class="cue-txt">Next: Browse more dining &amp; attractions</span>
+      <span class="cue-ring"></span>
+    </div>
+  </div>
+</section>
+
+<!-- 3b. EXPLORE MORE -->
+<section id="explore" style="background:var(--white);">
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Here are some additional restaurants and attractions that match your trip. <em>Tap any that interest you</em> &mdash; we&rsquo;ll include them when we finalize your plans.
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec-eye">EXPLORE MORE</div>
+    <div class="sec-h">Dining &amp; Attractions</div>
+
+    <div class="flight-group-label">DINING &mdash; CENTRAL WEST END</div>
+    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Brasserie by Niche</div><div class="fdetail">French bistro &middot; Escargot, steak frites, candlelit date night &middot; ~$30&ndash;50/pp</div></div></div>
+    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Bar Moro</div><div class="fdetail">Spanish tapas &middot; One of the best wine lists in the city &middot; ~$40&ndash;60/pp</div></div></div>
+    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Bormio</div><div class="fdetail">Alpine ratskeller under Noto &middot; Fondue, spaetzle, house-made wurst &middot; ~$35&ndash;55/pp</div></div></div>
+
+    <div class="flight-group-label">DINING &mdash; SPECIAL OCCASION</div>
+    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Sado</div><div class="fdetail">Modern sushi &middot; James Beard semifinalist Nick Bognar &middot; ~$60&ndash;90/pp</div></div></div>
+    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Eleven Eleven Mississippi</div><div class="fdetail">Tuscan cuisine &middot; Restored brick warehouse in Lafayette Square &middot; ~$40&ndash;65/pp</div></div></div>
+    <div class="fopt fade-in" data-grp="dining" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Three Sixty</div><div class="fdetail">26th-floor rooftop bar &middot; Panoramic skyline views &middot; ~$15&ndash;28/cocktail</div></div></div>
+
+    <div class="flight-group-label">ATTRACTIONS &amp; LANDMARKS</div>
+    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">St. Louis Zoo</div><div class="fdetail">Free admission &middot; Inside Forest Park &middot; Next to the Art Museum &middot; $0</div></div></div>
+    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Cathedral Basilica</div><div class="fdetail">One of the world&rsquo;s largest mosaic collections &middot; Walkable from CWE &middot; Free</div></div></div>
+    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Citygarden</div><div class="fdetail">Free sculpture park downtown &middot; Between the Arch &amp; City Museum &middot; Free</div></div></div>
+    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">Union Station</div><div class="fdetail">Aquarium, Ferris wheel, Grand Hall light show &middot; ~$25/pp per attraction</div></div></div>
+    <div class="fopt fade-in" data-grp="attract" onclick="toggleOpt(this)"><div class="radio"></div><div><div class="ftime">The Hill</div><div class="fdetail">STL&rsquo;s Italian neighborhood &middot; Toasted ravioli, cannoli, Imo&rsquo;s pizza &middot; ~$10&ndash;20/pp</div></div></div>
+
     <div class="cue" onclick="smoothScroll('costs')">
       <span class="cue-txt">Next: See your cost breakdown</span>
       <span class="cue-ring"></span>
@@ -601,7 +601,7 @@ function smoothScroll(id) {
 }
 
 // Scroll spy
-var sections = ['welcome','glance','itinerary','explore','indigo','pennywell','costs','contact'];
+var sections = ['welcome','glance','itinerary','indigo','pennywell','explore','costs','contact'];
 var navLinks = document.querySelectorAll('.pnav a');
 var visited = new Set();
 function updateNav() {
