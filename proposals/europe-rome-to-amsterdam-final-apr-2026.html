@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe Trip — Jul/Aug 2026 · Researched Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0F0F0F;--surface:#1A1A1A;--surface2:#222;--border:#2A2A2A;--text:#E8E4DD;--text2:#9A968E;--accent:#E8A838;--accent2:#F0C060;--green:#4CAF50;--blue:#5B9BD5;--red:#E06050;--serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.6}
+.topnav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,15,15,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:2px;padding:0 16px;height:48px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.topnav a{font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text2);text-decoration:none;white-space:nowrap;padding:6px 10px;border-radius:4px;transition:all .3s}
+.topnav a.active{color:var(--accent);background:rgba(232,168,56,0.1)}
+.topnav a:hover{color:var(--accent2)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px 24px 60px;text-align:center;background:radial-gradient(ellipse at 30% 50%,rgba(232,168,56,0.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(91,155,213,0.04) 0%,transparent 50%)}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-size:clamp(36px,7vw,64px);color:var(--text);line-height:1.1;margin-bottom:12px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero .sub{font-size:18px;color:var(--text2);max-width:520px;margin-bottom:32px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{font-size:12px;font-weight:500;padding:6px 14px;border:1px solid var(--border);border-radius:100px;color:var(--text2)}
+.pill.gold{border-color:var(--accent);color:var(--accent);background:rgba(232,168,56,0.08)}
+.pill.live{border-color:var(--green);color:var(--green);background:rgba(76,175,80,0.08);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.scroll-cue{margin-top:48px;color:var(--text2);font-size:13px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+section{padding:80px 24px;max-width:900px;margin:0 auto}
+.section-label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+section h2{font-family:var(--serif);font-size:clamp(28px,5vw,40px);margin-bottom:24px}
+.route-strip{display:flex;flex-wrap:wrap;gap:0;align-items:center;justify-content:center;margin:32px 0;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.route-city{text-align:center;padding:8px 10px;font-size:13px;font-weight:500;color:var(--text);position:relative}
+.route-city .flag{font-size:20px;display:block;margin-bottom:4px}
+.route-city.friend::after{content:'★';position:absolute;top:-2px;right:2px;font-size:10px;color:var(--accent)}
+.route-arrow{color:var(--text2);font-size:16px;padding:0 2px}
+.day-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px;transition:border-color .3s}
+.day-card:hover{border-color:rgba(232,168,56,0.3)}
+.day-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.day-num{font-family:var(--serif);font-size:24px;color:var(--accent)}
+.day-date{font-size:12px;color:var(--text2);font-weight:500}
+.day-city{font-family:var(--serif);font-size:20px;margin-bottom:4px}
+.day-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.05em;padding:3px 10px;border-radius:100px;margin-bottom:12px;margin-right:4px}
+.tag-transport{background:rgba(91,155,213,0.15);color:var(--blue)}
+.tag-stay{background:rgba(76,175,80,0.15);color:var(--green)}
+.tag-friend{background:rgba(232,168,56,0.15);color:var(--accent)}
+.tag-flight{background:rgba(224,96,80,0.15);color:var(--red)}
+.tag-night{background:rgba(160,128,200,0.15);color:#B898E0}
+.tag-live{background:rgba(76,175,80,0.15);color:var(--green);border:1px solid rgba(76,175,80,0.3)}
+.day-body{font-size:15px;color:var(--text2)}
+.day-body strong{color:var(--text);font-weight:500}
+.transport-row{display:flex;align-items:center;gap:12px;padding:10px 14px;margin:8px 0;background:var(--surface2);border-radius:8px;font-size:14px}
+.transport-icon{font-size:18px}
+.transport-detail{flex:1}
+.transport-detail .route{font-weight:500;color:var(--text)}
+.transport-detail .meta{font-size:12px;color:var(--text2)}
+.transport-price{font-weight:600;color:var(--accent);white-space:nowrap}
+.transport-source{font-size:10px;color:var(--text2);font-weight:400;display:block;margin-top:2px}
+.hostel-card{border:1px solid var(--border);border-radius:10px;padding:16px;margin:8px 0;background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%)}
+.hostel-name{font-weight:500;color:var(--text);font-size:15px;margin-bottom:4px}
+.hostel-meta{font-size:13px;color:var(--text2)}
+.hostel-price{font-size:14px;font-weight:600;color:var(--green);margin-top:4px}
+.hostel-rating{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;background:rgba(232,168,56,0.15);color:var(--accent);margin-left:8px}
+.hostel-book{font-size:11px;color:var(--blue);margin-top:4px;display:block}
+.research-note{background:rgba(91,155,213,0.08);border:1px solid rgba(91,155,213,0.2);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:var(--text2)}
+.research-note strong{color:var(--blue);font-weight:500}
+.budget-table{width:100%;border-collapse:collapse;margin:24px 0}
+.budget-table th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);padding:10px 12px;border-bottom:1px solid var(--border)}
+.budget-table td{padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border)}
+.budget-table tr:last-child td{border-bottom:none}
+.budget-table .cat{color:var(--text);font-weight:400}
+.budget-table .amt{text-align:right;font-weight:600;color:var(--accent)}
+.budget-table .note{font-size:12px;color:var(--text2)}
+.budget-table .live{font-size:10px;color:var(--green);font-weight:500}
+.budget-total{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;margin-top:16px;background:var(--surface);border:2px solid var(--accent);border-radius:10px;flex-wrap:wrap;gap:12px}
+.budget-total .label{font-weight:500;font-size:15px}
+.budget-total .amount{font-family:var(--serif);font-size:28px;color:var(--accent)}
+.budget-total .per{font-size:13px;color:var(--text2);margin-top:2px}
+.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.tip-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}
+.tip-box .tip-icon{font-size:20px;margin-bottom:8px}
+.tip-box .tip-title{font-weight:500;font-size:14px;margin-bottom:4px}
+.tip-box .tip-desc{font-size:13px;color:var(--text2)}
+.footer{text-align:center;padding:40px 24px;font-size:13px;color:var(--text2);border-top:1px solid var(--border)}
+.updated-badge{display:inline-block;font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(76,175,80,0.12);color:var(--green);border:1px solid rgba(76,175,80,0.25);letter-spacing:.05em;text-transform:uppercase}
+@media(max-width:600px){.tip-grid{grid-template-columns:1fr}.route-city{font-size:11px;padding:6px}.route-arrow{font-size:12px}section{padding:48px 16px}}
+</style>
+</head>
+<body>
+<nav class="topnav" id="topnav">
+<a href="#hero" onclick="smoothTo('hero')">Home</a>
+<a href="#route" onclick="smoothTo('route')">Route</a>
+<a href="#flights-in" onclick="smoothTo('flights-in')">Flights</a>
+<a href="#itinerary" onclick="smoothTo('itinerary')">Itinerary</a>
+<a href="#budget" onclick="smoothTo('budget')">Budget</a>
+<a href="#tips" onclick="smoothTo('tips')">Tips</a>
+</nav>
+
+<div class="hero" id="hero">
+<div class="hero-eyebrow">Cecilia's Graduation Trip 🎓</div>
+<h1>Rome <em>to</em> Amsterdam</h1>
+<p class="sub">Blake, Brenda, Cecilia & Matt — 11 days, 8 stops, 3 countries. Night train through the Alps. Live pricing researched Apr 2026.</p>
+<div class="pills">
+<span class="pill gold">Jul 22 – Aug 1, 2026</span>
+<span class="pill">4 Travelers (2 couples)</span>
+<span class="pill">🇮🇹 🇩🇪 🇳🇱</span>
+<span class="pill live">✓ Live Pricing Apr 11, 2026</span>
+</div>
+<div class="scroll-cue">↓ Scroll to explore</div>
+</div>
+
+<section id="route">
+<div class="section-label">The Route</div>
+<h2>South to North</h2>
+<div class="route-strip">
+<div class="route-city"><span class="flag">🇮🇹</span>Rome</div>
+<span class="route-arrow">✈</span>
+<div class="route-city friend"><span class="flag">🇮🇹</span>Sicily</div>
+<span class="route-arrow">✈</span>
+<div class="route-city"><span class="flag">🇮🇹</span>Rome</div>
+<span class="route-arrow">→</span>
+<div class="route-city"><span class="flag">🇮🇹</span>Florence</div>
+<span class="route-arrow">→</span>
+<div class="route-city"><span class="flag">🇮🇹</span>Venice</div>
+<span class="route-arrow">🌙</span>
+<div class="route-city"><span class="flag">🇩🇪</span>Munich</div>
+<span class="route-arrow">→</span>
+<div class="route-city friend"><span class="flag">🇩🇪</span>Stuttgart</div>
+<span class="route-arrow">→</span>
+<div class="route-city"><span class="flag">🇩🇪</span>Bochum</div>
+<span class="route-arrow">→</span>
+<div class="route-city friend"><span class="flag">🇳🇱</span>Amsterdam</div>
+</div>
+<p style="font-size:13px;color:var(--text2);text-align:center">★ = Friends · 🌙 = Nightjet sleeper · → = Day train · ✈ = Flight</p>
+</section>
+
+<section id="flights-in">
+<div class="section-label">Getting There & Back</div>
+<h2>Transatlantic Flights — Live Pricing</h2>
+<p style="margin-bottom:20px;color:var(--text2)">Blake & Brenda from Nashville (BNA). Cecilia & Matt from Cincinnati (CVG). Everyone lands Rome Jul 22, flies home from Amsterdam Aug 1.</p>
+
+<div class="day-card">
+<div class="day-head">
+<div><div class="day-city">Blake & Brenda — Nashville (BNA)</div><span class="day-tag tag-flight">Open-Jaw</span><span class="day-tag tag-live">Live Pricing</span></div>
+</div>
+<div class="day-body">
+<strong>BNA → FCO</strong>: Delta $600–900/pp · Lufthansa $505–750/pp · British Airways $550–800/pp<br>
+<strong>AMS → BNA</strong>: Delta/KLM $395–630/pp
+<div class="research-note">
+<strong>📊 RT pricing:</strong> BNA open-jaw (BNA→FCO + AMS→BNA) showing <strong style="color:var(--accent)">$724–$1,200/pp</strong>. Cheapest: American/BA $724/pp RT. <strong>Book NOW — July prices climb weekly.</strong>
+</div>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-head">
+<div><div class="day-city">Cecilia & Matt — Cincinnati (CVG)</div><span class="day-tag tag-flight">Open-Jaw</span><span class="day-tag tag-live">Live Pricing</span></div>
+</div>
+<div class="day-body">
+<strong>CVG → FCO</strong>: Delta $670–1,000/pp · Lufthansa/SWISS $512–736/pp<br>
+<strong>AMS → CVG</strong>: Delta/United $400–630/pp
+<div class="research-note">
+<strong>📊 RT pricing:</strong> CVG open-jaw (CVG→FCO + AMS→CVG) showing <strong style="color:var(--accent)">$699–$1,300/pp</strong>. Cheapest: American/BA $699/pp RT. <strong>Every week you wait costs money.</strong>
+</div>
+</div>
+</div>
+</section>
+
+<section id="itinerary">
+<div class="section-label">Day by Day</div>
+<h2>The Itinerary</h2>
+
+<div class="day-card">
+<div class="day-head"><div><span class="day-num">Day 1–2</span> <span class="day-date">Jul 22–23</span></div><span class="day-tag tag-stay">Rome</span></div>
+<div class="day-city">🇮🇹 Arrival & Colosseum</div>
+<div class="day-body">
+Arrive FCO, Leonardo Express (~€14/pp). Pantheon, Trevi, Piazza Navona. Day 2: Colosseum + Roman Forum (coopculture.it, ~€18/pp), Vatican + Sistine Chapel (~€17/pp). Dinner in Trastevere with wine.
+<div class="hostel-card">
+<div class="hostel-name">YellowSquare Rome <span class="hostel-rating">9.2/10</span></div>
+<div class="hostel-meta">Via Palestro 51 · Near Termini · Party hostel, free pasta, DJ · All en-suite</div>
+<div class="hostel-price">~€100–150/room/night (2 rooms × 4 nights = €400–600)</div>
+</div>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-head"><div><span class="day-num">Day 3–4</span> <span class="day-date">Jul 24–25</span></div><span class="day-tag tag-friend">★ Sicily</span><span class="day-tag tag-live">Live Pricing</span></div>
+<div class="day-city">✈️ Rome ↔ Catania</div>
+<div class="day-body">
+<strong>Ryanair FCO→CTA morning, CTA→FCO afternoon.</strong>
+<div class="transport-row">
+<span class="transport-icon">✈️</span>
+<div class="transport-detail">
+<div class="route">Ryanair RT (with 1 checked bag each way)</div>
+<div class="meta">~1h 15min each way</div>
+</div>
+<div class="transport-price">€80–160/pp<span class="transport-source">ryanair.com</span></div>
+</div>
+Meet friends, arancini, granita, beach day. Stay with friends (or backup Airbnb €80–120/room).
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-head"><div><span class="day-num">Day 5</span> <span class="day-date">Jul 26</span></div><span class="day-tag tag-transport">Travel</span><span class="day-tag tag-live">Live Pricing</span></div>
+<div class="day-city">🇮🇹 Rome → Florence → Venice</div>
+<div class="day-body">
+<div class="transport-row">
+<span class="transport-icon">🚄</span>
+<div class="transport-detail">
+<div class="route">Frecciarossa — Roma → Firenze</div>
+<div class="meta">~1h 20min</div>
+</div>
+<div class="transport-price">from €19.90/pp<span class="transport-source">Trenitalia</span></div>
+</div>
+Half day Florence: Duomo, Ponte Vecchio, Mercato Centrale, Vivoli gelato.
+<div class="transport-row">
+<span class="transport-icon">🚄</span>
+<div class="transport-detail">
+<div class="route">Frecciarossa — Firenze → Venezia</div>
+<div class="meta">~2h</div>
+</div>
+<div class="transport-price">from €14.61/pp<span class="transport-source">Trainline</span></div>
+</div>
+Evening: Aperol Spritz on a canal at dusk.
+<div class="hostel-card">
+<div class="hostel-name">Generator Venice <span class="hostel-rating">8.0/10</span></div>
+<div class="hostel-meta">Giudecca · Free ferry to Central · Rooftop bar · 1 quad room</div>
+<div class="hostel-price">€160–220/night (€40–55/pp)</div>
+</div>
+</div>
+</div>
+
+<div class="day-card" style="border:1px solid rgba(160,128,200,0.4);background:linear-gradient(135deg,rgba(160,128,200,0.05) 0%,var(--surface) 100%)">
+<div class="day-head"><div><span class="day-num">Day 6</span> <span class="day-date">Mon Jul 27</span></div><span class="day-tag tag-night">🌙 Nightjet</span><span class="day-tag tag-live">Live Pricing</span></div>
+<div class="day-city">🌙 Venice → Munich (overnight)</div>
+<div class="day-body">
+Full day in Venice: Bacaro crawl, St. Mark's (~€30/pp), Doge's Palace. Evening: Dinner in Cannaregio.
+<div class="transport-row" style="border:1px solid rgba(160,128,200,0.3)">
+<span class="transport-icon">🛏️</span>
+<div class="transport-detail">
+<div class="route">ÖBB Nightjet NJ40236 — Venezia → München Ost</div>
+<div class="meta">21:05 → ~05:52 · 4-berth private couchette</div>
+</div>
+<div class="transport-price">€199/compartment<span class="transport-source">oebb.at / nightjet.com</span></div>
+</div>
+<em style="font-size:12px;color:var(--text2)">~€50/pp. Sleep through the Alps. Arrive Munich 5:52 AM — bags in lockers, coffee, pretzel. Own the day.</em>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-head"><div><span class="day-num">Day 7</span> <span class="day-date">Tue Jul 28</span></div><span class="day-tag tag-stay">Munich</span><span class="day-tag tag-live">Live Pricing</span></div>
+<div class="day-city">🇩🇪 Munich (full day, no hostel)</div>
+<div class="day-body">
+Marienplatz, Glockenspiel (11 AM), Viktualienmarkt, English Garden, beer at Chinese Tower Biergarten.
+<div class="transport-row">
+<span class="transport-icon">🚄</span>
+<div class="transport-detail">
+<div class="route">ICE — München → Stuttgart</div>
+<div class="meta">~2h · Evening (depart ~7–8 PM)</div>
+</div>
+<div class="transport-price">from €18/pp<span class="transport-source">DB Super Saver</span></div>
+</div>
+Arrive Stuttgart late. Friends meet for nightcap or head to A&O City (€70–110/night for 1 night).
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-head"><div><span class="day-num">Day 8</span> <span class="day-date">Wed Jul 29</span></div><span class="day-tag tag-friend">★ Friends</span><span class="day-tag tag-live">Live Pricing</span></div>
+<div class="day-city">🇩🇪 Stuttgart → Bochum → 🇳🇱 Amsterdam</div>
+<div class="day-body">
+Morning with friends: Schlossgarten, Markthalle, proper goodbye. Few hours in Bochum.
+<div class="transport-row">
+<span class="transport-icon">🚄</span>
+<div class="transport-detail">
+<div class="route">ICE — Stuttgart → Bochum → Amsterdam Centraal</div>
+<div class="meta">Total ~6.5h · Seat reservations mandatory summer 2026</div>
+</div>
+<div class="transport-price">€60–100/pp combined<span class="transport-source">bahn.de / NS</span></div>
+</div>
+Evening: Rijsttafel dinner in Jordaan.
+<div class="hostel-card">
+<div class="hostel-name">ClinkNOORD <span class="hostel-rating">8.5/10</span></div>
+<div class="hostel-meta">Amsterdam Noord · Free 24/7 ferry (5 min) · ZincBAR live music Thu · 2 double rooms</div>
+<div class="hostel-price">€130–180/room/night (2 nights = €520–720)</div>
+</div>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-head"><div><span class="day-num">Day 9–10</span> <span class="day-date">Jul 30–31</span></div><span class="day-tag tag-friend">★ Friends</span></div>
+<div class="day-city">🇳🇱 Amsterdam Victory Lap</div>
+<div class="day-body">
+<strong>Day 9 (Thu):</strong> Anne Frank House (book 6 weeks ahead), Rijksmuseum or Van Gogh. Bikes, Vondelpark, Albert Cuyp Market. <strong>ZincBAR live music Thu night — perfect for celebration.</strong> Jordaan wine bars, canal cocktails.<br><br>
+<strong>Day 10 (Fri):</strong> Whatever you missed. Heineken Experience, NDSM Wharf, Nine Streets, canal tour. Last dinner somewhere great.
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-head"><div><span class="day-num">Day 11</span> <span class="day-date">Sat Aug 1</span></div><span class="day-tag tag-flight">Departure</span></div>
+<div class="day-city">✈️ Amsterdam → Home</div>
+<div class="day-body">
+Last canal walk, stroopwafel, coffee.
+<br><br>
+<strong>Blake & Brenda:</strong> AMS→BNA ($395–630/pp)<br>
+<strong>Cecilia & Matt:</strong> AMS→CVG ($400–630/pp)
+<br><br>
+AMS Centraal → Schiphol: 15 min train (~€5/pp).
+</div>
+</div>
+</section>
+
+<section id="budget">
+<div class="section-label">Budget</div>
+<h2>Realistic Total — Live Pricing</h2>
+
+<table class="budget-table">
+<thead><tr><th>Category</th><th style="text-align:right">Per Person</th></tr></thead>
+<tbody>
+<tr><td class="cat">Transatlantic flights <span class="live">✓ RESEARCHED</span></td><td class="amt">$700–1,300</td></tr>
+<tr><td class="cat">Sicily flights RT <span class="live">✓ RESEARCHED</span></td><td class="amt">$80–160</td></tr>
+<tr><td class="cat">Italian trains <span class="live">✓ RESEARCHED</span></td><td class="amt">$35–90</td></tr>
+<tr><td class="cat">Nightjet <span class="live">✓ RESEARCHED</span></td><td class="amt">$50–70</td></tr>
+<tr><td class="cat">German/Dutch trains <span class="live">✓ RESEARCHED</span></td><td class="amt">$80–170</td></tr>
+<tr><td class="cat">Hostels (7 nights) <span class="live">✓ RESEARCHED</span></td><td class="amt">$290–440</td></tr>
+<tr><td class="cat">Food & Drink (11 days)</td><td class="amt">$600–880</td></tr>
+<tr><td class="cat">Activities & Transport</td><td class="amt">$80–270</td></tr>
+</tbody>
+</table>
+
+<div class="budget-total">
+<div><div class="label">Realistic Total Per Person</div><div class="per">Everything: flights, trains, Nightjet, hostels, food, wine, activities</div></div>
+<div style="text-align:right"><div class="amount">$2,000–3,400</div><div class="per">most likely ~$2,500–3,000/pp</div></div>
+</div>
+
+<p style="margin-top:16px;font-size:13px;color:var(--text2)">
+<strong style="color:var(--text)">Key finding:</strong> Transatlantic flights are the biggest variable. Book as soon as possible — every week you wait in July costs $50–100/pp more. Everything else is solid and researched.
+</p>
+</section>
+
+<section id="tips">
+<div class="section-label">Pro Tips</div>
+<h2>Make It Count</h2>
+<div class="tip-grid">
+<div class="tip-box"><div class="tip-icon">📱</div><div class="tip-title">eSIM</div><div class="tip-desc">Airalo or Holafly, $20–30 for 11 days EU data. Non-negotiable for maps, translation, bookings.</div></div>
+<div class="tip-box"><div class="tip-icon">🎒</div><div class="tip-title">Pack light</div><div class="tip-desc">40L backpack + daypack. Quick-dry clothes. Ryanair bag fees add up. Do laundry in Stuttgart.</div></div>
+<div class="tip-box"><div class="tip-icon">💳</div><div class="tip-title">No-fee cards</div><div class="tip-desc">Schwab debit (no ATM fees) + Chase Sapphire (no FTF). Always decline "convert to USD" at terminals.</div></div>
+<div class="tip-box"><div class="tip-icon">🎫</div><div class="tip-title">Book ahead</div><div class="tip-desc">Colosseum + Vatican (sold out July). Anne Frank House (6 weeks). Nightjet (summer = full).</div></div>
+<div class="tip-box"><div class="tip-icon">🍷</div><div class="tip-title">Eat & drink well</div><div class="tip-desc">Lunch: markets/street food. Dinner: sit-down with wine. Italy: €3–5/glass. Germany: beer < water.</div></div>
+<div class="tip-box"><div class="tip-icon">🚂</div><div class="tip-title">Train apps</div><div class="tip-desc">Trenitalia + Italo (compare), ÖBB (Nightjet), DB Navigator (Germany). Screenshot QR codes offline.</div></div>
+</div>
+
+<div class="day-card" style="border-color:var(--accent);margin-top:24px">
+<div class="day-city" style="margin-bottom:8px">🎓 Booking Priority</div>
+<div class="day-body">
+<strong>1. FLIGHTS NOW</strong> — BNA $724–1,200 RT / CVG $699–1,300 RT<br>
+<strong>2. Nightjet</strong> — oebb.at (opens 180 days ahead)<br>
+<strong>3. Ryanair Rome↔Sicily</strong> — €31–93/pp RT<br>
+<strong>4. Italian trains</strong> — trenitalia.com + italotreno.it (1–2 months ahead)<br>
+<strong>5. German trains</strong> — bahn.de (mandatory seat reservations summer 2026)<br>
+<strong>6. Hostels</strong> — YellowSquare Rome + ClinkNOORD Amsterdam book fast in peak season<br>
+<strong>7. Museums</strong> — Colosseum, Vatican, Anne Frank House (6-week booking)
+</div>
+</div>
+</section>
+
+<div class="footer">
+Built for Blake, Brenda, Cecilia & Matt · Jul 22 – Aug 1, 2026<br>
+Live pricing researched April 11, 2026 via Google Flights, KAYAK, Trenitalia, bahn.de, Hostelworld, and official websites.
+</div>
+
+<script>
+function smoothTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+const sections=document.querySelectorAll('section,.hero');
+const navLinks=document.querySelectorAll('.topnav a');
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(l=>l.classList.remove('active'));const id=entry.target.id;const link=document.querySelector(`.topnav a[href="#${id}"]`);if(link)link.classList.add('active')}})},{threshold:0.3});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
