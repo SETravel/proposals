@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abacus Brands — P&L Review & 2026 Forecast Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Abacus Brand Palette — from Radical Games launch card */
+  --sky: #22C1E0;
+  --sky-dark: #1BA3BF;
+  --sky-light: #E8F8FB;
+  --hot-pink: #E91E8C;
+  --hot-pink-light: #FDE8F3;
+  --yellow: #FFE566;
+  --yellow-bg: #FFF8D6;
+  --ink: #1C1C1C;
+  --ink-soft: #333333;
+  --white: #FFFFFF;
+  --off-white: #F7F9FA;
+  --green: #2ECC71;
+  --green-dark: #1B9E50;
+  --green-light: #D5F5E3;
+  --amber: #F5A623;
+  --amber-light: #FEF3D6;
+  --red: #E74C3C;
+  --red-light: #FDEDEC;
+  --blue: #2471A3;
+  --blue-light: #D4E6F1;
+  --gray: #6B7B8D;
+  --gray-light: #E8ECF0;
+  --border: #D0D8E0;
+
+  --tier-a: #E74C3C;
+  --tier-b: #F5A623;
+  --tier-c: #FFE566;
+  --tier-d: #2ECC71;
+  --tier-e: #22C1E0;
+  --tier-m: #9B59B6;
+
+  --col-amazon: #2471A3;
+  --col-costco: #E74C3C;
+  --col-keyacct: #F5A623;
+  --col-walmart: #2ECC71;
+  --col-walmartcom: #1B9E50;
+  --col-dtc: #9B59B6;
+  --col-specialty: #22C1E0;
+  --col-intl: #6B7B8D;
+  --col-other: #BDC3C7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--off-white);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== COVER ===== */
+.cover {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 0;
+  position: relative;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: -60px; right: -60px; bottom: -40px;
+  background: linear-gradient(135deg, var(--sky) 0%, var(--sky-dark) 100%);
+  border-radius: 0 0 32px 32px;
+  z-index: -1;
+}
+.cover-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+}
+.cover h1 {
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.cover h1 em {
+  font-style: normal;
+  color: var(--yellow);
+}
+.cover-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.85);
+  max-width: 580px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+.cover-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+}
+.cover-meta dt {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 3px;
+}
+.cover-meta dd { font-weight: 600; color: var(--white); }
+
+.cover-kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 48px;
+}
+.cover-kpi {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+}
+.cover-kpi .label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 6px;
+}
+.cover-kpi .value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--white);
+}
+.cover-kpi .change {
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+.change.up { color: #A8FFD2; }
+.change.down { color: var(--yellow); }
+.change.neutral { color: rgba(255,255,255,0.5); }
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 56px 0 32px;
+  border-top: 3px solid var(--sky);
+}
+.section-number {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--hot-pink);
+  margin-bottom: 10px;
+}
+.section h2 {
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 800;
+  margin-bottom: 8px;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.section-lead {
+  font-size: 16px;
+  color: var(--gray);
+  max-width: 680px;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* ===== NARRATIVE ===== */
+.narrative { max-width: 700px; margin-bottom: 32px; }
+.narrative p { margin-bottom: 14px; line-height: 1.75; font-size: 15px; }
+.narrative strong { font-weight: 700; }
+.narrative .highlight {
+  background: linear-gradient(to top, rgba(255,229,102,0.4) 0%, rgba(255,229,102,0.4) 45%, transparent 45%);
+  padding: 0 2px;
+}
+
+/* ===== CALLOUTS ===== */
+.callout {
+  border-left: 4px solid;
+  padding: 18px 20px;
+  margin: 28px 0;
+  border-radius: 0 10px 10px 0;
+  font-size: 14px;
+}
+.callout.risk { border-color: var(--red); background: var(--red-light); }
+.callout.win { border-color: var(--green); background: var(--green-light); }
+.callout.watch { border-color: var(--amber); background: var(--amber-light); }
+.callout.info { border-color: var(--sky); background: var(--sky-light); }
+.callout-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.callout.risk .callout-title { color: var(--red); }
+.callout.win .callout-title { color: var(--green-dark); }
+.callout.watch .callout-title { color: var(--amber); }
+.callout.info .callout-title { color: var(--sky-dark); }
+
+/* ===== DATA TABLES ===== */
+.data-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 28px 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--white);
+}
+table.data { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.data thead th {
+  background: var(--ink);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 12px 12px;
+  text-align: left;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+table.data thead th.right { text-align: right; }
+table.data tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--gray-light);
+  white-space: nowrap;
+  font-size: 13px;
+}
+table.data tbody td.right { text-align: right; font-variant-numeric: tabular-nums; }
+table.data tbody td.bold { font-weight: 700; }
+table.data tbody tr:last-child td { border-bottom: none; }
+table.data tbody tr.subtotal td { font-weight: 700; border-top: 2px solid var(--ink); background: var(--gray-light); }
+table.data tbody tr.highlight-row td { background: var(--yellow-bg); }
+
+/* ===== BAR CHARTS ===== */
+.bar-chart { margin: 28px 0; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 80px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.bar-label { font-size: 12px; font-weight: 600; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { height: 26px; background: var(--gray-light); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; }
+.bar-value { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ===== METRIC CARDS ===== */
+.metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0; }
+.metric-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+.metric-card .mc-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+.metric-card .mc-value { font-size: 32px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+.metric-card .mc-context { font-size: 12px; color: var(--gray); }
+
+/* ===== TIER BADGES ===== */
+.tier-badge {
+  display: inline-block;
+  width: 26px; height: 26px;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--white);
+}
+.tier-a { background: var(--tier-a); }
+.tier-b { background: var(--tier-b); }
+.tier-c { background: var(--tier-c); color: var(--ink); }
+.tier-d { background: var(--tier-d); }
+.tier-e { background: var(--tier-e); }
+.tier-m { background: var(--tier-m); }
+
+/* ===== SCENARIOS ===== */
+.scenario-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 28px 0; }
+.scenario-card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--white); }
+.scenario-card.featured { border-color: var(--sky); border-width: 2px; }
+.scenario-header { padding: 12px 14px; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+.scenario-body { padding: 14px; }
+.scenario-body .big-num { font-size: 26px; font-weight: 800; margin-bottom: 4px; }
+.scenario-body .desc { font-size: 12px; color: var(--gray); margin-bottom: 12px; line-height: 1.4; }
+.scenario-line { display: flex; justify-content: space-between; font-size: 11px; padding: 4px 0; border-bottom: 1px solid var(--gray-light); }
+.scenario-line:last-child { border-bottom: none; }
+.scenario-line .sl-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* ===== GAP VISUAL ===== */
+.gap-visual { position: relative; margin: 40px 0; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+.gap-title { font-size: 20px; font-weight: 800; margin-bottom: 24px; }
+.gap-bar-container { position: relative; height: 48px; background: var(--gray-light); border-radius: 8px; overflow: visible; margin-bottom: 16px; }
+.gap-bar-fill { height: 100%; border-radius: 8px; display: flex; align-items: center; padding-left: 14px; color: var(--white); font-size: 13px; font-weight: 700; }
+.gap-bar-target { position: absolute; top: -6px; bottom: -6px; width: 3px; background: var(--ink); z-index: 2; }
+.gap-bar-target::after { content: attr(data-label); position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; font-weight: 700; white-space: nowrap; color: var(--ink); }
+.gap-legend { display: flex; gap: 16px; flex-wrap: wrap; }
+.gap-legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; }
+.gap-legend-swatch { width: 12px; height: 12px; border-radius: 3px; }
+
+/* ===== LINE GRAPH ===== */
+.line-graph-container { position: relative; margin: 36px 0; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 16px 20px; overflow-x: auto; }
+.line-graph-title { font-size: 18px; font-weight: 800; margin-bottom: 20px; }
+.line-graph-svg { width: 100%; height: auto; min-width: 600px; }
+
+/* ===== FOOTER ===== */
+.doc-footer { padding: 36px 0 48px; border-top: 3px solid var(--sky); text-align: center; color: var(--gray); font-size: 12px; }
+
+/* ===== UTILITIES ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.mt-32 { margin-top: 28px; }
+.mb-32 { margin-bottom: 28px; }
+.neg { color: var(--red); }
+.pos { color: var(--green-dark); }
+.mono { font-variant-numeric: tabular-nums; }
+.text-sm { font-size: 13px; }
+.text-xs { font-size: 11px; color: var(--gray); }
+
+/* ===== CHART LEGEND ===== */
+.chart-legend-strip { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; font-size: 12px; font-weight: 500; }
+.chart-legend-strip .cl-item { display: flex; align-items: center; gap: 5px; }
+.chart-legend-strip .cl-swatch { width: 14px; height: 10px; border-radius: 2px; }
+
+.year-divider {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding: 10px 0 6px;
+  margin-top: 12px;
+  border-bottom: 2px solid var(--sky);
+  margin-bottom: 8px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .page-wrapper { padding: 0 16px; }
+  .cover { min-height: auto; padding: 48px 0; }
+  .cover::before { left: -20px; right: -20px; }
+  .cover h1 { font-size: 30px; }
+  .cover-kpi-strip { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cover-kpi { padding: 14px 10px; }
+  .cover-kpi .value { font-size: 22px; }
+  .section h2 { font-size: 24px; }
+  .section { padding: 40px 0 24px; }
+  .metric-grid { grid-template-columns: 1fr; }
+  .scenario-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .two-col { grid-template-columns: 1fr; }
+  .bar-row { grid-template-columns: 90px 1fr 70px; gap: 6px; }
+  .bar-label { font-size: 11px; }
+  .bar-value { font-size: 11px; }
+  .gap-bar-fill { font-size: 11px; padding-left: 8px; }
+  .callout { padding: 14px 16px; font-size: 13px; }
+  table.data { font-size: 12px; }
+  table.data thead th { font-size: 9px; padding: 10px 8px; }
+  table.data tbody td { padding: 8px 8px; font-size: 12px; }
+  .narrative p { font-size: 14px; }
+}
+@media (max-width: 480px) {
+  .scenario-grid { grid-template-columns: 1fr; }
+  .cover-kpi-strip { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+<!-- ============================================================ -->
+<!-- COVER -->
+<!-- ============================================================ -->
+<div class="cover">
+  <div class="cover-logos" style="display:flex; align-items:center; gap:20px; margin-bottom:32px;">
+    <img src="data:image/webp;base64,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" alt="Abacus Brands" style="height:56px; width:auto; filter:brightness(0) invert(1);">
+    <div style="width:1px; height:36px; background:rgba(255,255,255,0.3);"></div>
+    <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADbAocDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAEHBQYIBAMC/8QAThAAAQMDAQUFBQQHBQQHCQAAAQACAwQFEQYHEiExQRNRYXGBFCKRobEVMkLBCCNSYnKy0SQzgqLwFkNkkhclNXN0wtInNDY3U1WT4eL/xAAcAQEAAgMBAQEAAAAAAAAAAAAAAQYEBQcDAgj/xAA+EQABAwMBBQUGBAUDBAMAAAABAAIDBAURIQYSMUFRE2FxgZEUIjKhscEHQtHhFTNSYvAjJPE0NUNyU4Ky/9oADAMBAAIRAxEAPwD7dE8ERdMX5sTCIiKU6J4IiKEwiIilOiIiKERERSnRPBERQmEREUongiIoRERETongiIiYRERSnRPBERQmEREUp0TwREUIiIilOieCIihMIiIpTongiIoTCYREUp0RERQmEREUp0TwREUImERFKdE8ERFCYRERSnRPBERQmEREUp0TwREUIiIilOieCIihMIiIpTongiIoRMIiKU6J4IiKEwiIilOiIiKEwiIilOiIiKERERSnRERFCIidyKU6IieaIiIiInRERERETuRERFPmiKEREROiIp8+SIoRERE6Iinz5IihEREToiJ5oiIidyInRETzRERE7kROiIp80RQiJ3IidERPNERETuRE6IifRERE+AHNbrZdmmpLnbGV7GU0DZW70cczyHuHQ8uC8ZqiOEZkdhZVJQ1FY4tgYXEdFpXRFk9QWG7WGpFPdaJ9O52dx2csf5O6rGfRejHteN5pyF4ywyQvLJBgjqiIncvpeaIieaIiIiInREU+fJEUIidyIiIp8+SIoRE7kROiIp8+SIoRERE6IiIiIidyInRET6IiIidyInREU+fJEUIidyInREU+fJEUIidyInRETzRE8kREUZTongiIiYRERSiIiKEwmETyRSp8kDd7g0EnwGfovxNKIYnSHiScNHeVq191ZabVUCC53YRzlu92e8S7HkFpq+8MpH7gGSuobIfhnPf6M108whizgEjJd1I1GnJbYWkDJBx3ngvy5zG4LpGD/G3+qrOp2m6YYSIn1VQ7uZFj6ryHaQ+X/wBx0xcpgfuuLTg/8oK1TtopeTArtH+EdgZ/NrnO/wDVo/dWt2sOf76L/nC/ZGB6Ko49oV3F1pKGp006B1RI1rWOldvkE4JA3f8AWFZ9C92RHx3cE+Xd+azLZeJaqbs3t9FoNsvw+s9rtT6+gncSwgEOHHPTQa817MIpJySe9QrEuLoieK/cUUksjY4o3SSPIaxrRkuPcAOaE41UgFxwF+EA8cea3O1bM9WV7WvdRxUbHcc1MgBx5DJWz2/Y4/ANfe2g90EOcerisCW50sfF48tVvKbZu5VGrYiB36fVVL0/ongOPcrzptkWnowO3rbjOevvtb9AvvJsn0u5uGvuDT3+0Z/JYpvtKOvotm3Yi5kZO76qhUVw3XY7TGNzrXd5Wycw2pjDh8RgqudTaWvWnZg25UZZG44bMw70bvI/1WZT3CnqDhjtVqa/Z+voBvSx6dRqPksJ0TwQjHNF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" alt="Radical Games" style="height:40px; width:auto;">
+  </div>
+  <div class="cover-eyebrow">Internal — Leadership Review</div>
+  <h1>P&L Review &<br>2026 <em>Forecast</em> Overview</h1>
+  <p class="cover-sub">Where we've been, what went right, and a clear look at the opportunity ahead — including an honest assessment of what it takes to reach the $15M target.</p>
+
+  <div class="cover-meta">
+    <dl><dt>Prepared</dt><dd>April 2026</dd></dl>
+    <dl><dt>Period</dt><dd>FY 2024 → 2025 Actual, 2026 Forecast</dd></dl>
+    <dl><dt>Status</dt><dd>Working Draft — Monday Alignment</dd></dl>
+  </div>
+
+  <div class="cover-kpi-strip">
+    <div class="cover-kpi">
+      <div class="label">2024 Gross Revenue</div>
+      <div class="value">$6.5M</div>
+      <div class="change neutral">Baseline Year</div>
+    </div>
+    <div class="cover-kpi">
+      <div class="label">2025 Gross Revenue</div>
+      <div class="value">$13.8M</div>
+      <div class="change up">▲ 111% YoY</div>
+    </div>
+    <div class="cover-kpi">
+      <div class="label">2026 Base Forecast</div>
+      <div class="value">$9.7M</div>
+      <div class="change down">▼ 29% — Reset Year</div>
+    </div>
+    <div class="cover-kpi">
+      <div class="label">2025 Net Profit</div>
+      <div class="value">$413K</div>
+      <div class="change up">▲ from ($1.3M) loss</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: THE 2024 → 2025 STORY -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-number">01 — Where We've Been</div>
+  <h2>The 2024 → 2025 Story</h2>
+  <p class="section-lead">We doubled gross revenue and swung from a $1.3M loss to a $413K profit. The growth was concentrated in a few channels — and that creates both a challenge and an opportunity heading into 2026.</p>
+
+  <div class="narrative">
+    <p>In 2024, Abacus Brands brought in <strong>$6.5M in gross product sales</strong> against an operating expense base of $3.5M, posting a <strong class="neg">net loss of $1.27M</strong>. That loss reflected the cost of building the infrastructure — payroll, trade shows, paid advertising — needed to support a product line that was still finding its channels.</p>
+    <p>2025 was the breakout. Gross product sales more than doubled to <strong>$13.8M</strong>, driven by two major wins: <span class="highlight">Costco contributed $3M</span> (from zero) and <span class="highlight">Amazon/Online grew 29% to $4.3M</span>. Walmart in-store went from $540 to $579K. Barnes & Noble grew 34% to $212K. Net profit swung to <strong class="pos">+$413K</strong>.</p>
+    <p>The Costco program is on pause for 2026 — not a lost relationship, but a reset year while we develop the product mix that brings them back to the table. That $3M gap is the central challenge of this forecast, and it's also the catalyst for the diversification work that makes 2027 and beyond stronger.</p>
+  </div>
+
+  <!-- Revenue Composition Bars — 2024, 2025, 2026F with consistent color keys -->
+  <h3 style="font-weight:800; font-size:20px; margin-bottom:16px;">Revenue Composition — Channel Breakdown Across Three Years</h3>
+
+  <div class="chart-legend-strip">
+    <div class="cl-item"><div class="cl-swatch" style="background:var(--col-amazon);"></div>Amazon / Online</div>
+    <div class="cl-item"><div class="cl-swatch" style="background:var(--col-costco);"></div>Costco (US+CA)</div>
+    <div class="cl-item"><div class="cl-swatch" style="background:var(--col-keyacct);"></div>Key Accounts</div>
+    <div class="cl-item"><div class="cl-swatch" style="background:var(--col-walmart);"></div>Walmart In-Store</div>
+    <div class="cl-item"><div class="cl-swatch" style="background:var(--col-walmartcom);"></div>Walmart.com</div>
+    <div class="cl-item"><div class="cl-swatch" style="background:var(--col-dtc);"></div>DTC / Shopify</div>
+    <div class="cl-item"><div class="cl-swatch" style="background:var(--col-specialty);"></div>Specialty / Faire</div>
+    <div class="cl-item"><div class="cl-swatch" style="background:var(--col-intl);"></div>International</div>
+  </div>
+
+  <div class="bar-chart">
+    <!-- 2024 -->
+    <div class="year-divider">2024 Actual — $6.5M Gross</div>
+    <div class="bar-row">
+      <div class="bar-label">Amazon / Online</div>
+      <div class="bar-track"><div class="bar-fill" style="width:51.6%;background:var(--col-amazon);"></div></div>
+      <div class="bar-value">$3.36M</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Costco (US+CA)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:11.4%;background:var(--col-costco);"></div></div>
+      <div class="bar-value">$742K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Key Accounts</div>
+      <div class="bar-track"><div class="bar-fill" style="width:6.6%;background:var(--col-keyacct);"></div></div>
+      <div class="bar-value">$427K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Shopify / DTC</div>
+      <div class="bar-track"><div class="bar-fill" style="width:4.2%;background:var(--col-dtc);"></div></div>
+      <div class="bar-value">$275K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Specialty / Faire</div>
+      <div class="bar-track"><div class="bar-fill" style="width:4.1%;background:var(--col-specialty);"></div></div>
+      <div class="bar-value">$269K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">International</div>
+      <div class="bar-track"><div class="bar-fill" style="width:4.3%;background:var(--col-intl);"></div></div>
+      <div class="bar-value">$283K</div>
+    </div>
+
+    <!-- 2025 -->
+    <div class="year-divider" style="margin-top:20px;">2025 Actual — $13.8M Gross</div>
+    <div class="bar-row">
+      <div class="bar-label">Amazon / Online</div>
+      <div class="bar-track"><div class="bar-fill" style="width:31.5%;background:var(--col-amazon);"></div></div>
+      <div class="bar-value">$4.34M</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Costco (US+CA)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:21.8%;background:var(--col-costco);"></div></div>
+      <div class="bar-value">$3.01M</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Key Accounts</div>
+      <div class="bar-track"><div class="bar-fill" style="width:8.1%;background:var(--col-keyacct);"></div></div>
+      <div class="bar-value">$1.12M</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Walmart In-Store</div>
+      <div class="bar-track"><div class="bar-fill" style="width:4.2%;background:var(--col-walmart);"></div></div>
+      <div class="bar-value">$579K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Shopify / DTC</div>
+      <div class="bar-track"><div class="bar-fill" style="width:3.2%;background:var(--col-dtc);"></div></div>
+      <div class="bar-value">$439K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Walmart.com</div>
+      <div class="bar-track"><div class="bar-fill" style="width:2.8%;background:var(--col-walmartcom);"></div></div>
+      <div class="bar-value">$381K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">International</div>
+      <div class="bar-track"><div class="bar-fill" style="width:4.5%;background:var(--col-intl);"></div></div>
+      <div class="bar-value">$617K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Specialty / Faire</div>
+      <div class="bar-track"><div class="bar-fill" style="width:2.5%;background:var(--col-specialty);"></div></div>
+      <div class="bar-value">$345K</div>
+    </div>
+
+    <!-- 2026 FORECAST -->
+    <div class="year-divider" style="margin-top:20px;">2026 Base Forecast — $9.75M Gross (Domestic)</div>
+    <div class="bar-row">
+      <div class="bar-label">Amazon / Online</div>
+      <div class="bar-track"><div class="bar-fill" style="width:57.8%;background:var(--col-amazon);"></div></div>
+      <div class="bar-value">$5.64M</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Key Accounts</div>
+      <div class="bar-track"><div class="bar-fill" style="width:17.2%;background:var(--col-keyacct);"></div></div>
+      <div class="bar-value">$1.68M</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Walmart In-Store</div>
+      <div class="bar-track"><div class="bar-fill" style="width:7.7%;background:var(--col-walmart);"></div></div>
+      <div class="bar-value">$753K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Shopify / DTC</div>
+      <div class="bar-track"><div class="bar-fill" style="width:6.8%;background:var(--col-dtc);"></div></div>
+      <div class="bar-value">$658K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Specialty / Faire</div>
+      <div class="bar-track"><div class="bar-fill" style="width:5.3%;background:var(--col-specialty);"></div></div>
+      <div class="bar-value">$518K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Walmart.com</div>
+      <div class="bar-track"><div class="bar-fill" style="width:5.1%;background:var(--col-walmartcom);"></div></div>
+      <div class="bar-value">$496K</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Costco (US+CA)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--col-costco);border:1px dashed var(--col-costco);"></div></div>
+      <div class="bar-value" style="color:var(--gray);">$0 (paused)</div>
+    </div>
+  </div>
+
+  <div class="callout watch">
+    <div class="callout-title">Concentration → Opportunity</div>
+    <p style="font-size:14px; margin:0;">Amazon + Costco made up 53% of 2025 gross revenue. With the Costco program on pause, 2026 is an opportunity to build the diversified channel base that reduces reliance on any single account. Every channel outside of Costco is forecast to grow — the question is how much, and how fast we can activate new accounts.</p>
+  </div>
+
+  <!-- What went well / Opportunities -->
+  <div class="two-col mt-32">
+    <div>
+      <h3 style="font-weight:800; font-size:20px; margin-bottom:16px; color:var(--green-dark);">What Went Right</h3>
+      <div class="callout win" style="margin-top:0;">
+        <p style="font-size:13px; margin:0 0 8px;"><strong>Walmart in-store: $540 → $579K.</strong> From a rounding error to a real account. +30% SKU expansion planned for 2026 validates the relationship.</p>
+        <p style="font-size:13px; margin:0 0 8px;"><strong>Walmart.com: $6.6K → $381K.</strong> The marketplace presence proved out at scale — 57x growth.</p>
+        <p style="font-size:13px; margin:0 0 8px;"><strong>Nordstrom: $58K → $122K.</strong> 110% YoY growth in a premium channel. Gift items are working.</p>
+        <p style="font-size:13px; margin:0 0 8px;"><strong>Specialty channel: grew to ~299 stores.</strong> Net new doors added across indie toy, museum, and gift retail. Average revenue per store held at ~$1,150.</p>
+        <p style="font-size:13px; margin:0;"><strong>Net profit swing: ($1.27M) → +$413K.</strong> A $1.68M improvement. Revenue doubled while opex grew only 23% — the operating leverage is real.</p>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-weight:800; font-size:20px; margin-bottom:16px; color:var(--amber);">Areas to Watch</h3>
+      <div class="callout watch" style="margin-top:0;">
+        <p style="font-size:13px; margin:0 0 8px;"><strong>Costco program on pause.</strong> A strong partnership that will likely resume once we have the right product mix (Pixicade Star Wars, Barbie, Radical Games are all strong candidates). For now, $3M to replace in 2026.</p>
+        <p style="font-size:13px; margin:0 0 8px;"><strong>Deductions were elevated in 2025.</strong> Returns, discounts, and chargebacks totaled 25.9% of gross — driven primarily by Costco's channel dynamics. Without that volume in the mix, we expect a meaningful improvement.</p>
+        <p style="font-size:13px; margin:0 0 8px;"><strong>Some accounts may have gone quiet.</strong> We don't have full visibility into account-level data from Odoo, so the exact status of some smaller accounts needs to be verified as we refine the forecast.</p>
+        <p style="font-size:13px; margin:0 0 8px;"><strong>Royalties growing with licensed products.</strong> Increased from $28K to $187K as NatGeo, ESPN, and other licensed lines scaled. This is a feature, not a bug — but it does impact per-unit margin.</p>
+        <p style="font-size:13px; margin:0;"><strong>Large pipeline, early-stage.</strong> 74 prospect accounts and 31 pipeline accounts represent significant future opportunity. Converting even a fraction changes the picture meaningfully.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: P&L DEEP DIVE + LINE GRAPH -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-number">02 — The Numbers</div>
+  <h2>P&L Summary: 2024 → 2025 → 2026F</h2>
+  <p class="section-lead">The full picture from gross sales through net profit, with 2026 forecast assumptions visible.</p>
+
+
+
+  <!-- P&L — Card-row layout: each line = name + 3 year cells with inline % change -->
+  <style>
+    .pl-grid { margin: 28px 0; }
+    .pl-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2px; }
+    .pl-row.has-label { border-radius: 0 0 8px 8px; margin-top: 0; }
+    .pl-label { background: var(--white); padding: 10px 14px 2px; font-size: 14px; font-weight: 700; border-radius: 8px 8px 0 0; border: 1px solid var(--border); border-bottom: none; margin-bottom: 0; }
+    .pl-label.indent { padding-left: 28px; font-weight: 500; font-size: 13px; color: var(--ink-soft); }
+    .pl-label.section-head { background: var(--ink); color: var(--white); font-weight: 800; font-size: 13px; letter-spacing: 0.5px; padding: 10px 14px; border-color: var(--ink); }
+    .pl-label.costco { background: var(--yellow-bg); }
+    .pl-label.bottom-line { background: var(--amber-light); }
+    .pl-cell { background: var(--white); padding: 8px 14px 12px; text-align: center; }
+    .pl-cell.costco { background: var(--yellow-bg); }
+    .pl-cell.bottom-line { background: var(--amber-light); }
+    .pl-yr { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gray); margin-bottom: 2px; }
+    .pl-val { font-size: 17px; font-weight: 800; line-height: 1.2; }
+    .pl-delta { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-top: 4px; }
+    .pl-delta.up { background: var(--green-light); color: var(--green-dark); }
+    .pl-delta.down { background: var(--red-light); color: var(--red); }
+    .pl-delta.flat { background: var(--gray-light); color: var(--gray); }
+    .pl-note { font-size: 12px; color: var(--gray); padding: 8px 14px; line-height: 1.5; background: var(--white); border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; margin-bottom: 2px; }
+    .pl-spacer { height: 12px; }
+    @media (max-width: 480px) {
+      .pl-val { font-size: 15px; }
+      .pl-cell { padding: 6px 8px 10px; }
+      .pl-label { padding: 8px 10px 2px; font-size: 13px; }
+      .pl-label.indent { padding-left: 20px; font-size: 12px; }
+    }
+  </style>
+
+  <div class="pl-grid">
+
+    <!-- GROSS PRODUCT SALES -->
+    <div class="pl-label section-head">Gross Product Sales</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val">$6.52M</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val">$13.76M</div><div><span class="pl-delta up">+111%</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val">$9.75M</div><div><span class="pl-delta down">−29%</span></div></div>
+    </div>
+
+    <div class="pl-label indent">Amazon / Online</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val" style="font-size:15px;">$3.36M</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val" style="font-size:15px;">$4.34M</div><div><span class="pl-delta up">+29%</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val" style="font-size:15px;">$5.64M</div><div><span class="pl-delta up">+30%</span></div></div>
+    </div>
+
+    <div class="pl-label indent">Key Accounts (ex-Costco)</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val" style="font-size:15px;">$427K</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val" style="font-size:15px;">$1.12M</div><div><span class="pl-delta up">+162%</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val" style="font-size:15px;">$1.68M</div><div><span class="pl-delta up">+50%</span></div></div>
+    </div>
+
+    <div class="pl-label indent costco">Costco (US + Canada)</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell costco"><div class="pl-yr">2024</div><div class="pl-val" style="font-size:15px;">$742K</div></div>
+      <div class="pl-cell costco"><div class="pl-yr">2025</div><div class="pl-val" style="font-size:15px;">$3.01M</div><div><span class="pl-delta up">+305%</span></div></div>
+      <div class="pl-cell costco"><div class="pl-yr">2026F</div><div class="pl-val" style="font-size:15px; color:var(--gray);">Paused</div><div><span class="pl-delta flat">—</span></div></div>
+    </div>
+
+    <div class="pl-label indent">Walmart In-Store</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val" style="font-size:15px;">$540</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val" style="font-size:15px;">$579K</div><div><span class="pl-delta up">🚀</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val" style="font-size:15px;">$753K</div><div><span class="pl-delta up">+30%</span></div></div>
+    </div>
+
+    <div class="pl-label indent">Walmart.com</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val" style="font-size:15px;">$6.6K</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val" style="font-size:15px;">$381K</div><div><span class="pl-delta up">🚀</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val" style="font-size:15px;">$496K</div><div><span class="pl-delta up">+30%</span></div></div>
+    </div>
+
+    <div class="pl-label indent">Shopify / DTC</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val" style="font-size:15px;">$275K</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val" style="font-size:15px;">$439K</div><div><span class="pl-delta up">+60%</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val" style="font-size:15px;">$658K</div><div><span class="pl-delta up">+50%</span></div></div>
+    </div>
+
+    <div class="pl-label indent">Specialty / Faire</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val" style="font-size:15px;">$269K</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val" style="font-size:15px;">$345K</div><div><span class="pl-delta up">+28%</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val" style="font-size:15px;">$518K</div><div><span class="pl-delta up">+50%</span></div></div>
+    </div>
+
+    <div class="pl-spacer"></div>
+
+    <!-- REVENUE DEDUCTIONS -->
+    <div class="pl-label" style="color:var(--amber); font-weight:800;">Revenue Deductions</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val" style="color:var(--red);">($855K)</div><div style="font-size:10px; color:var(--gray);">13.1% of gross</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val" style="color:var(--red);">($3.56M)</div><div style="font-size:10px; color:var(--red);">25.9% of gross</div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val" style="color:var(--red);">($1.32M)</div><div style="font-size:10px; color:var(--green-dark);">13.5% of gross</div></div>
+    </div>
+    <div class="pl-note">2026 est. uses 2024 baseline rate (13.1%) + 0.4% for Walmart channel mix. 2025's 25.9% was driven by Costco dynamics.</div>
+
+    <div class="pl-spacer"></div>
+
+    <!-- NET OPERATING INCOME -->
+    <div class="pl-label section-head">Net Operating Income</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val">$5.67M</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val">$10.26M</div><div><span class="pl-delta up">+81%</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val">$8.43M</div><div><span class="pl-delta down">−18%</span></div></div>
+    </div>
+
+    <div class="pl-spacer"></div>
+
+    <!-- COST OF REVENUE -->
+    <div class="pl-label" style="font-weight:800;">Cost of Revenue</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val" style="font-size:15px;">$3.48M</div><div style="font-size:10px; color:var(--gray);">53.4% of net</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val" style="font-size:15px;">$5.50M</div><div><span class="pl-delta down">+58%</span></div><div style="font-size:10px; color:var(--gray);">40.0% of net</div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val" style="font-size:15px;">$5.50M</div><div><span class="pl-delta flat">Flat</span></div></div>
+    </div>
+    <div class="pl-note">COR held flat from 2025 — operational efficiencies in sales &amp; fulfillment. Goal: hold this line, not regress to 2024 levels.</div>
+
+    <!-- GROSS PROFIT -->
+    <div class="pl-label section-head" style="background:var(--green-dark);">Gross Profit</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val">$2.19M</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val">$4.76M</div><div><span class="pl-delta up">+117%</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val">$2.93M</div><div><span class="pl-delta down">−38%</span></div></div>
+    </div>
+
+    <div class="pl-spacer"></div>
+
+    <!-- OPEX -->
+    <div class="pl-label" style="font-weight:800;">Operating Expenses</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell"><div class="pl-yr">2024</div><div class="pl-val" style="font-size:15px;">$3.50M</div></div>
+      <div class="pl-cell"><div class="pl-yr">2025</div><div class="pl-val" style="font-size:15px;">$4.30M</div><div><span class="pl-delta down">+23%</span></div></div>
+      <div class="pl-cell"><div class="pl-yr">2026F</div><div class="pl-val" style="font-size:15px;">$4.66M</div><div><span class="pl-delta down">+8%</span></div></div>
+    </div>
+
+    <div class="pl-spacer"></div>
+
+    <!-- NET PROFIT -->
+    <div class="pl-label bottom-line" style="font-weight:800; font-size:16px;">Net Profit</div>
+    <div class="pl-row has-label">
+      <div class="pl-cell bottom-line"><div class="pl-yr">2024</div><div class="pl-val" style="color:var(--red);">($1.27M)</div></div>
+      <div class="pl-cell bottom-line"><div class="pl-yr">2025</div><div class="pl-val" style="color:var(--green-dark);">$413K</div><div><span class="pl-delta up">Turnaround</span></div></div>
+      <div class="pl-cell bottom-line"><div class="pl-yr">2026F</div><div class="pl-val" style="color:var(--red);">($1.76M)</div><div><span class="pl-delta flat" style="background:var(--amber-light); color:var(--amber);">Opportunity</span></div></div>
+    </div>
+    <div class="pl-note" style="text-align:center; font-weight:700; color:var(--amber); background:var(--amber-light); border-color:var(--amber); border-radius:0 0 8px 8px;">Base case — path to improve runs through new accounts + Fall launches</div>
+
+  </div>
+
+  <div class="callout watch">
+    <div class="callout-title">Key Takeaway</div>
+    <p style="font-size:14px; margin:0;">At base case, <strong>2026 is a reset year</strong>. The Costco pause creates a revenue gap while the cost structure that was built for scale remains in place. The opportunity: every non-Costco channel is growing, the product pipeline is the strongest it's ever been, and the new tier framework gives us a clear map of where incremental revenue lives. The path to profitability runs through new account activation and the Fall product launches.</p>
+  </div>
+
+  <div class="narrative mt-32">
+    <h3 style="font-weight:800; font-size:20px; margin-bottom:12px;">Deductions: Returning to Baseline</h3>
+    <p>In 2024, total revenue deductions (chargebacks, discounts, returns) ran at <strong>13.1% of gross</strong>. In 2025, that spiked to 25.9% — driven overwhelmingly by Costco's channel dynamics (high club-channel return rates, volume discounts, and chargeback patterns). With the Costco program paused, we're using the <strong>2024 rate as our starting point (13.1%)</strong>, with a modest ~0.4% uplift to account for Walmart in-store now being a meaningful part of the mix. Big box retail carries slightly higher deduction rates than DTC or specialty. That gives us a <strong>2026 estimate of ~13.5%</strong> — a significant improvement from 2025, and grounded in what we actually experienced pre-Costco.</p>
+  </div>
+
+  <div class="narrative">
+    <h3 style="font-weight:800; font-size:20px; margin-bottom:12px;">Cost of Revenue: Holding the Line</h3>
+    <p>Cost of revenue dropped from 53.4% of net in 2024 to 40.0% in 2025 — that improvement reflected real operational efficiencies in how the sales force was deployed, fulfillment operations were streamlined, and account management was professionalized. For 2026, we're <strong>holding COR flat at the 2025 dollar amount ($5.5M)</strong>. The goal is to maintain the efficiencies gained, not let them erode as the revenue mix shifts. As a percentage of a smaller revenue base, COR will look higher — but the absolute dollar discipline is what matters. This is a realistic hold, not an optimistic cut.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: THE COSTCO OPPORTUNITY -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-number">03 — The Revenue Bridge</div>
+  <h2>2026: Closing the Gap</h2>
+  <p class="section-lead">The Costco pause creates a $3M gap vs. 2025. Here's what the base forecast covers and where the opportunity is.</p>
+
+  <div class="gap-visual">
+    <div class="gap-title">Revenue Bridge — 2024 → 2025 → 2026 Base Forecast</div>
+
+    <div class="gap-legend" style="margin-bottom:20px;">
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--col-amazon);"></div>Amazon / Online</div>
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--col-costco);"></div>Costco</div>
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--col-keyacct);"></div>Key Accounts</div>
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--col-walmart);"></div>Walmart In-Store</div>
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--col-walmartcom);"></div>Walmart.com</div>
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--col-dtc);"></div>DTC / Shopify</div>
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--col-specialty);"></div>Specialty / Faire</div>
+      <div class="gap-legend-item"><div class="gap-legend-swatch" style="background:var(--col-intl);"></div>International</div>
+    </div>
+
+    <!-- 2024: $6.5M = 47.3% of $13.76M max -->
+    <!-- Channel %s of 2024: Amazon 51.6%, Costco 11.4%, Key 6.6%, DTC 4.2%, Specialty 4.1%, Intl 4.3%, other ~17.8% (walmart was negligible) -->
+    <div style="display:grid; grid-template-columns: 80px 1fr; gap:12px; margin-bottom:16px;">
+      <div style="font-size:12px; font-weight:700; text-align:right; padding-top:16px;">2024</div>
+      <div class="gap-bar-container">
+        <div class="gap-bar-fill" style="width:47.3%; background: linear-gradient(90deg, var(--col-amazon) 0%, var(--col-amazon) 51.6%, var(--col-costco) 51.6%, var(--col-costco) 63.0%, var(--col-keyacct) 63.0%, var(--col-keyacct) 69.6%, var(--col-dtc) 69.6%, var(--col-dtc) 73.8%, var(--col-specialty) 73.8%, var(--col-specialty) 77.9%, var(--col-intl) 77.9%);">$6.5M</div>
+      </div>
+    </div>
+
+    <!-- 2025: $13.76M = 100% -->
+    <!-- Channel %s of 2025: Amazon 31.5%, Costco 21.8%, Key 8.1%, Walmart 4.2%, Walmartcom 2.8%, DTC 3.2%, Intl 4.5%, Specialty 2.5% -->
+    <div style="display:grid; grid-template-columns: 80px 1fr; gap:12px; margin-bottom:16px;">
+      <div style="font-size:12px; font-weight:700; text-align:right; padding-top:16px;">2025</div>
+      <div class="gap-bar-container">
+        <div class="gap-bar-fill" style="width:100%; background: linear-gradient(90deg, var(--col-amazon) 0%, var(--col-amazon) 31.5%, var(--col-costco) 31.5%, var(--col-costco) 53.3%, var(--col-keyacct) 53.3%, var(--col-keyacct) 61.4%, var(--col-walmart) 61.4%, var(--col-walmart) 65.6%, var(--col-dtc) 65.6%, var(--col-dtc) 68.8%, var(--col-walmartcom) 68.8%, var(--col-walmartcom) 71.6%, var(--col-intl) 71.6%, var(--col-intl) 76.1%, var(--col-specialty) 76.1%);">$13.76M</div>
+      </div>
+    </div>
+
+    <!-- 2026F: $9.75M = 70.9% of $13.76M -->
+    <!-- Channel %s of 2026F: Amazon 57.8%, Key 17.2%, Walmart 7.7%, DTC 6.8%, Specialty 5.3%, Walmartcom 5.1% -->
+    <div style="display:grid; grid-template-columns: 80px 1fr; gap:12px; margin-bottom:16px;">
+      <div style="font-size:12px; font-weight:700; text-align:right; padding-top:16px;">2026F</div>
+      <div class="gap-bar-container">
+        <div class="gap-bar-fill" style="width:70.9%; background: linear-gradient(90deg, var(--col-amazon) 0%, var(--col-amazon) 57.8%, var(--col-keyacct) 57.8%, var(--col-keyacct) 75.0%, var(--col-walmart) 75.0%, var(--col-walmart) 82.7%, var(--col-dtc) 82.7%, var(--col-dtc) 89.5%, var(--col-specialty) 89.5%, var(--col-specialty) 94.8%, var(--col-walmartcom) 94.8%);">$9.75M</div>
+        <div class="gap-bar-target" style="left:100%;" data-label="2025 ($13.76M)"></div>
+      </div>
+    </div>
+
+    <!-- Opportunity gap -->
+    <div style="display:grid; grid-template-columns: 80px 1fr; gap:12px; margin-bottom:20px;">
+      <div style="font-size:12px; font-weight:700; text-align:right; padding-top:16px; color:var(--amber);">Gap</div>
+      <div class="gap-bar-container">
+        <div class="gap-bar-fill" style="width:29.1%;background:repeating-linear-gradient(45deg, var(--amber), var(--amber) 4px, #f5d78e 4px, #f5d78e 8px);">$4.01M — new accounts + launches</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="narrative">
+    <p>The 2026 base forecast of <strong>$9.75M gross domestic revenue</strong> assumes solid growth across every existing channel: Amazon +30%, key accounts +50%, Walmart channels +30%, DTC +50%, specialty +50%. These are growth rates on channels where we have real traction and momentum.</p>
+    <p>The <strong>$4.01M gap to match 2025</strong> — and the <strong>$5.25M gap to the $15M target</strong> — is where new account onboarding and Fall product launches come in. The tier analysis gives us a clear framework for where that revenue can come from, and the product pipeline gives us the tools to get there.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: 2026 FORECAST SCENARIOS -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-number">04 — Scenario Planning</div>
+  <h2>2026 Forecast: Four Lanes</h2>
+  <p class="section-lead">Conservative through target — each with different assumptions about new account activation and product launch performance.</p>
+
+  <div class="scenario-grid">
+    <div class="scenario-card">
+      <div class="scenario-header" style="background:var(--gray-light); color:var(--gray);">Conservative</div>
+      <div class="scenario-body">
+        <div class="big-num neg">$6.9M</div>
+        <div class="desc">Existing accounts, modest growth. Pipeline doesn't convert.</div>
+        <div class="scenario-line"><span>Amazon</span><span class="sl-val">$4.0M</span></div>
+        <div class="scenario-line"><span>Key Accts</span><span class="sl-val">$1.06M</span></div>
+        <div class="scenario-line"><span>Walmart</span><span class="sl-val">$650K</span></div>
+        <div class="scenario-line"><span>Walmart.com</span><span class="sl-val">$400K</span></div>
+        <div class="scenario-line"><span>DTC</span><span class="sl-val">$450K</span></div>
+        <div class="scenario-line"><span>Specialty</span><span class="sl-val">$350K</span></div>
+        <div class="scenario-line" style="border-top:2px solid var(--ink); font-weight:700; margin-top:6px; padding-top:10px;">
+          <span>New Accts</span><span class="sl-val" style="color:var(--gray);">$0</span>
+        </div>
+      </div>
+    </div>
+    <div class="scenario-card featured">
+      <div class="scenario-header" style="background:var(--ink); color:#fff;">Base Case</div>
+      <div class="scenario-body">
+        <div class="big-num">$9.75M</div>
+        <div class="desc">Growth in proven channels + early pipeline wins.</div>
+        <div class="scenario-line"><span>Amazon</span><span class="sl-val">$5.64M</span></div>
+        <div class="scenario-line"><span>Key Accts</span><span class="sl-val">$1.68M</span></div>
+        <div class="scenario-line"><span>Walmart</span><span class="sl-val">$753K</span></div>
+        <div class="scenario-line"><span>Walmart.com</span><span class="sl-val">$496K</span></div>
+        <div class="scenario-line"><span>DTC</span><span class="sl-val">$658K</span></div>
+        <div class="scenario-line"><span>Specialty</span><span class="sl-val">$518K</span></div>
+        <div class="scenario-line" style="border-top:2px solid var(--ink); font-weight:700; margin-top:6px; padding-top:10px;">
+          <span>New Accts</span><span class="sl-val" style="color:var(--amber);">~$205K</span>
+        </div>
+      </div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-header" style="background:var(--green); color:#fff;">Stretch</div>
+      <div class="scenario-body">
+        <div class="big-num pos">$12.6M</div>
+        <div class="desc">Launches hit targets. Multiple pipeline converts.</div>
+        <div class="scenario-line"><span>Amazon</span><span class="sl-val">$7.0M</span></div>
+        <div class="scenario-line"><span>Key Accts</span><span class="sl-val">$2.47M</span></div>
+        <div class="scenario-line"><span>Walmart</span><span class="sl-val">$900K</span></div>
+        <div class="scenario-line"><span>Walmart.com</span><span class="sl-val">$600K</span></div>
+        <div class="scenario-line"><span>DTC</span><span class="sl-val">$900K</span></div>
+        <div class="scenario-line"><span>Specialty</span><span class="sl-val">$700K</span></div>
+        <div class="scenario-line" style="border-top:2px solid var(--ink); font-weight:700; margin-top:6px; padding-top:10px;">
+          <span>New Accts</span><span class="sl-val pos">~$1.0M</span>
+        </div>
+      </div>
+    </div>
+    <div class="scenario-card" style="border: 2px solid var(--accent);">
+      <div class="scenario-header" style="background:var(--accent); color:#fff;">$15M Target</div>
+      <div class="scenario-body">
+        <div class="big-num" style="color:var(--accent);">$15.0M</div>
+        <div class="desc">Full launch success + whale account(s) + aggressive DTC.</div>
+        <div class="scenario-line"><span>Amazon</span><span class="sl-val">$7.5M</span></div>
+        <div class="scenario-line"><span>Key Accts</span><span class="sl-val">$2.8M</span></div>
+        <div class="scenario-line"><span>Walmart</span><span class="sl-val">$1.1M</span></div>
+        <div class="scenario-line"><span>Walmart.com</span><span class="sl-val">$700K</span></div>
+        <div class="scenario-line"><span>DTC</span><span class="sl-val">$1.2M</span></div>
+        <div class="scenario-line"><span>Specialty</span><span class="sl-val">$900K</span></div>
+        <div class="scenario-line" style="border-top:2px solid var(--ink); font-weight:700; margin-top:6px; padding-top:10px;">
+          <span>New Accts</span><span class="sl-val" style="color:var(--accent); font-weight:700;">~$2.3M+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">The Path to $15M</div>
+    <p style="font-size:14px; margin:0;">The $15M lane requires three things to go right: <strong>(1)</strong> Amazon holds at $7.5M+ with Radical Games catalog expansion, <strong>(2)</strong> Fall launches (Star Wars, Barbie, Globe Alive) hit combined $4–5M at retail, and <strong>(3)</strong> at least $2.3M in new account revenue from pipeline conversions — likely some combination of Sam's Club re-engagement, Kohls landing, AAFES activation, and hardware/F&S channel progress. This is ambitious but not impossible — it's the version where the product pipeline delivers and the sales team converts. We should build this scenario out fully so we can track against it.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: NEW TIER SYSTEM -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-number">05 — The New Tier Framework</div>
+  <h2>Revenue Potential by Door</h2>
+  <p class="section-lead">We've rebuilt the tier system around a single question: how much annual revenue can we realistically generate per physical door for each retailer? This gives us a clear way to size every opportunity.</p>
+
+  <div class="data-table-wrap">
+    <table class="data">
+      <thead>
+        <tr>
+          <th style="width:60px;">Tier</th>
+          <th>Name</th>
+          <th>Rev/Door</th>
+          <th>Profile</th>
+          <th class="right">Accounts</th>
+          <th class="right">Total Potential</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tier-badge tier-a">A</span></td>
+          <td class="bold">Mega</td>
+          <td class="mono">$2,500+</td>
+          <td>Mass big box, warehouse clubs. Pallet programs, endcaps, multi-SKU planograms.</td>
+          <td class="right bold">5</td>
+          <td class="right bold">$21.3M</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge tier-b">B</span></td>
+          <td class="bold">Major</td>
+          <td class="mono">$500–$2,500</td>
+          <td>Department stores, large specialty. Dedicated toy/gift sections, 4–8 SKU assortment.</td>
+          <td class="right bold">15</td>
+          <td class="right bold">$3.2M</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge tier-c">C</span></td>
+          <td class="bold">Mid</td>
+          <td class="mono">$150–$499</td>
+          <td>Mid-size chains, museums, sporting goods. 2–5 SKUs, curated selection.</td>
+          <td class="right bold">49</td>
+          <td class="right bold">$3.3M</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge tier-d">D</span></td>
+          <td class="bold">Starter</td>
+          <td class="mono">$50–$149</td>
+          <td>Hardware co-ops, grocery, farm supply. 1–3 impulse/gift SKUs.</td>
+          <td class="right bold">63</td>
+          <td class="right bold">$3.4M</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge tier-e">E</span></td>
+          <td class="bold">Test</td>
+          <td class="mono">$15–$49</td>
+          <td>Indie toy shops, Faire sellers, single-store operators. 1–2 SKU test orders.</td>
+          <td class="right bold">5</td>
+          <td class="right bold">$260K</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge tier-m">M</span></td>
+          <td class="bold">Marketplace</td>
+          <td class="mono">N/A</td>
+          <td>Online-only: Amazon, Walmart.com, DTC, Best Buy Marketplace.</td>
+          <td class="right bold">13</td>
+          <td class="right bold">$6.8M</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="narrative mt-32">
+    <p>The total revenue potential across all 150 domestic accounts is <strong>$38.2M</strong>. That's the theoretical ceiling if every door in every account carried our products. We won't get there — but the framework tells us where the biggest opportunities are and how to prioritize sales effort.</p>
+  </div>
+
+  <h3 style="font-weight:800; font-size:20px; margin-bottom:16px;">Top 15 Accounts by Revenue Potential</h3>
+  <div class="data-table-wrap">
+    <table class="data">
+      <thead>
+        <tr>
+          <th style="width:40px;">#</th>
+          <th>Account</th>
+          <th>Tier</th>
+          <th>Status</th>
+          <th class="right">Doors</th>
+          <th class="right">Rated $/Door</th>
+          <th class="right">Revenue Potential</th>
+          <th class="right">2025 Actual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td class="bold">Walmart (in-store)</td><td><span class="tier-badge tier-a">A</span></td><td>Active</td>
+          <td class="right">4,606</td><td class="right mono">$2,500</td><td class="right bold">$11,515,000</td><td class="right">$579,199</td>
+        </tr>
+        <tr>
+          <td>2</td><td class="bold">Amazon / Online</td><td><span class="tier-badge tier-m">M</span></td><td>Active</td>
+          <td class="right">—</td><td class="right mono">—</td><td class="right bold">$5,637,296</td><td class="right">$4,337,918</td>
+        </tr>
+        <tr>
+          <td>3</td><td class="bold">Target</td><td><span class="tier-badge tier-a">A</span></td><td style="color:var(--amber);">Reactivate</td>
+          <td class="right">1,997</td><td class="right mono">$2,500</td><td class="right bold">$4,992,500</td><td class="right">$117</td>
+        </tr>
+        <tr>
+          <td>4</td><td class="bold">Costco US</td><td><span class="tier-badge tier-a">A</span></td><td style="color:var(--gray);">Paused</td>
+          <td class="right">646</td><td class="right mono">$3,000</td><td class="right bold">$1,938,000</td><td class="right">$2,417,330</td>
+        </tr>
+        <tr>
+          <td>5</td><td class="bold">Costco Canada</td><td><span class="tier-badge tier-a">A</span></td><td style="color:var(--gray);">Paused</td>
+          <td class="right">646</td><td class="right mono">$2,500</td><td class="right bold">$1,615,000</td><td class="right">$587,694</td>
+        </tr>
+        <tr>
+          <td>6</td><td class="bold">Sam's Club</td><td><span class="tier-badge tier-a">A</span></td><td style="color:var(--amber);">Re-Win</td>
+          <td class="right">601</td><td class="right mono">$2,000</td><td class="right bold">$1,202,000</td><td class="right">$0</td>
+        </tr>
+        <tr>
+          <td>7</td><td class="bold">ORGILL</td><td><span class="tier-badge tier-d">D</span></td><td>Prospect</td>
+          <td class="right">12,000</td><td class="right mono">$25</td><td class="right bold">$900,000</td><td class="right">$0</td>
+        </tr>
+        <tr>
+          <td>8</td><td class="bold">Shopify / DTC</td><td><span class="tier-badge tier-m">M</span></td><td>Active</td>
+          <td class="right">—</td><td class="right mono">—</td><td class="right bold">$658,247</td><td class="right">$438,831</td>
+        </tr>
+        <tr>
+          <td>9</td><td class="bold">Kohls</td><td><span class="tier-badge tier-b">B</span></td><td>Pipeline</td>
+          <td class="right">1,153</td><td class="right mono">$500</td><td class="right bold">$576,500</td><td class="right">$0</td>
+        </tr>
+        <tr>
+          <td>10</td><td class="bold">Walmart.com</td><td><span class="tier-badge tier-m">M</span></td><td>Active</td>
+          <td class="right">—</td><td class="right mono">—</td><td class="right bold">$495,647</td><td class="right">$381,267</td>
+        </tr>
+        <tr>
+          <td>11</td><td class="bold">Nordstrom</td><td><span class="tier-badge tier-b">B</span></td><td>Active</td>
+          <td class="right">394</td><td class="right mono">$1,200</td><td class="right bold">$472,800</td><td class="right">$122,390</td>
+        </tr>
+        <tr>
+          <td>12</td><td class="bold">Barnes & Noble</td><td><span class="tier-badge tier-b">B</span></td><td>Active</td>
+          <td class="right">600</td><td class="right mono">$750</td><td class="right bold">$450,000</td><td class="right">$212,318</td>
+        </tr>
+        <tr>
+          <td>13</td><td class="bold">Claires</td><td><span class="tier-badge tier-c">C</span></td><td>Pipeline</td>
+          <td class="right">2,750</td><td class="right mono">$150</td><td class="right bold">$412,500</td><td class="right">$0</td>
+        </tr>
+        <tr>
+          <td>14</td><td class="bold">Faire (platform)</td><td><span class="tier-badge tier-e">E</span></td><td>Active</td>
+          <td class="right">14,000</td><td class="right mono">$15</td><td class="right bold">$350,000</td><td class="right">~$345K (agg)</td>
+        </tr>
+        <tr>
+          <td>15</td><td class="bold">Ace Hardware</td><td><span class="tier-badge tier-d">D</span></td><td>Active</td>
+          <td class="right">4,495</td><td class="right mono">$75</td><td class="right bold">$337,125</td><td class="right">$0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">Reading This Table</div>
+    <p style="font-size:14px; margin:0;">Revenue Potential shows the theoretical ceiling. The gap between 2025 Actual and Potential shows growth room in each account. <strong>Target at $5M potential with only $117 in 2025</strong> is the single largest dormant opportunity. Sam's Club at $1.2M potential with a prior $281K track record (2024 P&L) is a strong near-term re-engagement opportunity. Costco remains on the board as a $3.6M combined opportunity — paused, not lost.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: RADICAL GAMES — NEW DIVISION -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-number">06 — New Division</div>
+  <h2>Radical Games: Opening New Doors</h2>
+  <p class="section-lead">We launched an entirely new division in 2026. Radical Games is fun-first: party games, novelty, collectibles, and gifts. This isn't an extension of the STEM/educational catalog — it's a new aperture into channels and retailers Abacus has never sold to before.</p>
+
+  <div class="narrative">
+    <p>Until now, Abacus Brands has been an educational toy and VR/AR company. That positions us well in specialty, book chains, and STEM-focused retail — but it limits the doors we can walk through. Radical Games changes that. Party games, travel games, collectible plush, and puzzles are welcome at retailers that would never carry a VR Science Kit: <strong>game stores, gift shops, convenience, airport retail, college bookstores, lifestyle chains, dollar/value retailers, and mass-market game aisles</strong>.</p>
+    <p>The early traction is real: <strong>3 games already placed at Target for Fall 2026</strong> — Lick My Nachos with 2 exclusive SKUs through January 2027 (Froggy Frenzy and Trick Shot Trivia). Target placement validates the line for every other buyer conversation.</p>
+  </div>
+
+  <h3 style="font-weight:800; font-size:18px; margin-bottom:16px;">Radical Games — 2026 Product Lines</h3>
+
+  <div class="data-table-wrap">
+    <table class="data" style="min-width:0;">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Type</th>
+          <th class="right">MSRP</th>
+          <th class="right">Domestic</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:var(--green-light);">
+          <td class="bold">Lick My Nachos</td>
+          <td>Party Game</td>
+          <td class="right">$9.99</td>
+          <td class="right">$5.00</td>
+          <td><strong style="color:var(--green-dark);">At Target — Fall 2026</strong></td>
+        </tr>
+        <tr style="background:var(--green-light);">
+          <td class="bold">Froggy Frenzy</td>
+          <td>Party Game</td>
+          <td class="right">$14.99</td>
+          <td class="right">$7.50</td>
+          <td><strong style="color:var(--green-dark);">At Target — Exclusive thru Jan 2027</strong></td>
+        </tr>
+        <tr style="background:var(--green-light);">
+          <td class="bold">Trick Shot Trivia</td>
+          <td>Party / Trivia Game</td>
+          <td class="right">$14.99</td>
+          <td class="right">$7.50</td>
+          <td><strong style="color:var(--green-dark);">At Target — Exclusive thru Jan 2027</strong></td>
+        </tr>
+        <tr>
+          <td class="bold">Tug of Draw</td>
+          <td>Drawing / Party Game</td>
+          <td class="right">$14.99</td>
+          <td class="right">$7.50</td>
+          <td>2026 Launch</td>
+        </tr>
+        <tr>
+          <td>~3 additional titles</td>
+          <td>Party / Travel Games</td>
+          <td class="right">$9.99–$19.99</td>
+          <td class="right">$5–$10</td>
+          <td>In Development</td>
+        </tr>
+        <tr>
+          <td class="bold">Hoodeez (12 SKUs)</td>
+          <td>Collectible Plush</td>
+          <td class="right">$19.99</td>
+          <td class="right">$10.00</td>
+          <td>2026 Launch</td>
+        </tr>
+        <tr>
+          <td>Puzzle Line</td>
+          <td>Puzzles</td>
+          <td class="right">TBD</td>
+          <td class="right">TBD</td>
+          <td>In Development</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout win">
+    <div class="callout-title">Why This Changes the Channel Map</div>
+    <p style="font-size:14px; margin:0 0 8px;">Party games at $9.99–$14.99 fit where VR gift sets at $49.99 don't. The Radical Games line opens conversations with an entirely different set of buyers:</p>
+    <p style="font-size:13px; margin:0 0 6px;"><strong>Already placed:</strong> Target (3 games Fall 2026 — the proof point for every other pitch)</p>
+    <p style="font-size:13px; margin:0 0 6px;"><strong>Natural fits (current accounts):</strong> Walmart game aisle, Barnes & Noble, Amazon, Five Below, Books-A-Million, Nordstrom gift section, Cracker Barrel</p>
+    <p style="font-size:13px; margin:0 0 6px;"><strong>New channel targets:</strong> Spencer's/Spirit Halloween (~1,850 doors), Party City (~700), Dollar Tree/Dollar General (~35K combined), airport retail (Hudson News 1,000 doors), college bookstores (Follett ~1,200 doors), game/comic shops (Alliance Distribution ~3,000), convenience (travel plazas, truck stops)</p>
+    <p style="font-size:13px; margin:0;"><strong>Hoodeez collectible plush</strong> opens a completely separate lane — collectible/blind bag retail at Claire's, Five Below, Hot Topic, Box Lunch, and specialty gift. 12 SKUs at $19.99 with a gamified hook.</p>
+  </div>
+
+  <h3 style="font-weight:800; font-size:18px; margin:28px 0 16px;">New Retail Targets Unlocked by Radical Games</h3>
+  <p style="font-size:14px; color:var(--gray); margin-bottom:16px;">These are retailers not currently on the domestic forecast that become viable with party games, collectible plush, and puzzles in the catalog.</p>
+
+  <div class="data-table-wrap">
+    <table class="data" style="min-width:0;">
+      <thead>
+        <tr>
+          <th>Retailer</th>
+          <th>Channel</th>
+          <th class="right">~Doors</th>
+          <th>Product Fit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bold">Five Below</td>
+          <td>Value Retail</td>
+          <td class="right">~1,750</td>
+          <td>Party games at $9.99, Hoodeez plush. Perfect price point.</td>
+        </tr>
+        <tr>
+          <td class="bold">Spencer's / Spirit</td>
+          <td>Novelty / Seasonal</td>
+          <td class="right">~1,850</td>
+          <td>Party games, novelty gifts. Lick My Nachos is a natural fit.</td>
+        </tr>
+        <tr>
+          <td class="bold">Party City</td>
+          <td>Party Supply</td>
+          <td class="right">~700</td>
+          <td>Party games as add-on to party supplies. Impulse buy.</td>
+        </tr>
+        <tr>
+          <td class="bold">Dollar Tree / Dollar Gen.</td>
+          <td>Dollar / Value</td>
+          <td class="right">~35,000</td>
+          <td>Travel-size or value SKUs at $5 price point.</td>
+        </tr>
+        <tr>
+          <td class="bold">BoxLunch / Hot Topic</td>
+          <td>Pop Culture</td>
+          <td class="right">~1,100</td>
+          <td>Hoodeez collectible plush, novelty party games.</td>
+        </tr>
+        <tr>
+          <td class="bold">Follett (College)</td>
+          <td>College Bookstores</td>
+          <td class="right">~1,200</td>
+          <td>Dorm room party games. Perfect demographic.</td>
+        </tr>
+        <tr>
+          <td class="bold">Alliance / Game Dist.</td>
+          <td>Game / Comic Shops</td>
+          <td class="right">~3,000</td>
+          <td>Trick Shot Trivia, party games through hobby distribution.</td>
+        </tr>
+        <tr>
+          <td class="bold">TravelCenters / Pilot</td>
+          <td>Travel / Convenience</td>
+          <td class="right">~1,500</td>
+          <td>Travel-size party games. Impulse at $9.99–$14.99.</td>
+        </tr>
+        <tr>
+          <td class="bold">Books-A-Million</td>
+          <td>Book Chain (existing)</td>
+          <td class="right">250</td>
+          <td>Game section expansion — already carrying Abacus STEM.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">The Radical Games Thesis</div>
+    <p style="font-size:14px; margin:0;">The global board games market hit $15.8B in 2025, growing at 10%+ annually. Party and social games are the fastest-growing segment, driven by demand for screen-free social experiences. Abacus entering this space — with Target placement already secured — positions Radical Games as both a standalone revenue driver and a door-opener for the broader Abacus catalog. A buyer who says yes to Lick My Nachos at $9.99 is now in a conversation where you can show them Pixicade at $19.99 and a DK Gift Set at $49.99.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: PRODUCT-LED UPSIDE (renumbered from 06) -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-number">07 — Product-Led Upside</div>
+  <h2>New Launches: The Full Picture</h2>
+  <p class="section-lead">Between the STEM/licensed launches and the Radical Games division, 2026 has the broadest product pipeline Abacus has ever brought to market.</p>
+
+  <div class="metric-grid">
+    <div class="metric-card" style="border-top: 4px solid var(--tier-m);">
+      <div class="mc-label">Pixicade Star Wars</div>
+      <div class="mc-value">$1.75M</div>
+      <div class="mc-context">100K units × $17.50</div>
+      <div style="margin-top:12px; font-size:12px; line-height:1.6;">
+        <strong>MSRP:</strong> $29.99 · Fall 2026<br>
+        <strong>Opportunity:</strong> Star Wars IP opens GameStop, Hot Topic, Target. Proven Pixicade mechanics + the world's biggest entertainment franchise.<br>
+        <strong>To watch:</strong> Royalty cost. Needs broad placement.
+      </div>
+    </div>
+    <div class="metric-card" style="border-top: 4px solid #e91e90;">
+      <div class="mc-label">Barbie Magic Style Studio</div>
+      <div class="mc-value">$3.0M</div>
+      <div class="mc-context">200K units × $15.00</div>
+      <div style="margin-top:12px; font-size:12px; line-height:1.6;">
+        <strong>MSRP:</strong> $29.99 · Fall 2026<br>
+        <strong>Opportunity:</strong> Mass-market unlock. Opens Walmart, Target, grocery, every fashion/girl toy channel. Enormous addressable market.<br>
+        <strong>To watch:</strong> Competitive space. Sell-through earns reorders.
+      </div>
+    </div>
+    <div class="metric-card" style="border-top: 4px solid var(--green);">
+      <div class="mc-label">NatGeo Globe Alive</div>
+      <div class="mc-value">$3.0M</div>
+      <div class="mc-context">100K units × $30.00</div>
+      <div style="margin-top:12px; font-size:12px; line-height:1.6;">
+        <strong>MSRP:</strong> $59.99 · Fall 2026<br>
+        <strong>Opportunity:</strong> Premium gift. NatGeo brand equity + genuinely differentiated AR/VR globe. High margin at $30/unit.<br>
+        <strong>To watch:</strong> Highest price point. Untested form factor.
+      </div>
+    </div>
+  </div>
+
+  <div class="metric-grid" style="grid-template-columns: repeat(2, 1fr);">
+    <div class="metric-card" style="border-top: 4px solid var(--sky);">
+      <div class="mc-label">Radical Games (7 titles)</div>
+      <div class="mc-value" style="font-size:26px;">$1–2M+</div>
+      <div class="mc-context">Party games $5–$10 domestic · Hoodeez $10</div>
+      <div style="margin-top:12px; font-size:12px; line-height:1.6;">
+        <strong>Already at Target:</strong> 3 games Fall 2026<br>
+        <strong>Opportunity:</strong> Opens entirely new retail channels. Low price points = high volume, impulse-friendly. Hoodeez collectible plush adds blind-bag/collectible revenue stream.<br>
+        <strong>Revenue model:</strong> Lower per-unit but much higher volume and door count potential. Even modest penetration across new channels adds up fast.
+      </div>
+    </div>
+    <div class="metric-card" style="border-top: 4px solid var(--amber);">
+      <div class="mc-label">Hoodeez Plush (12 SKUs)</div>
+      <div class="mc-value" style="font-size:26px;">TBD</div>
+      <div class="mc-context">Collectible gamified plush · $19.99 MSRP · $10 domestic</div>
+      <div style="margin-top:12px; font-size:12px; line-height:1.6;">
+        <strong>Status:</strong> 2026 Launch<br>
+        <strong>Opportunity:</strong> Collectible/blind bag retail is a massive category. Natural fit for Claire's, Five Below, Hot Topic, BoxLunch. 12 SKUs drives repeat purchase and display programs.<br>
+        <strong>Channel:</strong> Different buyer than games — opens plush/collectible sections.
+      </div>
+    </div>
+  </div>
+
+  <div class="callout win">
+    <div class="callout-title">Combined 2026 Launch Upside: $8.75M–$9.75M+</div>
+    <p style="font-size:14px; margin:0;">The STEM/licensed launches (Star Wars $1.75M, Barbie $3M, Globe Alive $3M) plus Radical Games ($1M–$2M+) put total launch upside in the <strong>$8.75M–$9.75M+ range</strong>. These are primarily <strong>Fall 2026 launches</strong>, so most revenue lands Q3/Q4 and builds into 2027. The base forecast doesn't assume full success — but the depth and breadth of this pipeline is unlike anything we've brought to market before. The question for Monday: how much do we build into the plan vs. treat as upside?</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: WHERE DO WE NEED TO GO (renumbered from 07) -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-number">08 — The Path Forward</div>
+  <h2>What Needs to Be True for 2026–2027</h2>
+  <p class="section-lead">The priorities, opportunities, and open questions that shape the next 18 months.</p>
+
+  <div class="narrative">
+    <h3 style="font-weight:800; font-size:20px; margin-bottom:12px;">The Revenue Equation</h3>
+    <p>At base case, domestic gross is $9.75M. To break even, we need roughly <strong>$12.5M in gross</strong> (adding ~$2.75M above base). To match 2025's profitability, we need closer to <strong>$13.5M</strong>. To hit the $15M target, we need the product launches to deliver and the pipeline to convert. It's a big number — but the pieces are in front of us.</p>
+  </div>
+
+  <div class="two-col mt-32">
+    <div>
+      <h3 style="font-weight:800; font-size:18px; margin-bottom:12px; color:var(--green-dark);">Must-Win Priorities</h3>
+      <div style="font-size:13px; line-height:1.8;">
+        <p><strong>1. Protect Amazon.</strong> At $5.6M forecast, it's 58% of base. The +30% target is achievable with Radical Games catalog expansion driving incremental volume.</p>
+        <p><strong>2. Activate Walmart (in-store) aggressively.</strong> 4,606 doors × $2,500/door = $11.5M potential. We're at $579K. The quarterly sticker refresh + Pixicade SKU addition is the right strategy to build per-door penetration.</p>
+        <p><strong>3. Re-engage Sam's Club.</strong> 601 doors at warehouse club economics, with a prior $281K track record. The most natural near-term replacement for Costco volume.</p>
+        <p><strong>4. Land Kohls for Fall.</strong> 1,153 doors, Pixicade angle. Pipeline status with Jodie connection. $576K potential.</p>
+        <p><strong>5. Convert AAFES.</strong> 150 military exchange doors. Barbie + lower retails. LA meeting is the key moment.</p>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-weight:800; font-size:18px; margin-bottom:12px; color:var(--amber);">Things Worth Discussing</h3>
+      <div style="font-size:13px; line-height:1.8;">
+        <p><strong>1. Pipeline conversion rate.</strong> 105 accounts at Prospect/Pipeline status with ~$265K total forecast. Setting a realistic Q3 conversion target would help the team focus effort on the highest-probability wins.</p>
+        <p><strong>2. Fall launch sell-in timeline.</strong> Star Wars, Barbie, Globe Alive all need retail placement secured by summer. Understanding the timeline helps sales plan around it.</p>
+        <p><strong>3. Cost structure at lower volume.</strong> At $4.66M forecast, opex is built for scale. Worth understanding which line items flex if revenue comes in closer to conservative — and which are locked in regardless.</p>
+        <p><strong>4. Costco re-engagement path.</strong> Pixicade Star Wars and Barbie are both strong candidates to bring back to the table. Worth mapping the timeline so we're ready when the conversation opens.</p>
+        <p><strong>5. International potential.</strong> Innovation First (AU) is growing fast, with several new 2025 partners in Asia and Europe. There may be more upside here with the right product mix and support from Jay's network.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout info" style="margin-top:32px;">
+    <div class="callout-title">Areas to Align On — Monday</div>
+    <p style="font-size:13px; margin:0 0 8px;"><strong>Paid ad spend.</strong> Currently forecast at $950K. There's been discussion about increasing this to drive DTC — worth reviewing the ROI model together to see if the numbers support it.</p>
+    <p style="font-size:13px; margin:0 0 8px;"><strong>Team capacity.</strong> Payroll at +10% assumes the current team. As we push into hardware, F&S, and Radical Games channels, it's worth assessing whether the sales team has the bandwidth or if we'll need to add capacity.</p>
+    <p style="font-size:13px; margin:0 0 8px;"><strong>Fall launch modeling.</strong> Right now the base forecast doesn't assume full launch success for Star Wars, Barbie, or Globe Alive. The team should align on how much launch revenue to build into the working plan vs. keeping as upside.</p>
+    <p style="font-size:13px; margin:0 0 8px;"><strong>Tier review.</strong> The rated $/door values in the tier framework are a starting point. Would be helpful to get input from the team on whether any channels are over- or under-estimated.</p>
+    <p style="font-size:13px; margin:0;"><strong>$15M scenario.</strong> We should build out the full $15M lane in the forecast sheet so the team can track against it quarterly.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: 2027 LOOKING AHEAD -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-number">09 — Looking Ahead</div>
+  <h2>The 2027 Horizon</h2>
+  <p class="section-lead">2026 is the reset year. 2027 is when the portfolio strategy compounds — if we execute now.</p>
+
+  <div class="narrative">
+    <p>The product catalog is getting broader and more licensable. Pixicade Star Wars and Barbie — if they prove at retail in Fall 2026 — create a repeatable playbook for licensed versions that open mass-market doors. NatGeo Globe Alive, at $59.99 MSRP, positions us in the premium gift/educational segment where margins are strongest.</p>
+    <p>The tier analysis shows <strong>$38.2M in total domestic revenue potential</strong> across 150 accounts. In 2025 we captured roughly $10.2M of that. Even moving from ~27% capture to 35% capture would put us at $13.4M domestic. The infrastructure — sales team, rep network, trade shows, DTC — is already built and funded.</p>
+    <p>The critical 2027 milestones:</p>
+    <p><strong>Full-year revenue from Fall 2026 launches.</strong> Star Wars, Barbie, Globe Alive will have a full year of retail data. Strong sell-through rates turn into 2027 reorders and expanded placement.</p>
+    <p><strong>Hardware and Farm &amp; Supply channel activation.</strong> 63 Tier D accounts with $3.4M combined potential. Mid-States Distributing is the proof-of-concept — member store performance unlocks the rest of the network.</p>
+    <p><strong>Radical Games as a channel multiplier.</strong> The party games and collectible plush line (Hoodeez, Froggy Frenzy, Lick My Nachos, Trick Shot Trivia, Tug of Draw) opens doors at retailers that don't carry STEM/educational — Five Below, Spencer's, Party City, college bookstores, convenience, dollar/value, and lifestyle chains. With Target placement already secured for Fall 2026, 2027 sell-through data unlocks the next wave of retail conversations. Every new door for Radical Games is a door where the Abacus catalog can follow.</p>
+    <p><strong>Costco re-engagement.</strong> With proven retail data on Star Wars, Barbie, and Globe Alive, the conversation with Costco becomes about <em>which products</em> to bring back, not <em>whether</em> to come back. This is a 2027 revenue event we should be planning for now.</p>
+  </div>
+
+  <div class="callout win">
+    <div class="callout-title">The Case for Optimism</div>
+    <p style="font-size:14px; margin:0;">Abacus went from a $1.3M loss to profitability in one year by finding the right channels and executing. The team, infrastructure, and product pipeline are all materially stronger going into 2026 than they were going into 2025. The Costco pause is real — but it also forces the diversification that makes the business more resilient long-term. If even half of the 2026 product launches land, and we convert a fraction of the pipeline, 2027 starts to look like the year the portfolio model proves out — and the year Costco comes back to the table.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <p>Abacus Brands — P&L Review & 2026 Forecast Overview</p>
+  <p style="margin-top:4px;">Working draft prepared for internal leadership alignment. Data sourced from 2024–2025 Abacus P&L, 2026 Domestic Account Forecast, EXW Price List, and Tier Analysis.</p>
+</div>
+
+</div>
+</body>
+</html>
