@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>River Cruise Proposal — Zuck | June–July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:     #F5F0E8;
+  --parchment-dk:  #EDE6D6;
+  --parchment-dkr: #E0D8C4;
+  --ink:           #1A1610;
+  --ink-soft:      #3A342A;
+  --ink-muted:     #5A5248;
+  --gold:          #B8963E;
+  --gold-lt:       #D4AF6A;
+  --gold-pale:     #F0E4C4;
+  --gold-deep:     #7A5E1E;
+  --white:         #FDFAF4;
+  --green:         #2d6a2e;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink-soft);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.masthead {
+  background: var(--ink);
+  padding: 36px 40px 28px;
+  text-align: center;
+  border-bottom: 3px solid var(--gold);
+}
+.masthead-agency {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.masthead-diamonds {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 8px;
+  margin-bottom: 12px;
+}
+.masthead-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 44px;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 1px;
+  line-height: 1.15;
+}
+.masthead-subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--gold-lt);
+  margin-top: 6px;
+}
+.masthead-meta {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.masthead-pill {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(184,150,62,0.35);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.section-intro {
+  background: var(--white);
+  border-left: 4px solid var(--gold);
+  padding: 24px;
+  margin-bottom: 36px;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(26,22,16,0.05);
+}
+.section-intro-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.section-intro-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.section-intro-text {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+/* ── CRUISE CARD ── */
+.cruise-card {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 3px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(26,22,16,0.06);
+}
+
+.cruise-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.cruise-title {
+  flex: 1;
+}
+.cruise-ship-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.cruise-route {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 4px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.cruise-badge {
+  background: var(--ink);
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+/* ── DETAILS GRID ── */
+.cruise-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px 24px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--parchment-dkr);
+}
+.detail-item { }
+.detail-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 4px;
+}
+.detail-value {
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+.detail-value strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ── STATEROOM OPTIONS ── */
+.stateroom-section {
+  margin-top: 20px;
+}
+.stateroom-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 12px;
+}
+.stateroom-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.stateroom-card {
+  background: var(--parchment-dk);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 2px;
+  padding: 14px;
+}
+.stateroom-card.solo {
+  grid-column: 1 / -1;
+}
+.stateroom-type {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.stateroom-price {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gold-deep);
+  line-height: 1;
+}
+.stateroom-per {
+  font-size: 10px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+.stateroom-total {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--parchment-dkr);
+}
+
+/* ── ITINERARY ── */
+.itinerary-box {
+  background: var(--parchment-dk);
+  border-radius: 2px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.itinerary-title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 8px;
+}
+.itinerary-text {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ── PRICE SUMMARY ── */
+.price-summary {
+  background: var(--ink);
+  color: var(--white);
+  padding: 20px;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+}
+.price-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-bottom: 4px;
+}
+.price-per-person {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--white);
+}
+.price-amount {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--gold-lt);
+  line-height: 1;
+}
+.price-sub {
+  font-size: 11px;
+  color: var(--gold-pale);
+  margin-top: 2px;
+}
+
+/* ── NOTE BOX ── */
+.note-box {
+  background: var(--gold-pale);
+  border-left: 3px solid var(--gold);
+  padding: 14px 16px;
+  margin-top: 16px;
+  border-radius: 2px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.note-box strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--ink);
+  color: var(--ink-muted);
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 11px;
+  line-height: 1.8;
+  border-top: 2px solid var(--gold);
+  margin-top: 50px;
+}
+.footer-agency {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.footer-diamonds {
+  color: var(--gold);
+  letter-spacing: 8px;
+  font-size: 12px;
+  margin: 8px 0;
+}
+.footer a { color: var(--gold-lt); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* ── PRINT ── */
+@media print {
+  .page { max-width: 100%; padding: 0 12px; }
+  .cruise-card { break-inside: avoid; box-shadow: none; }
+  body { font-size: 14px; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .masthead-title { font-size: 32px; }
+  .cruise-details { grid-template-columns: 1fr; }
+  .stateroom-options { grid-template-columns: 1fr; }
+  .price-summary { grid-template-columns: 1fr; }
+  .page { padding: 24px 12px 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ MASTHEAD ══ -->
+<div class="masthead">
+  <div class="masthead-agency">Signature Elite Travel · Cruise Proposal</div>
+  <div class="masthead-diamonds">◆ ◆ ◆</div>
+  <div class="masthead-title">Zuck Family</div>
+  <div class="masthead-subtitle">Columbia & Snake Rivers Cruises · June–July 2026</div>
+  <div class="masthead-meta">
+    <span class="masthead-pill">🚢 River Cruises</span>
+    <span class="masthead-pill">3 Date Options</span>
+    <span class="masthead-pill">👥 2 Travelers</span>
+  </div>
+</div>
+
+<!-- ══ PAGE BODY ══ -->
+<div class="page">
+
+<!-- ── INTRODUCTION ── -->
+<div class="section-intro">
+  <div class="section-intro-label">Your Journey</div>
+  <div class="section-intro-title">Three American Cruise Line Options</div>
+  <div class="section-intro-text">
+    Discover the majestic Columbia & Snake Rivers aboard American Cruise Line's intimate vessels. Each option showcases breathtaking Pacific Northwest scenery, historic river passages, and authentic port experiences. Below are three distinct sailings in June and July 2026 — choose your preferred dates and stateroom style.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- OPTION 1: AMERICAN PRIDE — JUNE 21                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="cruise-card">
+  <div class="cruise-header">
+    <div class="cruise-title">
+      <div class="cruise-ship-name">American Pride</div>
+      <div class="cruise-route">Portland, OR → Clarkston, WA</div>
+    </div>
+    <div class="cruise-badge">JUNE 21, 2026</div>
+  </div>
+
+  <div class="cruise-details">
+    <div class="detail-item">
+      <div class="detail-label">Departure Date</div>
+      <div class="detail-value"><strong>Sunday, June 21, 2026</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Duration</div>
+      <div class="detail-value"><strong>7 Days / 8 Nights</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Embarkation</div>
+      <div class="detail-value">Portland, Oregon</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Destination</div>
+      <div class="detail-value">Clarkston, Washington</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">River System</div>
+      <div class="detail-value">Columbia & Snake Rivers</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Travelers</div>
+      <div class="detail-value"><strong>2 Guests</strong></div>
+    </div>
+  </div>
+
+  <!-- Stateroom Options -->
+  <div class="stateroom-section">
+    <div class="stateroom-label">Available Stateroom</div>
+    <div class="stateroom-options">
+      <div class="stateroom-card solo">
+        <div class="stateroom-type">Single Balcony</div>
+        <div class="stateroom-price">$8,535</div>
+        <div class="stateroom-per">Per Person</div>
+        <div class="stateroom-total"><strong>Total for 2 Guests:</strong> $17,070</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Itinerary Highlights -->
+  <div class="itinerary-box">
+    <div class="itinerary-title">Journey Highlights</div>
+    <div class="itinerary-text">
+      Depart Portland and cruise upstream through scenic Columbia River Gorge, passing through historic dams and locks. Visit iconic Northwest ports including Hood River, The Dalles, and Pendleton. Continue into the Snake River valley toward Clarkston, with scenic mountain vistas, wildlife viewing, and rich cultural heritage at each stop.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- OPTION 2: AMERICAN SONG — JUNE 16                     -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="cruise-card">
+  <div class="cruise-header">
+    <div class="cruise-title">
+      <div class="cruise-ship-name">American Song</div>
+      <div class="cruise-route">Clarkston, WA → Portland, OR</div>
+    </div>
+    <div class="cruise-badge">JUNE 16, 2026</div>
+  </div>
+
+  <div class="cruise-details">
+    <div class="detail-item">
+      <div class="detail-label">Departure Date</div>
+      <div class="detail-value"><strong>Monday, June 16, 2026</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Duration</div>
+      <div class="detail-value"><strong>7 Days / 8 Nights</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Embarkation</div>
+      <div class="detail-value">Clarkston, Washington</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Destination</div>
+      <div class="detail-value">Portland, Oregon</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">River System</div>
+      <div class="detail-value">Columbia & Snake Rivers</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Travelers</div>
+      <div class="detail-value"><strong>2 Guests</strong></div>
+    </div>
+  </div>
+
+  <!-- Stateroom Options -->
+  <div class="stateroom-section">
+    <div class="stateroom-label">Available Stateroom</div>
+    <div class="stateroom-options">
+      <div class="stateroom-card solo">
+        <div class="stateroom-type">Single Balcony</div>
+        <div class="stateroom-price">$9,145</div>
+        <div class="stateroom-per">Per Person</div>
+        <div class="stateroom-total"><strong>Total for 2 Guests:</strong> $18,290</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Itinerary Highlights -->
+  <div class="itinerary-box">
+    <div class="itinerary-title">Journey Highlights</div>
+    <div class="itinerary-text">
+      Begin in Clarkston and cruise downstream through the Snake and Columbia Rivers, experiencing the reverse route of American Pride. Navigate historic locks and dams while enjoying panoramic gorge scenery. Explore charming riverside communities, heritage sites, and natural wonders before arriving in Portland. Perfect for those who prefer to start inland and journey toward the Pacific.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- OPTION 3: AMERICAN WEST — JULY 5                      -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="cruise-card">
+  <div class="cruise-header">
+    <div class="cruise-title">
+      <div class="cruise-ship-name">American West</div>
+      <div class="cruise-route">Clarkston, WA → Portland, OR</div>
+    </div>
+    <div class="cruise-badge">JULY 5, 2026</div>
+  </div>
+
+  <div class="cruise-details">
+    <div class="detail-item">
+      <div class="detail-label">Departure Date</div>
+      <div class="detail-value"><strong>Sunday, July 5, 2026</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Duration</div>
+      <div class="detail-value"><strong>7 Days / 8 Nights</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Embarkation</div>
+      <div class="detail-value">Clarkston, Washington</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Destination</div>
+      <div class="detail-value">Portland, Oregon</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">River System</div>
+      <div class="detail-value">Columbia & Snake Rivers</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Travelers</div>
+      <div class="detail-value"><strong>2 Guests</strong></div>
+    </div>
+  </div>
+
+  <!-- Stateroom Options -->
+  <div class="stateroom-section">
+    <div class="stateroom-label">Available Staterooms</div>
+    <div class="stateroom-options">
+      <div class="stateroom-card">
+        <div class="stateroom-type">Veranda Suite</div>
+        <div class="stateroom-price">$8,785</div>
+        <div class="stateroom-per">Per Person</div>
+        <div class="stateroom-total"><strong>Total for 2:</strong> $17,570</div>
+      </div>
+      <div class="stateroom-card">
+        <div class="stateroom-type">Premium Waterview</div>
+        <div class="stateroom-price">$6,350</div>
+        <div class="stateroom-per">Per Person</div>
+        <div class="stateroom-total"><strong>Total for 2:</strong> $12,700</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Itinerary Highlights -->
+  <div class="itinerary-box">
+    <div class="itinerary-title">Journey Highlights</div>
+    <div class="itinerary-text">
+      July sailing offers the warmest season on the rivers with extended daylight for exploring. Navigate downstream from Clarkston through the Snake River's dramatic landscape, then into the magnificent Columbia River Gorge. Experience wildlife viewing opportunities, visit historic sites, and enjoy scenic cruising through some of the Pacific Northwest's most iconic waterways.
+    </div>
+  </div>
+</div>
+
+<!-- ── COMPARISON NOTE ── -->
+<div class="note-box" style="margin-top: 40px;">
+  <strong>Choosing Your Sailing:</strong> All three options offer intimate river cruises with expert naturalists, included shore excursions, gourmet dining, and all-suite accommodations. American Pride departs westbound (June 21), while American Song and American West depart eastbound (June 16 and July 5, respectively). The July sailing offers warmest weather. Prices shown are per person; final booking will confirm all inclusions and available upgrades.
+</div>
+
+</div><!-- end .page -->
+
+<!-- ══ FOOTER ══ -->
+<div class="footer">
+  <div class="footer-agency">Signature Elite Travel</div>
+  <div class="footer-diamonds">◆ ◆ ◆</div>
+  <div>
+    <a href="tel:+17372717668">(737) 271-7668</a> · <a href="mailto:bookings@signatureelitetravel.com">bookings@signatureelitetravel.com</a>
+  </div>
+  <div style="margin-top: 12px; font-size: 10px; color: #7A6A58;">
+    All prices are per person, double occupancy, cruise-only. Pricing subject to availability and change. Taxes, port fees, and gratuities not included in base rate shown. Please contact us for complete terms, conditions, and booking details.
+  </div>
+</div>
+
+</body>
+</html>
