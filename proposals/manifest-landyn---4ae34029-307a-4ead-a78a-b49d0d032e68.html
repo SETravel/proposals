@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Manifest — Landyn's 18th | Caribbean Cruise · May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:     #F5F0E8;
+  --parchment-dk:  #EDE6D6;
+  --parchment-dkr: #E0D8C4;
+  --ink:           #1A1610;
+  --ink-soft:      #3A342A;
+  --ink-muted:     #5A5248;
+  --gold:          #B8963E;
+  --gold-lt:       #D4AF6A;
+  --gold-pale:     #F0E4C4;
+  --gold-deep:     #7A5E1E;
+  --white:         #FDFAF4;
+  --blue:          #003B7A;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink-soft);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.masthead {
+  background: var(--ink);
+  padding: 36px 40px 28px;
+  text-align: center;
+  border-bottom: 3px solid var(--gold);
+}
+.masthead-agency {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.masthead-diamonds {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 8px;
+  margin-bottom: 12px;
+}
+.masthead-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 44px;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 1px;
+  line-height: 1.15;
+}
+.masthead-subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--gold-lt);
+  margin-top: 6px;
+}
+.masthead-meta {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.masthead-pill {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(184,150,62,0.35);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+.section-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+  margin-top: 32px;
+}
+
+/* ── TIMELINE ── */
+.timeline {
+  position: relative;
+  padding-top: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold) 0%, var(--parchment-dkr) 100%);
+}
+
+/* ── TIMELINE NODE ── */
+.tnode {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 10px;
+}
+.tnode-dot {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--parchment);
+  border: 2px solid var(--gold);
+  z-index: 2;
+}
+.tnode-dot.filled {
+  background: var(--gold);
+}
+.tnode-dot.blue {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+/* ── DAY DIVIDER ── */
+.day-divider {
+  position: relative;
+  padding-left: 60px;
+  margin: 32px 0 18px;
+}
+.day-divider-dot {
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.day-divider-dot svg {
+  width: 14px; height: 14px; fill: var(--gold);
+}
+.day-divider-label {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.day-divider-sub {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ── ANCHOR CARD ── */
+.acard {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-left: 4px solid var(--gold);
+  border-radius: 3px;
+  padding: 20px 22px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(26,22,16,0.06);
+}
+.acard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.acard-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.acard-badge {
+  background: var(--ink);
+  color: var(--gold-lt);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+.acard-badge.blue { background: var(--blue); color: #fff; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  margin-top: 14px;
+}
+.detail-cell { }
+.detail-key {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 2px;
+}
+.detail-val {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+.detail-val strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ── SLIM ROW ── */
+.slim-row {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 3px;
+  padding: 13px 18px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.slim-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+.slim-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.slim-sub {
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-top: 1px;
+}
+.slim-right {
+  margin-left: auto;
+  text-align: right;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+/* ── CONFIRMATION ── */
+.confirmation-block {
+  background: var(--gold-pale);
+  border-left: 3px solid var(--gold);
+  padding: 20px;
+  margin-top: 32px;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.confirmation-qr {
+  flex-shrink: 0;
+}
+.confirmation-qr img {
+  width: 90px;
+  height: 90px;
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 2px;
+}
+.conf-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 4px;
+}
+.conf-code {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+/* ── NOTICE ── */
+.notice {
+  background: var(--white);
+  border-left: 3px solid var(--gold);
+  padding: 14px 16px;
+  margin-top: 12px;
+  border-radius: 2px;
+  font-size: 12px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+.notice strong { color: var(--ink); font-weight: 600; }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--ink);
+  color: var(--ink-muted);
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 11px;
+  line-height: 1.8;
+  border-top: 2px solid var(--gold);
+  margin-top: 50px;
+}
+.footer-agency {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.footer-diamonds {
+  color: var(--gold);
+  letter-spacing: 8px;
+  font-size: 12px;
+  margin: 8px 0;
+}
+.footer a { color: var(--gold-lt); text-decoration: none; }
+
+@media print {
+  .page { max-width: 100%; padding: 0 12px; }
+  .acard { break-inside: avoid; box-shadow: none; }
+}
+
+@media (max-width: 640px) {
+  .masthead-title { font-size: 32px; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .page { padding: 0 14px 40px; }
+  .timeline::before { left: 19px; }
+  .tnode { padding-left: 50px; }
+  .day-divider { padding-left: 50px; }
+  .day-divider-dot { left: 5px; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-agency">Signature Elite Travel · Travel Manifest</div>
+  <div class="masthead-diamonds">◆ ◆ ◆</div>
+  <div class="masthead-title">Landyn's 18th</div>
+  <div class="masthead-subtitle">Western Caribbean Cruise · May 30 – June 4, 2026</div>
+  <div class="masthead-meta">
+    <span class="masthead-pill">🚢 5 Night Cruise</span>
+    <span class="masthead-pill">🎉 Birthday Celebration</span>
+    <span class="masthead-pill">👥 2 Travelers</span>
+  </div>
+</div>
+
+<div class="page">
+<div class="timeline">
+
+<!-- ══════════════════════════════════ -->
+<!-- PRE-CRUISE — EMBARKATION         -->
+<!-- ══════════════════════════════════ -->
+
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+  </div>
+  <div class="day-divider-label">Friday, May 30, 2026</div>
+  <div class="day-divider-sub">Cruise Embarkation</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot filled"></div>
+  <div class="acard">
+    <div class="acard-header">
+      <div>
+        <div class="section-label">Ship Embarkation</div>
+        <div class="acard-title">Mariner of the Seas</div>
+      </div>
+      <div class="acard-badge">Check-In 1:30–2:00 PM</div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-cell">
+        <div class="detail-key">Ship</div>
+        <div class="detail-val"><strong>Mariner of the Seas</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Stateroom Class</div>
+        <div class="detail-val">Interior Guarantee (ZI-GTY)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Embarkation Port</div>
+        <div class="detail-val"><strong>Galveston, Texas</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Dining Time</div>
+        <div class="detail-val"><strong>7:45 PM</strong></div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Check-in Window:</strong> 1:30 PM – 2:00 PM at Galveston cruise terminal. Have your reservation confirmation and identification ready. All passengers must be onboard by 3:00 PM for departure.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- CRUISE ITINERARY — 5 NIGHTS       -->
+<!-- ══════════════════════════════════ -->
+
+<!-- DAY 1 — FRI MAY 30 — DEPARTURE -->
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 0-2 0v-.07A8.001 8.001 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8.001 8.001 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8.001 8.001 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8.001 8.001 0 0 1 13 16.93z"/></svg>
+  </div>
+  <div class="day-divider-label">Friday, May 30</div>
+  <div class="day-divider-sub">Depart Galveston</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot"></div>
+  <div class="slim-row">
+    <div class="slim-icon">🚢</div>
+    <div>
+      <div class="slim-title">Galveston, Texas</div>
+      <div class="slim-sub">Embarkation &amp; Departure</div>
+    </div>
+    <div class="slim-right"><strong>Depart 3:00 PM</strong></div>
+  </div>
+</div>
+
+<!-- DAY 2 — SAT MAY 31 — CRUISING -->
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 0-2 0v-.07A8.001 8.001 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8.001 8.001 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8.001 8.001 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8.001 8.001 0 0 1 13 16.93z"/></svg>
+  </div>
+  <div class="day-divider-label">Saturday, May 31</div>
+  <div class="day-divider-sub">Cruising at Sea</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot"></div>
+  <div class="slim-row">
+    <div class="slim-icon">🌊</div>
+    <div>
+      <div class="slim-title">Cruising at Sea</div>
+      <div class="slim-sub">Enjoy onboard amenities &amp; activities</div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 3 — SUN JUN 01 — COSTA MAYA -->
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 0-2 0v-.07A8.001 8.001 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8.001 8.001 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8.001 8.001 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8.001 8.001 0 0 1 13 16.93z"/></svg>
+  </div>
+  <div class="day-divider-label">Sunday, June 1</div>
+  <div class="day-divider-sub">Puerto Costa Maya, Mexico</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot filled"></div>
+  <div class="slim-row">
+    <div class="slim-icon">⚓</div>
+    <div>
+      <div class="slim-title">Puerto Costa Maya, Mexico</div>
+      <div class="slim-sub">Explore Mexican beaches &amp; culture</div>
+    </div>
+    <div class="slim-right"><strong>11:59 AM – 7:00 PM</strong></div>
+  </div>
+</div>
+
+<!-- DAY 4 — MON JUN 02 — COZUMEL -->
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 0-2 0v-.07A8.001 8.001 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8.001 8.001 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8.001 8.001 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8.001 8.001 0 0 1 13 16.93z"/></svg>
+  </div>
+  <div class="day-divider-label">Monday, June 2</div>
+  <div class="day-divider-sub">Cozumel, Mexico</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot filled"></div>
+  <div class="slim-row">
+    <div class="slim-icon">⚓</div>
+    <div>
+      <div class="slim-title">Cozumel, Mexico</div>
+      <div class="slim-sub">Snorkel, dive, or relax on pristine beaches</div>
+    </div>
+    <div class="slim-right"><strong>7:00 AM – 5:00 PM</strong></div>
+  </div>
+</div>
+
+<!-- DAY 5 — TUE JUN 03 — CRUISING -->
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 0-2 0v-.07A8.001 8.001 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8.001 8.001 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8.001 8.001 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8.001 8.001 0 0 1 13 16.93z"/></svg>
+  </div>
+  <div class="day-divider-label">Tuesday, June 3</div>
+  <div class="day-divider-sub">Cruising at Sea</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot"></div>
+  <div class="slim-row">
+    <div class="slim-icon">🌊</div>
+    <div>
+      <div class="slim-title">Cruising at Sea</div>
+      <div class="slim-sub">Relax, dine, &amp; celebrate</div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 6 — WED JUN 04 — GALVESTON RETURN -->
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 0-2 0v-.07A8.001 8.001 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8.001 8.001 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8.001 8.001 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8.001 8.001 0 0 1 13 16.93z"/></svg>
+  </div>
+  <div class="day-divider-label">Wednesday, June 4</div>
+  <div class="day-divider-sub">Cruise Disembarkation</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot blue"></div>
+  <div class="acard">
+    <div class="acard-header">
+      <div>
+        <div class="section-label">Cruise Arrival</div>
+        <div class="acard-title">Galveston, Texas</div>
+      </div>
+      <div class="acard-badge blue">Arrive 7:00 AM</div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-cell">
+        <div class="detail-key">Port</div>
+        <div class="detail-val"><strong>Galveston, Texas</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Arrival Time</div>
+        <div class="detail-val"><strong>7:00 AM</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Disembarkation</div>
+        <div class="detail-val">Allow time for exit formalities</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Total Duration</div>
+        <div class="detail-val"><strong>5 Nights &amp; 6 Days</strong></div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Disembarkation:</strong> Proceed with customs &amp; border control formalities. Have your identification ready. Thank you for a wonderful 18th birthday cruise celebration!
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRMATION BLOCK -->
+<div class="confirmation-block">
+  <div class="confirmation-qr">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAKtUlEQVR4nO1dwbKjNhAcIQ7hiW9Jjptb9tM3t+wx+RYwVSmEchCSB2lGjDDYTpXntIuFGAQ0Pa1GT9l/B/iELJpXJ/B/is9gVcRnsCriM1gV0RZ+c84ppcC5Rw+i1NpVfWxyYPp5Wp7sYDVaP3rsLBZrq9pzOeB+npmn4qjDNE2nJ9F1XVV7LgfczzPzzO4s55q2HYfh92/fhmHQbXvK7W3nue/7v37+NH2/zDOUH0kuB9yPMQAwjuMz82Qfw2EYYhLH4MaHc84nsd8MIDnQOI7jOCaDlbR5Zp7sYGmttdZt27plWZblcBJaa9U04JzmwQXjTi2uPTPP0tsQwgX39/yxmKbJ7T0g43DHTYwXxhjnXHJnkck8J8/SYCmlFmuNMVKswYFwZxxH+gHZtgEAfKyu6/76+ZPsu+u6xdqmbZ+UZ4idO8tH3/e/mB7sDEI645vpVpiyx6Z8u+n7+3/QcbnH7eo8RYNlrXWLXeZZNU3T7JP+xVq3LI1SthKAiH4APHJLjnt1nqLBAgAVXlXkLZBE13Wq5s0UsSYHHQUA2XELfO3SPKWDBc41Wu/wmoQH7T4ISi3WJtjk8egOOhyucf1fkWcI8WCFwLyGTKK2Q9jeUMuyeMqTXPBhGPxg7b6zrsuzerA8qeEqMgVQ4CmS4DiXPy6I+78iz+rBgnhtqSsmvOxJcPiSYFNt56fneWSwTgthDfh40XdSvHSwQqT1XagB/fU/dhdcEW8xWFx917YtaP04Dp4VbzFYPu71nVJ2nr+MGYfBb5SQpifEuwzWpr4zBgBu4/jH9+9jeDynaWq0PvbKPyuODNbKgSjqW6UoOeciHqmgf/d9/4sxfssN6VlN09TKVWflGaN6sKy18zxroF/Jdp6FdVajNTQN6FZr7fsEgHme53kGa/2/k+PCslhrhf2flSeO6sHq+x4AymWEpJ9xGDx1uA2D6Xt/qY0x8ZorpUg9S9j/WXniEA+WUmWNCUeiN20C1W4etr+M+fPHj6+gQ3Vd51+Icj3rkjypkLZzYXpOokb6+q7MjnCtZ5AOtVgb9fhaPeuKPHGIBktrrRqtWycU1VY8anSBH+Faz1rr7LzqUNvaMA6cRJ+6Ik8cosEahsEBHJNri03u56PUqiwlenyEMImedVGeMXam73XbTtP0+7dv0mNnIeVHGZZhzkVvD2P9tDx37ixPfx4h0AV+hLd7oPHHIg/HbX9CnjHYwVoZjVIPTl5y/ChyK2ut1lq1LfhisL7/S/PEwSZX4im1QfGaPnArXAPexvGL0eM5nf7qPDe/v8oYMk1TJKV/fP9+YzgXmc/bGENCbC4gd3vji4nbMBcZ86MVodsWnLshPPoypjMG5hmUWvX4wOZxP7tcrOKFmOfJPIkijPB8JzeVYe5Ty4kksVHQ0UBIuFiasyQOm9kSXpNU8PncHMeJcODbexzH9TFEOPVlzG0cfckivDUKXKygOnBROX1f9B+sBy7M5ZGeKcZXtakNKQ2rfFqFPg/6HvaidGfFCxW18NwbRc7lcZo6179BGtbIzPclpIyc+6udW4wthZxDhFlt20KouSRzebWeKa9hOec859rM9wWyivvhvFS1c4u1vrD9t+HKg0LNJZ/LSzT1Am/yFzZe3mS+L/deFbxUVVNBnC+Mi2ywsP8g40E7PoNNN4RnitOqyvoUh03H+boEl6ng76y+j96lUYYF5K9GzJvKw4+1efpO5PLJfw0QjDGOw2Uc7GCt3qVQu+1iQazvhN7RlDft6UrWWjfPSimv0/sKDteVOX4p71LLT945aHTbtm3b+r38v0lcxrFjk9y9ejEGZo5vFPImga4UbyiyrkyOW9K2wrEcgsWBx+UYj84bklrSNE2eTB/QmKZp0lrTmIj1dYSnm7nFmuOm7Q/74OWRa0m47MDbE2mU3J48TcndfdfXQ12JeRned0A3KQdDUcPyd9ZxH7wkarUkrXVMLuVNSuWP+qoxzfOKTbrVEFyz8QTaNnK69Fiwlnsc17NbzvioD74cnJaEZROOH0l4U9/3K0fr+zHBII8741hw2vgfQOaPf9QHzwY3NyeoGY/VkoWasYxx+98MneWDx16EzXZybo7xlK88a22ymW1OtqvMkIfbYN9DAeNw4Lfn3R+/PcOIfQl3I6P4vWHwIuDt3NycxFMe+VHiY1i3K1WGjE0OFMbhiJr66p9Y7P3OovQ4zN24PnnVIXgREu7D8RfOUx7fhrdxNIgf3bbbIWAfxju87xfyPUjwJeJdJGWgFKHHBU0N+y24PjMNnvJ5cvq3P2xeu/32669x367rIkgnutUt07MS/CL3rfC4U1p+co6c34IcrB09K/FGEXNzlFYVfgn8K7RJdKtYl30x+MXty+WMdydq0qK3PvFb1A0WDvwYS/gUx79y3co5l8wVYvzi9i3lGXAKb5d467Hfguu/pGdtvFFcUFpVyr9CG1ItwHdrgl+FfcnAvIzT8gt6HK4WyCjqWTVxwFe1qSsxNlGcqErzInjZGd562byhIDitKmmTbPHYhOsyPG+Y9489qDkv6wtafui/xPhD7cmd42luZU6r4gLjWqzLCl6H3IPqTxrzMq95AdLg7lkp5fvnvPW49qwG+Cus5xgv+i232uAXp38hDypQvAxIMQNduVW32tO/OOog4lnCsWCD4j7R65AcqzRxwHCuWG/+/c8/JNfDfZT8E2+7rgPWpFJuxcUhzhVVijs+hsCSEeZ0XIdvsa4Dx60K7SWci/TB4wGq5Y8vW9chqctA4rGq5VyM1hbzSa1Y/LoRPp6+rsOeD17S9xEffM1cYfqddoiXreuAvQ4bbiXwgknmGU1y1xS0NorTkX2+3boOEi+YZJ4x92epolYliZet64C9FLiOk3jBACrmGfHbMGnAcbqH5w3PWi+Bmfu7cTiyx/sOfIfI+uZPnzc8a72EZO5v13OA9bWCBr9b34VMU84lyf8t1nWo9RxwGrykvktrUl+Nx0e+mP/L1nWIPCvO/UHRc2AEGrykviNrUvwyKeT89G+kKezb9RxgjCPwyzmt9Y5fIfOdHah/X/ZBOafxY20L4xf2i3Eh8StwNakk57f4+p70HOT4tcvd/L5y3Kydr3zZYHEaP9a2Egza5W7Az6LH4GpSyWctTx8sQe3mcYTAoEfWpeHmCmt8qi9b1yH95ibgCG5D4heRQ9CqCofDSmxak6IOTx6ss9ZLkKznl+JX0M4LWhXZT6wlCxr/Q14HLk5cLyG6YzHnStps8Ms5IOcWQ3C4g9eQSL8TAoCtD+OgnrU9swvWS2B8FRu/VcahiLnFWu2M81tgv/5hPQuuWS8hwZHIuXCbaHXEGnmqfwn4F+mrwN85nuZ1uGK9BAmOSDRyIf8ifRU4vIfLHvM64LhivYQER3DdF9uQGjmpf0n4F2S+Cvw99qNvQ1b3qYlUbyriyM43gw98S7Trq+BwCsfL1nXgvjfEvtPUCxqwCWNNnvD+uWzmH3dwCsfL1nXAgdfMwr7T1AvqXKPUzNfJeK0IyblIcArHy9Z1yL83hO13Offt2ykf/EbOfWEkVxL6xfbP45XrOtRs53J7ZO2H2j9Awg7W1X+ihbMuSj7Frd1X8idpJMEOFsRZgzMeQ3ISIZrfhNsf2Zeci6w8jeJgfSKJz98Kq4jPYFXEZ7Aq4jNYFfEfnuFTWcnOZVsAAAAASUVORK5CYII=" alt="Reservation QR Code">
+  </div>
+  <div>
+    <div class="conf-label">Reservation ID</div>
+    <div class="conf-code">4643283</div>
+  </div>
+  <div style="border-left: 1px solid var(--parchment-dkr); padding-left: 20px;">
+    <div class="conf-label">Contact Information</div>
+    <div style="font-size: 13px; color: var(--ink-soft);"><strong>Royal Caribbean</strong><br>Phone: 1-866-562-7625<br>Attn: ALLEN JOWERS</div>
+  </div>
+</div>
+
+</div><!-- end .timeline -->
+</div><!-- end .page -->
+
+<div class="footer">
+  <div class="footer-agency">Signature Elite Travel</div>
+  <div class="footer-diamonds">◆ ◆ ◆</div>
+  <div>
+    <a href="tel:+17372717668">(737) 271-7668</a> · <a href="mailto:bookings@signatureelitetravel.com">bookings@signatureelitetravel.com</a>
+  </div>
+  <div style="margin-top: 12px; font-size: 10px; color: #7A6A58;">
+    All itinerary times and port details are subject to change without notice due to weather or cruise line scheduling. Please verify final times with Royal Caribbean upon arrival. This manifest is for reference only. Happy Birthday, Landyn!
+  </div>
+</div>
+
+</body>
+</html>
