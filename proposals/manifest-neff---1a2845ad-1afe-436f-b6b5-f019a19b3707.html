@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Manifest — The Neff Journey to Lancaster | April–May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:     #F5F0E8;
+  --parchment-dk:  #EDE6D6;
+  --parchment-dkr: #E0D8C4;
+  --ink:           #1A1610;
+  --ink-soft:      #3A342A;
+  --ink-muted:     #5A5248;
+  --gold:          #B8963E;
+  --gold-lt:       #D4AF6A;
+  --gold-pale:     #F0E4C4;
+  --gold-deep:     #7A5E1E;
+  --white:         #FDFAF4;
+  --blue:          #003B7A;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink-soft);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.masthead {
+  background: var(--ink);
+  padding: 36px 40px 28px;
+  text-align: center;
+  border-bottom: 3px solid var(--gold);
+}
+.masthead-agency {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.masthead-diamonds {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 8px;
+  margin-bottom: 12px;
+}
+.masthead-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 44px;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 1px;
+  line-height: 1.15;
+}
+.masthead-subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--gold-lt);
+  margin-top: 6px;
+}
+.masthead-meta {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.masthead-pill {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(184,150,62,0.35);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+.section-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+  margin-top: 32px;
+}
+
+/* ── TIMELINE ── */
+.timeline {
+  position: relative;
+  padding-top: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold) 0%, var(--parchment-dkr) 100%);
+}
+
+/* ── TIMELINE NODE ── */
+.tnode {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 10px;
+}
+.tnode-dot {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--parchment);
+  border: 2px solid var(--gold);
+  z-index: 2;
+}
+.tnode-dot.filled {
+  background: var(--gold);
+}
+.tnode-dot.blue {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+/* ── DAY DIVIDER ── */
+.day-divider {
+  position: relative;
+  padding-left: 60px;
+  margin: 32px 0 18px;
+}
+.day-divider-dot {
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.day-divider-dot svg {
+  width: 14px; height: 14px; fill: var(--gold);
+}
+.day-divider-label {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.day-divider-sub {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ── ANCHOR CARD ── */
+.acard {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-left: 4px solid var(--gold);
+  border-radius: 3px;
+  padding: 20px 22px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(26,22,16,0.06);
+}
+.acard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.acard-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.acard-badge {
+  background: var(--ink);
+  color: var(--gold-lt);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+.acard-badge.blue { background: var(--blue); color: #fff; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  margin-top: 14px;
+}
+.detail-cell { }
+.detail-key {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 2px;
+}
+.detail-val {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+.detail-val strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ── SLIM ROW ── */
+.slim-row {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 3px;
+  padding: 13px 18px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.slim-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+.slim-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.slim-sub {
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-top: 1px;
+}
+.slim-right {
+  margin-left: auto;
+  text-align: right;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+/* ── CONFIRMATION ── */
+.confirmation-block {
+  background: var(--gold-pale);
+  border-left: 3px solid var(--gold);
+  padding: 20px;
+  margin-top: 32px;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.confirmation-qr {
+  flex-shrink: 0;
+}
+.confirmation-qr img {
+  width: 90px;
+  height: 90px;
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 2px;
+}
+.conf-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 4px;
+}
+.conf-code {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+/* ── NOTICE ── */
+.notice {
+  background: var(--white);
+  border-left: 3px solid var(--gold);
+  padding: 14px 16px;
+  margin-top: 12px;
+  border-radius: 2px;
+  font-size: 12px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+.notice strong { color: var(--ink); font-weight: 600; }
+
+/* ── INFO BOX ── */
+.info-box {
+  background: var(--gold-pale);
+  border-left: 3px solid var(--gold);
+  padding: 14px 16px;
+  margin-top: 12px;
+  border-radius: 2px;
+  font-size: 11px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+.info-box strong { color: var(--ink); font-weight: 600; }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--ink);
+  color: var(--ink-muted);
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 11px;
+  line-height: 1.8;
+  border-top: 2px solid var(--gold);
+  margin-top: 50px;
+}
+.footer-agency {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.footer-diamonds {
+  color: var(--gold);
+  letter-spacing: 8px;
+  font-size: 12px;
+  margin: 8px 0;
+}
+.footer a { color: var(--gold-lt); text-decoration: none; }
+
+@media print {
+  .page { max-width: 100%; padding: 0 12px; }
+  .acard { break-inside: avoid; box-shadow: none; }
+}
+
+@media (max-width: 640px) {
+  .masthead-title { font-size: 32px; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .page { padding: 0 14px 40px; }
+  .timeline::before { left: 19px; }
+  .tnode { padding-left: 50px; }
+  .day-divider { padding-left: 50px; }
+  .day-divider-dot { left: 5px; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-agency">Signature Elite Travel · Travel Manifest</div>
+  <div class="masthead-diamonds">◆ ◆ ◆</div>
+  <div class="masthead-title">The Neff Journey to Lancaster</div>
+  <div class="masthead-subtitle">Amtrak Multi-City Rail Journey · April 29 – May 1, 2026</div>
+  <div class="masthead-meta">
+    <span class="masthead-pill">🚂 3 Trains</span>
+    <span class="masthead-pill">🛤️ San Antonio → Lancaster</span>
+    <span class="masthead-pill">👥 2 Passengers</span>
+  </div>
+</div>
+
+<div class="page">
+<div class="timeline">
+
+<!-- ══════════════════════════════════ -->
+<!-- TRIP OVERVIEW                      -->
+<!-- ══════════════════════════════════ -->
+
+<div class="tnode">
+  <div class="tnode-dot filled"></div>
+  <div class="acard">
+    <div class="acard-header">
+      <div>
+        <div class="section-label">Trip Overview</div>
+        <div class="acard-title">San Antonio, TX → Lancaster, PA</div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-cell">
+        <div class="detail-key">Departure</div>
+        <div class="detail-val"><strong>Wednesday, April 29, 2026</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Arrival</div>
+        <div class="detail-val"><strong>Thursday, May 1, 2026</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Total Duration</div>
+        <div class="detail-val"><strong>2 Days / 3 Trains</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Travelers</div>
+        <div class="detail-val"><strong>2 Passengers</strong></div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>Passengers:</strong> Paul Neff (Senior, 65+) &amp; Marcena Neff (Senior, 65+) · <strong>Proper Photo ID Required</strong> for all passengers · Valid for ticketed date and train only — no show forfeits value
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- LEG 1 — TEXAS EAGLE              -->
+<!-- ══════════════════════════════════ -->
+
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+  </div>
+  <div class="day-divider-label">Wednesday, April 29</div>
+  <div class="day-divider-sub">Leg 1 — Texas Eagle Departs</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot filled"></div>
+  <div class="acard">
+    <div class="acard-header">
+      <div>
+        <div class="section-label">Train Leg 1</div>
+        <div class="acard-title">Texas Eagle</div>
+      </div>
+      <div class="acard-badge">ROOMETTE</div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-cell">
+        <div class="detail-key">Train Number</div>
+        <div class="detail-val"><strong>#22</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Departure</div>
+        <div class="detail-val"><strong>6:48 AM</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Departs From</div>
+        <div class="detail-val">San Antonio, TX (Union Station)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Arrival</div>
+        <div class="detail-val"><strong>1:49 PM</strong> (Thu, Apr 30)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Arrives At</div>
+        <div class="detail-val">Chicago, IL (Union Station)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Duration</div>
+        <div class="detail-val"><strong>19 hours 1 minute</strong></div>
+      </div>
+    </div>
+
+    <div class="detail-grid" style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--parchment-dkr);">
+      <div class="detail-cell">
+        <div class="detail-key">Accommodation</div>
+        <div class="detail-val"><strong>1 Roomette</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Car Number</div>
+        <div class="detail-val"><strong>2240</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Room Number</div>
+        <div class="detail-val"><strong>21</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Service Class</div>
+        <div class="detail-val">Sleeper Car</div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Departure from San Antonio:</strong> Arrive at Union Station at least 30 minutes before 6:48 AM departure. The boarding gate closes 5 minutes prior to departure. Have your eTicket and valid photo ID ready for boarding.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- LEG 2 — FLORIDIAN                -->
+<!-- ══════════════════════════════════ -->
+
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 0-2 0v-.07A8.001 8.001 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8.001 8.001 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8.001 8.001 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8.001 8.001 0 0 1 13 16.93z"/></svg>
+  </div>
+  <div class="day-divider-label">Thursday, April 30</div>
+  <div class="day-divider-sub">Leg 2 — Floridian Departs Chicago</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot filled"></div>
+  <div class="acard">
+    <div class="acard-header">
+      <div>
+        <div class="section-label">Train Leg 2</div>
+        <div class="acard-title">Floridian</div>
+      </div>
+      <div class="acard-badge">COACH SEATS</div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-cell">
+        <div class="detail-key">Train Number</div>
+        <div class="detail-val"><strong>#41</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Departure</div>
+        <div class="detail-val"><strong>6:40 PM</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Departs From</div>
+        <div class="detail-val">Chicago, IL (Union Station)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Arrival</div>
+        <div class="detail-val"><strong>5:05 AM</strong> (Fri, May 1)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Arrives At</div>
+        <div class="detail-val">Pittsburgh, PA (Union Station)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Duration</div>
+        <div class="detail-val"><strong>10 hours 25 minutes</strong></div>
+      </div>
+    </div>
+
+    <div class="detail-grid" style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--parchment-dkr);">
+      <div class="detail-cell">
+        <div class="detail-key">Accommodation</div>
+        <div class="detail-val"><strong>2 Coach Seats</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Seating Class</div>
+        <div class="detail-val">Coach</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Boarding Gate</div>
+        <div class="detail-val">Check at station</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Arrival in Pittsburgh</div>
+        <div class="detail-val"><strong>Early Morning</strong></div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Chicago Station Connection:</strong> You will have ~5 hours between trains in Chicago. Allow time for a meal or rest. Arrive at boarding gate at least 30 minutes before 6:40 PM departure. The boarding gate closes 5 minutes prior to departure. Have your eTicket and ID ready.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- LEG 3 — PENNSYLVANIAN            -->
+<!-- ══════════════════════════════════ -->
+
+<div class="day-divider">
+  <div class="day-divider-dot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 0-2 0v-.07A8.001 8.001 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8.001 8.001 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8.001 8.001 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8.001 8.001 0 0 1 13 16.93z"/></svg>
+  </div>
+  <div class="day-divider-label">Friday, May 1</div>
+  <div class="day-divider-sub">Leg 3 — Pennsylvanian to Final Destination</div>
+</div>
+
+<div class="tnode">
+  <div class="tnode-dot filled"></div>
+  <div class="acard">
+    <div class="acard-header">
+      <div>
+        <div class="section-label">Train Leg 3 (Final)</div>
+        <div class="acard-title">Pennsylvanian</div>
+      </div>
+      <div class="acard-badge blue">FINAL DESTINATION</div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-cell">
+        <div class="detail-key">Train Number</div>
+        <div class="detail-val"><strong>#42</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Departure</div>
+        <div class="detail-val"><strong>7:30 AM</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Departs From</div>
+        <div class="detail-val">Pittsburgh, PA (Union Station)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Arrival</div>
+        <div class="detail-val"><strong>1:41 PM</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Arrives At</div>
+        <div class="detail-val"><strong>Lancaster, PA</strong> (Final Destination)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Duration</div>
+        <div class="detail-val"><strong>6 hours 11 minutes</strong></div>
+      </div>
+    </div>
+
+    <div class="detail-grid" style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--parchment-dkr);">
+      <div class="detail-cell">
+        <div class="detail-key">Accommodation</div>
+        <div class="detail-val"><strong>2 Coach Seats</strong></div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Seating Class</div>
+        <div class="detail-val">Coach</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-key">Pittsburgh Connection</div>
+        <div class="detail-val">~2.5 hours between trains</div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Pittsburgh Station Connection:</strong> Upon arrival at 5:05 AM, you will have approximately 2.5 hours before your 7:30 AM departure. Arrive at the boarding gate at least 30 minutes before departure. The boarding gate closes 5 minutes prior to departure. Have your eTicket and ID ready for boarding to Lancaster.
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRMATION BLOCK -->
+<div class="confirmation-block">
+  <div class="confirmation-qr">
+    <img src="data:image/png;base64,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" alt="eTicket QR Code">
+  </div>
+  <div>
+    <div class="conf-label">eTicket Reservation ID</div>
+    <div class="conf-code">C45E8A</div>
+  </div>
+  <div style="border-left: 1px solid var(--parchment-dkr); padding-left: 20px;">
+    <div class="conf-label">Contact Information</div>
+    <div style="font-size: 13px; color: var(--ink-soft);"><strong>Amtrak</strong><br>Phone: 1-800-USA-RAIL (1-800-872-7245)<br>Website: Amtrak.com</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- IMPORTANT INFORMATION              -->
+<!-- ══════════════════════════════════ -->
+
+<div style="background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 20px; margin-top: 32px; border-radius: 2px;">
+  <div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 12px;">Important Information</div>
+  
+  <div class="info-box" style="margin-bottom: 10px;">
+    <strong>eTicket & Boarding:</strong> Present this eTicket (physical copy or on your phone) along with valid photo ID at each station. This document is valid only for the passengers and trains listed. No show forfeits the full value.
+  </div>
+
+  <div class="info-box" style="margin-bottom: 10px;">
+    <strong>Arrival Times:</strong> Recommended arrival at station is 30 minutes before departure, or 60 minutes if you need ticketing/baggage assistance. The boarding gate closes 5 minutes prior to train departure.
+  </div>
+
+  <div class="info-box" style="margin-bottom: 10px;">
+    <strong>Baggage Policy:</strong> Carry-on is limited to 1 personal item (under 14x11x7 inches, 25 lbs) and 2 bags (under 28x22x14 inches, 50 lbs each). Checked baggage check-in must be completed 45 minutes prior to departure.
+  </div>
+
+  <div class="info-box" style="margin-bottom: 10px;">
+    <strong>Changes & Cancellations:</strong> Coach seats: no changes allowed, 25% cancellation fee. Sleeper accommodations: cancellation fees apply less than 120 days from departure. Changes may result in fare increases. Learn more at Amtrak.com/changes.
+  </div>
+
+  <div class="info-box">
+    <strong>Train Cancellation:</strong> If your train is canceled, you can modify your reservation via the Amtrak app or Amtrak.com. For assistance, call 1-800-USA-RAIL.
+  </div>
+</div>
+
+</div><!-- end .timeline -->
+</div><!-- end .page -->
+
+<div class="footer">
+  <div class="footer-agency">Signature Elite Travel</div>
+  <div class="footer-diamonds">◆ ◆ ◆</div>
+  <div>
+    <a href="tel:+17372717668">(737) 271-7668</a> · <a href="mailto:bookings@signatureelitetravel.com">bookings@signatureelitetravel.com</a>
+  </div>
+  <div style="margin-top: 12px; font-size: 10px; color: #7A6A58;">
+    All train times, schedules, and details are subject to change without notice due to operational conditions or delays. Please verify final times and platform information with Amtrak upon arrival at each station. This manifest is for reference only.
+  </div>
+</div>
+
+</body>
+</html>
