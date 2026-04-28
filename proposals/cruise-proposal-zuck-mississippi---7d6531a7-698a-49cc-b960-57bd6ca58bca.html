@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>River Cruise Proposal — Zuck | Mississippi · May–June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:     #F5F0E8;
+  --parchment-dk:  #EDE6D6;
+  --parchment-dkr: #E0D8C4;
+  --ink:           #1A1610;
+  --ink-soft:      #3A342A;
+  --ink-muted:     #5A5248;
+  --gold:          #B8963E;
+  --gold-lt:       #D4AF6A;
+  --gold-pale:     #F0E4C4;
+  --gold-deep:     #7A5E1E;
+  --white:         #FDFAF4;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink-soft);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.masthead {
+  background: var(--ink);
+  padding: 36px 40px 28px;
+  text-align: center;
+  border-bottom: 3px solid var(--gold);
+}
+.masthead-agency {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.masthead-diamonds {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 8px;
+  margin-bottom: 12px;
+}
+.masthead-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 44px;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 1px;
+  line-height: 1.15;
+}
+.masthead-subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--gold-lt);
+  margin-top: 6px;
+}
+.masthead-meta {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.masthead-pill {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(184,150,62,0.35);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.section-intro {
+  background: var(--white);
+  border-left: 4px solid var(--gold);
+  padding: 24px;
+  margin-bottom: 36px;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(26,22,16,0.05);
+}
+.section-intro-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.section-intro-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.section-intro-text {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+/* ── CRUISE CARD ── */
+.cruise-card {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 3px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(26,22,16,0.06);
+}
+
+.cruise-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--parchment-dkr);
+  flex-wrap: wrap;
+}
+.cruise-title { flex: 1; }
+.cruise-ship-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.cruise-route {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 4px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.cruise-badge {
+  background: var(--ink);
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+/* ── DETAILS GRID ── */
+.cruise-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px 24px;
+  margin-bottom: 24px;
+}
+.detail-item { }
+.detail-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 4px;
+}
+.detail-value {
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+.detail-value strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ── STATEROOM OPTIONS ── */
+.stateroom-section {
+  margin-top: 4px;
+}
+.stateroom-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 12px;
+}
+.stateroom-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.stateroom-card {
+  background: var(--parchment-dk);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 2px;
+  padding: 16px;
+  border-top: 3px solid var(--gold);
+}
+.stateroom-card.solo {
+  grid-column: 1 / -1;
+}
+.stateroom-type {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.stateroom-price {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--gold-deep);
+  line-height: 1;
+}
+.stateroom-per {
+  font-size: 10px;
+  color: var(--ink-muted);
+  margin-top: 3px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.stateroom-total {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--parchment-dkr);
+  font-weight: 500;
+}
+
+/* ── ITINERARY BOX ── */
+.itinerary-box {
+  background: var(--parchment-dk);
+  border-radius: 2px;
+  padding: 16px;
+  margin-top: 20px;
+}
+.itinerary-title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 8px;
+}
+.itinerary-text {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ── OPTION NUMBER ── */
+.option-number {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.option-num-badge {
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.option-num-label {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+/* ── NOTE BOX ── */
+.note-box {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-left: 4px solid var(--gold);
+  padding: 16px 20px;
+  margin: 30px 0;
+  border-radius: 3px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+.note-box strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--ink);
+  color: var(--ink-muted);
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 11px;
+  line-height: 1.8;
+  border-top: 2px solid var(--gold);
+  margin-top: 50px;
+}
+.footer-agency {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.footer-diamonds {
+  color: var(--gold);
+  letter-spacing: 8px;
+  font-size: 12px;
+  margin: 8px 0;
+}
+.footer a { color: var(--gold-lt); text-decoration: none; }
+
+@media print {
+  .page { max-width: 100%; padding: 0 12px; }
+  .cruise-card { break-inside: avoid; box-shadow: none; }
+}
+
+@media (max-width: 640px) {
+  .masthead-title { font-size: 32px; }
+  .cruise-details { grid-template-columns: 1fr; }
+  .stateroom-options { grid-template-columns: 1fr; }
+  .page { padding: 24px 12px 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ MASTHEAD ══ -->
+<div class="masthead">
+  <div class="masthead-agency">Signature Elite Travel · Cruise Proposal</div>
+  <div class="masthead-diamonds">◆ ◆ ◆</div>
+  <div class="masthead-title">Zuck Family</div>
+  <div class="masthead-subtitle">Lower Mississippi River Cruise Options · May–June 2026</div>
+  <div class="masthead-meta">
+    <span class="masthead-pill">🚢 River Cruise</span>
+    <span class="masthead-pill">2 Date Options</span>
+    <span class="masthead-pill">👥 2 Travelers</span>
+    <span class="masthead-pill">9 Days · 8 Nights</span>
+  </div>
+</div>
+
+<!-- ══ PAGE BODY ══ -->
+<div class="page">
+
+<!-- ── INTRODUCTION ── -->
+<div class="section-intro">
+  <div class="section-intro-label">Your Journey</div>
+  <div class="section-intro-title">Two Departures — One Magnificent River</div>
+  <div class="section-intro-text">
+    Experience the grandeur of the Lower Mississippi aboard the American Splendor — a classic paddlewheeler tracing the legendary river from New Orleans, Louisiana to Memphis, Tennessee. Both sailings cover 9 days and 8 nights of iconic Southern scenery, history, and culture. Choose the departure date that works best for you.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- OPTION 1: MAY 19, 2026                                -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="option-number">
+  <div class="option-num-badge">1</div>
+  <div class="option-num-label">Earlier Departure — May 2026</div>
+</div>
+
+<div class="cruise-card">
+  <div class="cruise-header">
+    <div class="cruise-title">
+      <div class="cruise-ship-name">American Splendor</div>
+      <div class="cruise-route">Lower Mississippi River Cruise · Paddlewheeler</div>
+    </div>
+    <div class="cruise-badge">Departs May 19</div>
+  </div>
+
+  <div class="cruise-details">
+    <div class="detail-item">
+      <div class="detail-label">Departure Date</div>
+      <div class="detail-value"><strong>Tuesday, May 19, 2026</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Return Date</div>
+      <div class="detail-value"><strong>Wednesday, May 27, 2026</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Duration</div>
+      <div class="detail-value"><strong>9 Days / 8 Nights</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Embarkation</div>
+      <div class="detail-value">New Orleans, Louisiana</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Disembarkation</div>
+      <div class="detail-value">Memphis, Tennessee</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Travelers</div>
+      <div class="detail-value"><strong>2 Guests</strong></div>
+    </div>
+  </div>
+
+  <!-- Stateroom Options -->
+  <div class="stateroom-section">
+    <div class="stateroom-label">Available Staterooms</div>
+    <div class="stateroom-options">
+      <div class="stateroom-card">
+        <div class="stateroom-type">Premium Balcony</div>
+        <div class="stateroom-price">$6,575</div>
+        <div class="stateroom-per">Per Person</div>
+        <div class="stateroom-total"><strong>Total for 2 Guests:</strong> $13,150</div>
+      </div>
+      <div class="stateroom-card">
+        <div class="stateroom-type">Standard Balcony</div>
+        <div class="stateroom-price">$5,635</div>
+        <div class="stateroom-per">Per Person</div>
+        <div class="stateroom-total"><strong>Total for 2 Guests:</strong> $11,270</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Itinerary -->
+  <div class="itinerary-box">
+    <div class="itinerary-title">Journey Highlights</div>
+    <div class="itinerary-text">
+      Depart New Orleans and cruise north along the legendary Lower Mississippi, stopping at historic antebellum plantations, charming river towns, and Civil War heritage sites. Pass through Natchez, Natchez Landing, Cleveland, Tunica, and more before arriving in Memphis — home of blues, BBQ, and Beale Street. Onboard naturalists and historians bring the river's rich story to life each day.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- OPTION 2: JUNE 2, 2026                                -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="option-number">
+  <div class="option-num-badge">2</div>
+  <div class="option-num-label">Later Departure — June 2026</div>
+</div>
+
+<div class="cruise-card">
+  <div class="cruise-header">
+    <div class="cruise-title">
+      <div class="cruise-ship-name">American Splendor</div>
+      <div class="cruise-route">Lower Mississippi River Cruise · Paddlewheeler</div>
+    </div>
+    <div class="cruise-badge">Departs June 2</div>
+  </div>
+
+  <div class="cruise-details">
+    <div class="detail-item">
+      <div class="detail-label">Departure Date</div>
+      <div class="detail-value"><strong>Tuesday, June 2, 2026</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Return Date</div>
+      <div class="detail-value"><strong>Wednesday, June 10, 2026</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Duration</div>
+      <div class="detail-value"><strong>9 Days / 8 Nights</strong></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Embarkation</div>
+      <div class="detail-value">New Orleans, Louisiana</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Disembarkation</div>
+      <div class="detail-value">Memphis, Tennessee</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Travelers</div>
+      <div class="detail-value"><strong>2 Guests</strong></div>
+    </div>
+  </div>
+
+  <!-- Stateroom Options -->
+  <div class="stateroom-section">
+    <div class="stateroom-label">Available Stateroom</div>
+    <div class="stateroom-options">
+      <div class="stateroom-card solo">
+        <div class="stateroom-type">Standard Balcony</div>
+        <div class="stateroom-price">$5,275</div>
+        <div class="stateroom-per">Per Person</div>
+        <div class="stateroom-total"><strong>Total for 2 Guests:</strong> $10,550</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Itinerary -->
+  <div class="itinerary-box">
+    <div class="itinerary-title">Journey Highlights</div>
+    <div class="itinerary-text">
+      The June sailing offers warm summer days along the Lower Mississippi. Depart New Orleans and journey north through classic Southern river towns — Natchez, Vicksburg, Baton Rouge, and beyond — before arriving in the heart of Memphis. Enjoy onboard lectures, live music, and excursions into the region's plantation history and Civil War sites along the way.
+    </div>
+  </div>
+</div>
+
+<!-- ── COMPARISON NOTE ── -->
+<div class="note-box">
+  <strong>Choosing Your Sailing:</strong> Both options travel the same iconic route aboard the American Splendor from New Orleans to Memphis over 9 days and 8 nights. The May 19 sailing offers two stateroom categories while the June 2 sailing has the Standard Balcony available at the lowest per-person rate. Availability is limited — reach out to us to secure your preferred cabin and dates.
+</div>
+
+</div><!-- end .page -->
+
+<!-- ══ FOOTER ══ -->
+<div class="footer">
+  <div class="footer-agency">Signature Elite Travel</div>
+  <div class="footer-diamonds">◆ ◆ ◆</div>
+  <div>
+    <a href="tel:+17372717668">(737) 271-7668</a> · <a href="mailto:bookings@signatureelitetravel.com">bookings@signatureelitetravel.com</a>
+  </div>
+  <div style="margin-top: 12px; font-size: 10px; color: #7A6A58;">
+    All prices are per person based on double occupancy, cruise-only. Pricing and availability subject to change. Taxes, port fees, and gratuities are not included in the base rate shown. Please contact us for complete terms, conditions, and booking details.
+  </div>
+</div>
+
+</body>
+</html>
