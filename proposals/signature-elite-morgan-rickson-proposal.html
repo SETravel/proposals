@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature Elite Travel — Morgan/Rickson 2026 Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F5F0E8;
+  --parchment-dk:#EDE6D6;
+  --parchment-dkr:#E0D8C4;
+  --ink:#1A1610;
+  --ink-soft:#3A342A;
+  --ink-muted:#5A5248;
+  --gold:#B8963E;
+  --gold-lt:#D4AF6A;
+  --gold-pale:#F0E4C4;
+  --gold-deep:#7A5E1E;
+  --white:#FDFAF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  font-size:17px;
+  line-height:1.65;
+  color:var(--ink-soft);
+  background:var(--parchment);
+  padding-bottom:80px;
+}
+
+/* ============ TRIP SWITCHER (new top-level nav) ============ */
+.tswitch-wrap{
+  position:sticky;
+  top:0;
+  z-index:1100;
+  background:var(--ink);
+  border-bottom:2px solid var(--gold);
+  padding:14px 16px 10px;
+}
+.tswitch-label{
+  text-align:center;
+  font-size:11px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold-lt);
+  margin-bottom:10px;
+  font-weight:500;
+}
+.tswitch{
+  display:flex;
+  gap:10px;
+  max-width:900px;
+  margin:0 auto;
+}
+.tswitch-btn{
+  flex:1;
+  min-height:72px;
+  padding:12px 18px;
+  background:rgba(255,255,255,0.06);
+  border:2px solid rgba(212,175,106,0.3);
+  border-radius:8px;
+  cursor:pointer;
+  text-align:left;
+  color:var(--gold-lt);
+  font-family:'Montserrat',sans-serif;
+  transition:all 0.25s ease;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.tswitch-btn:hover{
+  border-color:var(--gold);
+  background:rgba(212,175,106,0.12);
+}
+.tswitch-btn.active{
+  background:var(--gold);
+  border-color:var(--gold-lt);
+  color:var(--ink);
+  box-shadow:0 4px 14px rgba(184,150,62,0.35);
+  transform:translateY(-1px);
+}
+.tswitch-btn .tnum{
+  font-size:10px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  font-weight:600;
+  opacity:0.75;
+  margin-bottom:4px;
+}
+.tswitch-btn .tname{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  font-weight:400;
+  line-height:1.15;
+  margin-bottom:3px;
+}
+.tswitch-btn .tdates{
+  font-size:12px;
+  font-weight:400;
+  opacity:0.85;
+}
+.tswitch-orient{
+  text-align:center;
+  font-size:11px;
+  color:var(--gold-lt);
+  margin-top:8px;
+  letter-spacing:0.1em;
+  opacity:0.75;
+}
+
+/* ============ PROGRESS NAV ============ */
+.pnav{
+  position:sticky;
+  top:172px;
+  z-index:1000;
+  background:var(--ink);
+  padding:10px 16px;
+  display:flex;
+  gap:4px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  border-bottom:1px solid rgba(212,175,106,0.2);
+}
+.pnav a{
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  padding:6px 10px;
+  text-decoration:none;
+  color:var(--gold-lt);
+  cursor:pointer;
+  min-width:70px;
+}
+.pnav a .dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(212,175,106,0.3);
+  transition:all 0.3s;
+}
+.pnav a.active .dot{background:var(--gold);box-shadow:0 0 0 3px rgba(184,150,62,0.25)}
+.pnav a.visited .dot{background:var(--gold-deep)}
+.pnav a .lbl{
+  font-size:10px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  font-weight:500;
+  white-space:nowrap;
+}
+.pnav a.active .lbl{color:var(--gold)}
+
+/* ============ AGENT BAR ============ */
+.abar{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  background:var(--ink);
+  padding:10px 16px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  border-top:1px solid rgba(212,175,106,0.2);
+}
+.abar-txt{
+  color:var(--gold-lt);
+  font-size:14px;
+  font-weight:400;
+}
+.abar-btn{
+  background:var(--gold);
+  color:var(--ink);
+  padding:12px 20px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:0.05em;
+  min-height:48px;
+  display:inline-flex;
+  align-items:center;
+}
+
+/* ============ TRIP CONTAINER ============ */
+.trip{display:none}
+.trip.active{display:block}
+
+/* ============ SECTIONS ============ */
+section{
+  padding:60px 24px;
+  max-width:900px;
+  margin:0 auto;
+}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ============ SECTION LABELS ============ */
+.eyebrow{
+  font-size:11px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--parchment-dkr);
+}
+h2{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:400;
+  font-size:42px;
+  line-height:1.1;
+  color:var(--ink);
+  margin-bottom:14px;
+}
+h3{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:400;
+  font-size:30px;
+  line-height:1.15;
+  color:var(--ink);
+  margin-bottom:10px;
+}
+
+/* ============ HERO ============ */
+.hero{
+  background:linear-gradient(135deg,#1A1610 0%,#2d2419 70%,#3a2e1c 100%);
+  position:relative;
+  padding:80px 24px 70px;
+  text-align:center;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 20%,rgba(184,150,62,0.12) 0%,transparent 50%),
+             radial-gradient(circle at 70% 80%,rgba(212,175,106,0.08) 0%,transparent 50%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;max-width:900px;margin:0 auto}
+.tri-dia{
+  color:var(--gold);
+  font-size:22px;
+  letter-spacing:0.8em;
+  margin-bottom:24px;
+  text-align:center;
+}
+.hero-brand{
+  font-size:11px;
+  letter-spacing:0.35em;
+  text-transform:uppercase;
+  color:var(--gold-lt);
+  font-weight:500;
+  margin-bottom:20px;
+}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:300;
+  color:var(--white);
+  font-size:52px;
+  line-height:1.05;
+  margin-bottom:8px;
+}
+.hero-occ{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:24px;
+  color:var(--gold-lt);
+  margin-bottom:32px;
+}
+.hero-pills{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:36px;
+}
+.hero-pill{
+  background:rgba(212,175,106,0.12);
+  border:1px solid rgba(212,175,106,0.35);
+  color:var(--gold-lt);
+  padding:10px 18px;
+  border-radius:30px;
+  font-size:13px;
+  letter-spacing:0.08em;
+  font-weight:500;
+}
+.scroll-cue{
+  display:inline-block;
+  margin-top:20px;
+  color:var(--gold-deep);
+  font-size:12px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  animation:bounce 2s ease-in-out infinite;
+  opacity:0.85;
+}
+.scroll-cue::after{content:" ↓";font-size:16px}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ============ GUIDE BUBBLE ============ */
+.guide{
+  background:var(--gold-pale);
+  border-left:4px solid var(--gold);
+  padding:22px 26px;
+  border-radius:6px;
+  font-size:18px;
+  line-height:1.6;
+  color:var(--ink-soft);
+  margin:28px 0;
+  font-weight:400;
+}
+.guide strong{color:var(--ink);font-weight:600}
+
+/* ============ AT A GLANCE ============ */
+.glance-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--parchment-dkr);
+  border:1px solid var(--parchment-dkr);
+  border-radius:8px;
+  overflow:hidden;
+  margin:24px 0 28px;
+}
+.glance-cell{
+  background:var(--white);
+  padding:22px 18px;
+  text-align:center;
+}
+.glance-lbl{
+  font-size:10px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  font-weight:500;
+  margin-bottom:8px;
+}
+.glance-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  color:var(--ink);
+  line-height:1.2;
+}
+.glance-sub{
+  font-size:12px;
+  color:var(--ink-muted);
+  margin-top:4px;
+}
+
+.checklist{
+  background:var(--gold-pale);
+  padding:26px 28px;
+  border-radius:8px;
+  margin-top:18px;
+}
+.checklist h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  color:var(--ink);
+  margin-bottom:14px;
+}
+.chk-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:10px 0;
+  font-size:16px;
+}
+.chk-circle{
+  flex-shrink:0;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--gold);
+  color:var(--white);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  font-weight:600;
+  margin-top:2px;
+}
+
+/* ============ ROUTE MAP (road trip) ============ */
+.route{
+  margin:24px 0 10px;
+  position:relative;
+  padding-left:30px;
+}
+.route::before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:8px;
+  bottom:8px;
+  width:2px;
+  background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);
+}
+.stop{
+  position:relative;
+  margin-bottom:26px;
+  padding:18px 22px;
+  background:var(--white);
+  border:1px solid var(--parchment-dkr);
+  border-radius:8px;
+}
+.stop::before{
+  content:"";
+  position:absolute;
+  left:-24px;
+  top:26px;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--gold);
+  border:3px solid var(--parchment);
+  box-shadow:0 0 0 1px var(--gold-deep);
+}
+.stop-day{
+  font-size:10px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  font-weight:600;
+  margin-bottom:4px;
+}
+.stop-city{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;
+  color:var(--ink);
+  margin-bottom:4px;
+}
+.stop-dist{
+  font-size:13px;
+  color:var(--ink-muted);
+  margin-bottom:12px;
+  font-style:italic;
+}
+.stop-hotels{
+  border-top:1px dashed var(--parchment-dkr);
+  padding-top:12px;
+  margin-top:8px;
+}
+.stop-hotel{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+  padding:8px 0;
+  font-size:15px;
+}
+.stop-hotel-name{flex:1}
+.stop-hotel-name strong{color:var(--ink);font-weight:500}
+.stop-hotel-note{font-size:13px;color:var(--ink-muted);margin-top:2px}
+.stop-hotel-price{
+  color:var(--gold-deep);
+  font-weight:600;
+  font-size:14px;
+  white-space:nowrap;
+}
+
+/* ============ HOTEL HERO ============ */
+.hh{
+  width:100%;
+  height:420px;
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+  margin:24px 0 0;
+}
+.hh img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:1;
+}
+.hh-ov{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:linear-gradient(180deg,rgba(26,22,16,0.1) 0%,rgba(26,22,16,0.8) 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:26px 30px;
+  color:var(--white);
+}
+.hh-badge{
+  display:inline-block;
+  align-self:flex-start;
+  background:var(--gold);
+  color:var(--ink);
+  padding:7px 14px;
+  border-radius:4px;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-bottom:12px;
+}
+.hh-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px;
+  line-height:1.1;
+  margin-bottom:4px;
+}
+.hh-addr{font-size:13px;opacity:0.88;letter-spacing:0.05em}
+
+/* ============ PRICE BAR ============ */
+.price-bar{
+  background:var(--ink);
+  color:var(--white);
+  padding:22px 26px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  margin-top:0;
+  transition:background 0.35s ease;
+  border-radius:0 0 10px 10px;
+  cursor:pointer;
+}
+.price-bar.selected{background:#2d6a2e}
+.price-bar-label{
+  font-size:10px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold-lt);
+  font-weight:600;
+  margin-bottom:6px;
+}
+.price-bar.selected .price-bar-label{color:rgba(255,255,255,0.85)}
+.tap-prompt{
+  font-size:22px;
+  font-weight:600;
+  text-transform:uppercase;
+  color:var(--white);
+  letter-spacing:0.04em;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  animation:pulse 1.6s ease-in-out infinite;
+}
+.tap-prompt::before{content:"☝";font-size:28px}
+.price-bar.selected .tap-prompt{animation:none}
+.price-bar.selected .tap-prompt::before{content:"✓";color:var(--white)}
+@keyframes pulse{0%,100%{opacity:0.6}50%{opacity:1}}
+.price-bar-amt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;
+  text-align:right;
+  line-height:1;
+}
+.price-bar-amt .from{
+  font-size:13px;
+  font-family:'Montserrat',sans-serif;
+  font-weight:500;
+  color:var(--gold-lt);
+  letter-spacing:0.1em;
+  margin-right:6px;
+  text-transform:uppercase;
+}
+.price-bar-per{
+  font-size:12px;
+  color:var(--gold-lt);
+  text-align:right;
+  margin-top:6px;
+  letter-spacing:0.05em;
+}
+
+/* ============ TWO-COL (room photos) ============ */
+.twocol{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:20px 0;
+}
+.twocol div{
+  height:300px;
+  border-radius:8px;
+  overflow:hidden;
+  position:relative;
+}
+.twocol div img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ============ ROOM FACTS ============ */
+.room-facts{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--parchment-dkr);
+  border:1px solid var(--parchment-dkr);
+  border-radius:8px;
+  overflow:hidden;
+  margin:20px 0;
+}
+.rf-cell{
+  background:var(--white);
+  padding:16px 12px;
+  text-align:center;
+}
+.rf-lbl{
+  font-size:9px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  font-weight:500;
+  margin-bottom:6px;
+}
+.rf-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;
+  color:var(--ink);
+  line-height:1.2;
+}
+
+/* ============ TAGS ============ */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.tag{
+  background:var(--parchment-dk);
+  color:var(--ink-soft);
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  letter-spacing:0.05em;
+  font-weight:400;
+}
+
+/* ============ AGENT NOTE ============ */
+.anote{
+  background:var(--gold-pale);
+  border:1px solid var(--gold-lt);
+  padding:20px 24px;
+  border-radius:8px;
+  margin:20px 0;
+  font-size:16px;
+  line-height:1.6;
+}
+.anote-lbl{
+  font-size:10px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+/* ============ FLIGHT/EXPLORE OPTIONS ============ */
+.flight-group-label{
+  font-size:11px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  font-weight:600;
+  margin:24px 0 12px;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--parchment-dkr);
+}
+.fopt{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 18px;
+  background:var(--white);
+  border:2px solid var(--parchment-dkr);
+  border-radius:8px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:all 0.2s;
+  min-height:64px;
+}
+.fopt:hover{border-color:var(--gold-lt)}
+.fopt.selected{border-color:#2d6a2e;background:#eaf4ea}
+.fopt .radio{
+  flex-shrink:0;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  border:2px solid var(--ink-muted);
+  transition:all 0.2s;
+}
+.fopt.selected .radio{
+  background:#2d6a2e;
+  border-color:#2d6a2e;
+  box-shadow:inset 0 0 0 4px var(--white);
+}
+.fopt .ftime{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;
+  color:var(--ink);
+}
+.fopt .farrow{font-size:18px;color:var(--ink-muted);padding:0 4px}
+.fopt .fdetail{font-size:13px;color:var(--ink-muted);margin-top:2px}
+
+/* ============ COST SUMMARY ============ */
+.cost-table{
+  background:var(--white);
+  border:1px solid var(--parchment-dkr);
+  border-radius:8px;
+  overflow:hidden;
+  margin:20px 0;
+}
+.cost-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 22px;
+  border-bottom:1px solid var(--parchment-dkr);
+}
+.cost-row:last-child{border-bottom:none}
+.cost-row.header{
+  background:var(--ink);
+  color:var(--gold-lt);
+  font-size:11px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+.cost-row.hotel-row{transition:all 0.3s}
+.cost-row.hotel-row.inactive{opacity:0.35;text-decoration:line-through}
+.cost-row.hotel-row.active{background:var(--gold-pale)}
+.cost-label{font-size:15px;color:var(--ink-soft)}
+.cost-label .sub{font-size:12px;color:var(--ink-muted);display:block;margin-top:2px;font-style:italic}
+.cost-val{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ink);font-weight:400}
+
+.total-bar{
+  background:var(--ink);
+  color:var(--white);
+  padding:24px 26px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-radius:8px;
+  margin:14px 0 20px;
+}
+.total-label{
+  font-size:11px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold-lt);
+  font-weight:600;
+}
+.total-amt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:38px;
+  text-align:right;
+}
+.total-amt .from{
+  font-size:13px;
+  font-family:'Montserrat',sans-serif;
+  font-weight:500;
+  color:var(--gold-lt);
+  letter-spacing:0.1em;
+  margin-right:8px;
+  text-transform:uppercase;
+}
+.cost-disc{
+  font-size:12px;
+  color:var(--ink-muted);
+  font-style:italic;
+  text-align:center;
+  margin-top:10px;
+  padding:0 10px;
+}
+
+/* ============ CONTACT ============ */
+.contact-sec{
+  background:var(--ink);
+  color:var(--white);
+  padding:70px 24px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  max-width:none;
+  margin:60px 0 0;
+}
+.contact-sec::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:repeating-linear-gradient(45deg,transparent 0,transparent 20px,rgba(212,175,106,0.03) 20px,rgba(212,175,106,0.03) 21px);
+  pointer-events:none;
+}
+.contact-inner{position:relative;max-width:700px;margin:0 auto}
+.contact-sec h2{color:var(--white);margin-bottom:18px;font-style:italic}
+.contact-buttons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin:30px 0 24px;
+}
+.cbtn{
+  background:var(--gold);
+  color:var(--ink);
+  padding:18px 28px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:15px;
+  letter-spacing:0.05em;
+  min-height:56px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  transition:transform 0.2s;
+}
+.cbtn:hover{transform:translateY(-2px)}
+.cbtn.outline{
+  background:transparent;
+  color:var(--gold-lt);
+  border:2px solid var(--gold-lt);
+}
+.voucher-note{
+  font-size:14px;
+  color:var(--gold-lt);
+  font-style:italic;
+  margin:18px 0;
+  padding:14px 20px;
+  background:rgba(212,175,106,0.08);
+  border-radius:6px;
+  line-height:1.5;
+}
+.foot-disc{
+  font-size:11px;
+  color:var(--gold-lt);
+  opacity:0.75;
+  line-height:1.6;
+  margin-top:28px;
+  padding-top:22px;
+  border-top:1px solid rgba(212,175,106,0.2);
+}
+.foot-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:22px;
+  color:var(--gold-lt);
+  margin-bottom:8px;
+}
+
+/* ============ SELECTIONS TRACKER ============ */
+.tracker{
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  z-index:999;
+  background:var(--white);
+  border:2px solid var(--gold);
+  border-radius:10px;
+  padding:16px 20px;
+  min-width:240px;
+  max-width:280px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.15);
+}
+.tracker-lbl{
+  font-size:10px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  font-weight:600;
+  margin-bottom:10px;
+}
+.tracker-item{font-size:13px;margin:6px 0;color:var(--ink-soft)}
+.tracker-item strong{color:var(--ink);font-weight:500}
+.tracker-empty{font-size:13px;color:var(--ink-muted);font-style:italic}
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed;
+  bottom:140px;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--ink);
+  color:var(--gold-lt);
+  padding:12px 22px;
+  border-radius:30px;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:0.05em;
+  z-index:1200;
+  opacity:0;
+  transition:all 0.35s ease;
+  pointer-events:none;
+  border:1px solid var(--gold);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:700px){
+  body{font-size:16px}
+  .tswitch-btn{min-height:68px;padding:10px 12px}
+  .tswitch-btn .tname{font-size:17px}
+  .tswitch-btn .tdates{font-size:11px}
+  .pnav{top:178px}
+  .abar-txt{display:none}
+  section{padding:46px 18px}
+  h2{font-size:32px}
+  h3{font-size:24px}
+  .hero{padding:60px 20px 52px}
+  .hero-name{font-size:36px}
+  .hero-occ{font-size:19px}
+  .glance-grid{grid-template-columns:repeat(2,1fr)}
+  .hh{height:300px}
+  .hh-name{font-size:26px}
+  .twocol{grid-template-columns:1fr}
+  .twocol div{height:220px}
+  .room-facts{grid-template-columns:repeat(2,1fr)}
+  .price-bar{flex-direction:column;align-items:flex-start;gap:14px}
+  .price-bar-amt,.price-bar-per{text-align:left}
+  .total-bar{flex-direction:column;align-items:flex-start;gap:10px}
+  .total-amt{text-align:left}
+  .tracker{display:none}
+  .stop-hotel{flex-direction:column}
+  .stop-hotel-price{align-self:flex-start}
+  .contact-buttons{flex-direction:column}
+  .cbtn{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TRIP SWITCHER ============ -->
+<div class="tswitch-wrap">
+  <div class="tswitch-label">Two Trips Planned · Tap To Switch</div>
+  <div class="tswitch">
+    <button class="tswitch-btn active" data-trip="t1" onclick="switchTrip('t1')">
+      <div class="tnum">Trip 1 of 2</div>
+      <div class="tname">Alaska Cruise &amp; Road Trip</div>
+      <div class="tdates">Late May – June 2026 · 18 days on the road + cruise</div>
+    </button>
+    <button class="tswitch-btn" data-trip="t2" onclick="switchTrip('t2')">
+      <div class="tnum">Trip 2 of 2</div>
+      <div class="tname">Hawaii Cruise from California</div>
+      <div class="tdates">Nov 8 – Nov 22, 2026 · 14 nights at sea</div>
+    </button>
+  </div>
+  <div class="tswitch-orient" id="tswitch-orient">Viewing Trip 1 of 2</div>
+</div>
+
+<!-- ============ PROGRESS NAV TRIP 1 ============ -->
+<nav class="pnav" id="pnav-t1">
+  <a data-section="t1-welcome" onclick="smoothScroll('t1-welcome')" class="active"><div class="dot"></div><div class="lbl">Welcome</div></a>
+  <a data-section="t1-glance" onclick="smoothScroll('t1-glance')"><div class="dot"></div><div class="lbl">At a Glance</div></a>
+  <a data-section="t1-outbound" onclick="smoothScroll('t1-outbound')"><div class="dot"></div><div class="lbl">Outbound Route</div></a>
+  <a data-section="t1-seattle" onclick="smoothScroll('t1-seattle')"><div class="dot"></div><div class="lbl">Seattle Hotels</div></a>
+  <a data-section="t1-cruise" onclick="smoothScroll('t1-cruise')"><div class="dot"></div><div class="lbl">The Cruise</div></a>
+  <a data-section="t1-return" onclick="smoothScroll('t1-return')"><div class="dot"></div><div class="lbl">Return Route</div></a>
+  <a data-section="t1-costs" onclick="smoothScroll('t1-costs')"><div class="dot"></div><div class="lbl">Cost Summary</div></a>
+  <a data-section="t1-contact" onclick="smoothScroll('t1-contact')"><div class="dot"></div><div class="lbl">Contact</div></a>
+</nav>
+
+<!-- ============ PROGRESS NAV TRIP 2 ============ -->
+<nav class="pnav" id="pnav-t2" style="display:none">
+  <a data-section="t2-welcome" onclick="smoothScroll('t2-welcome')" class="active"><div class="dot"></div><div class="lbl">Welcome</div></a>
+  <a data-section="t2-glance" onclick="smoothScroll('t2-glance')"><div class="dot"></div><div class="lbl">At a Glance</div></a>
+  <a data-section="t2-cruise-options" onclick="smoothScroll('t2-cruise-options')"><div class="dot"></div><div class="lbl">Cruise Options</div></a>
+  <a data-section="t2-flights" onclick="smoothScroll('t2-flights')"><div class="dot"></div><div class="lbl">Flights</div></a>
+  <a data-section="t2-precruise" onclick="smoothScroll('t2-precruise')"><div class="dot"></div><div class="lbl">Pre-Cruise Hotels</div></a>
+  <a data-section="t2-explore" onclick="smoothScroll('t2-explore')"><div class="dot"></div><div class="lbl">Explore More</div></a>
+  <a data-section="t2-costs" onclick="smoothScroll('t2-costs')"><div class="dot"></div><div class="lbl">Cost Summary</div></a>
+  <a data-section="t2-contact" onclick="smoothScroll('t2-contact')"><div class="dot"></div><div class="lbl">Contact</div></a>
+</nav>
+
+<!-- ================================================================= -->
+<!-- =========================== TRIP 1 ============================== -->
+<!-- ================================================================= -->
+<div class="trip active" id="trip-1">
+
+<!-- HERO -->
+<section class="hero" id="t1-welcome" style="max-width:none;margin:0">
+  <div class="hero-inner">
+    <div class="tri-dia">◆ ◆ ◆</div>
+    <div class="hero-brand">Signature Elite Travel</div>
+    <div class="hero-name">Dale &amp; Lynn</div>
+    <div class="hero-occ">Your Alaska Cruise &amp; Cross-Country Adventure</div>
+    <div class="hero-pills">
+      <span class="hero-pill">Depart Wichita Falls ~ May 23, 2026</span>
+      <span class="hero-pill">Cruise June 4 – 11, 2026</span>
+      <span class="hero-pill">Arrive Amery, WI ~ June 17, 2026</span>
+    </div>
+    <div class="hero-pills">
+      <span class="hero-pill">2 Travelers</span>
+      <span class="hero-pill">Carnival Miracle · 7-Night Inside Passage</span>
+      <span class="hero-pill">Driving Trip · ~4,800 Total Miles</span>
+    </div>
+    <div class="scroll-cue">Scroll to begin your journey</div>
+  </div>
+</section>
+
+<!-- AT A GLANCE -->
+<section id="t1-glance" class="fade-in">
+  <div class="eyebrow">At a Glance</div>
+  <h2>Your Trip to Alaska</h2>
+
+  <div class="guide">
+    Hi Dale and Lynn — here's the full picture of your Alaska adventure. You've got a long drive out, a week at sea, and then the scenic route home through Mt. Rushmore and Yellowstone before your camper at the Do Nothing welcomes you back. We've mapped <strong>suggested overnight stops</strong> based on your 300 miles-a-day pace, plus <strong>three hotel options</strong> for your Seattle pre-cruise stay with park-and-cruise.
+  </div>
+
+  <div class="glance-grid">
+    <div class="glance-cell">
+      <div class="glance-lbl">Suggested Start</div>
+      <div class="glance-val">Sat, May 23</div>
+      <div class="glance-sub">From Wichita Falls, TX</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Seattle Arrival</div>
+      <div class="glance-val">June 2 – 3</div>
+      <div class="glance-sub">With Eugene stop June 1</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Cruise Dates</div>
+      <div class="glance-val">June 4 – 11</div>
+      <div class="glance-sub">Carnival Miracle · Pier 91</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Return Route</div>
+      <div class="glance-val">I-90 East</div>
+      <div class="glance-sub">Mt. Rushmore · Yellowstone</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Final Destination</div>
+      <div class="glance-val">Amery, WI</div>
+      <div class="glance-sub">~June 17 · Do Nothing Camp</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Total Distance</div>
+      <div class="glance-val">~4,800 mi</div>
+      <div class="glance-sub">Roughly 300/day average</div>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <h4>What's in this proposal</h4>
+    <div class="chk-item"><div class="chk-circle">✓</div><div><strong>Outbound route:</strong> 7 suggested overnight cities with 1–2 hotel options each</div></div>
+    <div class="chk-item"><div class="chk-circle">✓</div><div><strong>Seattle pre-cruise:</strong> 3 hotels offering park-and-cruise packages for your 6/4–6/11 parking need</div></div>
+    <div class="chk-item"><div class="chk-circle">✓</div><div><strong>Cruise details:</strong> Carnival Miracle 7-night Inside Passage reference (you've already selected)</div></div>
+    <div class="chk-item"><div class="chk-circle">✓</div><div><strong>Return route:</strong> 6 stops along I-90 with sightseeing time built in for Yellowstone and Mt. Rushmore</div></div>
+    <div class="chk-item"><div class="chk-circle">✓</div><div><strong>Cost summary:</strong> Starting estimates you can review before we lock anything in</div></div>
+  </div>
+</section>
+
+<!-- OUTBOUND ROUTE -->
+<section id="t1-outbound" class="fade-in">
+  <div class="eyebrow">Outbound Route · Wichita Falls → Seattle</div>
+  <h2>The Drive Out</h2>
+
+  <div class="guide">
+    Following the route Dale mapped, here are <strong>7 suggested overnight cities</strong> at roughly 300-mile intervals. Each stop has 1–2 hotel options I'd recommend — all reliable chains with easy highway access, free parking, and breakfast so you can hit the road early. Prices shown are starting nightly rates for your travel dates; your agent will confirm exact availability when we book.
+  </div>
+
+  <div class="anote">
+    <div class="anote-lbl">Suggested Start Date · Saturday, May 23, 2026</div>
+    At 300 miles a day, the ~2,100-mile drive to Eugene takes 7 days. Leaving Saturday May 23 puts you in Eugene Friday May 29 (dinner with your granddaughter), Seattle by Sunday May 31 or Monday June 1 — which gives you 3–4 buffer nights in Seattle before boarding on June 4. You can start a day or two later if you prefer a tighter schedule. Happy to adjust.
+  </div>
+
+  <div class="route">
+
+    <div class="stop">
+      <div class="stop-day">Day 1 · Sat May 23</div>
+      <div class="stop-city">Amarillo, TX</div>
+      <div class="stop-dist">~225 mi on US 287 · About 3.5 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hampton Inn &amp; Suites Amarillo West</strong>
+            <div class="stop-hotel-note">Near I-40, free breakfast, quiet side of town</div>
+          </div>
+          <div class="stop-hotel-price">from $129/night</div>
+        </div>
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Drury Inn &amp; Suites Amarillo</strong>
+            <div class="stop-hotel-note">Free 5:30 Kickback (dinner-style) + free breakfast, indoor pool</div>
+          </div>
+          <div class="stop-hotel-price">from $139/night</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-day">Day 2 · Sun May 24</div>
+      <div class="stop-city">Colorado Springs, CO</div>
+      <div class="stop-dist">~365 mi via US 287, US 40, I-70, I-25 · About 6 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hampton Inn Colorado Springs-Airport</strong>
+            <div class="stop-hotel-note">Easy I-25 access, mountain views, free breakfast</div>
+          </div>
+          <div class="stop-hotel-price">from $149/night</div>
+        </div>
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Holiday Inn Express &amp; Suites Garden of the Gods</strong>
+            <div class="stop-hotel-note">10 min from iconic red rocks if you want an evening drive-through</div>
+          </div>
+          <div class="stop-hotel-price">from $159/night</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-day">Day 3 · Mon May 25</div>
+      <div class="stop-city">Laramie, WY</div>
+      <div class="stop-dist">~220 mi via I-25 and I-80 · About 3.5 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hampton Inn &amp; Suites Laramie</strong>
+            <div class="stop-hotel-note">Newer property, right off I-80, walkable to dinner spots</div>
+          </div>
+          <div class="stop-hotel-price">from $135/night</div>
+        </div>
+      </div>
+      <div class="stop-hotel-note" style="margin-top:8px;font-style:italic">Shorter day by design — Wyoming winds are real; this gives you a buffer and a full morning tomorrow.</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-day">Day 4 · Tue May 26</div>
+      <div class="stop-city">Rock Springs, WY</div>
+      <div class="stop-dist">~320 mi on I-80 · About 5 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Holiday Inn Express Rock Springs Green River</strong>
+            <div class="stop-hotel-note">Clean, reliable, right off I-80 exit 102</div>
+          </div>
+          <div class="stop-hotel-price">from $129/night</div>
+        </div>
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hampton Inn Rock Springs</strong>
+            <div class="stop-hotel-note">Indoor pool, free breakfast, easy fuel access</div>
+          </div>
+          <div class="stop-hotel-price">from $125/night</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-day">Day 5 · Wed May 27</div>
+      <div class="stop-city">Twin Falls, ID</div>
+      <div class="stop-dist">~325 mi via I-80, US 30, I-86, I-84 · About 5 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hampton Inn Twin Falls</strong>
+            <div class="stop-hotel-note">Walking distance to the Snake River Canyon rim — worth the 10-min stop</div>
+          </div>
+          <div class="stop-hotel-price">from $139/night</div>
+        </div>
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Holiday Inn Express Twin Falls</strong>
+            <div class="stop-hotel-note">Quiet location, free breakfast, newer rooms</div>
+          </div>
+          <div class="stop-hotel-price">from $129/night</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-day">Day 6 · Thu May 28</div>
+      <div class="stop-city">Baker City, OR</div>
+      <div class="stop-dist">~310 mi on I-84 · About 5 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Best Western Sunridge Inn</strong>
+            <div class="stop-hotel-note">Historic Oregon Trail town, comfortable mid-range, dinner options in walking distance</div>
+          </div>
+          <div class="stop-hotel-price">from $119/night</div>
+        </div>
+      </div>
+      <div class="stop-hotel-note" style="margin-top:8px;font-style:italic">If you'd rather push further, <strong>La Grande, OR</strong> is another 45 miles with similar lodging.</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-day">Day 7 · Fri May 29</div>
+      <div class="stop-city">Eugene, OR</div>
+      <div class="stop-dist">~370 mi via I-84, US 20, I-5 · About 6.5 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hilton Garden Inn Eugene/Springfield</strong>
+            <div class="stop-hotel-note">Easy meeting spot for granddaughter dinner, plenty of restaurants nearby</div>
+          </div>
+          <div class="stop-hotel-price">from $159/night</div>
+        </div>
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Holiday Inn Express Eugene Downtown</strong>
+            <div class="stop-hotel-note">Closer to University area, walking to casual dinner spots</div>
+          </div>
+          <div class="stop-hotel-price">from $149/night</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="anote">
+    <div class="anote-lbl">Note from Your Agent</div>
+    After Eugene, you've got options: push to Seattle the same evening (~4.5 hrs, late arrival), or split it into two shorter days with an overnight in <strong>Portland, OR</strong> or <strong>Olympia, WA</strong>. Given your 300-mile goal, I'd lean toward splitting — keeps the drive relaxed and you'll arrive in Seattle fresh. Let me know if you want me to add that overnight stop.
+  </div>
+</section>
+
+
+<!-- SEATTLE HOTELS -->
+<section id="t1-seattle" class="fade-in">
+  <div class="eyebrow">Seattle Pre-Cruise · Jun 2–4 + Parking Jun 4–11</div>
+  <h2>Where to Stay &amp; Park in Seattle</h2>
+
+  <div class="guide">
+    This is the one you specifically asked about — <strong>a Seattle hotel where you can stay pre-cruise AND leave your car during the 7-night sailing</strong>. I found three strong options, each with "Park &amp; Cruise" packages. For reference, the Port of Seattle parking you priced was $199 — some of these come in below that when you factor in the nights you'd pay for anyway. <strong>Tap the big black price bar below each hotel to select it</strong> — it will turn green.
+  </div>
+
+  <div class="anote">
+    <div class="anote-lbl">How Park &amp; Cruise Works</div>
+    Most Seattle hotels bundle your pre-cruise night(s) with parking for the duration of your sailing and sometimes a shuttle to Pier 91. Carnival Miracle docks at <strong>Pier 91 (Smith Cove Terminal)</strong>, about 3 miles north of downtown — not walkable with luggage, so shuttle or rideshare is the way. All three options below include parking for all 7 nights of the cruise.
+  </div>
+
+  <!-- HOTEL A -->
+  <div class="hh">
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,#4a5a7a 0%,#6a7a9a 50%,#8a9abd 100%);z-index:0;"></div>
+    <div class="hh-ov">
+      <div class="hh-badge">Option A · Closest to Pier 91</div>
+      <div class="hh-name">Four Points by Sheraton Seattle Downtown</div>
+      <div class="hh-addr">2520 2nd Avenue · Belltown · 2.5 miles to Pier 91</div>
+    </div>
+  </div>
+  <div class="price-bar" data-selectable="hotel" data-value="fourpoints" data-price="489.00"
+       onclick="selectHotel(this,'fourpoints')">
+    <div>
+      <div class="price-bar-label">STARTING FROM · 2 PRE-CRUISE NIGHTS + 7 NIGHTS PARKING</div>
+      <div class="price-bar-note"><span class="tap-prompt">TAP HERE TO SELECT THIS HOTEL</span></div>
+    </div>
+    <div>
+      <div class="price-bar-amt"><span class="from">from</span>$489</div>
+      <div class="price-bar-per">~$195/room-night + parking package</div>
+    </div>
+  </div>
+
+  <div class="room-facts">
+    <div class="rf-cell"><div class="rf-lbl">Room Type</div><div class="rf-val">Two Queens</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Package</div><div class="rf-val">Park &amp; Cruise</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Parking</div><div class="rf-val">7 Nights Incl.</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Check-In</div><div class="rf-val">Jun 2 · 3 PM</div></div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Free breakfast option</span>
+    <span class="tag">Cruise shuttle available</span>
+    <span class="tag">On-site restaurant</span>
+    <span class="tag">Fitness center</span>
+    <span class="tag">Walk to Pike Place (0.6 mi)</span>
+  </div>
+
+  <p style="font-size:16px;line-height:1.7;margin:16px 0">Well-located Belltown property that's become a favorite with Alaska cruisers specifically because of its package pricing and short hop to Pier 91. Rooms are comfortable and updated; not luxurious, but exactly what you need for a cruise launch pad.</p>
+
+  <div class="anote">
+    <div class="anote-lbl">Agent's Note</div>
+    This is usually the value winner for Pier 91 sailings. The parking package math works out well — 2 hotel nights + 7 parking nights often lands under $500 starting, which beats paying $199 for parking alone plus a separate hotel. Confirm shuttle timing at booking; Carnival Miracle boards starting late morning on 6/4.
+  </div>
+
+  <!-- HOTEL B -->
+  <div class="hh" style="margin-top:36px">
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,#6a5840 0%,#8a6b45 50%,#b8945e 100%);z-index:0;"></div>
+    <div class="hh-ov">
+      <div class="hh-badge">Option B · Historic &amp; Central</div>
+      <div class="hh-name">Mayflower Park Hotel</div>
+      <div class="hh-addr">405 Olive Way · Downtown · 3 miles to Pier 91</div>
+    </div>
+  </div>
+  <div class="price-bar" data-selectable="hotel" data-value="mayflower" data-price="579.00"
+       onclick="selectHotel(this,'mayflower')">
+    <div>
+      <div class="price-bar-label">STARTING FROM · 2 PRE-CRUISE NIGHTS + 7 NIGHTS PARKING</div>
+      <div class="price-bar-note"><span class="tap-prompt">TAP HERE TO SELECT THIS HOTEL</span></div>
+    </div>
+    <div>
+      <div class="price-bar-amt"><span class="from">from</span>$579</div>
+      <div class="price-bar-per">~$229/room-night + parking package</div>
+    </div>
+  </div>
+
+  <div class="room-facts">
+    <div class="rf-cell"><div class="rf-lbl">Room Type</div><div class="rf-val">Double Queen</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Package</div><div class="rf-val">Cruise Stay</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Parking</div><div class="rf-val">7 Nights Incl.</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Check-In</div><div class="rf-val">Jun 2 · 3 PM</div></div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Historic 1927 hotel</span>
+    <span class="tag">Oliver's Lounge (classic martinis)</span>
+    <span class="tag">Scheduled Pier 91 shuttle ($15/pp)</span>
+    <span class="tag">Connected to Westlake Center</span>
+    <span class="tag">2 blocks to Pike Place</span>
+  </div>
+
+  <p style="font-size:16px;line-height:1.7;margin:16px 0">A Seattle landmark since the 1920s — charming, old-world, and right in the heart of downtown. If you want Seattle to feel like Seattle before you board, this is the one. Smaller rooms but full of character.</p>
+
+  <div class="anote">
+    <div class="anote-lbl">Agent's Note</div>
+    The shuttle is reservation-based and $15 per person one-way — book at the bellman desk on arrival. If you'd rather keep it simple, a rideshare to Pier 91 is about $18–25 and door-to-door. Mayflower runs a cruise package specifically for your dates; I'll confirm exact 2026 package terms.
+  </div>
+
+  <!-- HOTEL C -->
+  <div class="hh" style="margin-top:36px">
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,#2d4a3a 0%,#4a6a52 50%,#7a9878 100%);z-index:0;"></div>
+    <div class="hh-ov">
+      <div class="hh-badge">Option C · Newer, Modern</div>
+      <div class="hh-name">The Sound Hotel Seattle Belltown</div>
+      <div class="hh-addr">2120 4th Avenue · Belltown · 3 miles to Pier 91</div>
+    </div>
+  </div>
+  <div class="price-bar" data-selectable="hotel" data-value="sound" data-price="619.00"
+       onclick="selectHotel(this,'sound')">
+    <div>
+      <div class="price-bar-label">STARTING FROM · 2 PRE-CRUISE NIGHTS + 7 NIGHTS PARKING</div>
+      <div class="price-bar-note"><span class="tap-prompt">TAP HERE TO SELECT THIS HOTEL</span></div>
+    </div>
+    <div>
+      <div class="price-bar-amt"><span class="from">from</span>$619</div>
+      <div class="price-bar-per">~$245/room-night + parking package</div>
+    </div>
+  </div>
+
+  <div class="room-facts">
+    <div class="rf-cell"><div class="rf-lbl">Room Type</div><div class="rf-val">Two Queens</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Package</div><div class="rf-val">Park &amp; Cruise</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Parking</div><div class="rf-val">7 Nights Incl.</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Check-In</div><div class="rf-val">Jun 2 · 3 PM</div></div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Opened 2019 · modern rooms</span>
+    <span class="tag">On-site restaurant &amp; bar</span>
+    <span class="tag">Private transfer option ($75/vehicle)</span>
+    <span class="tag">Quiet Belltown block</span>
+    <span class="tag">Walk to Space Needle (0.8 mi)</span>
+  </div>
+
+  <p style="font-size:16px;line-height:1.7;margin:16px 0">The newest of the three and the most design-forward — bigger rooms, full-size baths, and a genuinely good on-site restaurant (The Wildlark). Partners with All Black Limo for flat-rate $75 private transfers to Pier 91.</p>
+
+  <div class="anote">
+    <div class="anote-lbl">Agent's Note</div>
+    Best pick if you want a little more space and modern comfort after 7 days of road hotels. The $75 flat-rate private transfer is a good deal for two people with luggage — cheaper than the Mayflower shuttle if you have more than a couple of bags. Ask for a room on floors 8+ for city views.
+  </div>
+</section>
+
+<!-- CRUISE INFO -->
+<section id="t1-cruise" class="fade-in">
+  <div class="eyebrow">Your Cruise · June 4 – 11, 2026</div>
+  <h2>Carnival Miracle · Inside Passage</h2>
+
+  <div class="guide">
+    You're already booked on the Carnival Miracle, so this section is just a quick reference — no decisions needed here. The 7-night Inside Passage itinerary is one of the most scenic routes in Alaska, with Glacier Bay as the highlight.
+  </div>
+
+  <div class="glance-grid">
+    <div class="glance-cell">
+      <div class="glance-lbl">Departure</div>
+      <div class="glance-val">Thu, Jun 4</div>
+      <div class="glance-sub">Seattle Pier 91 · ~3:30 PM</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Return</div>
+      <div class="glance-val">Thu, Jun 11</div>
+      <div class="glance-sub">Seattle Pier 91 · ~7:00 AM</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Ports of Call</div>
+      <div class="glance-val">4 Stops</div>
+      <div class="glance-sub">Alaska Inside Passage</div>
+    </div>
+  </div>
+
+  <div class="anote">
+    <div class="anote-lbl">Pier 91 Boarding Logistics</div>
+    Boarding typically opens late morning with a 3:30 PM departure. Plan to arrive at the terminal between 11:00 AM and 1:00 PM for the smoothest check-in. Your hotel (whichever you choose) can arrange your transfer; don't wait until the morning of to sort it. Luggage tags from Carnival arrive roughly 30 days before sailing.
+  </div>
+</section>
+
+
+<!-- RETURN ROUTE -->
+<section id="t1-return" class="fade-in">
+  <div class="eyebrow">Return Route · Seattle → Amery, WI</div>
+  <h2>The Scenic Way Home</h2>
+
+  <div class="guide">
+    The fun half. You mentioned wanting Mt. Rushmore and Yellowstone on the way back, "knowing we'll get off 90 and back on to see the cool stuff." I built that in — <strong>6 overnight cities across 7 days</strong>, with Yellowstone as a dedicated day-trip so you're not driving past it with a windshield view. Dinner, then feet up. Here's the plan:
+  </div>
+
+  <div class="route">
+
+    <div class="stop">
+      <div class="stop-day">Day 1 · Thu Jun 11</div>
+      <div class="stop-city">Missoula, MT</div>
+      <div class="stop-dist">~480 mi from Seattle on I-90 · About 7 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Holiday Inn Downtown Missoula</strong>
+            <div class="stop-hotel-note">Right on the Clark Fork River, walkable downtown, great dinner spots</div>
+          </div>
+          <div class="stop-hotel-price">from $159/night</div>
+        </div>
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hampton Inn Missoula</strong>
+            <div class="stop-hotel-note">Off I-90 exit 101, free breakfast, quieter night</div>
+          </div>
+          <div class="stop-hotel-price">from $145/night</div>
+        </div>
+      </div>
+      <div class="stop-hotel-note" style="margin-top:8px;font-style:italic">Big first day after debarkation (debarkation usually wraps by 10 AM, giving you a full driving day). If that's too much, Spokane is a good 280-mi alternative.</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-day">Day 2 · Fri Jun 12</div>
+      <div class="stop-city">Bozeman, MT</div>
+      <div class="stop-dist">~205 mi on I-90 · About 3 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hilton Garden Inn Bozeman</strong>
+            <div class="stop-hotel-note">Short day by design — get in early and rest up for Yellowstone tomorrow</div>
+          </div>
+          <div class="stop-hotel-price">from $179/night</div>
+        </div>
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Home2 Suites Bozeman</strong>
+            <div class="stop-hotel-note">Suite layout with kitchenette, great for a 2-night stay if you want a base for Yellowstone</div>
+          </div>
+          <div class="stop-hotel-price">from $189/night</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop" style="background:var(--gold-pale);border-color:var(--gold-lt)">
+      <div class="stop-day">Day 3 · Sat Jun 13</div>
+      <div class="stop-city">Yellowstone Day Trip + Bozeman (2nd night)</div>
+      <div class="stop-dist">Day loop from Bozeman · ~200 mi total</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel-name" style="padding:8px 0">
+          <strong>Suggested route:</strong> Bozeman → Gardiner (north entrance) → Mammoth Hot Springs → Tower-Roosevelt → back to Bozeman. That's the most scenic "in and out" and avoids the heaviest traffic routes. Full day — pack snacks and patience for wildlife stops. Same hotel second night.
+        </div>
+      </div>
+      <div class="stop-hotel-note" style="font-style:italic;margin-top:4px">Alternative: add a 3rd Bozeman night and do the full Old Faithful loop the next day. Let me know if you want that built in.</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-day">Day 4 · Sun Jun 14</div>
+      <div class="stop-city">Rapid City, SD</div>
+      <div class="stop-dist">~560 mi on I-90 · About 8.5 hours (long day)</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Holiday Inn Express Rapid City - Rushmore</strong>
+            <div class="stop-hotel-note">Gateway hotel to Mt. Rushmore (~25 mi), free breakfast, indoor pool</div>
+          </div>
+          <div class="stop-hotel-price">from $169/night</div>
+        </div>
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hampton Inn Rapid City</strong>
+            <div class="stop-hotel-note">Close to I-90, reliable rest stop, well-rated</div>
+          </div>
+          <div class="stop-hotel-price">from $155/night</div>
+        </div>
+      </div>
+      <div class="stop-hotel-note" style="margin-top:8px;font-style:italic">Long day — if you'd rather break it up, <strong>Billings, MT</strong> (~235 mi from Bozeman) is a good midpoint with similar chains.</div>
+    </div>
+
+    <div class="stop" style="background:var(--gold-pale);border-color:var(--gold-lt)">
+      <div class="stop-day">Day 5 · Mon Jun 15</div>
+      <div class="stop-city">Mt. Rushmore + Badlands · Rapid City (2nd night)</div>
+      <div class="stop-dist">Day loops from Rapid City · ~180 mi total</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel-name" style="padding:8px 0">
+          <strong>Morning:</strong> Mt. Rushmore (25 mi, 30 min drive). <strong>Afternoon:</strong> Badlands National Park loop (75 mi east on I-90, a loop road through the park, back via Wall Drug if you want the kitsch). Back to Rapid City for dinner. Same hotel second night.
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-day">Day 6 · Tue Jun 16</div>
+      <div class="stop-city">Sioux Falls, SD</div>
+      <div class="stop-dist">~350 mi on I-90 · About 5 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Hilton Garden Inn Downtown Sioux Falls</strong>
+            <div class="stop-hotel-note">Walkable to Falls Park, good dinner district, easy I-29 access</div>
+          </div>
+          <div class="stop-hotel-price">from $159/night</div>
+        </div>
+        <div class="stop-hotel">
+          <div class="stop-hotel-name">
+            <strong>Holiday Inn Express Sioux Falls-At the Empire Mall</strong>
+            <div class="stop-hotel-note">Easy I-90 access, free breakfast, plenty of dining adjacent</div>
+          </div>
+          <div class="stop-hotel-price">from $139/night</div>
+        </div>
+      </div>
+      <div class="stop-hotel-note" style="margin-top:8px;font-style:italic">Optional detour en route: <strong>Mitchell, SD</strong> has the famous Corn Palace if you want to break up the drive.</div>
+    </div>
+
+    <div class="stop" style="background:var(--gold-pale);border-color:var(--gold-lt)">
+      <div class="stop-day">Day 7 · Wed Jun 17</div>
+      <div class="stop-city">Home to Amery, WI</div>
+      <div class="stop-dist">~330 mi on I-90 and north on I-35 · About 5 hours</div>
+      <div class="stop-hotels">
+        <div class="stop-hotel-name" style="padding:8px 0">
+          <strong>Final stretch.</strong> Straight shot home — last leg to the Do Nothing campground. Welcome back.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="anote">
+    <div class="anote-lbl">Total Return Trip</div>
+    ~2,125 miles across 7 days with two full sightseeing days built in. Average driving day is about 320 miles, which fits your 300/day target. If you'd prefer any stop swapped for a different city, or want to add a 3rd Yellowstone night to do the Old Faithful loop, just tell me and I'll rebuild.
+  </div>
+</section>
+
+<!-- COST SUMMARY -->
+<section id="t1-costs" class="fade-in">
+  <div class="eyebrow">Cost Summary</div>
+  <h2>What It Adds Up To</h2>
+
+  <div class="guide">
+    Here's the running estimate. Tap a Seattle hotel above to see your total update — the other hotels will gray out so you can see what your selection costs. <strong>Road-trip hotel totals use the lower of the two options at each stop.</strong> Your cruise fare is separate (already booked with Carnival directly) and not included here.
+  </div>
+
+  <div class="cost-table">
+    <div class="cost-row header">
+      <div>Item</div>
+      <div>Starting Price</div>
+    </div>
+    <div class="cost-row">
+      <div class="cost-label">Outbound road-trip hotels (6 nights)<span class="sub">Amarillo, Colorado Springs, Laramie, Rock Springs, Twin Falls, Baker City, Eugene</span></div>
+      <div class="cost-val">~$855</div>
+    </div>
+
+    <div class="cost-row hotel-row active" id="cost-fourpoints">
+      <div class="cost-label">Seattle: Four Points by Sheraton<span class="sub">2 pre-cruise nights + 7 nights parking</span></div>
+      <div class="cost-val">$489</div>
+    </div>
+    <div class="cost-row hotel-row inactive" id="cost-mayflower">
+      <div class="cost-label">Seattle: Mayflower Park Hotel<span class="sub">2 pre-cruise nights + 7 nights parking</span></div>
+      <div class="cost-val">$579</div>
+    </div>
+    <div class="cost-row hotel-row inactive" id="cost-sound">
+      <div class="cost-label">Seattle: The Sound Hotel<span class="sub">2 pre-cruise nights + 7 nights parking</span></div>
+      <div class="cost-val">$619</div>
+    </div>
+
+    <div class="cost-row">
+      <div class="cost-label">Return road-trip hotels (6 nights)<span class="sub">Missoula, Bozeman x2, Rapid City x2, Sioux Falls</span></div>
+      <div class="cost-val">~$935</div>
+    </div>
+    <div class="cost-row">
+      <div class="cost-label">Fuel estimate (~4,800 mi at avg 25 mpg · $3.60/gal)<span class="sub">Subject to actual vehicle MPG and pump price</span></div>
+      <div class="cost-val">~$690</div>
+    </div>
+  </div>
+
+  <div class="total-bar">
+    <div>
+      <div class="total-label">ESTIMATED STARTING FROM</div>
+      <div style="font-size:12px;color:var(--gold-lt);margin-top:4px;letter-spacing:0.05em">Hotels, packages, and fuel · Cruise fare separate</div>
+    </div>
+    <div class="total-amt" id="t1-total"><span class="from">from</span>$2,969</div>
+  </div>
+
+  <div class="cost-disc">All prices shown are starting estimates based on the quoted room class. Final pricing confirmed at booking and may vary based on room selection, availability, and applicable fees.</div>
+</section>
+
+<!-- CONTACT TRIP 1 -->
+<section class="contact-sec" id="t1-contact">
+  <div class="contact-inner">
+    <div class="eyebrow" style="color:var(--gold);justify-content:center;display:flex"><span>Ready to book</span></div>
+    <h2 style="font-family:'Cormorant Garamond',serif">Let's Make This Happen</h2>
+    <p style="font-size:17px;line-height:1.65;color:var(--gold-lt);margin-bottom:8px">Call or email to confirm your stops, lock in Seattle, and get rooms reserved before the June cruise season pushes rates higher.</p>
+
+    <div class="contact-buttons">
+      <a href="tel:+17372717668" class="cbtn">☎ Call (737) 271-7668</a>
+      <a href="mailto:bookings@signatureelitetravel.com" class="cbtn outline">✉ Email Us</a>
+    </div>
+
+    <div class="voucher-note">
+      Road-trip hotel rates tend to jump 15–25% in late May/early June as Yellowstone season kicks in — let's lock in your first 3 nights as soon as you've picked a Seattle option.
+    </div>
+
+    <div class="tri-dia" style="margin-top:20px">◆ ◆ ◆</div>
+
+    <div class="foot-disc">
+      <div class="foot-brand">Signature Elite Travel</div>
+      (737) 271-7668 · bookings@signatureelitetravel.com<br><br>
+      All prices shown are starting estimates based on the quoted room class. Final pricing confirmed at booking and may vary based on room selection, availability, and applicable fees. Cruise fare quoted and booked separately through Carnival. Hotel package terms subject to change.
+    </div>
+  </div>
+</section>
+
+</div><!-- end trip-1 -->
+
+
+<!-- ================================================================= -->
+<!-- =========================== TRIP 2 ============================== -->
+<!-- ================================================================= -->
+<div class="trip" id="trip-2">
+
+<!-- HERO -->
+<section class="hero" id="t2-welcome" style="max-width:none;margin:0">
+  <div class="hero-inner">
+    <div class="tri-dia">◆ ◆ ◆</div>
+    <div class="hero-brand">Signature Elite Travel</div>
+    <div class="hero-name">Dale &amp; Lynn</div>
+    <div class="hero-occ">Your First California Trip &amp; 14-Night Hawaii Cruise</div>
+    <div class="hero-pills">
+      <span class="hero-pill">Nov 8 – Nov 22, 2026</span>
+      <span class="hero-pill">Departs Long Beach, CA</span>
+      <span class="hero-pill">4 Hawaiian Ports</span>
+    </div>
+    <div class="hero-pills">
+      <span class="hero-pill">2 Travelers</span>
+      <span class="hero-pill">Fly American · SPS → DFW → LGB</span>
+      <span class="hero-pill">Pre-Cruise: Queen Mary or Alternative</span>
+    </div>
+    <div class="scroll-cue">Scroll to explore options</div>
+  </div>
+</section>
+
+<!-- AT A GLANCE -->
+<section id="t2-glance" class="fade-in">
+  <div class="eyebrow">At a Glance</div>
+  <h2>Your Hawaii Cruise Trip</h2>
+
+  <div class="guide">
+    Hi Lynn — since this is your first time in California, I built in a pre-cruise night (or two) so you can actually see Long Beach before you sail. Queen Mary is absolutely doable and you'll love the history; I've also included a couple of alternatives in case you'd rather stay somewhere more modern. <strong>The cruise line itself wasn't specified in your notes — so I pulled the two options that match your Nov 8 departure from Long Beach.</strong>
+  </div>
+
+  <div class="glance-grid">
+    <div class="glance-cell">
+      <div class="glance-lbl">Travel Dates</div>
+      <div class="glance-val">Nov 8 – 22</div>
+      <div class="glance-sub">14 nights · Sunday to Sunday</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Travelers</div>
+      <div class="glance-val">2 Adults</div>
+      <div class="glance-sub">Dale &amp; Lynn</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Departure Port</div>
+      <div class="glance-val">Long Beach</div>
+      <div class="glance-sub">Cruise Terminal · LGB</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Pre-Cruise Nights</div>
+      <div class="glance-val">1 – 2</div>
+      <div class="glance-sub">Your choice · see options</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Flight Origin</div>
+      <div class="glance-val">SPS or OKC</div>
+      <div class="glance-sub">American, via DFW</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-lbl">Ports of Call</div>
+      <div class="glance-val">4 + Ensenada</div>
+      <div class="glance-sub">Maui, Oahu, Kauai, Hawaii</div>
+    </div>
+  </div>
+</section>
+
+<!-- CRUISE OPTIONS -->
+<section id="t2-cruise-options" class="fade-in">
+  <div class="eyebrow">Cruise Line · Two options for Nov 8 Departure</div>
+  <h2>Pick Your Ship</h2>
+
+  <div class="guide">
+    Both of these depart Long Beach on Sunday, November 8, 2026. The <strong>Carnival Radiance</strong> is the clean match for your stated 14-day window — returns exactly on Nov 22 as you planned. The <strong>Princess option</strong> is 16 days, so it would push your return to Nov 24. If you're flexible on return date, Princess is a nice step up in service level. <strong>Tap the option you'd like to build around.</strong>
+  </div>
+
+  <div class="fopt" data-grp="cruise" onclick="selCruise(this,'carnival','Carnival Radiance · 14 nights')">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Carnival Radiance — 14 Nights (Matches Your Dates)</div>
+      <div class="fdetail">Nov 8 → Nov 22 · Long Beach round-trip · Maui, Honolulu, Kauai (Nawiliwili), Hilo, Ensenada · From <strong>$1,029/pp</strong> interior</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="cruise" onclick="selCruise(this,'princess','Princess · 16 nights')">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Princess Cruises — 16 Nights (Extended Itinerary)</div>
+      <div class="fdetail">Nov 8 → Nov 24 · Round-trip Los Angeles · Hilo, Honolulu, Kauai, Maui, Ensenada · From <strong>$1,399/pp</strong> interior</div>
+    </div>
+  </div>
+
+  <div class="anote">
+    <div class="anote-lbl">Agent's Note</div>
+    Pricing shown is starting-interior per person. Both cruise lines offer Ocean View, Balcony, and Suite upgrades; for a 14-day sailing with many sea days, a Balcony is often worth the jump — I'd recommend we discuss that before booking. Also worth knowing: Princess visits the same islands but in different order, and their ships tend to be quieter/more adult-oriented than Carnival.
+  </div>
+</section>
+
+<!-- FLIGHTS -->
+<section id="t2-flights" class="fade-in">
+  <div class="eyebrow">Flights · SPS or OKC to Long Beach</div>
+  <h2>Getting to California</h2>
+
+  <div class="guide">
+    You asked: fly to Long Beach or LAX? Short answer: <strong>Long Beach (LGB) if you can — it's tiny, stress-free, and 15 minutes from the cruise port and Queen Mary</strong>. LAX has more flight options but it's an hour+ to Long Beach with traffic. Here are the realistic American options from your preferred origins — <strong>tap the pair that works best</strong>. Final fares confirmed at booking.
+  </div>
+
+  <div class="flight-group-label">OUTBOUND — SATURDAY, NOV 7 (FLY IN DAY BEFORE THE CRUISE)</div>
+
+  <div class="fopt" data-grp="out" onclick="selFlight(this,'out','SPS → DFW → LGB')">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">SPS (Wichita Falls) → DFW → LGB (Long Beach)</div>
+      <div class="fdetail">American Eagle + American · Connection through DFW · Typical total ~6.5 hours · Best connection option</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="out" onclick="selFlight(this,'out','OKC → DFW → LGB')">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">OKC (Oklahoma City) → DFW → LGB (Long Beach)</div>
+      <div class="fdetail">American + American · Connection through DFW · Typical total ~5.5 hours · Shorter total travel time</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="out" onclick="selFlight(this,'out','OKC → LAX nonstop')">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">OKC (Oklahoma City) → LAX (Los Angeles) Nonstop</div>
+      <div class="fdetail">American · Nonstop · ~3 hours flight + ~1 hr Uber to Long Beach ($60–85) · Simpler but longer ground</div>
+    </div>
+  </div>
+
+  <div class="flight-group-label">RETURN — SUNDAY, NOV 22 (OR NOV 24 IF PRINCESS)</div>
+
+  <div class="fopt" data-grp="back" onclick="selFlight(this,'back','LGB → DFW → SPS')">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">LGB (Long Beach) → DFW → SPS (Wichita Falls)</div>
+      <div class="fdetail">American + American Eagle · Same routing in reverse · Typical ~7 hours total</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="back" onclick="selFlight(this,'back','LGB → DFW → OKC')">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">LGB (Long Beach) → DFW → OKC (Oklahoma City)</div>
+      <div class="fdetail">American · Typical ~6 hours total</div>
+    </div>
+  </div>
+
+  <div class="anote">
+    <div class="anote-lbl">Why Long Beach over LAX</div>
+    LGB is a small airport — about 15 minutes by Uber to the Queen Mary and cruise port (~$18–25). LAX is an hour-plus in traffic and the Uber runs $65–90. Unless you find a significantly cheaper nonstop from OKC or DFW, LGB is the play. I'll price both when we book and show you the trade-off.
+  </div>
+</section>
+
+<!-- PRE-CRUISE HOTELS -->
+<section id="t2-precruise" class="fade-in">
+  <div class="eyebrow">Pre-Cruise Stay · Long Beach</div>
+  <h2>Your First California Nights</h2>
+
+  <div class="guide">
+    Since it's your first time in California, I'd strongly recommend <strong>2 nights</strong> pre-cruise, not just one — gives you a full day to explore without jet lag. I've got three options, with Queen Mary as Option A because you specifically asked about it. <strong>Tap the big black price bar to select.</strong>
+  </div>
+
+  <!-- HOTEL A: Queen Mary -->
+  <div class="hh">
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,#1f3a5f 0%,#2c5282 50%,#4a7db8 100%);z-index:0;"></div>
+    <div class="hh-ov">
+      <div class="hh-badge">Option A · The One You Asked About</div>
+      <div class="hh-name">The Queen Mary</div>
+      <div class="hh-addr">1126 Queens Highway · Long Beach · Walkable to cruise terminal</div>
+    </div>
+  </div>
+  <div class="price-bar" data-selectable="hotel" data-value="queenmary" data-price="446.00"
+       onclick="selectHotel2(this,'queenmary')">
+    <div>
+      <div class="price-bar-label">STARTING FROM · 2 PRE-CRUISE NIGHTS</div>
+      <div class="price-bar-note"><span class="tap-prompt">TAP HERE TO SELECT THIS HOTEL</span></div>
+    </div>
+    <div>
+      <div class="price-bar-amt"><span class="from">from</span>$446</div>
+      <div class="price-bar-per">~$223/night + fees</div>
+    </div>
+  </div>
+
+  <div class="room-facts">
+    <div class="rf-cell"><div class="rf-lbl">Room Type</div><div class="rf-val">Deluxe Stateroom</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Style</div><div class="rf-val">Art Deco Historic</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Parking</div><div class="rf-val">On-site · Paid</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Check-In</div><div class="rf-val">Nov 6 · 4 PM</div></div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Historic 1930s ocean liner</span>
+    <span class="tag">2 on-site restaurants</span>
+    <span class="tag">Ghost tours &amp; Glory Days tour</span>
+    <span class="tag">Speakeasy bar onboard</span>
+    <span class="tag">15 min to Long Beach cruise terminal</span>
+  </div>
+
+  <p style="font-size:16px;line-height:1.7;margin:16px 0">Exactly what it sounds like — you sleep on a real 1930s ocean liner permanently docked in Long Beach Harbor. Art Deco paneling, original fittings, panoramic harbor views, and genuinely good on-board dining. Worth the night just for the experience.</p>
+
+  <div class="anote">
+    <div class="anote-lbl">Agent's Note</div>
+    A few practical things: rooms are smaller than modern hotels (original ship dimensions), walls are a bit thin, and some guests mention noise — none of which seem to bother first-timers who love the novelty. Ask for a harbor-view room. Parking and a resort fee add to the base rate; I'll confirm the all-in number when we book. Great match if you want California to feel like California.
+  </div>
+
+  <!-- HOTEL B: Hyatt Centric -->
+  <div class="hh" style="margin-top:36px">
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,#c87941 0%,#d89559 50%,#e8b378 100%);z-index:0;"></div>
+    <div class="hh-ov">
+      <div class="hh-badge">Option B · Modern Comfort</div>
+      <div class="hh-name">Hyatt Centric The Pike Long Beach</div>
+      <div class="hh-addr">285 Bay Street · Downtown Long Beach · 0.7 mi to cruise terminal</div>
+    </div>
+  </div>
+  <div class="price-bar" data-selectable="hotel" data-value="hyatt" data-price="418.00"
+       onclick="selectHotel2(this,'hyatt')">
+    <div>
+      <div class="price-bar-label">STARTING FROM · 2 PRE-CRUISE NIGHTS</div>
+      <div class="price-bar-note"><span class="tap-prompt">TAP HERE TO SELECT THIS HOTEL</span></div>
+    </div>
+    <div>
+      <div class="price-bar-amt"><span class="from">from</span>$418</div>
+      <div class="price-bar-per">~$209/night + fees</div>
+    </div>
+  </div>
+
+  <div class="room-facts">
+    <div class="rf-cell"><div class="rf-lbl">Room Type</div><div class="rf-val">Two Queens · Bay View</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Style</div><div class="rf-val">Modern · 2017 build</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Parking</div><div class="rf-val">Valet available</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Check-In</div><div class="rf-val">Nov 6 · 3 PM</div></div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Steps from Aquarium of the Pacific</span>
+    <span class="tag">Rainbow Lagoon views</span>
+    <span class="tag">Rooftop pool</span>
+    <span class="tag">Walkable to The Pike restaurants</span>
+    <span class="tag">0.7 mi to cruise terminal</span>
+  </div>
+
+  <p style="font-size:16px;line-height:1.7;margin:16px 0">Modern hotel right in the walkable entertainment district next to the Aquarium. If you'd rather skip the "sleeping on a historic ship" experience and just have a comfortable room with easy dinner options out the front door, this is the pick.</p>
+
+  <div class="anote">
+    <div class="anote-lbl">Agent's Note</div>
+    You can walk to the cruise terminal if you're light on luggage (less than a mile, flat) — otherwise a $10 Uber gets you there. Request a bay-view room; the city-view rooms face a parking structure. Restaurants at The Pike immediately next door range from casual to nice, no reservations needed on a Friday.
+  </div>
+
+  <!-- HOTEL C: Hotel Maya -->
+  <div class="hh" style="margin-top:36px">
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,#6b7f5b 0%,#8ca178 50%,#b5c79d 100%);z-index:0;"></div>
+    <div class="hh-ov">
+      <div class="hh-badge">Option C · Best Waterfront Views</div>
+      <div class="hh-name">Hotel Maya — a DoubleTree by Hilton</div>
+      <div class="hh-addr">700 Queensway Drive · Long Beach · Across water from Queen Mary</div>
+    </div>
+  </div>
+  <div class="price-bar" data-selectable="hotel" data-value="maya" data-price="398.00"
+       onclick="selectHotel2(this,'maya')">
+    <div>
+      <div class="price-bar-label">STARTING FROM · 2 PRE-CRUISE NIGHTS</div>
+      <div class="price-bar-note"><span class="tap-prompt">TAP HERE TO SELECT THIS HOTEL</span></div>
+    </div>
+    <div>
+      <div class="price-bar-amt"><span class="from">from</span>$398</div>
+      <div class="price-bar-per">~$199/night + fees</div>
+    </div>
+  </div>
+
+  <div class="room-facts">
+    <div class="rf-cell"><div class="rf-lbl">Room Type</div><div class="rf-val">Waterfront Queens</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Style</div><div class="rf-val">Mid-Century · Resort</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Parking</div><div class="rf-val">Self-park avail.</div></div>
+    <div class="rf-cell"><div class="rf-lbl">Check-In</div><div class="rf-val">Nov 6 · 4 PM</div></div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Waterfront rooms face Queen Mary</span>
+    <span class="tag">Outdoor heated pool</span>
+    <span class="tag">Fuego on-site restaurant</span>
+    <span class="tag">Free water taxi to downtown</span>
+    <span class="tag">1.5 mi to cruise terminal</span>
+  </div>
+
+  <p style="font-size:16px;line-height:1.7;margin:16px 0">A quiet waterfront resort tucked on a small peninsula — you get the Queen Mary view without actually sleeping on it. Pool deck is lovely; the free water taxi into downtown is a nice perk for first-time visitors who want to explore without driving.</p>
+
+  <div class="anote">
+    <div class="anote-lbl">Agent's Note</div>
+    The water taxi to downtown is genuinely useful and free for guests — hop over for dinner at Pine Avenue, hop back after. DoubleTree status means you get the warm cookie at check-in (small but genuinely nice touch). Best value of the three on a per-night basis.
+  </div>
+</section>
+
+<!-- EXPLORE MORE -->
+<section id="t2-explore" class="fade-in">
+  <div class="eyebrow">Explore More · Long Beach Attractions</div>
+  <h2>Things to Do Before You Sail</h2>
+
+  <div class="guide">
+    If you take the 2-night pre-cruise stay, you'll have a full day (Saturday Nov 7) in Long Beach. Here are the things worth doing — <strong>tap any that interest you</strong> and we'll make sure your hotel has what you need nearby.
+  </div>
+
+  <div class="flight-group-label">ATTRACTIONS &amp; LANDMARKS</div>
+
+  <div class="fopt" data-grp="explore" onclick="toggleOpt(this)">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Aquarium of the Pacific</div>
+      <div class="fdetail">One of the largest aquariums in the US · ~3 hours · ~$45/pp</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="explore" onclick="toggleOpt(this)">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Queen Mary Tours (even if not staying)</div>
+      <div class="fdetail">Glory Days Historic Tour · ~1.5 hours · ~$25/pp</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="explore" onclick="toggleOpt(this)">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Naples Island Gondola Ride</div>
+      <div class="fdetail">Real Venetian-style canal gondola tour · ~1 hour · ~$125/couple</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="explore" onclick="toggleOpt(this)">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Walk the Pike Outlets &amp; Rainbow Harbor</div>
+      <div class="fdetail">Free · Waterfront walking district with shops, restaurants, marina views</div>
+    </div>
+  </div>
+
+  <div class="flight-group-label">DINING — LONG BEACH WATERFRONT</div>
+
+  <div class="fopt" data-grp="explore" onclick="toggleOpt(this)">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Parker's Lighthouse</div>
+      <div class="fdetail">Classic seafood, marina views, perfect sunset dinner · ~$55–75/pp</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="explore" onclick="toggleOpt(this)">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Sir Winston's (on Queen Mary)</div>
+      <div class="fdetail">Upscale dinner on the ship itself, jacket suggested · ~$65–90/pp</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="explore" onclick="toggleOpt(this)">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Bo-beau Kitchen + Rooftap</div>
+      <div class="fdetail">Farm-to-table rooftop with harbor views, casual-nice · ~$40–60/pp</div>
+    </div>
+  </div>
+
+  <div class="fopt" data-grp="explore" onclick="toggleOpt(this)">
+    <div class="radio"></div>
+    <div style="flex:1">
+      <div class="ftime">Joe Jost's (since 1924)</div>
+      <div class="fdetail">Beloved Long Beach institution · pickled eggs &amp; sandwiches · ~$15–25/pp</div>
+    </div>
+  </div>
+</section>
+
+<!-- COST SUMMARY TRIP 2 -->
+<section id="t2-costs" class="fade-in">
+  <div class="eyebrow">Cost Summary</div>
+  <h2>What It Adds Up To</h2>
+
+  <div class="guide">
+    Quick math on the trip. <strong>Tap a pre-cruise hotel above</strong> to see your total update. Flight and cruise prices shown are <strong>starting-from</strong> estimates — actual rates depend on which cabin class you pick (Interior vs. Balcony especially), and American's fares float.
+  </div>
+
+  <div class="cost-table">
+    <div class="cost-row header">
+      <div>Item</div>
+      <div>Starting Price</div>
+    </div>
+    <div class="cost-row">
+      <div class="cost-label">Carnival Radiance · 14-night Hawaii cruise<span class="sub">Interior · 2 travelers · Port fees &amp; taxes included</span></div>
+      <div class="cost-val">~$2,058</div>
+    </div>
+    <div class="cost-row">
+      <div class="cost-label">American flights · OKC or SPS ↔ LGB<span class="sub">Main Cabin, 2 travelers, round-trip estimate</span></div>
+      <div class="cost-val">~$790</div>
+    </div>
+
+    <div class="cost-row hotel-row active" id="cost-queenmary">
+      <div class="cost-label">Pre-Cruise: Queen Mary<span class="sub">2 nights · Deluxe stateroom</span></div>
+      <div class="cost-val">$446</div>
+    </div>
+    <div class="cost-row hotel-row inactive" id="cost-hyatt">
+      <div class="cost-label">Pre-Cruise: Hyatt Centric The Pike<span class="sub">2 nights · Bay-view</span></div>
+      <div class="cost-val">$418</div>
+    </div>
+    <div class="cost-row hotel-row inactive" id="cost-maya">
+      <div class="cost-label">Pre-Cruise: Hotel Maya<span class="sub">2 nights · Waterfront</span></div>
+      <div class="cost-val">$398</div>
+    </div>
+
+    <div class="cost-row">
+      <div class="cost-label">Airport &amp; hotel transfers<span class="sub">LGB → hotel → cruise terminal estimates</span></div>
+      <div class="cost-val">~$70</div>
+    </div>
+  </div>
+
+  <div class="total-bar">
+    <div>
+      <div class="total-label">ESTIMATED STARTING FROM</div>
+      <div style="font-size:12px;color:var(--gold-lt);margin-top:4px;letter-spacing:0.05em">Cruise, flights, hotel &amp; transfers · Excludes onboard spend</div>
+    </div>
+    <div class="total-amt" id="t2-total"><span class="from">from</span>$3,364</div>
+  </div>
+
+  <div class="cost-disc">All prices shown are starting estimates based on the quoted room class and interior cabin. Final pricing confirmed at booking and may vary based on cabin selection, fare class, availability, and applicable fees.</div>
+</section>
+
+<!-- CONTACT TRIP 2 -->
+<section class="contact-sec" id="t2-contact">
+  <div class="contact-inner">
+    <div class="eyebrow" style="color:var(--gold);justify-content:center;display:flex"><span>Ready to book</span></div>
+    <h2 style="font-family:'Cormorant Garamond',serif">Let's Lock This In</h2>
+    <p style="font-size:17px;line-height:1.65;color:var(--gold-lt);margin-bottom:8px">Hawaii cruise cabins on the 14-day sailing move quickly — best rates are usually available 9–12 months out. If Carnival Radiance is the pick, we should start cabin selection soon.</p>
+
+    <div class="contact-buttons">
+      <a href="tel:+17372717668" class="cbtn">☎ Call (737) 271-7668</a>
+      <a href="mailto:bookings@signatureelitetravel.com" class="cbtn outline">✉ Email Us</a>
+    </div>
+
+    <div class="voucher-note">
+      If you'd like to use any existing flight vouchers on your American ticket, expected to be available for redemption around September 2026. Cruise cabin deposits are typically ~$250/pp and fully refundable until 90 days out.
+    </div>
+
+    <div class="tri-dia" style="margin-top:20px">◆ ◆ ◆</div>
+
+    <div class="foot-disc">
+      <div class="foot-brand">Signature Elite Travel</div>
+      (737) 271-7668 · bookings@signatureelitetravel.com<br><br>
+      All prices shown are starting estimates based on the quoted room class and interior cabin. Final pricing confirmed at booking and may vary based on cabin selection, fare class, flight routing, availability, and applicable fees.
+    </div>
+  </div>
+</section>
+
+</div><!-- end trip-2 -->
+
+<!-- SELECTIONS TRACKER -->
+<div class="tracker" id="tracker">
+  <div class="tracker-lbl" id="tracker-label">Your Picks · Trip 1</div>
+  <div id="tracker-content">
+    <div class="tracker-empty">Tap a price bar above to make selections.</div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- AGENT BAR -->
+<div class="abar">
+  <span class="abar-txt">Questions? We're here to help.</span>
+  <a href="tel:+17372717668" class="abar-btn">☎ Call (737) 271-7668</a>
+</div>
+
+
+<script>
+// ============ STATE ============
+let currentTrip = 't1';
+const selections = {
+  t1: { hotel: null, hotelPrice: 0 },
+  t2: { hotel: null, hotelPrice: 0, cruise: null, flights: { out: null, back: null }, explore: [] }
+};
+
+// Baseline totals (everything EXCEPT the selectable hotel)
+const baseTotals = {
+  t1: 855 + 935 + 690,  // outbound + return + fuel
+  t2: 2058 + 790 + 70    // cruise + flights + transfers
+};
+
+// ============ TRIP SWITCHER ============
+function switchTrip(tripId){
+  currentTrip = tripId;
+  document.querySelectorAll('.tswitch-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.tswitch-btn[data-trip="${tripId}"]`).classList.add('active');
+  document.querySelectorAll('.trip').forEach(t=>t.classList.remove('active'));
+  document.getElementById(`trip-${tripId.slice(1)}`).classList.add('active');
+  document.getElementById('pnav-t1').style.display = (tripId==='t1') ? 'flex' : 'none';
+  document.getElementById('pnav-t2').style.display = (tripId==='t2') ? 'flex' : 'none';
+  document.getElementById('tswitch-orient').textContent = `Viewing ${tripId==='t1'?'Trip 1 of 2':'Trip 2 of 2'}`;
+  document.getElementById('tracker-label').textContent = `Your Picks · ${tripId==='t1'?'Trip 1':'Trip 2'}`;
+  updateTracker();
+  window.scrollTo({top:0, behavior:'smooth'});
+  setTimeout(()=>observeFadeIns(), 300);
+}
+
+// ============ SMOOTH SCROLL ============
+function smoothScroll(id){
+  const el = document.getElementById(id);
+  if(el){
+    const topOffset = document.querySelector('.tswitch-wrap').offsetHeight + document.querySelector('.pnav:not([style*="display:none"])').offsetHeight;
+    const y = el.getBoundingClientRect().top + window.pageYOffset - topOffset - 10;
+    window.scrollTo({top:y, behavior:'smooth'});
+  }
+}
+
+// ============ HOTEL SELECT (TRIP 1) ============
+function selectHotel(bar, val){
+  // Deselect all Trip 1 hotel bars
+  document.querySelectorAll('#trip-1 .price-bar[data-selectable="hotel"]').forEach(b=>{
+    b.classList.remove('selected');
+    b.querySelector('.tap-prompt').textContent = 'TAP HERE TO SELECT THIS HOTEL';
+  });
+  bar.classList.add('selected');
+  bar.querySelector('.tap-prompt').textContent = 'SELECTED';
+  selections.t1.hotel = val;
+  selections.t1.hotelPrice = parseFloat(bar.dataset.price);
+  updateCostTable('t1', val);
+  updateTotal('t1');
+  updateTracker();
+  showToast(`Selected: ${bar.closest('section').querySelector('.hh-name').textContent}`);
+}
+
+// ============ HOTEL SELECT (TRIP 2) ============
+function selectHotel2(bar, val){
+  document.querySelectorAll('#trip-2 .price-bar[data-selectable="hotel"]').forEach(b=>{
+    b.classList.remove('selected');
+    b.querySelector('.tap-prompt').textContent = 'TAP HERE TO SELECT THIS HOTEL';
+  });
+  bar.classList.add('selected');
+  bar.querySelector('.tap-prompt').textContent = 'SELECTED';
+  selections.t2.hotel = val;
+  selections.t2.hotelPrice = parseFloat(bar.dataset.price);
+  updateCostTable('t2', val);
+  updateTotal('t2');
+  updateTracker();
+  showToast(`Selected: ${bar.closest('section').querySelector('.hh-name').textContent}`);
+}
+
+// ============ CRUISE SELECT (TRIP 2) ============
+function selCruise(el, val, label){
+  document.querySelectorAll('.fopt[data-grp="cruise"]').forEach(f=>f.classList.remove('selected'));
+  el.classList.add('selected');
+  selections.t2.cruise = label;
+  updateTracker();
+  showToast(`Cruise: ${label}`);
+}
+
+// ============ FLIGHT SELECT ============
+function selFlight(el, grp, label){
+  document.querySelectorAll(`.fopt[data-grp="${grp}"]`).forEach(f=>f.classList.remove('selected'));
+  el.classList.add('selected');
+  selections.t2.flights[grp] = label;
+  updateTracker();
+  showToast(`${grp==='out'?'Outbound':'Return'}: ${label}`);
+}
+
+// ============ EXPLORE TOGGLE ============
+function toggleOpt(el){
+  el.classList.toggle('selected');
+  const label = el.querySelector('.ftime').textContent;
+  if(el.classList.contains('selected')){
+    if(!selections.t2.explore.includes(label)) selections.t2.explore.push(label);
+    showToast(`Added: ${label}`);
+  } else {
+    selections.t2.explore = selections.t2.explore.filter(x=>x!==label);
+  }
+  updateTracker();
+}
+
+// ============ COST TABLE UPDATE ============
+function updateCostTable(trip, activeVal){
+  const rows = document.querySelectorAll(`#trip-${trip.slice(1)} .cost-row.hotel-row`);
+  rows.forEach(r=>{
+    const id = r.id;
+    if(id === `cost-${activeVal}`){
+      r.classList.add('active');
+      r.classList.remove('inactive');
+    } else {
+      r.classList.add('inactive');
+      r.classList.remove('active');
+    }
+  });
+}
+
+// ============ TOTAL UPDATE ============
+function updateTotal(trip){
+  const total = baseTotals[trip] + selections[trip].hotelPrice;
+  const formatted = total.toLocaleString('en-US', {maximumFractionDigits:0});
+  const el = document.getElementById(`${trip}-total`);
+  if(el){
+    el.innerHTML = `<span class="from">from</span>$${formatted}`;
+  }
+}
+
+// ============ TRACKER ============
+function updateTracker(){
+  const box = document.getElementById('tracker-content');
+  const trip = currentTrip;
+  const sel = selections[trip];
+  let html = '';
+
+  if(trip === 't1'){
+    if(sel.hotel){
+      const hotelMap = {
+        fourpoints:'Four Points by Sheraton', mayflower:'Mayflower Park Hotel', sound:'The Sound Hotel'
+      };
+      html += `<div class="tracker-item"><strong>Seattle:</strong> ${hotelMap[sel.hotel]}</div>`;
+      const total = baseTotals.t1 + sel.hotelPrice;
+      html += `<div class="tracker-item" style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--parchment-dkr)"><strong>Starting from:</strong> $${total.toLocaleString()}</div>`;
+    } else {
+      html = '<div class="tracker-empty">Tap a Seattle hotel to begin.</div>';
+    }
+  } else {
+    if(sel.cruise) html += `<div class="tracker-item"><strong>Cruise:</strong> ${sel.cruise}</div>`;
+    if(sel.flights.out) html += `<div class="tracker-item"><strong>Out:</strong> ${sel.flights.out}</div>`;
+    if(sel.flights.back) html += `<div class="tracker-item"><strong>Back:</strong> ${sel.flights.back}</div>`;
+    if(sel.hotel){
+      const hotelMap = {queenmary:'Queen Mary', hyatt:'Hyatt Centric The Pike', maya:'Hotel Maya'};
+      html += `<div class="tracker-item"><strong>Hotel:</strong> ${hotelMap[sel.hotel]}</div>`;
+    }
+    if(sel.explore.length){
+      html += `<div class="tracker-item"><strong>Explore:</strong> ${sel.explore.length} pick${sel.explore.length>1?'s':''}</div>`;
+    }
+    if(sel.hotel){
+      const total = baseTotals.t2 + sel.hotelPrice;
+      html += `<div class="tracker-item" style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--parchment-dkr)"><strong>Starting from:</strong> $${total.toLocaleString()}</div>`;
+    }
+    if(!html) html = '<div class="tracker-empty">Tap to make your picks.</div>';
+  }
+  box.innerHTML = html;
+}
+
+// ============ TOAST ============
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2500);
+}
+
+// ============ SCROLL SPY ============
+function setupScrollSpy(){
+  const tripId = currentTrip;
+  const nav = document.getElementById(`pnav-${tripId}`);
+  if(!nav) return;
+  const links = nav.querySelectorAll('a');
+  const sections = Array.from(links).map(a=>document.getElementById(a.dataset.section)).filter(Boolean);
+
+  function update(){
+    const topOffset = document.querySelector('.tswitch-wrap').offsetHeight + nav.offsetHeight + 40;
+    let activeIdx = 0;
+    sections.forEach((s, i)=>{
+      if(s.getBoundingClientRect().top <= topOffset) activeIdx = i;
+    });
+    links.forEach((a, i)=>{
+      a.classList.remove('active');
+      if(i < activeIdx) a.classList.add('visited');
+      else a.classList.remove('visited');
+    });
+    if(links[activeIdx]) links[activeIdx].classList.add('active');
+  }
+  window.removeEventListener('scroll', window._scrollSpyFn);
+  window._scrollSpyFn = update;
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+}
+
+// ============ FADE-IN OBSERVER ============
+function observeFadeIns(){
+  const els = document.querySelectorAll('.trip.active .fade-in:not(.visible)');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, {rootMargin:'0px 0px -10% 0px'});
+  els.forEach(el=>io.observe(el));
+}
+
+// ============ INIT ============
+document.addEventListener('DOMContentLoaded', ()=>{
+  observeFadeIns();
+  setupScrollSpy();
+  updateTracker();
+  // Pre-select cheapest hotel in each trip so cost summary has a sensible default
+  const defaultT1 = document.querySelector('#trip-1 .price-bar[data-value="fourpoints"]');
+  if(defaultT1){
+    selections.t1.hotelPrice = parseFloat(defaultT1.dataset.price);
+    updateTotal('t1');
+  }
+  const defaultT2 = document.querySelector('#trip-2 .price-bar[data-value="queenmary"]');
+  if(defaultT2){
+    selections.t2.hotelPrice = parseFloat(defaultT2.dataset.price);
+    updateTotal('t2');
+  }
+});
+
+// Re-setup scroll spy on every trip switch
+const originalSwitch = switchTrip;
+switchTrip = function(id){
+  originalSwitch(id);
+  setTimeout(setupScrollSpy, 100);
+};
+</script>
+
+</body>
+</html>
