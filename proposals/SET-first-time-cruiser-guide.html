@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your First Cruise · Signature Elite Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F5F0E8;
+    --parchment-dk:#EDE6D6;
+    --parchment-dkr:#E0D8C4;
+    --ink:#1A1610;
+    --ink-soft:#3A342A;
+    --ink-muted:#5A5248;
+    --gold:#B8963E;
+    --gold-lt:#D4AF6A;
+    --gold-pale:#F0E4C4;
+    --gold-deep:#7A5E1E;
+    --white:#FDFAF4;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--parchment);color:var(--ink-soft);font-family:'Montserrat',sans-serif;font-weight:300;line-height:1.55;-webkit-font-smoothing:antialiased;}
+
+  .page{max-width:980px;margin:0 auto;padding:48px 32px 64px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--white);
+    padding:56px 48px 48px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--ink);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:repeating-linear-gradient(135deg,transparent 0 20px,rgba(255,255,255,0.025) 20px 21px);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'Montserrat',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:24px;
+  }
+  .logo{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:32px;
+    font-weight:400;
+    color:var(--white);
+    margin-bottom:32px;
+    letter-spacing:0.02em;
+  }
+  .logo em{font-style:italic;color:var(--gold-lt);font-weight:300;}
+
+  .diamond-rule{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    color:var(--gold);
+    font-size:10px;
+    margin:24px 0;
+  }
+  .diamond-rule::before,.diamond-rule::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(to right,transparent,var(--gold),transparent);
+  }
+
+  h1.title{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:52px;
+    font-weight:400;
+    line-height:1.05;
+    color:var(--white);
+    margin-bottom:14px;
+    letter-spacing:-0.01em;
+  }
+  h1.title em{font-style:italic;color:var(--gold-lt);}
+  .subtitle{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:22px;
+    font-style:italic;
+    color:var(--gold-lt);
+    font-weight:300;
+    max-width:640px;
+  }
+
+  /* ---------- INTRO STRIP ---------- */
+  .intro{
+    background:var(--gold-pale);
+    border-left:4px solid var(--gold-deep);
+    padding:28px 36px;
+    margin-top:0;
+    font-size:17px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .intro strong{color:var(--ink);font-weight:500;}
+
+  /* ---------- SECTION ---------- */
+  .section-label{
+    font-family:'Montserrat',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    margin:56px 0 8px;
+    text-align:center;
+  }
+  .section-title{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:36px;
+    font-weight:400;
+    color:var(--ink);
+    text-align:center;
+    margin-bottom:32px;
+    letter-spacing:-0.01em;
+  }
+  .section-title em{font-style:italic;color:var(--gold-deep);}
+
+  /* ---------- TILES GRID ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+  }
+  .tile{
+    background:var(--white);
+    border:1px solid var(--parchment-dkr);
+    padding:26px 28px;
+    position:relative;
+  }
+  .tile-number{
+    position:absolute;
+    top:18px;
+    right:22px;
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic;
+    font-size:32px;
+    color:var(--gold-lt);
+    line-height:1;
+    font-weight:300;
+  }
+  .tile-eyebrow{
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    margin-bottom:10px;
+  }
+  .tile-title{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:24px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:10px;
+    letter-spacing:-0.005em;
+    padding-right:38px;
+  }
+  .tile-body{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.55;
+  }
+  .tile-body strong{color:var(--ink);font-weight:500;}
+  .tile-body .highlight{
+    display:inline-block;
+    background:var(--gold-pale);
+    padding:1px 7px;
+    color:var(--ink);
+    font-weight:500;
+  }
+
+  /* Wide tile spans both columns */
+  .tile.wide{grid-column:span 2;}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{
+    background:var(--white);
+    border:1px solid var(--parchment-dkr);
+    padding:36px 32px;
+  }
+  .timeline-row{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    gap:24px;
+    padding:18px 0;
+    border-bottom:1px solid var(--parchment-dkr);
+    align-items:start;
+  }
+  .timeline-row:last-child{border-bottom:none;}
+  .timeline-when{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:21px;
+    font-style:italic;
+    color:var(--gold-deep);
+    font-weight:400;
+    line-height:1.2;
+  }
+  .timeline-what{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.55;
+  }
+  .timeline-what strong{color:var(--ink);font-weight:500;display:block;margin-bottom:4px;font-family:'Montserrat',sans-serif;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;font-weight:600;}
+
+  /* ---------- DOC TILES ---------- */
+  .doc-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .doc-tile{
+    background:var(--white);
+    border:1px solid var(--parchment-dkr);
+    padding:28px;
+  }
+  .doc-tile.preferred{
+    border:2px solid var(--gold);
+    background:linear-gradient(180deg,var(--white) 0%,var(--gold-pale) 100%);
+  }
+  .doc-badge{
+    display:inline-block;
+    background:var(--ink);
+    color:var(--gold-lt);
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    padding:5px 12px;
+    margin-bottom:14px;
+  }
+  .doc-tile.preferred .doc-badge{background:var(--gold-deep);color:var(--white);}
+  .doc-tile h3{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:24px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .doc-tile p{font-size:14.5px;color:var(--ink-soft);line-height:1.55;}
+
+  /* ---------- AGENT NOTE ---------- */
+  .agent-note{
+    background:var(--parchment-dk);
+    border:1px solid var(--parchment-dkr);
+    border-left:4px solid var(--gold-deep);
+    padding:28px 32px;
+    margin-top:32px;
+  }
+  .agent-note .label{
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    margin-bottom:10px;
+  }
+  .agent-note .body{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:19px;
+    font-style:italic;
+    color:var(--ink-soft);
+    line-height:1.55;
+    font-weight:300;
+  }
+
+  /* ---------- CONTACT FOOTER ---------- */
+  .contact{
+    background:var(--ink);
+    color:var(--white);
+    padding:52px 48px;
+    margin-top:48px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:repeating-linear-gradient(135deg,transparent 0 20px,rgba(255,255,255,0.025) 20px 21px);
+    pointer-events:none;
+  }
+  .contact h2{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:36px;
+    font-weight:400;
+    color:var(--white);
+    margin-bottom:8px;
+  }
+  .contact h2 em{font-style:italic;color:var(--gold-lt);}
+  .contact .tagline{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:18px;
+    font-style:italic;
+    color:var(--gold-lt);
+    margin-bottom:28px;
+    font-weight:300;
+  }
+  .btn-row{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--gold);
+    color:var(--ink);
+    padding:16px 28px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    min-height:56px;
+    min-width:220px;
+    transition:background 0.2s;
+  }
+  .btn:hover{background:var(--gold-lt);}
+  .btn.outline{background:transparent;color:var(--white);border:1.5px solid var(--gold-lt);}
+  .btn.outline:hover{background:var(--gold-lt);color:var(--ink);}
+
+  .footer-disclaimer{
+    text-align:center;
+    font-size:11px;
+    color:var(--ink-muted);
+    margin-top:24px;
+    padding:0 24px;
+    line-height:1.6;
+    font-style:italic;
+  }
+  .footer-disclaimer strong{color:var(--ink);font-weight:500;font-style:normal;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:700px){
+    .page{padding:24px 16px 40px;}
+    .hero{padding:40px 24px 32px;}
+    h1.title{font-size:38px;}
+    .subtitle{font-size:18px;}
+    .logo{font-size:26px;}
+    .intro{padding:22px 24px;font-size:15.5px;}
+    .section-title{font-size:28px;}
+    .grid{grid-template-columns:1fr;gap:14px;}
+    .tile.wide{grid-column:span 1;}
+    .doc-grid{grid-template-columns:1fr;}
+    .timeline{padding:24px 20px;}
+    .timeline-row{grid-template-columns:1fr;gap:6px;padding:16px 0;}
+    .contact{padding:40px 24px;}
+    .contact h2{font-size:28px;}
+    .btn{width:100%;}
+    .agent-note{padding:22px 22px;}
+    .agent-note .body{font-size:17px;}
+    .tile{padding:22px 22px;}
+    .tile-title{font-size:21px;}
+    .tile-number{font-size:26px;}
+  }
+
+  @media print{
+    .page{padding:0;max-width:100%;}
+    .hero,.contact{break-inside:avoid;}
+    .tile,.doc-tile,.timeline-row,.agent-note{break-inside:avoid;}
+    .contact .btn{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="eyebrow">Signature Elite Travel · Curated Journeys</div>
+    <div class="logo"><em>Signature</em> Elite</div>
+    <div class="diamond-rule">◆ ◆ ◆</div>
+    <h1 class="title">Your First <em>Royal Caribbean</em> Cruise</h1>
+    <p class="subtitle">The essentials — distilled. Everything you actually need to know before you sail.</p>
+  </section>
+
+  <!-- ============ INTRO ============ -->
+  <div class="intro">
+    Royal Caribbean publishes <strong>dozens</strong> of pre-cruise FAQ pages. This is the short version — the twelve things that matter for a first-time cruiser, plus a clean timeline of what happens when. Anything more specific, just call us.
+  </div>
+
+  <!-- ============ TIMELINE ============ -->
+  <div class="section-label">The Countdown</div>
+  <h2 class="section-title">Your <em>cruise timeline</em></h2>
+
+  <div class="timeline">
+    <div class="timeline-row">
+      <div class="timeline-when">At Booking</div>
+      <div class="timeline-what">
+        <strong>Deposit secures your room</strong>
+        Some fares require a <em>non-refundable</em> deposit — confirm with us which fare type you're on. Your room category is locked in now; upgrades onboard are very rare.
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-when">75–120 days out</div>
+      <div class="timeline-what">
+        <strong>Final payment is due</strong>
+        Royal's deadlines: <em>75 days</em> before sailing for 1–4 night cruises, <em>90 days</em> for 5–14 night cruises, <em>120 days</em> for 15+ night cruises. We'll remind you well before.
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-when">45 days out</div>
+      <div class="timeline-what">
+        <strong>Online check-in opens</strong>
+        Use the Royal Caribbean app to upload your passport photo, take a security selfie, and pick your boarding arrival window. Don't skip this — it determines what time you board.
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-when">30 days out</div>
+      <div class="timeline-what">
+        <strong>Pre-buy beverage & dining packages</strong>
+        Pre-cruise prices are typically lower than onboard. Beverage packages can be purchased online up to <em>72 hours</em> before sailing.
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-when">A few days out</div>
+      <div class="timeline-what">
+        <strong>Print luggage tags & boarding pass</strong>
+        Royal's eDocs include personalized luggage tags with your ship, sail date, stateroom, and deck. Generic tags are also available at the pier if you'd rather grab one there.
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-when">Sail Day</div>
+      <div class="timeline-what">
+        <strong>Arrive within your window</strong>
+        Show up <em>during</em> the arrival time you picked — not before, not after. Early arrivals wait; late arrivals risk missing the ship.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TWELVE ESSENTIALS ============ -->
+  <div class="section-label">The Twelve Essentials</div>
+  <h2 class="section-title">What every <em>first-time cruiser</em> should know</h2>
+
+  <div class="grid">
+
+    <div class="tile">
+      <div class="tile-number">01</div>
+      <div class="tile-eyebrow">Identification</div>
+      <div class="tile-title">Bring a passport</div>
+      <div class="tile-body">
+        A passport isn't always <em>required</em>, but it's strongly recommended for every sailing. A certified U.S. birth certificate plus government photo ID can work for closed-loop Caribbean cruises — but a passport is non-negotiable peace of mind.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">02</div>
+      <div class="tile-eyebrow">Final Payment</div>
+      <div class="tile-title">Mark your calendar</div>
+      <div class="tile-body">
+        <span class="highlight">75 days</span> for 1–4 night cruises · <span class="highlight">90 days</span> for 5–14 night · <span class="highlight">120 days</span> for 15+ night. Miss it and your booking can be cancelled.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">03</div>
+      <div class="tile-eyebrow">Gratuities</div>
+      <div class="tile-title">$21 per person, per day</div>
+      <div class="tile-body">
+        Standard rooms: <strong>$21/day per guest</strong>. Suites: <strong>$23.00/day per guest</strong>. Charged automatically to your SeaPass account daily — or you can prepay at booking and forget about it.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">04</div>
+      <div class="tile-eyebrow">Dining</div>
+      <div class="tile-title">Traditional or My Time</div>
+      <div class="tile-body">
+        <strong>Traditional:</strong> assigned table, early or late seating. <strong>My Time:</strong> dine when you want, reservations recommended. You pick at booking.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">05</div>
+      <div class="tile-eyebrow">Alcohol Policy</div>
+      <div class="tile-title">Wine yes, liquor no</div>
+      <div class="tile-body">
+        Each guest 21+ may bring <strong>two 750ml bottles of wine or champagne</strong> in carry-on at embarkation. Beer and hard liquor are <em>not</em> permitted. Anything seized is returned at the end of the voyage.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">06</div>
+      <div class="tile-eyebrow">Beverage Packages</div>
+      <div class="tile-title">Buy ahead, save more</div>
+      <div class="tile-body">
+        Pre-cruise prices typically beat onboard rates. Packages are <em>per person</em> and cannot be shared — only one drink per order. Available online up to 72 hours before sailing.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">07</div>
+      <div class="tile-eyebrow">Shore Excursions</div>
+      <div class="tile-title">Book through Royal</div>
+      <div class="tile-body">
+        Booking with Royal gets you <strong>priority debarkation</strong> at port — first off the ship — and a guarantee the ship will wait if your excursion runs late. Available pre-cruise via My Royal Cruise.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">08</div>
+      <div class="tile-eyebrow">Best Price Guarantee</div>
+      <div class="tile-title">Watch for price drops</div>
+      <div class="tile-body">
+        Find a lower published rate on the same cruise, date, and room type? Royal will <strong>match it</strong>. Tell us — we'll handle the request on your behalf.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">09</div>
+      <div class="tile-eyebrow">Dress Code</div>
+      <div class="tile-title">Mostly casual</div>
+      <div class="tile-body">
+        Day-to-day: <em>resort casual</em> — jeans, polos, sundresses. Evenings include 1–2 "smart casual" or formal nights depending on cruise length. No shorts or swimwear in the Main Dining Room at dinner.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">10</div>
+      <div class="tile-eyebrow">Arrival Time</div>
+      <div class="tile-title">Stick to your slot</div>
+      <div class="tile-body">
+        You'll select an arrival window during app check-in. <strong>Arrive within it.</strong> Early = you wait outside. Late = you may not board. The window is on your mobile boarding pass.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">11</div>
+      <div class="tile-eyebrow">Travel Protection</div>
+      <div class="tile-title">Strongly recommended</div>
+      <div class="tile-body">
+        Cruises are large, non-refundable purchases with strict cancellation windows. Royal's program covers cancellation, medical, baggage, and emergency evacuation. We'll walk you through it.
+      </div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-number">12</div>
+      <div class="tile-eyebrow">Onboard Account</div>
+      <div class="tile-title">Your SeaPass card</div>
+      <div class="tile-body">
+        Your room key, ID, and onboard charge card all in one. Cash isn't used onboard — every purchase posts to your SeaPass account, which settles to your credit card at the end of the cruise.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ DOCUMENTS ============ -->
+  <div class="section-label">The One That Trips People Up</div>
+  <h2 class="section-title">What <em>ID</em> do I need?</h2>
+
+  <div class="doc-grid">
+    <div class="doc-tile preferred">
+      <div class="doc-badge">★ Strongly Recommended</div>
+      <h3>Valid Passport</h3>
+      <p>Works for every itinerary, every port, every contingency. Must be valid for at least <strong>six months past</strong> your return date. If you ever need to fly home from a foreign port mid-trip, this is the only document that gets you on the plane.</p>
+    </div>
+    <div class="doc-tile">
+      <div class="doc-badge">Acceptable for U.S. Closed-Loop</div>
+      <h3>Birth Certificate + Photo ID</h3>
+      <p>U.S. citizens on cruises that begin and end at the <em>same</em> U.S. port can sail with a state-certified birth certificate (with raised seal) plus a government-issued photo ID. Doesn't work if your itinerary touches certain destinations — always confirm with us.</p>
+    </div>
+  </div>
+
+  <!-- ============ AGENT NOTE ============ -->
+  <div class="agent-note">
+    <div class="label">A Note From Your Agent</div>
+    <div class="body">
+      Don't try to absorb all of this at once. The two things that matter most before you sail are <em>your final payment date</em> and <em>your travel documents.</em> Everything else we'll walk you through together, and we're a phone call away the whole time you're booked with us — including while you're onboard.
+    </div>
+  </div>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact">
+    <div class="eyebrow" style="color:var(--gold);">Questions? We're Here.</div>
+    <h2>Let's <em>talk it through</em></h2>
+    <div class="tagline">No question is too small for a first-time cruiser.</div>
+    <div class="diamond-rule">◆ ◆ ◆</div>
+    <div class="btn-row">
+      <a href="tel:+17372717668" class="btn">☎ Call (737) 271-7668</a>
+      <a href="mailto:bookings@signatureelitetravel.com" class="btn outline">✉ Email Us</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER DISCLAIMER ============ -->
+  <div class="footer-disclaimer">
+    <strong>Signature Elite Travel</strong> · (737) 271-7668 · bookings@signatureelitetravel.com<br><br>
+    All policies, fees, and timelines reflect Royal Caribbean's published guidance and are subject to change. Specific itineraries and fare types may have additional requirements — always confirm details with your agent before sailing. Pricing references are starting estimates; final pricing is confirmed at booking.
+  </div>
+
+</div>
+</body>
+</html>
