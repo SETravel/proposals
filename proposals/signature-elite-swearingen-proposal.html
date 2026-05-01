@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swearingen · Las Vegas · Signature Elite Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:#F5F0E8; --parchment-dk:#EDE6D6; --parchment-dkr:#E0D8C4;
+  --ink:#1A1610; --ink-soft:#3A342A; --ink-muted:#5A5248;
+  --gold:#B8963E; --gold-lt:#D4AF6A; --gold-pale:#F0E4C4; --gold-deep:#7A5E1E;
+  --white:#FDFAF4; --vegas:#1a1035;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--parchment);color:var(--ink-soft);font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;line-height:1.7;}
+
+.pnav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;overflow-x:auto;scrollbar-width:none;}
+.pnav::-webkit-scrollbar{display:none;}
+.pnav a{display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;cursor:pointer;flex-shrink:0;min-width:48px;}
+.pnav .dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--ink-muted);transition:all 0.3s;}
+.pnav a.active .dot{background:var(--gold);border-color:var(--gold);}
+.pnav a.visited .dot{background:var(--gold-deep);border-color:var(--gold-deep);}
+.pnav .lbl{font-size:9px;font-weight:600;letter-spacing:0.08em;color:var(--ink-muted);text-transform:uppercase;white-space:nowrap;}
+.pnav a.active .lbl{color:var(--gold);}
+.pnav a.visited .lbl{color:var(--gold-deep);}
+
+.abar{position:fixed;bottom:0;left:0;right:0;z-index:1000;background:var(--ink);display:flex;align-items:center;justify-content:center;gap:20px;padding:12px 20px;}
+.abar-txt{color:var(--gold-lt);font-size:13px;font-weight:400;letter-spacing:0.04em;}
+.abar-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--ink);text-decoration:none;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;padding:12px 22px;border-radius:2px;white-space:nowrap;min-height:48px;}
+
+section{padding:80px 0 60px;scroll-margin-top:52px;}
+.inner{max-width:780px;margin:0 auto;padding:0 24px;}
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+.rule{display:flex;align-items:center;gap:14px;margin:24px 0;}
+.rule::before,.rule::after{content:'';flex:1;height:1px;background:var(--gold);opacity:0.4;}
+.rule-diamonds{color:var(--gold);font-size:12px;letter-spacing:6px;}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);}
+.section-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:38px;font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:8px;}
+.guide{margin:28px 0;}
+.guide-bubble{background:var(--gold-pale);border-left:4px solid var(--gold-deep);border-radius:0 8px 8px 0;padding:20px 24px;font-size:18px;font-weight:300;color:var(--ink-soft);line-height:1.65;}
+.guide-bubble em{font-style:italic;color:var(--gold-deep);}
+.cue{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:48px;cursor:pointer;padding:12px;min-height:56px;}
+.cue-txt{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-deep);}
+.cue-ring{display:block;width:36px;height:36px;border:2px solid var(--gold);border-radius:50%;position:relative;animation:bounce 1.6s ease-in-out infinite;}
+.cue-ring::after{content:'↓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold-deep);font-size:16px;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* HERO */
+#welcome{background:var(--vegas);padding:90px 0 60px;text-align:center;position:relative;overflow:hidden;}
+#welcome::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(184,150,62,0.18) 0%,transparent 70%);}
+#welcome::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 30px,rgba(184,150,62,0.03) 30px,rgba(184,150,62,0.03) 31px);}
+.hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:0 24px;}
+.hero-agency{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.hero-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:42px;font-weight:300;color:var(--white);letter-spacing:0.04em;margin-bottom:20px;}
+.hero-logo em{font-style:italic;color:var(--gold-lt);}
+.hero-client{font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:400;font-style:italic;color:var(--white);margin:8px 0 6px;}
+.hero-occasion{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-style:italic;font-weight:300;color:var(--gold-lt);margin-bottom:30px;}
+.hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:28px;}
+.pill{background:rgba(184,150,62,0.15);border:1px solid rgba(184,150,62,0.35);color:var(--gold-lt);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:0.08em;}
+
+/* GLANCE */
+.glance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--parchment-dkr);border:1px solid var(--parchment-dkr);border-radius:6px;overflow:hidden;margin:24px 0;}
+.glance-cell{background:var(--white);padding:22px 20px;}
+.glance-lbl{font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.glance-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:400;color:var(--ink);line-height:1.3;}
+.glance-sub{font-size:12px;color:var(--ink-muted);margin-top:3px;}
+.checklist{background:var(--gold-pale);border-radius:6px;padding:22px 26px;margin-top:24px;}
+.checklist-title{font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;}
+.check-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;font-size:15px;color:var(--ink-soft);}
+.check-circle{width:22px;height:22px;min-width:22px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:12px;font-weight:600;margin-top:1px;}
+
+/* HOTEL */
+.hotel-img{width:100%;height:260px;object-fit:cover;border-radius:8px 8px 0 0;display:block;}
+.hotel-card{background:var(--white);border:1.5px solid var(--parchment-dkr);border-radius:8px;overflow:hidden;margin:20px 0;}
+.hotel-card-body{padding:24px;}
+.hotel-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-weight:400;color:var(--ink);}
+.hotel-sub{font-size:13px;color:var(--ink-muted);margin-bottom:18px;}
+.amenity-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0;}
+.amenity{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-soft);}
+.amenity::before{content:'✦';color:var(--gold);font-size:10px;}
+
+/* HOTEL PRICE CARDS */
+.price-section-title{font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;margin-top:28px;}
+.price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.price-card{border:1.5px solid var(--parchment-dkr);border-radius:6px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;}
+.price-card:hover{border-color:var(--gold);}
+.price-card.selected{border-color:#2d6a2e;}
+.price-card-head{background:var(--parchment-dk);padding:10px 14px;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-deep);}
+.price-card-body{padding:14px;}
+.price-dates{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;color:var(--ink);}
+.price-row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;}
+.price-public{font-size:13px;color:var(--ink-muted);text-decoration:line-through;}
+.price-our{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-weight:600;color:var(--gold-deep);}
+.price-savings{background:var(--gold);color:var(--ink);font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;}
+.price-label{font-size:11px;color:var(--ink-muted);margin-top:4px;}
+.select-bar{background:var(--ink);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+.price-card.selected .select-bar{background:#2d6a2e;}
+.select-prompt{font-size:12px;font-weight:600;color:var(--white);letter-spacing:0.06em;text-transform:uppercase;animation:pulse 1.8s ease-in-out infinite;}
+.price-card.selected .select-prompt{animation:none;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+.select-amt{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:600;color:var(--white);}
+
+/* FLIGHT TABS */
+.ftabs{display:flex;gap:0;margin:20px 0 0;border:1.5px solid var(--parchment-dkr);border-radius:8px;overflow:hidden;}
+.ftab{flex:1;padding:14px 10px;text-align:center;cursor:pointer;background:var(--white);border-right:1px solid var(--parchment-dkr);transition:all 0.2s;}
+.ftab:last-child{border-right:none;}
+.ftab:hover{background:var(--parchment);}
+.ftab.active{background:var(--ink);}
+.ftab-date{font-family:'Cormorant Garamond',Georgia,serif;font-size:15px;font-weight:600;color:var(--ink);}
+.ftab.active .ftab-date{color:var(--gold-lt);}
+.ftab-lbl{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);margin-top:2px;}
+.ftab.active .ftab-lbl{color:var(--gold);}
+
+.fwindow{display:none;margin-top:20px;}
+.fwindow.active{display:block;}
+
+.flight-group-label{background:var(--parchment-dk);border-left:3px solid var(--gold);padding:10px 16px;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-deep);margin:20px 0 10px;border-radius:0 4px 4px 0;}
+.fopt{display:flex;align-items:center;gap:12px;background:var(--white);border:1.5px solid var(--parchment-dkr);border-radius:6px;padding:16px 18px;margin-bottom:8px;cursor:pointer;transition:border-color 0.2s,background 0.2s;min-height:56px;}
+.fopt:hover{border-color:var(--gold);}
+.fopt.selected{border-color:#2d6a2e;background:#f0f7f0;}
+.fopt.selected .radio{background:#2d6a2e;border-color:#2d6a2e;}
+.fopt.selected .radio::after{display:block;}
+.radio{width:20px;height:20px;min-width:20px;border:2px solid var(--parchment-dkr);border-radius:50%;position:relative;transition:all 0.2s;}
+.radio::after{content:'';display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:var(--white);border-radius:50%;}
+.ftime{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;color:var(--ink);}
+.farrow{color:var(--gold);font-size:16px;flex-shrink:0;}
+.fdetail{font-size:11px;font-weight:400;color:var(--ink-muted);margin-top:2px;}
+.fprice{margin-left:auto;text-align:right;flex-shrink:0;}
+.fprice-amt{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:600;color:var(--gold-deep);}
+.fprice-lbl{font-size:10px;color:var(--ink-muted);}
+.stop-tag{background:var(--parchment-dk);border:1px solid var(--parchment-dkr);border-radius:100px;padding:2px 9px;font-size:10px;color:var(--ink-muted);font-weight:500;display:inline-block;margin-top:3px;}
+.badge-limited{background:#7a1e1e;color:#fff;font-size:10px;font-weight:600;letter-spacing:0.08em;padding:2px 8px;border-radius:3px;margin-top:3px;display:inline-block;}
+
+/* COST SUMMARY */
+.savings-bar{background:linear-gradient(135deg,var(--gold-deep),var(--gold));border-radius:8px;padding:20px 24px;margin:20px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.savings-lbl{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(26,22,16,0.7);}
+.savings-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:32px;font-weight:600;color:var(--ink);}
+.savings-desc{font-size:13px;color:var(--ink-soft);margin-top:2px;}
+.cost-table{border:1px solid var(--parchment-dkr);border-radius:6px;overflow:hidden;margin:20px 0;}
+.cost-header{background:var(--ink);color:var(--white);padding:14px 20px;display:flex;justify-content:space-between;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;}
+.cost-row{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--parchment-dkr);font-size:14px;}
+.cost-row:last-child{border-bottom:none;}
+.cost-item{color:var(--ink-soft);font-weight:400;}
+.cost-item-sub{font-size:12px;color:var(--ink-muted);margin-top:2px;}
+.cost-amt{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:600;color:var(--gold-deep);}
+.total-bar{background:var(--ink);color:var(--white);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-radius:0 0 6px 6px;margin-top:-1px;}
+.total-lbl{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.65);}
+.total-amt{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:600;color:var(--gold-lt);}
+.total-amt .from{font-size:16px;font-weight:300;margin-right:4px;}
+.disclaimer{font-size:13px;font-style:italic;color:var(--ink-muted);line-height:1.6;margin-top:18px;}
+
+/* TRACKER */
+.tracker{position:fixed;bottom:80px;right:16px;z-index:999;background:var(--ink);border:1px solid rgba(184,150,62,0.3);border-radius:8px;padding:16px;min-width:200px;max-width:240px;}
+.tracker-title{font-size:9px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.tracker-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:12px;color:rgba(255,255,255,0.7);}
+.tracker-dot{width:8px;height:8px;min-width:8px;background:rgba(255,255,255,0.2);border-radius:50%;margin-top:4px;transition:background 0.2s;}
+.tracker-dot.filled{background:var(--gold);}
+
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--gold-lt);border:1px solid var(--gold);border-radius:100px;padding:12px 24px;font-size:13px;font-weight:500;opacity:0;transition:opacity 0.3s,transform 0.3s;pointer-events:none;z-index:1100;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+#contact{background:var(--vegas);padding:80px 0 100px;text-align:center;position:relative;overflow:hidden;}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(184,150,62,0.14) 0%,transparent 65%);}
+.contact-inner{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:0 24px;}
+.contact-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:44px;font-weight:400;font-style:italic;color:var(--white);margin:16px 0 10px;}
+.contact-sub{font-size:15px;color:var(--gold-lt);font-weight:300;margin-bottom:36px;}
+.contact-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:40px;}
+.btn-call{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.08em;padding:18px 32px;border-radius:2px;min-height:56px;}
+.btn-email{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--gold-lt);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.08em;padding:18px 32px;border-radius:2px;border:1.5px solid var(--gold);min-height:56px;}
+.footer-disc{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;margin-top:32px;font-style:italic;}
+
+@media(max-width:700px){
+  .glance-grid{grid-template-columns:1fr 1fr;}
+  .price-grid{grid-template-columns:1fr;}
+  .ftabs{flex-wrap:wrap;}
+  .ftab{min-width:45%;border-right:none;border-bottom:1px solid var(--parchment-dkr);}
+  .abar-txt{display:none;}
+  .tracker{display:none;}
+  .section-title{font-size:30px;}
+  .savings-bar{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav class="pnav" id="pnav">
+  <a href="javascript:void(0)" data-section="welcome" onclick="smoothScroll('welcome')"><div class="dot"></div><div class="lbl">Welcome</div></a>
+  <a href="javascript:void(0)" data-section="glance" onclick="smoothScroll('glance')"><div class="dot"></div><div class="lbl">Overview</div></a>
+  <a href="javascript:void(0)" data-section="hotel" onclick="smoothScroll('hotel')"><div class="dot"></div><div class="lbl">Hotel</div></a>
+  <a href="javascript:void(0)" data-section="flights" onclick="smoothScroll('flights')"><div class="dot"></div><div class="lbl">Flights</div></a>
+  <a href="javascript:void(0)" data-section="summary" onclick="smoothScroll('summary')"><div class="dot"></div><div class="lbl">Summary</div></a>
+  <a href="javascript:void(0)" data-section="contact" onclick="smoothScroll('contact')"><div class="dot"></div><div class="lbl">Contact</div></a>
+</nav>
+
+<div class="abar">
+  <span class="abar-txt">Questions? We're here to help.</span>
+  <a href="tel:+17372717668" class="abar-btn">☎ Call (737) 271-7668</a>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="tracker">
+  <div class="tracker-title">Your Selections</div>
+  <div class="tracker-row"><div class="tracker-dot" id="td-dates"></div><div id="tk-dates">Dates not selected</div></div>
+  <div class="tracker-row"><div class="tracker-dot" id="td-out"></div><div id="tk-out">Outbound not selected</div></div>
+  <div class="tracker-row"><div class="tracker-dot" id="td-ret"></div><div id="tk-ret">Return not selected</div></div>
+</div>
+
+<!-- WELCOME -->
+<section id="welcome">
+  <div class="hero-inner">
+    <div class="hero-agency">Signature Elite Travel · Curated Journeys</div>
+    <div class="hero-logo"><em>Signature</em> Elite</div>
+    <div class="rule"><span class="rule-diamonds">◆ ◆ ◆</span></div>
+    <div class="hero-client">Swearingen</div>
+    <div class="hero-occasion">Las Vegas · M Resort &amp; Spa · Summer 2026</div>
+    <div class="hero-pills">
+      <div class="pill">✈ Corpus Christi → Las Vegas</div>
+      <div class="pill">United Airlines</div>
+      <div class="pill">4 Date Options</div>
+      <div class="pill">Hotel + Flights</div>
+    </div>
+    <div style="margin-top:50px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--gold);" onclick="smoothScroll('glance')">
+      <span style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;">Scroll to view your options</span>
+      <div class="cue-ring"></div>
+    </div>
+  </div>
+</section>
+
+<!-- GLANCE -->
+<section id="glance" style="background:var(--white);">
+  <div class="inner">
+    <div class="eyebrow">At a Glance</div>
+    <h2 class="section-title">Your Trip Overview</h2>
+    <div class="guide fade-in">
+      <div class="guide-bubble">
+        Four weekend options to Las Vegas, all at <em>M Resort &amp; Spa</em> — a boutique resort on Henderson's elevated terrain with panoramic Strip views. All flights depart Corpus Christi on United via Houston IAH. <em>Pick your weekend, then your flights.</em>
+      </div>
+    </div>
+    <div class="glance-grid fade-in">
+      <div class="glance-cell"><div class="glance-lbl">Destination</div><div class="glance-val">Las Vegas, NV</div><div class="glance-sub">Harry Reid Intl (LAS)</div></div>
+      <div class="glance-cell"><div class="glance-lbl">Departure City</div><div class="glance-val">Corpus Christi</div><div class="glance-sub">CRP → IAH → LAS</div></div>
+      <div class="glance-cell"><div class="glance-lbl">Stay</div><div class="glance-val">2 Nights</div><div class="glance-sub">Weekend getaway</div></div>
+      <div class="glance-cell"><div class="glance-lbl">Hotel</div><div class="glance-val">M Resort &amp; Spa</div><div class="glance-sub">King Room · East Tower</div></div>
+      <div class="glance-cell"><div class="glance-lbl">Airline</div><div class="glance-val">United</div><div class="glance-sub">1 stop via Houston IAH</div></div>
+      <div class="glance-cell"><div class="glance-lbl">Date Options</div><div class="glance-val">4 Weekends</div><div class="glance-sub">June &amp; July 2026</div></div>
+    </div>
+    <div class="checklist fade-in">
+      <div class="checklist-title">What's Included in This Proposal</div>
+      <div class="check-item"><div class="check-circle">✓</div><div>M Resort King Room — 4 weekend options with our exclusive rates vs. public pricing</div></div>
+      <div class="check-item"><div class="check-circle">✓</div><div>United Airlines flights for all 4 date windows — departing and return options for each</div></div>
+      <div class="check-item"><div class="check-circle">✓</div><div>East Tower King Room — 400 sq ft with floor-to-ceiling views, tile floors, USB outlets</div></div>
+      <div class="check-item"><div class="check-circle">✓</div><div>Side-by-side savings breakdown showing exactly what you save vs. booking publicly</div></div>
+    </div>
+    <div class="cue fade-in" onclick="smoothScroll('hotel')"><span class="cue-txt">Next: Hotel Options</span><span class="cue-ring"></span></div>
+  </div>
+</section>
+
+<!-- HOTEL -->
+<section id="hotel" style="background:var(--parchment);">
+  <div class="inner">
+    <div class="eyebrow">Section 1</div>
+    <h2 class="section-title">M Resort &amp; Spa · King Room</h2>
+    <div class="guide fade-in">
+      <div class="guide-bubble">
+        Choose from four weekend windows below. All rates shown are our <em>exclusive member pricing</em> — not available to the general public — paired alongside what you'd pay booking on your own.
+      </div>
+    </div>
+    <div class="hotel-card fade-in">
+      <img class="hotel-img" src="data:image/jpeg;base64,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" alt="M Resort King Room">
+      <div class="hotel-card-body">
+        <div class="hotel-name">King Room · East Tower</div>
+        <div class="hotel-sub">M Resort &amp; Spa · Henderson, NV · Near Las Vegas Strip</div>
+        <div class="price-section-title">Room Amenities</div>
+        <div class="amenity-grid">
+          <div class="amenity">400 sq ft</div>
+          <div class="amenity">New East Tower</div>
+          <div class="amenity">Floor-to-ceiling windows</div>
+          <div class="amenity">Outstanding panoramic views</div>
+          <div class="amenity">Tile floors throughout</div>
+          <div class="amenity">Bottled water (×2) daily</div>
+          <div class="amenity">Convenient USB outlets</div>
+          <div class="amenity">King bed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-section-title fade-in">Select Your Weekend · 4 Options Available</div>
+    <div class="price-grid fade-in">
+      <div class="price-card" id="hd-0602" onclick="selDates(this,'0602','Jun 2–4','210','294',84)">
+        <div class="price-card-head">Option 1 · Jun 2–4</div>
+        <div class="price-card-body">
+          <div class="price-dates">June 2 – June 4</div>
+          <div class="price-row">
+            <div><div class="price-public">Public: $294</div><div class="price-our">$210</div><div class="price-label">2 nights · King Room</div></div>
+            <div style="text-align:right"><span class="price-savings">Save $84</span></div>
+          </div>
+        </div>
+        <div class="select-bar"><span class="select-prompt" id="sp-0602">☝ SELECT DATES</span><span class="select-amt">$210</span></div>
+      </div>
+      <div class="price-card" id="hd-0616" onclick="selDates(this,'0616','Jun 16–18','297','453',156)">
+        <div class="price-card-head">Option 2 · Jun 16–18</div>
+        <div class="price-card-body">
+          <div class="price-dates">June 16 – June 18</div>
+          <div class="price-row">
+            <div><div class="price-public">Public: $453</div><div class="price-our">$297</div><div class="price-label">2 nights · King Room</div></div>
+            <div style="text-align:right"><span class="price-savings">Save $156</span></div>
+          </div>
+        </div>
+        <div class="select-bar"><span class="select-prompt" id="sp-0616">☝ SELECT DATES</span><span class="select-amt">$297</span></div>
+      </div>
+      <div class="price-card" id="hd-0707" onclick="selDates(this,'0707','Jul 7–9','238','294',56)">
+        <div class="price-card-head">Option 3 · Jul 7–9</div>
+        <div class="price-card-body">
+          <div class="price-dates">July 7 – July 9</div>
+          <div class="price-row">
+            <div><div class="price-public">Public: $294</div><div class="price-our">$238</div><div class="price-label">2 nights · King Room</div></div>
+            <div style="text-align:right"><span class="price-savings">Save $56</span></div>
+          </div>
+        </div>
+        <div class="select-bar"><span class="select-prompt" id="sp-0707">☝ SELECT DATES</span><span class="select-amt">$238</span></div>
+      </div>
+      <div class="price-card" id="hd-0721" onclick="selDates(this,'0721','Jul 21–23','271','339',68)">
+        <div class="price-card-head">Option 4 · Jul 21–23</div>
+        <div class="price-card-body">
+          <div class="price-dates">July 21 – July 23</div>
+          <div class="price-row">
+            <div><div class="price-public">Public: $339</div><div class="price-our">$271</div><div class="price-label">2 nights · King Room</div></div>
+            <div style="text-align:right"><span class="price-savings">Save $68</span></div>
+          </div>
+        </div>
+        <div class="select-bar"><span class="select-prompt" id="sp-0721">☝ SELECT DATES</span><span class="select-amt">$271</span></div>
+      </div>
+    </div>
+    <div class="cue fade-in" onclick="smoothScroll('flights')"><span class="cue-txt">Next: Flight Options</span><span class="cue-ring"></span></div>
+  </div>
+</section>
+
+<!-- FLIGHTS -->
+<section id="flights" style="background:var(--white);">
+  <div class="inner">
+    <div class="eyebrow">Section 2</div>
+    <h2 class="section-title">Flight Options</h2>
+    <div class="guide fade-in">
+      <div class="guide-bubble">
+        All flights are on <em>United Airlines</em>, departing Corpus Christi with one connection through Houston IAH. Select your date window below, then pick your outbound and preferred return. Return prices shown are <em>full roundtrip totals per person</em>.
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="ftabs fade-in">
+      <div class="ftab active" id="tab-0602" onclick="showFlightWindow('0602')"><div class="ftab-date">Jun 2–4</div><div class="ftab-lbl">from $784 · 2 pax</div></div>
+      <div class="ftab" id="tab-0616" onclick="showFlightWindow('0616')"><div class="ftab-date">Jun 16–18</div><div class="ftab-lbl">from $716 · 2 pax</div></div>
+      <div class="ftab" id="tab-0707" onclick="showFlightWindow('0707')"><div class="ftab-date">Jul 7–9</div><div class="ftab-lbl">from $654 · 2 pax</div></div>
+      <div class="ftab" id="tab-0721" onclick="showFlightWindow('0721')"><div class="ftab-date">Jul 21–23</div><div class="ftab-lbl">from $654 · 2 pax</div></div>
+    </div>
+
+    <!-- ====== JUN 2-4 ====== -->
+    <div class="fwindow active" id="fw-0602">
+      <div class="flight-group-label">OUTBOUND — TUE JUN 2 · CRP → LAS · United</div>
+      <div class="fopt" data-grp="out-0602" data-base="392" onclick="selFlight(this,'out','5:15 AM → 8:35 AM',784,'0602')">
+        <div class="radio"></div>
+        <div><div class="ftime">5:15 AM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">8:35 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 20m · 1 stop</div><span class="stop-tag">56m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$784</div><div class="fprice-lbl">roundtrip · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="out-0602" data-base="592" onclick="selFlight(this,'out','6:15 AM → 12:14 PM',1184,'0602')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:15 AM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">12:14 PM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">7h 59m · 1 stop</div><span class="stop-tag">3h 27m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$1,184</div><div class="fprice-lbl">roundtrip · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="out-0602" data-base="595" onclick="selFlight(this,'out','5:15 AM → 12:14 PM',1190,'0602')">
+        <div class="radio"></div>
+        <div><div class="ftime">5:15 AM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">12:14 PM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">8h 59m · 1 stop</div><span class="stop-tag">4h 31m in IAH</span><br><span class="badge-limited">⚠ 2 seats left</span></div>
+        <div class="fprice"><div class="fprice-amt">$1,190</div><div class="fprice-lbl">roundtrip · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="out-0602" data-base="595" onclick="selFlight(this,'out','5:15 AM → 1:13 PM',1190,'0602')">
+        <div class="radio"></div>
+        <div><div class="ftime">5:15 AM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">1:13 PM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">9h 58m · 1 stop</div><span class="stop-tag">5h 31m in IAH</span><br><span class="badge-limited">⚠ 2 seats left</span></div>
+        <div class="fprice"><div class="fprice-amt">$1,190</div><div class="fprice-lbl">roundtrip · 2 travelers</div></div>
+      </div>
+
+      <div class="flight-group-label" style="margin-top:24px;">RETURN — THU JUN 4 · LAS → CRP · Roundtrip totals based on cheapest outbound</div>
+      <div class="fopt" data-grp="ret-0602" onclick="selFlight(this,'ret','6:00 AM → 3:28 PM',884,'0602')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">3:28 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">7h 28m · 1 stop</div><span class="stop-tag">3h 9m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$884</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0602" onclick="selFlight(this,'ret','6:00 AM → 1:18 PM',988,'0602')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">1:18 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 18m · 1 stop</div><span class="stop-tag">55m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$988</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0602" onclick="selFlight(this,'ret','8:00 AM → 3:28 PM',988,'0602')">
+        <div class="radio"></div>
+        <div><div class="ftime">8:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">3:28 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 28m · 1 stop</div><span class="stop-tag">1h 13m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$988</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0602" onclick="selFlight(this,'ret','8:00 AM → 5:25 PM',988,'0602')">
+        <div class="radio"></div>
+        <div><div class="ftime">8:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">5:25 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">7h 25m · 1 stop</div><span class="stop-tag">3h 8m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$988</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+    </div>
+
+    <!-- ====== JUN 16-18 ====== -->
+    <div class="fwindow" id="fw-0616">
+      <div class="flight-group-label">OUTBOUND — MON JUN 16 · CRP → LAS · United</div>
+      <div class="fopt" data-grp="out-0616" data-base="358" onclick="selFlight(this,'out','6:15 AM → 12:14 PM',358,'0616')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:15 AM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">12:14 PM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">7h 59m · 1 stop</div><span class="stop-tag">3h 27m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$358</div><div class="fprice-lbl">roundtrip base</div></div>
+      </div>
+
+      <div class="flight-group-label" style="margin-top:24px;">RETURN — WED JUN 18 · LAS → CRP · Full roundtrip totals per person</div>
+      <div class="fopt" data-grp="ret-0616" onclick="selFlight(this,'ret','3:33 PM → 10:59 PM',716,'0616')">
+        <div class="radio"></div>
+        <div><div class="ftime">3:33 PM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">10:59 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 26m · 1 stop</div><span class="stop-tag">1h 7m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$716</div><div class="fprice-lbl">roundtrip total</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0616" onclick="selFlight(this,'ret','12:59 AM → 8:43 AM',716,'0616')">
+        <div class="radio"></div>
+        <div><div class="ftime">12:59 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">8:43 AM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 44m · 1 stop</div><span class="stop-tag">1h 36m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$716</div><div class="fprice-lbl">roundtrip total</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0616" onclick="selFlight(this,'ret','8:00 AM → 3:28 PM',747,'0616')">
+        <div class="radio"></div>
+        <div><div class="ftime">8:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">3:28 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 28m · 1 stop</div><span class="stop-tag">1h 13m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$747</div><div class="fprice-lbl">roundtrip total</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0616" onclick="selFlight(this,'ret','6:00 AM → 1:18 PM',763,'0616')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">1:18 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 18m · 1 stop</div><span class="stop-tag">55m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$763</div><div class="fprice-lbl">roundtrip total</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0616" onclick="selFlight(this,'ret','12:14 PM → 7:14 PM',1084,'0616')">
+        <div class="radio"></div>
+        <div><div class="ftime">12:14 PM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">7:14 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h · 1 stop</div><span class="stop-tag">40m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$1,084</div><div class="fprice-lbl">roundtrip total</div></div>
+      </div>
+    </div>
+
+    <!-- ====== JUL 7-9 ====== -->
+    <div class="fwindow" id="fw-0707">
+      <div class="flight-group-label">OUTBOUND — MON JUL 7 · CRP → LAS · United</div>
+      <div class="fopt" data-grp="out-0707" data-base="327" onclick="selFlight(this,'out','5:15 AM → 8:35 AM',654,'0707')">
+        <div class="radio"></div>
+        <div><div class="ftime">5:15 AM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">8:35 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 20m · 1 stop</div><span class="stop-tag">56m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$654</div><div class="fprice-lbl">roundtrip · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="out-0707" data-base="359" onclick="selFlight(this,'out','6:15 AM → 12:14 PM',718,'0707')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:15 AM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">12:14 PM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">7h 59m · 1 stop</div><span class="stop-tag">3h 27m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$718</div><div class="fprice-lbl">roundtrip · 2 travelers</div></div>
+      </div>
+
+      <div class="flight-group-label" style="margin-top:24px;">RETURN — WED JUL 9 · LAS → CRP · Full roundtrip totals based on cheapest outbound</div>
+      <div class="fopt" data-grp="ret-0707" onclick="selFlight(this,'ret','8:00 AM → 5:25 PM',654,'0707')">
+        <div class="radio"></div>
+        <div><div class="ftime">8:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">5:25 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">7h 25m · 1 stop</div><span class="stop-tag">3h 8m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$654</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0707" onclick="selFlight(this,'ret','6:00 AM → 1:18 PM',718,'0707')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">1:18 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 18m · 1 stop</div><span class="stop-tag">55m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$718</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0707" onclick="selFlight(this,'ret','6:00 AM → 3:30 PM',718,'0707')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">3:30 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">7h 30m · 1 stop</div><span class="stop-tag">3h 9m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$718</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0707" onclick="selFlight(this,'ret','8:00 AM → 3:30 PM',754,'0707')">
+        <div class="radio"></div>
+        <div><div class="ftime">8:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">3:30 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 30m · 1 stop</div><span class="stop-tag">1h 13m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$754</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+    </div>
+
+    <!-- ====== JUL 21-23 ====== -->
+    <div class="fwindow" id="fw-0721">
+      <div class="flight-group-label">OUTBOUND — MON JUL 21 · CRP → LAS · United</div>
+      <div class="fopt" data-grp="out-0721" data-base="327" onclick="selFlight(this,'out','5:15 AM → 8:35 AM',654,'0721')">
+        <div class="radio"></div>
+        <div><div class="ftime">5:15 AM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">8:35 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 20m · 1 stop</div><span class="stop-tag">56m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$654</div><div class="fprice-lbl">roundtrip · 2 travelers</div></div>
+      </div>
+
+      <div class="flight-group-label" style="margin-top:24px;">RETURN — WED JUL 23 · LAS → CRP · Full roundtrip totals based on cheapest outbound</div>
+      <div class="fopt" data-grp="ret-0721" onclick="selFlight(this,'ret','6:00 AM → 3:30 PM',654,'0721')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">3:30 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">7h 30m · 1 stop</div><span class="stop-tag">3h 9m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$654</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0721" onclick="selFlight(this,'ret','6:00 AM → 1:18 PM',718,'0721')">
+        <div class="radio"></div>
+        <div><div class="ftime">6:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">1:18 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 18m · 1 stop</div><span class="stop-tag">55m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$718</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0721" onclick="selFlight(this,'ret','8:00 AM → 5:25 PM',718,'0721')">
+        <div class="radio"></div>
+        <div><div class="ftime">8:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">5:25 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">7h 25m · 1 stop</div><span class="stop-tag">3h 8m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$718</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+      <div class="fopt" data-grp="ret-0721" onclick="selFlight(this,'ret','8:00 AM → 3:30 PM',820,'0721')">
+        <div class="radio"></div>
+        <div><div class="ftime">8:00 AM</div><div class="fdetail">Las Vegas (LAS)</div></div>
+        <div class="farrow">→</div>
+        <div><div class="ftime">3:30 PM</div><div class="fdetail">Corpus Christi (CRP)</div></div>
+        <div style="margin-left:10px;flex:1;"><div class="fdetail">5h 30m · 1 stop</div><span class="stop-tag">1h 13m in IAH</span></div>
+        <div class="fprice"><div class="fprice-amt">$820</div><div class="fprice-lbl">total · 2 travelers</div></div>
+      </div>
+    </div>
+
+    <div class="cue fade-in" onclick="smoothScroll('summary')"><span class="cue-txt">Next: Cost Summary</span><span class="cue-ring"></span></div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary" style="background:var(--parchment);">
+  <div class="inner">
+    <div class="eyebrow">Cost Summary</div>
+    <h2 class="section-title">Estimated Totals</h2>
+    <div class="guide fade-in">
+      <div class="guide-bubble">
+        Select your hotel dates above and a return flight to see your personalized total update below. All prices are <em>per person</em> and include taxes and fees.
+      </div>
+    </div>
+    <div class="savings-bar fade-in">
+      <div>
+        <div class="savings-lbl">Your Hotel Savings vs. Public Rate</div>
+        <div class="savings-val" id="savings-val">Up to $156</div>
+        <div class="savings-desc" id="savings-desc">Select your dates above to see exact savings</div>
+      </div>
+      <div style="font-size:40px;">💰</div>
+    </div>
+    <div class="cost-table fade-in">
+      <div class="cost-header"><span>Item</span><span>Estimated</span></div>
+      <div class="cost-row">
+        <div>
+          <div class="cost-item">🏨 M Resort &amp; Spa · King Room</div>
+          <div class="cost-item-sub" id="summary-hotel-sub">Select your dates above</div>
+        </div>
+        <div class="cost-amt" id="summary-hotel-amt">—</div>
+      </div>
+      <div class="cost-row">
+        <div>
+          <div class="cost-item">✈ United Airlines Roundtrip</div>
+          <div class="cost-item-sub" id="summary-flight-sub">CRP ↔ LAS · 1 stop via IAH</div>
+        </div>
+        <div class="cost-amt" id="summary-flight-amt">from $654</div>
+      </div>
+    </div>
+    <div class="total-bar fade-in">
+      <div class="total-lbl">Estimated Starting From</div>
+      <div class="total-amt" id="grand-total"><span class="from">from</span>$892</div>
+    </div>
+    <p class="disclaimer fade-in">
+      Hotel pricing reflects our exclusive member rate for 2 nights. Flight pricing is per-person roundtrip including all taxes and fees. Return flight totals shown are based on the cheapest available outbound — selecting a pricier outbound will adjust accordingly. Final pricing confirmed at time of booking.
+    </p>
+    <div class="cue fade-in" onclick="smoothScroll('contact')"><span class="cue-txt">Next: Book Your Trip</span><span class="cue-ring"></span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="eyebrow" style="color:var(--gold);">Ready to Book?</div>
+    <div class="rule"><span class="rule-diamonds" style="color:var(--gold);">◆ ◆ ◆</span></div>
+    <h2 class="contact-title">Let's Make This Happen</h2>
+    <p class="contact-sub">Reach out and we'll lock in your dates right away.</p>
+    <div class="contact-btns">
+      <a href="tel:+17372717668" class="btn-call">☎ Call (737) 271-7668</a>
+      <a href="mailto:bookings@signatureelitetravel.com" class="btn-email">✉ Email Us</a>
+    </div>
+    <div class="rule"><span class="rule-diamonds" style="color:var(--gold);">◆ ◆ ◆</span></div>
+    <p class="footer-disc">
+      Signature Elite Travel · (737) 271-7668 · bookings@signatureelitetravel.com<br>
+      All prices are estimates based on current member rates and available fares. Final pricing confirmed at booking. Hotel rates reflect exclusive member pricing not available to the general public. Flight pricing subject to change based on availability at time of booking.
+    </p>
+  </div>
+</section>
+
+<script>
+function smoothScroll(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Flight tab switching
+function showFlightWindow(key) {
+  document.querySelectorAll('.fwindow').forEach(w => w.classList.remove('active'));
+  document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+  document.getElementById('fw-' + key).classList.add('active');
+  document.getElementById('tab-' + key).classList.add('active');
+  currentWindow = key;
+}
+let currentWindow = '0602';
+
+// Hotel date selection
+let selectedHotelPrice = 0;
+function selDates(el, key, label, ourPrice, pubPrice, savings) {
+  document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected'));
+  ['0602','0616','0707','0721'].forEach(k => {
+    const sp = document.getElementById('sp-' + k);
+    if (sp) sp.textContent = '☝ SELECT DATES';
+  });
+  el.classList.add('selected');
+  document.getElementById('sp-' + key).textContent = '✓ SELECTED';
+  selectedHotelPrice = parseFloat(ourPrice);
+  document.getElementById('td-dates').classList.add('filled');
+  document.getElementById('tk-dates').textContent = label + ' · $' + ourPrice;
+  document.getElementById('summary-hotel-sub').textContent = label + ' · M Resort King Room';
+  document.getElementById('summary-hotel-amt').textContent = '$' + ourPrice;
+  document.getElementById('savings-val').textContent = '$' + savings + ' saved';
+  document.getElementById('savings-desc').textContent = 'vs. public rate of $' + pubPrice + ' on the hotel alone';
+  updateTotal();
+  showFlightWindow(key);
+  showToast(label + ' selected — flights updated ✓');
+}
+
+// Flight selection
+let selectedFlightPrice = 0;
+function selFlight(el, grp, label, price, windowKey) {
+  const grpAttr = grp + '-' + windowKey;
+  document.querySelectorAll(`[data-grp="${grpAttr}"]`).forEach(f => f.classList.remove('selected'));
+  el.classList.add('selected');
+  if (grp === 'ret') {
+    selectedFlightPrice = price;
+    document.getElementById('td-ret').classList.add('filled');
+    document.getElementById('tk-ret').textContent = 'Ret: ' + label;
+    document.getElementById('summary-flight-amt').textContent = '$' + price.toLocaleString();
+    document.getElementById('summary-flight-sub').textContent = label + ' · CRP ↔ LAS via IAH';
+    updateTotal();
+  } else {
+    document.getElementById('td-out').classList.add('filled');
+    document.getElementById('tk-out').textContent = 'Out: ' + label;
+  }
+  showToast((grp === 'out' ? 'Outbound' : 'Return') + ' flight selected ✓');
+}
+
+function updateTotal() {
+  if (selectedHotelPrice > 0 && selectedFlightPrice > 0) {
+    const total = selectedHotelPrice + selectedFlightPrice;
+    document.getElementById('grand-total').innerHTML = '<span class="from">from</span>$' + total.toLocaleString('en-US');
+  } else if (selectedHotelPrice > 0) {
+    document.getElementById('grand-total').innerHTML = '<span class="from">hotel from</span>$' + selectedHotelPrice;
+  }
+}
+
+// Toast
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+// Scroll spy
+const sections = ['welcome','glance','hotel','flights','summary','contact'];
+const navLinks = {};
+sections.forEach(id => {
+  const link = document.querySelector(`.pnav a[data-section="${id}"]`);
+  if (link) navLinks[id] = link;
+});
+function updateNav() {
+  let current = sections[0];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= 80) current = id;
+  });
+  sections.forEach(id => {
+    const link = navLinks[id];
+    if (!link) return;
+    link.classList.remove('active','visited');
+    if (id === current) link.classList.add('active');
+    else if (sections.indexOf(id) < sections.indexOf(current)) link.classList.add('visited');
+  });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+
+// Fade in observer
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
