@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torres · Travel Manifest · May 8–10, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:#F5F0E8; --parchment-dk:#EDE6D6; --parchment-dkr:#E0D8C4;
+  --ink:#1A1610; --ink-soft:#3A342A; --ink-muted:#5A5248;
+  --gold:#B8963E; --gold-lt:#D4AF6A; --gold-pale:#F0E4C4; --gold-deep:#7A5E1E;
+  --white:#FDFAF4; --dc:#1a2a40;
+  --green:#2d6a2e; --green-pale:#eef6ee;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--parchment);color:var(--ink-soft);font-family:'Montserrat',sans-serif;font-weight:300;font-size:16px;line-height:1.7;}
+
+.pnav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--ink);display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;overflow-x:auto;scrollbar-width:none;}
+.pnav::-webkit-scrollbar{display:none;}
+.pnav a{display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;cursor:pointer;flex-shrink:0;min-width:44px;}
+.pnav .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--ink-muted);transition:all 0.3s;}
+.pnav a.active .dot{background:var(--gold);border-color:var(--gold);}
+.pnav a.visited .dot{background:var(--gold-deep);border-color:var(--gold-deep);}
+.pnav .lbl{font-size:9px;font-weight:600;letter-spacing:0.08em;color:var(--ink-muted);text-transform:uppercase;white-space:nowrap;}
+.pnav a.active .lbl{color:var(--gold);}
+.pnav a.visited .lbl{color:var(--gold-deep);}
+
+.abar{position:fixed;bottom:0;left:0;right:0;z-index:1000;background:var(--ink);display:flex;align-items:center;justify-content:center;gap:20px;padding:12px 20px;}
+.abar-txt{color:var(--gold-lt);font-size:13px;font-weight:400;}
+.abar-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:0.06em;padding:12px 22px;border-radius:2px;white-space:nowrap;min-height:48px;}
+
+section{padding:72px 0 52px;scroll-margin-top:52px;}
+.inner{max-width:720px;margin:0 auto;padding:0 24px;}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+.rule{display:flex;align-items:center;gap:14px;margin:20px 0;}
+.rule::before,.rule::after{content:'';flex:1;height:1px;background:var(--gold);opacity:0.35;}
+.rule-diamonds{color:var(--gold);font-size:11px;letter-spacing:5px;}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.section-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:6px;}
+
+/* HERO */
+#welcome{background:var(--dc);padding:90px 0 56px;text-align:center;position:relative;overflow:hidden;}
+#welcome::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(184,150,62,0.16) 0%,transparent 68%);}
+#welcome::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 28px,rgba(184,150,62,0.03) 28px,rgba(184,150,62,0.03) 29px);}
+.hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 24px;}
+.hero-agency{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.hero-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:40px;font-weight:300;color:var(--white);letter-spacing:0.04em;margin-bottom:18px;}
+.hero-logo em{font-style:italic;color:var(--gold-lt);}
+.hero-label{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.hero-client{font-family:'Cormorant Garamond',Georgia,serif;font-size:50px;font-weight:400;font-style:italic;color:var(--white);margin:4px 0;}
+.hero-trip{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-style:italic;font-weight:300;color:var(--gold-lt);margin-bottom:28px;}
+.hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px;}
+.pill{background:rgba(184,150,62,0.14);border:1px solid rgba(184,150,62,0.32);color:var(--gold-lt);padding:8px 16px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:0.07em;}
+.pill.confirmed{background:rgba(45,106,46,0.25);border-color:rgba(45,106,46,0.5);color:#7dcf7e;}
+
+/* CONFIRMED BANNER */
+.confirmed-banner{background:var(--green);color:#fff;border-radius:8px;padding:18px 22px;display:flex;align-items:center;gap:14px;margin:24px 0;}
+.confirmed-icon{font-size:28px;flex-shrink:0;}
+.confirmed-title{font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+.confirmed-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,0.8);margin-top:2px;}
+
+/* QUICK REF */
+.qref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--parchment-dkr);border:1px solid var(--parchment-dkr);border-radius:8px;overflow:hidden;margin:20px 0;}
+.qref-cell{background:var(--white);padding:18px 16px;}
+.qref-lbl{font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.qref-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;font-weight:600;color:var(--ink);line-height:1.25;}
+.qref-sub{font-size:11px;color:var(--ink-muted);margin-top:3px;}
+
+/* DAY HEADERS */
+.day-header{display:flex;align-items:center;gap:14px;margin:28px 0 16px;}
+.day-badge{background:var(--ink);color:var(--gold-lt);font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:8px 16px;border-radius:100px;white-space:nowrap;}
+.day-line{flex:1;height:1px;background:var(--parchment-dkr);}
+
+/* SEGMENT CARDS */
+.segment-card{background:var(--white);border:1.5px solid var(--parchment-dkr);border-radius:10px;overflow:hidden;margin-bottom:12px;}
+.segment-head{background:var(--parchment-dk);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.segment-head-label{font-size:10px;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold-deep);}
+.segment-fn{font-family:'Montserrat',monospace;font-size:13px;font-weight:600;color:var(--ink);letter-spacing:0.08em;flex-shrink:0;}
+.segment-body{padding:20px 20px 16px;}
+
+/* FLIGHT DISPLAY */
+.flight-row{display:flex;align-items:center;gap:0;margin-bottom:14px;}
+.flight-endpoint{flex:1;}
+.flight-endpoint.right{text-align:right;}
+.airport-code{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:600;color:var(--ink);line-height:1;}
+.flight-time{font-size:18px;font-weight:600;color:var(--ink-soft);margin-top:2px;}
+.flight-date{font-size:11px;color:var(--ink-muted);margin-top:2px;}
+.flight-city{font-size:12px;color:var(--ink-muted);margin-top:2px;}
+.flight-mid{text-align:center;padding:0 14px;flex-shrink:0;}
+.flight-arrow{color:var(--gold);font-size:22px;display:block;}
+.flight-duration{font-size:11px;font-weight:500;color:var(--ink-muted);margin-top:4px;white-space:nowrap;}
+
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-top:14px;padding-top:14px;border-top:1px solid var(--parchment-dkr);}
+.detail-lbl{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:2px;opacity:0.75;}
+.detail-val{font-size:14px;font-weight:400;color:var(--ink-soft);}
+
+.seat-tag{display:inline-flex;align-items:center;gap:6px;background:var(--green-pale);border:1.5px solid var(--green);border-radius:6px;padding:6px 14px;font-size:14px;font-weight:700;color:var(--green);margin-top:10px;letter-spacing:0.05em;}
+
+/* CONNECTION PILL */
+.connection-pill{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0;padding:10px 0;}
+.conn-line{flex:1;height:1px;background:var(--parchment-dkr);}
+.conn-badge{background:var(--parchment-dk);border:1px solid var(--parchment-dkr);border-radius:100px;padding:5px 16px;font-size:12px;font-weight:600;color:var(--ink-muted);letter-spacing:0.06em;white-space:nowrap;}
+
+/* NOTES */
+.note-card{background:var(--gold-pale);border-left:4px solid var(--gold-deep);border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:10px;}
+.note-title{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px;}
+.note-text{font-size:14px;color:var(--ink-soft);line-height:1.6;}
+
+/* CONTACT */
+#contact{background:var(--dc);padding:72px 0 96px;text-align:center;position:relative;overflow:hidden;}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(184,150,62,0.13) 0%,transparent 65%);}
+.contact-inner{position:relative;z-index:1;max-width:580px;margin:0 auto;padding:0 24px;}
+.contact-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:40px;font-weight:400;font-style:italic;color:var(--white);margin:14px 0 8px;}
+.contact-sub{font-size:14px;color:var(--gold-lt);font-weight:300;margin-bottom:32px;}
+.contact-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:36px;}
+.btn-call{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.08em;padding:18px 30px;border-radius:2px;min-height:56px;}
+.btn-email{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--gold-lt);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.08em;padding:18px 30px;border-radius:2px;border:1.5px solid var(--gold);min-height:56px;}
+.footer-disc{font-size:12px;color:rgba(255,255,255,0.28);line-height:1.7;margin-top:30px;font-style:italic;}
+
+@media(max-width:640px){
+  .qref-grid{grid-template-columns:1fr 1fr;}
+  .detail-grid{grid-template-columns:1fr;}
+  .abar-txt{display:none;}
+  .section-title{font-size:28px;}
+  .airport-code{font-size:28px;}
+  .flight-time{font-size:16px;}
+  .hero-client{font-size:38px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="pnav" id="pnav">
+  <a href="javascript:void(0)" data-section="welcome" onclick="smoothScroll('welcome')"><div class="dot"></div><div class="lbl">Overview</div></a>
+  <a href="javascript:void(0)" data-section="may8" onclick="smoothScroll('may8')"><div class="dot"></div><div class="lbl">May 8</div></a>
+  <a href="javascript:void(0)" data-section="may10" onclick="smoothScroll('may10')"><div class="dot"></div><div class="lbl">May 10</div></a>
+  <a href="javascript:void(0)" data-section="notes" onclick="smoothScroll('notes')"><div class="dot"></div><div class="lbl">Notes</div></a>
+  <a href="javascript:void(0)" data-section="contact" onclick="smoothScroll('contact')"><div class="dot"></div><div class="lbl">Contact</div></a>
+</nav>
+
+<div class="abar">
+  <span class="abar-txt">Questions about your trip? We're here.</span>
+  <a href="tel:+17372717668" class="abar-btn">☎ Call (737) 271-7668</a>
+</div>
+
+<!-- WELCOME -->
+<section id="welcome">
+  <div class="hero-inner">
+    <div class="hero-agency">Signature Elite Travel · Travel Manifest</div>
+    <div class="hero-logo"><em>Signature</em> Elite</div>
+    <div class="rule"><span class="rule-diamonds">◆ ◆ ◆</span></div>
+    <div class="hero-label">Confirmed Itinerary</div>
+    <div class="hero-client">Torres</div>
+    <div class="hero-trip">Washington, D.C. · May 8–10, 2026</div>
+    <div class="hero-pills">
+      <div class="pill confirmed">✓ Flights Confirmed</div>
+      <div class="pill">✈ United Airlines</div>
+      <div class="pill">BRO ↔ DCA Reagan</div>
+      <div class="pill">Fri May 8 – Sun May 10</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK REFERENCE -->
+<section id="quickref" style="background:var(--white);padding-top:60px;padding-bottom:40px;scroll-margin-top:52px;">
+  <div class="inner">
+    <div class="eyebrow">Quick Reference</div>
+    <h2 class="section-title">Trip at a Glance</h2>
+
+    <div class="confirmed-banner fade-in">
+      <div class="confirmed-icon">✅</div>
+      <div>
+        <div class="confirmed-title">All flights confirmed &amp; seats assigned</div>
+        <div class="confirmed-sub">United Airlines · Brownsville ↔ Washington D.C. Reagan · May 8–10, 2026</div>
+      </div>
+    </div>
+
+    <div class="qref-grid fade-in">
+      <div class="qref-cell">
+        <div class="qref-lbl">Traveler</div>
+        <div class="qref-val">Torres</div>
+        <div class="qref-sub">1 Adult</div>
+      </div>
+      <div class="qref-cell">
+        <div class="qref-lbl">Travel Dates</div>
+        <div class="qref-val">May 8–10</div>
+        <div class="qref-sub">Friday → Sunday</div>
+      </div>
+      <div class="qref-cell">
+        <div class="qref-lbl">Route</div>
+        <div class="qref-val">BRO ↔ DCA</div>
+        <div class="qref-sub">Via Houston IAH</div>
+      </div>
+      <div class="qref-cell">
+        <div class="qref-lbl">Outbound Seat 1</div>
+        <div class="qref-val" style="color:var(--green);font-weight:600;">23A</div>
+        <div class="qref-sub">BRO → IAH · UA 4271</div>
+      </div>
+      <div class="qref-cell">
+        <div class="qref-lbl">Outbound Seat 2</div>
+        <div class="qref-val" style="color:var(--green);font-weight:600;">10F</div>
+        <div class="qref-sub">IAH → DCA · UA 654</div>
+      </div>
+      <div class="qref-cell">
+        <div class="qref-lbl">Return Seats</div>
+        <div class="qref-val" style="color:var(--green);font-weight:600;">26A · 1A</div>
+        <div class="qref-sub">DCA→IAH · IAH→BRO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAY 8 — OUTBOUND -->
+<section id="may8" style="background:var(--parchment);">
+  <div class="inner">
+    <div class="eyebrow">Departure Day</div>
+    <h2 class="section-title">Friday, May 8</h2>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px;">Brownsville → Washington D.C. · Two-leg journey via Houston IAH</p>
+
+    <!-- LEG 1 -->
+    <div class="day-header fade-in">
+      <div class="day-badge">✈ Leg 1 of 2 · BRO → IAH</div>
+      <div class="day-line"></div>
+    </div>
+
+    <div class="segment-card fade-in">
+      <div class="segment-head">
+        <div class="segment-head-label">United Airlines · Operated by CommutAir DBA United Express</div>
+        <div class="segment-fn">UA 4271</div>
+      </div>
+      <div class="segment-body">
+        <div class="flight-row">
+          <div class="flight-endpoint">
+            <div class="airport-code">BRO</div>
+            <div class="flight-time">9:25 AM</div>
+            <div class="flight-date">Fri, May 8, 2026</div>
+            <div class="flight-city">Brownsville, TX</div>
+          </div>
+          <div class="flight-mid">
+            <span class="flight-arrow">→</span>
+            <div class="flight-duration">1h 28m</div>
+          </div>
+          <div class="flight-endpoint right">
+            <div class="airport-code">IAH</div>
+            <div class="flight-time">10:53 AM</div>
+            <div class="flight-date">Fri, May 8, 2026</div>
+            <div class="flight-city">Houston, TX</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--parchment-dkr);">
+          <div class="qref-lbl" style="margin-bottom:6px;">Seat Assignment</div>
+          <div class="seat-tag">💺 Seat 23A</div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-lbl">Aircraft</div>
+            <div class="detail-val">Embraer ERJ145</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Fare Class</div>
+            <div class="detail-val">United Economy (T)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Duration</div>
+            <div class="detail-val">1h 28m</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Operated By</div>
+            <div class="detail-val">CommutAir DBA United Express</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECTION -->
+    <div class="connection-pill fade-in">
+      <div class="conn-line"></div>
+      <div class="conn-badge">⏱ 1h 07m Connection · Houston IAH</div>
+      <div class="conn-line"></div>
+    </div>
+
+    <!-- LEG 2 -->
+    <div class="day-header fade-in">
+      <div class="day-badge">✈ Leg 2 of 2 · IAH → DCA</div>
+      <div class="day-line"></div>
+    </div>
+
+    <div class="segment-card fade-in">
+      <div class="segment-head">
+        <div class="segment-head-label">United Airlines</div>
+        <div class="segment-fn">UA 654</div>
+      </div>
+      <div class="segment-body">
+        <div class="flight-row">
+          <div class="flight-endpoint">
+            <div class="airport-code">IAH</div>
+            <div class="flight-time">12:00 PM</div>
+            <div class="flight-date">Fri, May 8, 2026</div>
+            <div class="flight-city">Houston, TX</div>
+          </div>
+          <div class="flight-mid">
+            <span class="flight-arrow">→</span>
+            <div class="flight-duration">3h 4m</div>
+          </div>
+          <div class="flight-endpoint right">
+            <div class="airport-code">DCA</div>
+            <div class="flight-time">4:04 PM</div>
+            <div class="flight-date">Fri, May 8, 2026</div>
+            <div class="flight-city">Washington, D.C.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--parchment-dkr);">
+          <div class="qref-lbl" style="margin-bottom:6px;">Seat Assignment</div>
+          <div class="seat-tag">💺 Seat 10F</div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-lbl">Aircraft</div>
+            <div class="detail-val">Airbus A320</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Fare Class</div>
+            <div class="detail-val">United Economy (T)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Duration</div>
+            <div class="detail-val">3h 4m</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Arrives</div>
+            <div class="detail-val">4:04 PM · DCA Reagan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAY 10 — RETURN -->
+<section id="may10" style="background:var(--white);">
+  <div class="inner">
+    <div class="eyebrow">Return Day</div>
+    <h2 class="section-title">Sunday, May 10</h2>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px;">Washington D.C. → Brownsville · Two-leg journey via Houston IAH</p>
+
+    <!-- LEG 1 -->
+    <div class="day-header fade-in">
+      <div class="day-badge">✈ Leg 1 of 2 · DCA → IAH</div>
+      <div class="day-line"></div>
+    </div>
+
+    <div class="segment-card fade-in">
+      <div class="segment-head">
+        <div class="segment-head-label">United Airlines</div>
+        <div class="segment-fn">UA 382</div>
+      </div>
+      <div class="segment-body">
+        <div class="flight-row">
+          <div class="flight-endpoint">
+            <div class="airport-code">DCA</div>
+            <div class="flight-time">12:40 PM</div>
+            <div class="flight-date">Sun, May 10, 2026</div>
+            <div class="flight-city">Washington, D.C.</div>
+          </div>
+          <div class="flight-mid">
+            <span class="flight-arrow">→</span>
+            <div class="flight-duration">3h 35m</div>
+          </div>
+          <div class="flight-endpoint right">
+            <div class="airport-code">IAH</div>
+            <div class="flight-time">3:15 PM</div>
+            <div class="flight-date">Sun, May 10, 2026</div>
+            <div class="flight-city">Houston, TX</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--parchment-dkr);">
+          <div class="qref-lbl" style="margin-bottom:6px;">Seat Assignment</div>
+          <div class="seat-tag">💺 Seat 26A</div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-lbl">Aircraft</div>
+            <div class="detail-val">Airbus A320</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Fare Class</div>
+            <div class="detail-val">United Economy (S)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Duration</div>
+            <div class="detail-val">3h 35m</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Departs</div>
+            <div class="detail-val">12:40 PM · DCA Reagan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECTION -->
+    <div class="connection-pill fade-in">
+      <div class="conn-line"></div>
+      <div class="conn-badge">⏱ 1h 44m Connection · Houston IAH</div>
+      <div class="conn-line"></div>
+    </div>
+
+    <!-- LEG 2 -->
+    <div class="day-header fade-in">
+      <div class="day-badge">✈ Leg 2 of 2 · IAH → BRO</div>
+      <div class="day-line"></div>
+    </div>
+
+    <div class="segment-card fade-in">
+      <div class="segment-head">
+        <div class="segment-head-label">United Airlines · Operated by CommutAir DBA United Express</div>
+        <div class="segment-fn">UA 4832</div>
+      </div>
+      <div class="segment-body">
+        <div class="flight-row">
+          <div class="flight-endpoint">
+            <div class="airport-code">IAH</div>
+            <div class="flight-time">4:59 PM</div>
+            <div class="flight-date">Sun, May 10, 2026</div>
+            <div class="flight-city">Houston, TX</div>
+          </div>
+          <div class="flight-mid">
+            <span class="flight-arrow">→</span>
+            <div class="flight-duration">1h 29m</div>
+          </div>
+          <div class="flight-endpoint right">
+            <div class="airport-code">BRO</div>
+            <div class="flight-time">6:28 PM</div>
+            <div class="flight-date">Sun, May 10, 2026</div>
+            <div class="flight-city">Brownsville, TX</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--parchment-dkr);">
+          <div class="qref-lbl" style="margin-bottom:6px;">Seat Assignment</div>
+          <div class="seat-tag">💺 Seat 1A</div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-lbl">Aircraft</div>
+            <div class="detail-val">Embraer ERJ145</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Fare Class</div>
+            <div class="detail-val">United Economy (S)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Duration</div>
+            <div class="detail-val">1h 29m</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-lbl">Operated By</div>
+            <div class="detail-val">CommutAir DBA United Express</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NOTES -->
+<section id="notes" style="background:var(--parchment);">
+  <div class="inner">
+    <div class="eyebrow">Good to Know</div>
+    <h2 class="section-title">Before You Go</h2>
+
+    <div class="note-card fade-in">
+      <div class="note-title">🎟 Check-In &amp; Boarding Pass</div>
+      <div class="note-text">Check in via the United Airlines app or at united.com. Online check-in opens <strong>24 hours before departure</strong>. Have your boarding pass ready on your phone or printed for both legs of each journey.</div>
+    </div>
+
+    <div class="note-card fade-in">
+      <div class="note-title">💺 Your Seat Assignments</div>
+      <div class="note-text">
+        <strong>May 8 — To Washington:</strong><br>
+        BRO → IAH (UA 4271) · <strong>Seat 23A</strong> &nbsp;·&nbsp; Embraer ERJ145<br>
+        IAH → DCA (UA 654) · <strong>Seat 10F</strong> &nbsp;·&nbsp; Airbus A320<br><br>
+        <strong>May 10 — To Brownsville:</strong><br>
+        DCA → IAH (UA 382) · <strong>Seat 26A</strong> &nbsp;·&nbsp; Airbus A320<br>
+        IAH → BRO (UA 4832) · <strong>Seat 1A</strong> &nbsp;·&nbsp; Embraer ERJ145
+      </div>
+    </div>
+
+    <div class="note-card fade-in">
+      <div class="note-title">⏱ Connection Times</div>
+      <div class="note-text">You have a <strong>1h 07m connection</strong> in Houston IAH on the way out (May 8) and a <strong>1h 44m connection</strong> on the return (May 10). IAH is a large airport — follow signage to your next gate promptly upon arrival.</div>
+    </div>
+
+    <div class="note-card fade-in">
+      <div class="note-title">📞 Need Help?</div>
+      <div class="note-text">We're available before, during, and after your trip. Call or text us anytime at <strong>(737) 271-7668</strong>.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="eyebrow" style="color:var(--gold);">Signature Elite Travel</div>
+    <div class="rule"><span class="rule-diamonds" style="color:var(--gold);">◆ ◆ ◆</span></div>
+    <h2 class="contact-title">Safe Travels, Torres</h2>
+    <p class="contact-sub">We're here for anything you need before or during your trip.</p>
+    <div class="contact-btns">
+      <a href="tel:+17372717668" class="btn-call">☎ Call (737) 271-7668</a>
+      <a href="mailto:bookings@signatureelitetravel.com" class="btn-email">✉ Email Us</a>
+    </div>
+    <div class="rule"><span class="rule-diamonds" style="color:var(--gold);">◆ ◆ ◆</span></div>
+    <p class="footer-disc">
+      Signature Elite Travel · (737) 271-7668 · bookings@signatureelitetravel.com<br>
+      This manifest is for informational purposes. All flights are confirmed — retain flight numbers and seat assignments for check-in. United Airlines · BRO ↔ DCA Reagan · May 8–10, 2026.
+    </p>
+  </div>
+</section>
+
+<script>
+function smoothScroll(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+const allSections = ['welcome','quickref','may8','may10','notes','contact'];
+const navSections = ['welcome','may8','may10','notes','contact'];
+const navLinks = {};
+navSections.forEach(id => {
+  const link = document.querySelector(`.pnav a[data-section="${id}"]`);
+  if (link) navLinks[id] = link;
+});
+
+function updateNav() {
+  let current = allSections[0];
+  allSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= 80) current = id;
+  });
+  if (current === 'quickref') current = 'welcome';
+  navSections.forEach(id => {
+    const link = navLinks[id];
+    if (!link) return;
+    link.classList.remove('active','visited');
+    if (id === current) link.classList.add('active');
+    else if (navSections.indexOf(id) < navSections.indexOf(current)) link.classList.add('visited');
+  });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
