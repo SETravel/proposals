@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sippel · El Paso · Signature Elite Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:#F5F0E8;--parchment-dk:#EDE6D6;--parchment-dkr:#E0D8C4;
+  --ink:#1A1610;--ink-soft:#3A342A;--ink-muted:#5A5248;
+  --gold:#B8963E;--gold-lt:#D4AF6A;--gold-pale:#F0E4C4;--gold-deep:#7A5E1E;
+  --white:#FDFAF4;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--parchment);color:var(--ink-soft);font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;line-height:1.7;}
+
+/* NAV */
+.pnav{position:fixed;top:0;left:0;right:0;background:var(--ink);z-index:1000;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;overflow-x:auto;}
+.pnav a{display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;color:var(--gold-lt);opacity:.45;transition:opacity .3s;flex-shrink:0;min-width:44px;}
+.pnav a.active{opacity:1;} .pnav a.visited{opacity:.7;}
+.pnav .dot{width:8px;height:8px;border-radius:50%;background:var(--gold-lt);transition:all .3s;}
+.pnav a.active .dot{background:var(--gold);width:10px;height:10px;}
+.pnav .lbl{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
+
+/* AGENT BAR */
+.abar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;gap:16px;}
+.abar-txt{color:var(--gold-lt);font-size:13px;font-weight:300;font-style:italic;}
+.abar-btn{background:var(--gold);color:var(--ink);padding:10px 20px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap;min-height:48px;display:flex;align-items:center;}
+
+/* LAYOUT */
+section{padding:80px 0 60px;}
+.container{max-width:860px;margin:0 auto;padding:0 24px;}
+
+/* HERO */
+.hero{background:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,150,62,.03) 40px,rgba(184,150,62,.03) 41px);}
+.hero-inner{position:relative;z-index:1;}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;}
+.logo-wm{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:300;color:var(--white);margin-bottom:8px;}
+.logo-wm em{font-style:italic;color:var(--gold-lt);}
+.drule{display:flex;align-items:center;gap:12px;justify-content:center;margin:20px 0;}
+.drule::before,.drule::after{content:'';flex:1;max-width:80px;height:1px;background:var(--gold);}
+.drule span{color:var(--gold);font-size:8px;letter-spacing:.3em;}
+.client-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-style:italic;font-weight:400;color:var(--white);margin:24px 0 8px;}
+.occasion{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-style:italic;color:var(--gold-lt);margin-bottom:32px;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:48px;}
+.pill{background:rgba(184,150,62,.15);border:1px solid rgba(184,150,62,.3);color:var(--gold-lt);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:.1em;}
+
+/* GUIDE */
+.guide{margin:0 auto 36px;max-width:720px;}
+.guide-bubble{background:var(--gold-pale);border-left:4px solid var(--gold-deep);padding:22px 26px;border-radius:0 8px 8px 0;font-size:18px;color:var(--ink-soft);line-height:1.65;}
+
+/* GLANCE */
+.glance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px;}
+.gcell{background:var(--white);border:1px solid var(--parchment-dkr);border-radius:6px;padding:18px 20px;}
+.glabel{font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.gval{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;color:var(--ink);font-weight:400;line-height:1.4;}
+
+/* SECTION HEADER */
+.slabel{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+.slabel::after{content:'';flex:1;height:1px;background:var(--parchment-dkr);}
+
+/* AIRLINE CARD */
+.acard{border:1px solid var(--parchment-dkr);border-radius:8px;overflow:hidden;margin-bottom:40px;}
+.ahero{width:100%;height:260px;position:relative;overflow:hidden;}
+.ahero-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:24px 28px;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 65%);z-index:2;}
+.ahero-badge{background:var(--gold);color:var(--ink);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:10px;}
+.ahero-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:400;color:var(--white);text-shadow:0 2px 8px rgba(0,0,0,.5);}
+.ahero-sub{font-size:13px;color:rgba(255,255,255,.8);font-weight:300;}
+.acbody{background:var(--white);padding:28px;}
+
+/* FLIGHT OPTIONS */
+.fgl{background:var(--ink);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-lt);padding:14px 20px;margin:28px -28px 16px;display:flex;align-items:center;gap:10px;}
+.fgl::before{content:'';display:inline-block;width:4px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0;}
+.fgl-return{background:var(--gold-deep) !important;color:var(--white) !important;}
+.fopt{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:6px;border:2px solid var(--parchment-dkr);background:var(--parchment);cursor:pointer;transition:all .2s;margin-bottom:9px;min-height:54px;}
+.fopt:hover{border-color:var(--gold);background:var(--gold-pale);}
+.fopt.selected{border-color:#2d6a2e;background:#edf6ed;}
+.radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--parchment-dkr);flex-shrink:0;transition:all .2s;position:relative;}
+.fopt.selected .radio{border-color:#2d6a2e;background:#2d6a2e;}
+.fopt.selected .radio::after{content:'';position:absolute;inset:3px;border-radius:50%;background:white;}
+.ftime{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;color:var(--ink);font-weight:400;}
+.farrow{color:var(--gold);font-size:16px;flex-shrink:0;}
+.fdetail{font-size:12px;color:var(--ink-muted);font-weight:400;margin-top:2px;}
+.fbadge{margin-left:auto;flex-shrink:0;background:var(--gold-pale);color:var(--gold-deep);font-size:10px;font-weight:600;letter-spacing:.08em;padding:4px 10px;border-radius:100px;text-transform:uppercase;}
+.fopt.selected .fbadge{background:#d4edda;color:#1a5c1e;}
+.fstop{color:var(--ink-muted);font-size:11px;margin-left:4px;font-style:italic;}
+.fna{display:flex;align-items:center;gap:12px;padding:12px 15px;border-radius:6px;border:1px dashed var(--parchment-dkr);background:transparent;margin-bottom:9px;opacity:.65;font-size:13px;color:var(--ink-muted);}
+
+/* PRICE BAR */
+.price-bar{background:var(--ink);color:var(--white);padding:20px 28px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background .3s;}
+.price-bar.sel-bar{background:#2d6a2e;}
+.pb-label{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px;}
+.tap-prompt{font-size:18px;font-weight:600;text-transform:uppercase;color:white;animation:pulse 1.5s ease-in-out infinite;display:block;}
+@keyframes pulse{0%,100%{opacity:.6;}50%{opacity:1;}}
+.price-bar.sel-bar .tap-prompt{animation:none;}
+.pb-amt{font-family:'Cormorant Garamond',Georgia,serif;font-size:32px;font-weight:600;text-align:right;}
+.pb-amt .from{font-size:14px;font-weight:300;margin-right:4px;}
+.pb-per{font-size:12px;color:rgba(255,255,255,.55);text-align:right;}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;}
+.tag{background:var(--parchment-dk);color:var(--ink-soft);font-size:11px;font-weight:500;letter-spacing:.06em;padding:6px 12px;border-radius:100px;border:1px solid var(--parchment-dkr);}
+
+/* AGENT NOTE */
+.anote{background:var(--gold-pale);border-left:4px solid var(--gold);padding:16px 20px;border-radius:0 6px 6px 0;margin:16px 0;font-size:15px;color:var(--ink-soft);}
+.anote strong{font-weight:600;color:var(--gold-deep);}
+
+/* CUE */
+.cue{text-align:center;padding:32px 0 0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.cue-txt{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);}
+.cue-ring{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;animation:bounce 1.5s ease-in-out infinite;}
+.cue-ring::after{content:'↓';color:var(--gold);font-size:20px;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* COST SUMMARY */
+.ctable{border-radius:8px;overflow:hidden;margin:24px 0;}
+.crow{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--parchment-dkr);background:var(--white);}
+.crow.hdr{background:var(--ink);color:var(--white);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;}
+.crow.hl{background:var(--gold-pale);}
+.crow.dim{opacity:.4;}
+.crow.dim .clabel{text-decoration:line-through;}
+.clabel{font-size:15px;color:var(--ink-soft);}
+.cval{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;color:var(--gold-deep);font-weight:400;}
+.tbar{background:var(--ink);color:var(--white);padding:20px;display:flex;justify-content:space-between;align-items:center;border-radius:0 0 8px 8px;}
+.tlabel{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;}
+.tamt{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:600;}
+.tamt .from{font-size:16px;font-weight:300;margin-right:6px;}
+.disc{font-size:12px;color:var(--ink-muted);font-style:italic;margin-top:16px;line-height:1.6;}
+
+/* CONTACT */
+.contact-sec{background:var(--ink);color:var(--white);padding:80px 24px;text-align:center;position:relative;overflow:hidden;}
+.contact-sec::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,150,62,.04) 40px,rgba(184,150,62,.04) 41px);}
+.ci{position:relative;z-index:1;max-width:600px;margin:0 auto;}
+.ch{font-family:'Cormorant Garamond',Georgia,serif;font-size:44px;font-style:italic;color:var(--white);margin-bottom:12px;}
+.cs{font-size:15px;color:var(--gold-lt);margin-bottom:40px;}
+.cbtns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-call{background:var(--gold);color:var(--ink);padding:16px 32px;border-radius:4px;text-decoration:none;font-size:15px;font-weight:600;min-height:56px;display:flex;align-items:center;}
+.btn-email{background:transparent;color:var(--gold-lt);border:2px solid var(--gold);padding:16px 32px;border-radius:4px;text-decoration:none;font-size:15px;font-weight:600;min-height:56px;display:flex;align-items:center;}
+.fdisc{font-size:11px;color:rgba(255,255,255,.4);margin-top:48px;line-height:1.7;}
+
+/* TRACKER */
+.tracker{position:fixed;bottom:70px;right:20px;z-index:900;background:var(--ink);border:1px solid var(--gold);border-radius:8px;padding:16px 20px;width:230px;}
+.tr-title{font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.tr-item{font-size:12px;color:rgba(255,255,255,.65);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.tr-item:last-child{border-bottom:none;}
+.tr-val{color:var(--gold-lt);font-weight:500;}
+
+/* TOAST */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--white);border:1px solid var(--gold);padding:12px 24px;border-radius:100px;font-size:13px;font-weight:500;z-index:2000;opacity:0;transition:opacity .3s;white-space:nowrap;pointer-events:none;}
+.toast.show{opacity:1;}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(20px);transition:all .6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .pnav .lbl{display:none;}
+  .abar-txt{display:none;}
+  .tracker{display:none;}
+  .client-name{font-size:38px;}
+  .glance-grid{grid-template-columns:repeat(2,1fr);}
+  .ahero{height:200px;}
+  .fgl{margin:28px -20px 16px;}
+  .acbody{padding:20px;}
+  .price-bar{flex-direction:column;align-items:flex-start;gap:8px;}
+  .tbar{flex-direction:column;align-items:flex-start;gap:8px;}
+}
+
+.airline-logo-bar {
+  background: white;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--parchment-dkr);
+  display: flex;
+  align-items: center;
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS NAV -->
+<nav class="pnav" id="pnav">
+  <a href="javascript:void(0)" data-section="welcome" onclick="smoothScroll('welcome')"><div class="dot"></div><div class="lbl">Welcome</div></a>
+  <a href="javascript:void(0)" data-section="glance" onclick="smoothScroll('glance')"><div class="dot"></div><div class="lbl">At a Glance</div></a>
+  <a href="javascript:void(0)" data-section="american" onclick="smoothScroll('american')"><div class="dot"></div><div class="lbl">American</div></a>
+  <a href="javascript:void(0)" data-section="southwest" onclick="smoothScroll('southwest')"><div class="dot"></div><div class="lbl">Southwest</div></a>
+  <a href="javascript:void(0)" data-section="summary" onclick="smoothScroll('summary')"><div class="dot"></div><div class="lbl">Summary</div></a>
+  <a href="javascript:void(0)" data-section="contact" onclick="smoothScroll('contact')"><div class="dot"></div><div class="lbl">Contact</div></a>
+</nav>
+
+<!-- AGENT BAR -->
+<div class="abar">
+  <span class="abar-txt">Ready to book? We're standing by.</span>
+  <a href="tel:+17372717668" class="abar-btn">☎ Call (737) 271-7668</a>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- TRACKER -->
+<div class="tracker" id="tracker">
+  <div class="tr-title">Your Selections</div>
+  <div class="tr-item">Airline: <span class="tr-val" id="t-airline">Not yet selected</span></div>
+  <div class="tr-item">Outbound: <span class="tr-val" id="t-out">Not yet selected</span></div>
+  <div class="tr-item">Return: <span class="tr-val" id="t-ret">Not yet selected</span></div>
+</div>
+
+<!-- ═══════════════ WELCOME ═══════════════ -->
+<section id="welcome" style="padding:0;">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Signature Elite Travel · Curated Journeys</div>
+      <div class="logo-wm"><em>Signature</em> Elite</div>
+      <div class="drule"><span>◆ ◆ ◆</span></div>
+      <div class="client-name">Sippel</div>
+      <div class="occasion">El Paso · Flight Options · May 29–31</div>
+      <div class="pills">
+        <span class="pill">✈ May 29–31, 2026</span>
+        <span class="pill">Dallas → El Paso</span>
+        <span class="pill">2 Travelers</span>
+        <span class="pill">2 Airlines · Same Price</span>
+      </div>
+      <div class="cue" onclick="smoothScroll('glance')">
+        <span class="cue-txt">See Your Options</span>
+        <span class="cue-ring"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AT A GLANCE ═══════════════ -->
+<section id="glance">
+  <div class="container">
+    <div class="slabel">Your Trip at a Glance</div>
+    <div class="guide fade-in">
+      <div class="guide-bubble">
+        I've put together two great options for your El Paso trip — American Airlines out of DFW and Southwest out of Love Field. They come in at the same price, so the choice comes down to schedule, airport preference, and whether those free Southwest bags matter to you. Scroll through and tap the price bar on whichever one feels right.
+      </div>
+    </div>
+    <div class="glance-grid fade-in">
+      <div class="gcell"><div class="glabel">Travel Dates</div><div class="gval">May 29–31, 2026</div></div>
+      <div class="gcell"><div class="glabel">Route</div><div class="gval">Dallas → El Paso</div></div>
+      <div class="gcell"><div class="glabel">Travelers</div><div class="gval">2 Adults</div></div>
+      <div class="gcell"><div class="glabel">Option 1 — Airport</div><div class="gval">American · DFW</div></div>
+      <div class="gcell"><div class="glabel">Option 2 — Airport</div><div class="gval">Southwest · DAL Love Field</div></div>
+      <div class="gcell"><div class="glabel">Both Starting From</div><div class="gval">$785.60 for 2</div></div>
+    </div>
+    <div class="cue fade-in" onclick="smoothScroll('american')">
+      <span class="cue-txt">Next: American Airlines</span>
+      <span class="cue-ring"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AMERICAN AIRLINES ═══════════════ -->
+<section id="american">
+  <div class="container">
+    <div class="slabel">Option 1</div>
+    <div class="acard">
+      <div class="ahero" style="background:linear-gradient(135deg,#0d1b40 0%,#8b0000 55%,#c0392b 100%);">
+        <div class="ahero-ov">
+          <div class="ahero-badge">Earliest Arrival · Nonstop Both Ways</div>
+          <div class="ahero-name">American Airlines</div>
+          <div class="ahero-sub">Dallas/Fort Worth International · DFW → ELP</div>
+        </div>
+      </div>
+      <div class="acbody">
+<div class="airline-logo-bar"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgNzAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNzAiPgogIDxyZWN0IHdpZHRoPSIyNDAiIGhlaWdodD0iNzAiIGZpbGw9IndoaXRlIiByeD0iNiIvPgogIDxwYXRoIGQ9Ik0xNiA1MCBRMjggMTggNDYgMjggUTM4IDM3IDQyIDUwIFoiIGZpbGw9IiNDODEwMkUiLz4KICA8cGF0aCBkPSJNNDIgNTAgUTQ3IDIyIDY0IDE3IFE2MCAzNSA2MSA1MCBaIiBmaWxsPSIjMDAzMDg3Ii8+CiAgPHBhdGggZD0iTTYxIDUwIFE2NCAxOSA4MCAxNSBRNzggMzUgNzggNTAgWiIgZmlsbD0iI0M4MTAyRSIvPgogIDx0ZXh0IHg9Ijk1IiB5PSI0NCIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI4IiBmaWxsPSIjMDAzMDg3IiBsZXR0ZXItc3BhY2luZz0iLTEiPkFBPC90ZXh0PgogIDx0ZXh0IHg9Ijk1IiB5PSI1OCIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0iIzg4OCIgbGV0dGVyLXNwYWNpbmc9IjIiIGZvbnQtd2VpZ2h0PSI2MDAiPkFNRVJJQ0FOIEFJUkxJTkVTPC90ZXh0Pgo8L3N2Zz4=" alt="American Airlines" style="height:60px;"></div>
+        <div class="guide fade-in">
+          <div class="guide-bubble">
+            American has one nonstop outbound on May 29th — an early morning departure that gets you into El Paso before 10 AM. For the return on May 31st, choose between two nonstop options. <em>Tap the flights you prefer, then tap the big black bar below to select American.</em>
+          </div>
+        </div>
+
+        <div class="fgl">OUTBOUND — THURSDAY, MAY 29 · DFW → ELP · NONSTOP</div>
+        <div class="fopt selected" data-grp="aa-out" onclick="selFlight(this,'aa-out','8:25 AM → 9:15 AM (DFW → ELP)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">8:25 AM <span class="farrow">→</span> 9:15 AM</div>
+            <div class="fdetail">Nonstop · 1h 50m · DFW → ELP</div>
+          </div>
+          <div class="fbadge">Only Nonstop</div>
+        </div>
+
+        <div class="fgl fgl-return">RETURN — SATURDAY, MAY 31 · ELP → DFW · NONSTOP · CHOOSE ONE</div>
+        <div class="fopt" data-grp="aa-ret" onclick="selFlight(this,'aa-ret','5:49 AM → 8:46 AM (ELP → DFW)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">5:49 AM <span class="farrow">→</span> 8:46 AM</div>
+            <div class="fdetail">Nonstop · ELP → DFW · Back by 9 AM</div>
+          </div>
+          <div class="fbadge">Earliest Return</div>
+        </div>
+        <div class="fopt" data-grp="aa-ret" onclick="selFlight(this,'aa-ret','7:02 AM → 10:00 AM (ELP → DFW)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">7:02 AM <span class="farrow">→</span> 10:00 AM</div>
+            <div class="fdetail">Nonstop · ELP → DFW · Back by 10 AM</div>
+          </div>
+          <div class="fbadge">A Little More Morning</div>
+        </div>
+
+        <div class="tags fade-in">
+          <span class="tag">✈ Nonstop Both Ways</span>
+          <span class="tag">📍 DFW International</span>
+          <span class="tag">🌅 In El Paso by 9:15 AM</span>
+          <span class="tag">🔁 Two Return Choices</span>
+        </div>
+
+        <div class="anote fade-in">
+          <strong>Agent's Note:</strong> The 8:25 AM departure means leaving for DFW around 6:15–6:30 AM — early but doable, and you gain the whole day in El Paso. On the return, I'd lean toward the 7:02 AM if you're not morning people; it's only 73 minutes later and still has you home before lunch.
+        </div>
+      </div>
+      <div class="price-bar" id="priceBarAA" data-value="aa" data-price="785.60" onclick="selectAirline(this,'aa')">
+        <div>
+          <div class="pb-label">Starting From · 2 Travelers · Round Trip</div>
+          <span class="tap-prompt">☝ TAP TO SELECT AMERICAN</span>
+        </div>
+        <div>
+          <div class="pb-amt"><span class="from">from</span>$785.60</div>
+          <div class="pb-per">~$392.80 per person</div>
+        </div>
+      </div>
+    </div>
+    <div class="cue fade-in" onclick="smoothScroll('southwest')">
+      <span class="cue-txt">Next: Southwest Airlines</span>
+      <span class="cue-ring"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SOUTHWEST ═══════════════ -->
+<section id="southwest">
+  <div class="container">
+    <div class="slabel">Option 2</div>
+    <div class="acard">
+      <div class="ahero" style="background:linear-gradient(135deg,#003087 0%,#1a5fba 50%,#e8a200 100%);">
+        <div class="ahero-ov">
+          <div class="ahero-badge">2 Free Bags · Most Schedule Options · Love Field</div>
+          <div class="ahero-name">Southwest Airlines</div>
+          <div class="ahero-sub">Dallas Love Field · DAL → ELP · 2 Free Checked Bags Per Person</div>
+        </div>
+      </div>
+      <div class="acbody">
+<div class="airline-logo-bar"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgNzAiIHdpZHRoPSIyNjAiIGhlaWdodD0iNzAiPgogIDxyZWN0IHdpZHRoPSIyNjAiIGhlaWdodD0iNzAiIGZpbGw9IndoaXRlIiByeD0iNiIvPgogIDxwYXRoIGQ9Ik0xNiAzMCBDMTYgMjEgMjUgMTUgMzQgMjEgQzQzIDE1IDUyIDIxIDUyIDMwIEM1MiAzOSAzNCA1MiAzNCA1MiBDMzQgNTIgMTYgMzkgMTYgMzAgWiIgZmlsbD0iI0UzMTgzNyIvPgogIDx0ZXh0IHg9IjY2IiB5PSIzNyIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjIyIiBmaWxsPSIjMzA0Q0IyIiBsZXR0ZXItc3BhY2luZz0iLTAuMyI+U291dGh3ZXN0PC90ZXh0PgogIDx0ZXh0IHg9IjY2IiB5PSI1NCIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0iIzg4OCIgbGV0dGVyLXNwYWNpbmc9IjIuNSIgZm9udC13ZWlnaHQ9IjYwMCI+QUlSTElORVM8L3RleHQ+Cjwvc3ZnPg==" alt="Southwest Airlines" style="height:60px;"></div>
+        <div class="guide fade-in">
+          <div class="guide-bubble">
+            Southwest gives you the most scheduling flexibility — six outbound choices and seven return options, all from Love Field which is closer to central Dallas. The standout perk: <em>2 free checked bags per person, included.</em> Same price as American, but you walk away with significantly more value if you're checking luggage. Tap your preferred flights, then select Southwest below.
+          </div>
+        </div>
+
+        <div class="fgl">OUTBOUND NONSTOP — THURSDAY, MAY 29 · DAL → ELP · $393/PERSON</div>
+        <div class="fopt" data-grp="wn-out" onclick="selFlight(this,'wn-out','1:40 PM nonstop (DAL → ELP)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">1:40 PM <span class="farrow">→</span> 2:30 PM</div>
+            <div class="fdetail">Nonstop · DAL → ELP · Relaxed morning departure</div>
+          </div>
+          <div class="fbadge">Nonstop · $393</div>
+        </div>
+        <div class="fopt" data-grp="wn-out" onclick="selFlight(this,'wn-out','5:25 PM nonstop (DAL → ELP)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">5:25 PM <span class="farrow">→</span> 6:15 PM</div>
+            <div class="fdetail">Nonstop · DAL → ELP · Afternoon departure</div>
+          </div>
+          <div class="fbadge">Nonstop · $393</div>
+        </div>
+        <div class="fopt" data-grp="wn-out" onclick="selFlight(this,'wn-out','7:10 PM nonstop (DAL → ELP)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">7:10 PM <span class="farrow">→</span> 8:00 PM</div>
+            <div class="fdetail">Nonstop · DAL → ELP · Evening departure</div>
+          </div>
+          <div class="fbadge">Nonstop · $393</div>
+        </div>
+
+        <div class="fgl">OUTBOUND ONE-STOP — THURSDAY, MAY 29 · DAL → ELP · $403/PERSON (+$10)</div>
+        <div class="fopt" data-grp="wn-out" onclick="selFlight(this,'wn-out','6:00 AM via Houston (DAL → ELP)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">6:00 AM <span class="farrow">→</span> 9:10 AM <span class="fstop">via Houston</span></div>
+            <div class="fdetail">One-stop · DAL → HOU → ELP · Earliest option</div>
+          </div>
+          <div class="fbadge">Earliest · +$10</div>
+        </div>
+        <div class="fopt" data-grp="wn-out" onclick="selFlight(this,'wn-out','2:00 PM via Austin (DAL → ELP)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">2:00 PM <span class="farrow">→</span> 4:25 PM <span class="fstop">via Austin</span></div>
+            <div class="fdetail">One-stop · DAL → AUS → ELP</div>
+          </div>
+          <div class="fbadge">Via Austin · +$10</div>
+        </div>
+        <div class="fopt" data-grp="wn-out" onclick="selFlight(this,'wn-out','4:55 PM via San Antonio (DAL → ELP)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">4:55 PM <span class="farrow">→</span> 7:50 PM <span class="fstop">via San Antonio</span></div>
+            <div class="fdetail">One-stop · DAL → SAT → ELP</div>
+          </div>
+          <div class="fbadge">Via San Antonio · +$10</div>
+        </div>
+
+        <div class="fgl fgl-return">RETURN NONSTOP — SATURDAY, MAY 31 · ELP → DAL · $393/PERSON</div>
+        <div class="fopt" data-grp="wn-ret" onclick="selFlight(this,'wn-ret','5:10 AM nonstop (ELP → DAL)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">5:10 AM <span class="farrow">→</span> 7:55 AM</div>
+            <div class="fdetail">Nonstop · ELP → DAL · Earliest flight home</div>
+          </div>
+          <div class="fbadge">Earliest · $393</div>
+        </div>
+        <div class="fopt" data-grp="wn-ret" onclick="selFlight(this,'wn-ret','7:40 AM nonstop (ELP → DAL)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">7:40 AM <span class="farrow">→</span> 10:25 AM</div>
+            <div class="fdetail">Nonstop · ELP → DAL</div>
+          </div>
+          <div class="fbadge">Morning · $393</div>
+        </div>
+        <div class="fopt" data-grp="wn-ret" onclick="selFlight(this,'wn-ret','4:35 PM nonstop (ELP → DAL)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">4:35 PM <span class="farrow">→</span> 7:20 PM</div>
+            <div class="fdetail">Nonstop · ELP → DAL · Enjoy a full final day</div>
+          </div>
+          <div class="fbadge">Afternoon · $393</div>
+        </div>
+        <div class="fopt" data-grp="wn-ret" onclick="selFlight(this,'wn-ret','6:30 PM nonstop (ELP → DAL)')">
+          <div class="radio"></div>
+          <div style="flex:1;">
+            <div class="ftime">6:30 PM <span class="farrow">→</span> 9:15 PM</div>
+            <div class="fdetail">Nonstop · ELP → DAL · Maximum time in El Paso</div>
+          </div>
+          <div class="fbadge">Evening · $393</div>
+        </div>
+
+        <div class="fgl fgl-return">RETURN ONE-STOP — SATURDAY, MAY 31 · ELP → DAL · $403/PERSON (+$10)</div>
+        <div class="fna">
+          <span>📋</span>
+          <div>
+            <div style="font-size:14px;color:var(--ink-soft);">3 additional one-stop return times available at $403/person</div>
+            <div style="font-size:12px;color:var(--ink-muted);">Contact us for the full schedule · $10 more per person vs nonstop</div>
+          </div>
+        </div>
+
+        <div class="tags fade-in">
+          <span class="tag">🎒 2 Free Checked Bags</span>
+          <span class="tag">📍 DAL Love Field</span>
+          <span class="tag">🕐 6 Outbound Options</span>
+          <span class="tag">↩ 4 Nonstop Returns</span>
+        </div>
+
+        <div class="anote fade-in">
+          <strong>Agent's Note:</strong> The free bag policy is the real wildcard here — two checked bags per person, round trip, is easily $120–$200+ in savings depending on bag size. If you're packing for a full weekend, this matters. My top pick for a relaxed outbound is the 1:40 PM nonstop; you still get most of the afternoon in El Paso without a brutal early wake-up.
+        </div>
+      </div>
+      <div class="price-bar" id="priceBarWN" data-value="wn" data-price="785.60" onclick="selectAirline(this,'wn')">
+        <div>
+          <div class="pb-label">Starting From · 2 Travelers · Round Trip · Bags Included</div>
+          <span class="tap-prompt">☝ TAP TO SELECT SOUTHWEST</span>
+        </div>
+        <div>
+          <div class="pb-amt"><span class="from">from</span>$785.60</div>
+          <div class="pb-per">~$392.80/person · 2 free bags incl.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cue fade-in" onclick="smoothScroll('summary')">
+      <span class="cue-txt">Next: Cost Summary</span>
+      <span class="cue-ring"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ COST SUMMARY ═══════════════ -->
+<section id="summary">
+  <div class="container">
+    <div class="slabel">Cost Summary</div>
+    <div class="guide fade-in">
+      <div class="guide-bubble">
+        Both options come in at the same base price — your selected airline will be highlighted below. Tap a price bar above if you haven't yet, and the total will update here automatically.
+      </div>
+    </div>
+    <div class="ctable fade-in">
+      <div class="crow hdr"><span>Flight Option</span><span>Starting From</span></div>
+      <div class="crow" id="row-aa">
+        <span class="clabel">American Airlines (DFW) · 2 travelers · round trip</span>
+        <span class="cval">$785.60</span>
+      </div>
+      <div class="crow" id="row-wn">
+        <span class="clabel">Southwest Airlines (DAL) · 2 travelers · incl. 2 free bags ea.</span>
+        <span class="cval">$785.60</span>
+      </div>
+      <div class="tbar">
+        <div class="tlabel">Estimated Starting From</div>
+        <div class="tamt" id="totalAmt"><span class="from">from</span>$785.60</div>
+      </div>
+    </div>
+    <p class="disc fade-in">All prices are starting estimates based on the quoted fare class and are subject to availability at time of booking. Final pricing confirmed at booking and may vary. Southwest free bag policy subject to Southwest terms and conditions.</p>
+    <div class="cue fade-in" onclick="smoothScroll('contact')">
+      <span class="cue-txt">Next: Let's Book It</span>
+      <span class="cue-ring"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact" class="contact-sec" style="padding-top:80px;">
+  <div class="ci">
+    <div class="eyebrow" style="color:var(--gold);">Ready to Book?</div>
+    <div class="ch">Let's Make This Happen</div>
+    <div class="cs">Once you've chosen your airline and preferred flights, give us a call or send an email — we'll lock it in right away.</div>
+    <div class="cbtns">
+      <a href="tel:+17372717668" class="btn-call">☎ Call (737) 271-7668</a>
+      <a href="mailto:bookings@signatureelitetravel.com" class="btn-email">✉ Email Us</a>
+    </div>
+    <div class="drule" style="margin:48px auto 24px;max-width:280px;"><span>◆ ◆ ◆</span></div>
+    <div class="fdisc">
+      Signature Elite Travel · (737) 271-7668 · bookings@signatureelitetravel.com<br>
+      All prices shown are starting estimates based on the quoted fare class. Final pricing confirmed at booking and may vary based on availability and applicable fees.
+    </div>
+  </div>
+</section>
+
+<script>
+let selAirline = null;
+let selFlights = {};
+
+function smoothScroll(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function selectAirline(bar, val) {
+  document.querySelectorAll('.price-bar').forEach(b => {
+    b.classList.remove('sel-bar');
+    const tp = b.querySelector('.tap-prompt');
+    if (tp) tp.textContent = b.dataset.value === 'aa' ? '☝ TAP TO SELECT AMERICAN' : '☝ TAP TO SELECT SOUTHWEST';
+  });
+  bar.classList.add('sel-bar');
+  const tp = bar.querySelector('.tap-prompt');
+  if (tp) tp.textContent = '✓ SELECTED';
+  selAirline = val;
+  updateTotal();
+  updateTracker();
+  showToast(val === 'aa' ? '✓ American Airlines selected' : '✓ Southwest Airlines selected');
+}
+
+function selFlight(el, grp, label) {
+  document.querySelectorAll(`.fopt[data-grp="${grp}"]`).forEach(f => f.classList.remove('selected'));
+  el.classList.add('selected');
+  selFlights[grp] = label;
+  updateTracker();
+  showToast('✓ ' + label.split(' (')[0]);
+}
+
+function updateTotal() {
+  const rowAA = document.getElementById('row-aa');
+  const rowWN = document.getElementById('row-wn');
+  if (!selAirline) { rowAA.className='crow'; rowWN.className='crow'; return; }
+  if (selAirline === 'aa') { rowAA.className='crow hl'; rowWN.className='crow dim'; }
+  else { rowWN.className='crow hl'; rowAA.className='crow dim'; }
+}
+
+function updateTracker() {
+  document.getElementById('t-airline').textContent =
+    selAirline === 'aa' ? 'American Airlines' : selAirline === 'wn' ? 'Southwest' : 'Not yet selected';
+  const out = selFlights['aa-out'] || selFlights['wn-out'];
+  const ret = selFlights['aa-ret'] || selFlights['wn-ret'];
+  document.getElementById('t-out').textContent = out ? out.split('(')[0].trim() : 'Not yet selected';
+  document.getElementById('t-ret').textContent = ret ? ret.split('(')[0].trim() : 'Not yet selected';
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// Scroll spy
+const sections = ['welcome','glance','american','southwest','summary','contact'];
+function updateNav() {
+  const scrollY = window.scrollY + 120;
+  let current = 'welcome';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollY) current = id;
+  });
+  document.querySelectorAll('.pnav a').forEach(a => {
+    a.classList.remove('active','visited');
+    const s = a.dataset.section;
+    const idx = sections.indexOf(s), cur = sections.indexOf(current);
+    if (s === current) a.classList.add('active');
+    else if (idx < cur) a.classList.add('visited');
+  });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+
+// Fade observer
+const fo = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => fo.observe(el));
+</script>
+</body>
+</html>
