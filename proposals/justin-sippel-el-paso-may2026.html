@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justin Sippel — El Paso — May 2026 | Signature Elite Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment:     #F5F0E8;
+    --parchment-dk:  #EDE6D6;
+    --parchment-dkr: #E0D8C4;
+    --ink:           #1A1610;
+    --ink-soft:      #3A342A;
+    --ink-muted:     #5A5248;
+    --gold:          #B8963E;
+    --gold-lt:       #D4AF6A;
+    --gold-pale:     #F0E4C4;
+    --gold-deep:     #7A5E1E;
+    --white:         #FDFAF4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink-soft);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    padding-top: 56px;
+    padding-bottom: 72px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+  }
+
+  /* ── PROGRESS NAV ── */
+  .pnav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--ink);
+    display: flex; align-items: center; gap: 0;
+    padding: 0 24px; height: 56px; overflow-x: auto;
+  }
+  .pnav a {
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none; color: var(--gold-lt);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; white-space: nowrap;
+    padding: 0 14px; height: 56px; opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+  .pnav a.active, .pnav a.visited { opacity: 1; }
+  .pnav a .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    border: 1.5px solid var(--gold-lt); flex-shrink: 0;
+    transition: background 0.3s;
+  }
+  .pnav a.active .dot { background: var(--gold); border-color: var(--gold); }
+  .pnav a.visited .dot { background: var(--gold-deep); border-color: var(--gold-deep); }
+
+  /* ── AGENT BAR ── */
+  .abar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 60px;
+  }
+  .abar-txt {
+    color: var(--gold-lt); font-size: 13px; font-weight: 400; letter-spacing: 0.04em;
+  }
+  .abar-btn {
+    background: var(--gold); color: var(--ink);
+    font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none;
+    padding: 0 20px; height: 44px; border-radius: 2px;
+    display: flex; align-items: center; gap: 8px;
+    white-space: nowrap;
+  }
+
+  /* ── SECTIONS ── */
+  section { position: relative; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── HERO ── */
+  #welcome {
+    background: var(--ink);
+    padding: 72px 24px 64px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #welcome::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 40px,
+      rgba(184,150,62,0.04) 40px, rgba(184,150,62,0.04) 80px
+    );
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
+    color: var(--gold-lt); text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 300; color: var(--white);
+    letter-spacing: 0.04em; margin-bottom: 6px;
+  }
+  .hero-logo em { font-style: italic; color: var(--gold-lt); }
+  .hero-rule {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; margin: 18px auto;
+  }
+  .hero-rule span { font-size: 16px; color: var(--gold); }
+  .hero-rule::before, .hero-rule::after {
+    content: ''; flex: 1; max-width: 80px;
+    height: 1px; background: var(--gold); opacity: 0.5;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-style: italic; font-weight: 400;
+    color: var(--white); line-height: 1.1; margin-bottom: 10px;
+  }
+  .hero-occasion {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-style: italic; color: var(--gold-lt);
+    margin-bottom: 28px;
+  }
+  .pills {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    margin-bottom: 40px;
+  }
+  .pill {
+    background: rgba(184,150,62,0.15); border: 1px solid rgba(184,150,62,0.35);
+    color: var(--gold-lt);
+    font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 8px 18px; border-radius: 2px;
+  }
+
+  /* ── SCROLL CUE ── */
+  .cue {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; padding: 32px 0 16px; cursor: pointer;
+  }
+  .cue-txt {
+    font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-deep);
+  }
+  .cue-ring {
+    width: 40px; height: 40px; border: 1.5px solid var(--gold);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 18px;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  .cue-ring::after { content: '↓'; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ── GUIDE BUBBLE ── */
+  .guide { padding: 28px 24px 12px; }
+  .guide-bubble {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold-deep);
+    padding: 18px 22px;
+    font-size: 17px; font-weight: 400; color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .guide-bubble em { color: var(--gold-deep); font-style: italic; }
+
+  /* ── SECTION LABEL ── */
+  .sec-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 48px; }
+  .sec-label {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-bottom: 28px;
+  }
+  .sec-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 400; color: var(--ink); margin-bottom: 6px;
+  }
+
+  /* ── AT A GLANCE GRID ── */
+  .glance-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin-bottom: 32px;
+  }
+  .glance-cell {
+    background: var(--white);
+    border: 1px solid var(--parchment-dkr);
+    padding: 18px 20px;
+  }
+  .glance-lbl {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .glance-val {
+    font-family: 'Cormorant Garamond', serif; font-size: 20px;
+    font-weight: 400; color: var(--ink); line-height: 1.25;
+  }
+  .glance-sub {
+    font-size: 12px; font-weight: 400; color: var(--ink-muted); margin-top: 3px;
+  }
+
+  /* ── PASSENGER DETAILS ── */
+  .pax-card {
+    background: var(--white);
+    border: 1px solid var(--parchment-dkr);
+    margin-bottom: 32px; overflow: hidden;
+  }
+  .pax-header {
+    background: var(--ink);
+    padding: 16px 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .pax-header-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-style: italic; color: var(--white);
+  }
+  .pax-badge {
+    font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    background: var(--gold); color: var(--ink);
+    padding: 4px 10px; border-radius: 1px;
+  }
+  .pax-fields {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--parchment-dkr);
+  }
+  .pax-field {
+    padding: 18px 24px;
+    border-right: 1px solid var(--parchment-dkr);
+    border-bottom: 1px solid var(--parchment-dkr);
+  }
+  .pax-field:nth-child(even) { border-right: none; }
+  .pax-field:nth-last-child(-n+2) { border-bottom: none; }
+  .pax-field-lbl {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .pax-field-val {
+    font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 400;
+    color: var(--ink);
+  }
+  .pax-field-val.blank {
+    color: var(--ink-muted);
+    border-bottom: 1px dashed var(--parchment-dkr);
+    display: inline-block; min-width: 180px; padding-bottom: 2px;
+    font-style: italic; font-size: 13px; letter-spacing: 0.05em;
+  }
+
+  /* ── FLIGHT CARD ── */
+  .flight-section { padding-bottom: 0; }
+  .flight-card {
+    background: var(--white);
+    border: 1px solid var(--parchment-dkr);
+    margin-bottom: 24px; overflow: hidden;
+  }
+  .flight-banner {
+    background: var(--ink);
+    padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .flight-dir {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-lt);
+  }
+  .flight-date {
+    font-family: 'Cormorant Garamond', serif; font-size: 18px;
+    font-style: italic; color: var(--gold-lt);
+  }
+  .flight-main {
+    padding: 24px 28px;
+  }
+  .flight-route {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+  }
+  .flight-city { flex: 1; }
+  .flight-code {
+    font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300;
+    color: var(--ink); line-height: 1;
+  }
+  .flight-city-name {
+    font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);
+    margin-top: 4px;
+  }
+  .flight-city-detail {
+    font-size: 12px; font-weight: 300; color: var(--ink-muted);
+    margin-top: 2px;
+  }
+  .flight-time-big {
+    font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400;
+    color: var(--gold-deep);
+  }
+  .flight-arrow-wrap {
+    flex: 1; text-align: center;
+  }
+  .flight-arrow {
+    display: block; color: var(--gold); font-size: 22px; margin-bottom: 4px;
+  }
+  .flight-dur {
+    font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.08em; color: var(--ink-muted);
+  }
+  .flight-nonstop {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold-deep); margin-top: 3px;
+  }
+  .flight-meta-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--parchment-dkr);
+  }
+  .flight-meta-cell {
+    padding: 14px 20px;
+    border-right: 1px solid var(--parchment-dkr);
+  }
+  .flight-meta-cell:last-child { border-right: none; }
+  .flight-meta-lbl {
+    font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 5px;
+  }
+  .flight-meta-val {
+    font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500;
+    color: var(--ink);
+  }
+  .flight-meta-val.note {
+    font-size: 12px; font-weight: 300; color: var(--ink-muted); font-style: italic;
+  }
+
+  /* ── TICKET BOX ── */
+  .ticket-box {
+    background: var(--gold-pale);
+    border: 1px solid var(--gold);
+    border-left: 4px solid var(--gold);
+    padding: 18px 24px; margin-bottom: 24px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .ticket-icon { font-size: 28px; }
+  .ticket-lbl {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep);
+    margin-bottom: 4px;
+  }
+  .ticket-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 26px;
+    font-weight: 400; color: var(--ink); letter-spacing: 0.06em;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    background: var(--gold-pale);
+    border: 1px solid var(--parchment-dkr);
+    padding: 22px 28px; margin-bottom: 32px;
+  }
+  .checklist-title {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep);
+    margin-bottom: 14px;
+  }
+  .checklist-items {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 400;
+    color: var(--ink-soft);
+  }
+  .check-circle {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* ── CONTACT SECTION ── */
+  #contact {
+    background: var(--ink);
+    padding: 64px 24px 80px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 40px,
+      rgba(184,150,62,0.04) 40px, rgba(184,150,62,0.04) 80px
+    );
+    pointer-events: none;
+  }
+  .contact-eyebrow {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .contact-heading {
+    font-family: 'Cormorant Garamond', serif; font-size: 42px;
+    font-style: italic; color: var(--white); margin-bottom: 28px;
+  }
+  .contact-btns {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .contact-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 56px; padding: 0 28px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .contact-btn:hover { opacity: 0.88; }
+  .contact-btn.primary { background: var(--gold); color: var(--ink); }
+  .contact-btn.secondary {
+    background: transparent; color: var(--gold-lt);
+    border: 1px solid rgba(184,150,62,0.5);
+  }
+  .contact-footer {
+    font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 300;
+    color: rgba(212,175,106,0.55); line-height: 1.8; max-width: 500px; margin: 0 auto;
+  }
+  .contact-footer strong { color: rgba(212,175,106,0.75); font-weight: 400; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .hero-name { font-size: 38px; }
+    .glance-grid { grid-template-columns: 1fr 1fr; }
+    .pax-fields { grid-template-columns: 1fr; }
+    .pax-field { border-right: none; border-bottom: 1px solid var(--parchment-dkr); }
+    .pax-field:last-child { border-bottom: none; }
+    .flight-meta-grid { grid-template-columns: 1fr 1fr; }
+    .flight-meta-cell:nth-child(2) { border-right: none; }
+    .flight-meta-cell:last-child { border-top: 1px solid var(--parchment-dkr); grid-column: 1 / -1; border-right: none; }
+    .flight-code { font-size: 36px; }
+    .checklist-items { grid-template-columns: 1fr; }
+    .abar-txt { display: none; }
+    .contact-btns { flex-direction: column; align-items: center; }
+    .pnav a .lbl { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS NAV -->
+<nav class="pnav" id="pnav">
+  <a href="javascript:void(0)" data-section="welcome" onclick="smoothScroll('welcome')">
+    <div class="dot"></div><div class="lbl">Welcome</div>
+  </a>
+  <a href="javascript:void(0)" data-section="overview" onclick="smoothScroll('overview')">
+    <div class="dot"></div><div class="lbl">Overview</div>
+  </a>
+  <a href="javascript:void(0)" data-section="passenger" onclick="smoothScroll('passenger')">
+    <div class="dot"></div><div class="lbl">Passenger</div>
+  </a>
+  <a href="javascript:void(0)" data-section="departure" onclick="smoothScroll('departure')">
+    <div class="dot"></div><div class="lbl">Departure</div>
+  </a>
+  <a href="javascript:void(0)" data-section="return" onclick="smoothScroll('return')">
+    <div class="dot"></div><div class="lbl">Return</div>
+  </a>
+  <a href="javascript:void(0)" data-section="contact" onclick="smoothScroll('contact')">
+    <div class="dot"></div><div class="lbl">Contact</div>
+  </a>
+</nav>
+
+<!-- AGENT BAR -->
+<div class="abar">
+  <span class="abar-txt">Questions? We're here to help.</span>
+  <a href="tel:+17372717668" class="abar-btn">☎ Call (737) 271-7668</a>
+</div>
+
+<!-- HERO -->
+<section id="welcome">
+  <div class="hero-eyebrow">Signature Elite Travel · Curated Journeys</div>
+  <div class="hero-logo"><em>Signature</em> Elite</div>
+  <div class="hero-rule"><span>✦</span><span>✦</span><span>✦</span></div>
+  <div class="hero-name">Justin Sippel</div>
+  <div class="hero-occasion">El Paso — Flight Manifest</div>
+  <div class="pills">
+    <div class="pill">✈ May 29 – 31, 2026</div>
+    <div class="pill">⬡ DAL → ELP → DAL</div>
+    <div class="pill">★ Southwest Airlines</div>
+    <div class="pill">◈ Conf: B5QNFT</div>
+  </div>
+  <div class="cue" onclick="smoothScroll('overview')">
+    <span class="cue-txt">Trip Overview</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Justin, here's everything for your El Paso trip in one place — flight numbers, ticket info, and all your travel details. If you have a Rapid Rewards number, KTN, or redress number to add, just pass those along and we'll fill them in.
+    </div>
+  </div>
+  <div class="sec-wrap fade-in">
+    <div class="sec-label">Trip at a Glance</div>
+
+    <div class="glance-grid">
+      <div class="glance-cell">
+        <div class="glance-lbl">Departure</div>
+        <div class="glance-val">Friday<br>May 29</div>
+        <div class="glance-sub">DAL → ELP · 1:40 PM</div>
+      </div>
+      <div class="glance-cell">
+        <div class="glance-lbl">Return</div>
+        <div class="glance-val">Sunday<br>May 31</div>
+        <div class="glance-sub">ELP → DAL · 4:35 PM</div>
+      </div>
+      <div class="glance-cell">
+        <div class="glance-lbl">Trip Length</div>
+        <div class="glance-val">3 Days<br>2 Nights</div>
+        <div class="glance-sub">El Paso, TX</div>
+      </div>
+      <div class="glance-cell">
+        <div class="glance-lbl">Outbound Flight</div>
+        <div class="glance-val">WN 3913</div>
+        <div class="glance-sub">Boeing 737-700</div>
+      </div>
+      <div class="glance-cell">
+        <div class="glance-lbl">Return Flight</div>
+        <div class="glance-val">WN 2158</div>
+        <div class="glance-sub">Boeing 737 MAX8</div>
+      </div>
+      <div class="glance-cell">
+        <div class="glance-lbl">Carrier</div>
+        <div class="glance-val">Southwest</div>
+        <div class="glance-sub">WiFi · Entertainment</div>
+      </div>
+    </div>
+
+    <div class="ticket-box fade-in" style="flex-wrap:wrap; gap:0;">
+      <div style="display:flex; align-items:center; gap:20px; flex:1; min-width:220px; padding-right:24px; border-right:1px solid var(--gold);">
+        <div class="ticket-icon">🎫</div>
+        <div>
+          <div class="ticket-lbl">Confirmation Code</div>
+          <div class="ticket-num" style="font-size:38px; letter-spacing:0.14em; color:var(--gold-deep); font-weight:600;">B5QNFT</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:20px; flex:1; min-width:200px; padding-left:24px;">
+        <div>
+          <div class="ticket-lbl">Ticket Number</div>
+          <div class="ticket-num" style="font-size:20px;">5267481248487</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="checklist fade-in">
+      <div class="checklist-title">Included with Your Booking</div>
+      <div class="checklist-items">
+        <div class="check-item">
+          <div class="check-circle">✓</div>
+          <span>Inflight WiFi available both legs</span>
+        </div>
+        <div class="check-item">
+          <div class="check-circle">✓</div>
+          <span>Inflight entertainment available both legs</span>
+        </div>
+        <div class="check-item">
+          <div class="check-circle">✓</div>
+          <span>Nonstop service each direction</span>
+        </div>
+        <div class="check-item">
+          <div class="check-circle">✓</div>
+          <span>Seat assigned at check-in (Basic fare)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cue" onclick="smoothScroll('passenger')">
+    <span class="cue-txt">Passenger Details</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<!-- PASSENGER -->
+<section id="passenger">
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Here are your passenger details on file. Fields marked with a dashed line are currently blank — <em>send us your Rapid Rewards number, Known Traveler Number, or redress number any time and we'll get those added.</em>
+    </div>
+  </div>
+  <div class="sec-wrap fade-in">
+    <div class="sec-label">Passenger Details</div>
+    <div class="sec-heading">Justin Sippel</div>
+
+    <div class="pax-card">
+      <div class="pax-header">
+        <div class="pax-header-name">Justin Sippel</div>
+        <div class="pax-badge">Primary Traveler</div>
+      </div>
+      <div class="pax-fields">
+        <div class="pax-field">
+          <div class="pax-field-lbl">Confirmation Code</div>
+          <div class="pax-field-val" style="font-size:22px; letter-spacing:0.12em; color:var(--gold-deep); font-weight:600;">B5QNFT</div>
+        </div>
+        <div class="pax-field">
+          <div class="pax-field-lbl">Ticket Number</div>
+          <div class="pax-field-val">5267481248487</div>
+        </div>
+        <div class="pax-field">
+          <div class="pax-field-lbl">Fare Class</div>
+          <div class="pax-field-val">Basic</div>
+        </div>
+        <div class="pax-field">
+          <div class="pax-field-lbl">Rapid Rewards® Number</div>
+          <div class="pax-field-val blank">— to be provided —</div>
+        </div>
+        <div class="pax-field">
+          <div class="pax-field-lbl">Member Status</div>
+          <div class="pax-field-val blank">— to be provided —</div>
+        </div>
+        <div class="pax-field">
+          <div class="pax-field-lbl">Known Traveler Number (KTN)</div>
+          <div class="pax-field-val blank">— to be provided —</div>
+        </div>
+        <div class="pax-field">
+          <div class="pax-field-lbl">Redress Number</div>
+          <div class="pax-field-val blank">— to be provided —</div>
+        </div>
+        <div class="pax-field">
+          <div class="pax-field-lbl">Seat Assignment</div>
+          <div class="pax-field-val">Assigned at Check-in</div>
+        </div>
+        <div class="pax-field">
+          <div class="pax-field-lbl">Special Assistance</div>
+          <div class="pax-field-val">None</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cue" onclick="smoothScroll('departure')">
+    <span class="cue-txt">Departure Flight</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<!-- DEPARTURE -->
+<section id="departure">
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Your outbound flight departs from <em>Dallas Love Field (DAL)</em> — not DFW. Plan accordingly for the drive in. Check-in opens 24 hours before departure.
+    </div>
+  </div>
+  <div class="sec-wrap flight-section fade-in">
+    <div class="sec-label">Departing — May 29, 2026</div>
+    <div class="sec-heading">Dallas → El Paso</div>
+
+    <div class="flight-card">
+      <div class="flight-banner">
+        <div class="flight-dir">✈ Outbound · Nonstop</div>
+        <div class="flight-date">Friday, May 29, 2026</div>
+      </div>
+      <div class="flight-main">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-code">DAL</div>
+            <div class="flight-city-name">Dallas</div>
+            <div class="flight-city-detail">Love Field, TX</div>
+            <div class="flight-time-big">1:40 PM</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <span class="flight-arrow">→</span>
+            <div class="flight-dur">1h 50m</div>
+            <div class="flight-nonstop">Nonstop</div>
+          </div>
+          <div class="flight-city" style="text-align:right;">
+            <div class="flight-code">ELP</div>
+            <div class="flight-city-name">El Paso</div>
+            <div class="flight-city-detail">El Paso, TX</div>
+            <div class="flight-time-big">2:30 PM</div>
+          </div>
+        </div>
+      </div>
+      <div class="flight-meta-grid">
+        <div class="flight-meta-cell">
+          <div class="flight-meta-lbl">Flight</div>
+          <div class="flight-meta-val">WN 3913</div>
+        </div>
+        <div class="flight-meta-cell">
+          <div class="flight-meta-lbl">Aircraft</div>
+          <div class="flight-meta-val">Boeing 737-700</div>
+        </div>
+        <div class="flight-meta-cell">
+          <div class="flight-meta-lbl">Seat</div>
+          <div class="flight-meta-val note">Assigned at check-in</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cue" onclick="smoothScroll('return')">
+    <span class="cue-txt">Return Flight</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<!-- RETURN -->
+<section id="return">
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Your return departs from <em>El Paso International (ELP)</em> at 4:35 PM on Sunday. Arriving back at Dallas Love Field (DAL) at 7:20 PM.
+    </div>
+  </div>
+  <div class="sec-wrap flight-section fade-in">
+    <div class="sec-label">Returning — May 31, 2026</div>
+    <div class="sec-heading">El Paso → Dallas</div>
+
+    <div class="flight-card">
+      <div class="flight-banner">
+        <div class="flight-dir">✈ Return · Nonstop</div>
+        <div class="flight-date">Sunday, May 31, 2026</div>
+      </div>
+      <div class="flight-main">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-code">ELP</div>
+            <div class="flight-city-name">El Paso</div>
+            <div class="flight-city-detail">El Paso, TX</div>
+            <div class="flight-time-big">4:35 PM</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <span class="flight-arrow">→</span>
+            <div class="flight-dur">1h 45m</div>
+            <div class="flight-nonstop">Nonstop</div>
+          </div>
+          <div class="flight-city" style="text-align:right;">
+            <div class="flight-code">DAL</div>
+            <div class="flight-city-name">Dallas</div>
+            <div class="flight-city-detail">Love Field, TX</div>
+            <div class="flight-time-big">7:20 PM</div>
+          </div>
+        </div>
+      </div>
+      <div class="flight-meta-grid">
+        <div class="flight-meta-cell">
+          <div class="flight-meta-lbl">Flight</div>
+          <div class="flight-meta-val">WN 2158</div>
+        </div>
+        <div class="flight-meta-cell">
+          <div class="flight-meta-lbl">Aircraft</div>
+          <div class="flight-meta-val">Boeing 737 MAX8</div>
+        </div>
+        <div class="flight-meta-cell">
+          <div class="flight-meta-lbl">Seat</div>
+          <div class="flight-meta-val note">Assigned at check-in</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cue" onclick="smoothScroll('contact')">
+    <span class="cue-txt">Contact Us</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-eyebrow">Signature Elite Travel</div>
+  <div class="contact-heading">Questions? We've Got You.</div>
+  <div class="contact-btns">
+    <a href="tel:+17372717668" class="contact-btn primary">☎ Call (737) 271-7668</a>
+    <a href="mailto:bookings@signatureelitetravel.com" class="contact-btn secondary">✉ bookings@signatureelitetravel.com</a>
+  </div>
+  <div class="hero-rule" style="max-width:300px;margin:0 auto 28px;">
+    <span>✦</span><span>✦</span><span>✦</span>
+  </div>
+  <div class="contact-footer">
+    <strong>Signature Elite Travel</strong><br>
+    (737) 271-7668 · bookings@signatureelitetravel.com<br><br>
+    This manifest reflects booking information as confirmed. Flight times are subject to change — always verify directly with Southwest Airlines prior to departure.
+  </div>
+</section>
+
+<script>
+  function smoothScroll(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Fade-in observer
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => fadeObs.observe(el));
+
+  // Scroll spy
+  const sections = ['welcome','overview','passenger','departure','return','contact'];
+  const navLinks = document.querySelectorAll('.pnav a');
+
+  const spyObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const id = e.target.id;
+      const link = document.querySelector(`.pnav a[data-section="${id}"]`);
+      if (!link) return;
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        link.classList.add('visited');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) spyObs.observe(el);
+  });
+
+  // Init first
+  document.querySelector('.pnav a[data-section="welcome"]')?.classList.add('active');
+</script>
+</body>
+</html>
