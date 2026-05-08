@@ -1045,7 +1045,7 @@ body{
 <footer class="footer">
   <div class="agency"><em>Signature</em> Elite Travel</div>
   <div class="contact">(737) 271-7668</div>
-  <div class="contact">clientservices@signatureelitetravel.com</div>
+  <div class="contact">bookings@signatureelitetravel.com</div>
   <div class="disc">Information you share will be used only to plan and book your travel. Passport details and payment information will be collected separately through a secure channel once we begin booking.</div>
 </footer>
 
@@ -1491,7 +1491,9 @@ function closeSummary(){
 }
 
 /* =========== Submit =========== */
-function submitForm(){
+const WEB3FORMS_KEY = '75c0f933-98f6-41fa-8ec4-f9d35b5c8f49';
+
+async function submitForm(){
   const data = collectData();
   const missing = validate(data);
   if(missing.length){
@@ -1509,16 +1511,71 @@ function submitForm(){
 
   const subject = `Travel Intake — ${data.primary.first} ${data.primary.last} — ${data.trip.destination || 'New Inquiry'}`;
   const body = buildEmailBody(data);
-  const mailto = `mailto:clientservices@signatureelitetravel.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-  // mailto has a length limit (~2000 chars on some clients). If over, warn user.
-  if(mailto.length > 2000){
-    showToast('Opening email — long bodies may truncate, please verify');
-  } else {
-    showToast('Opening your email client...');
+  showToast('Sending your details to Signature Elite...');
+
+  const payload = {
+    access_key: WEB3FORMS_KEY,
+    subject: subject,
+    from_name: `${data.primary.first} ${data.primary.last}`,
+    email: data.primary.email,
+    phone: data.primary.phone,
+    message: body,
+    replyto: data.primary.email,
+    botcheck: ''
+  };
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    const result = await res.json();
+
+    if(result.success){
+      showSuccessScreen(data);
+    } else {
+      console.error('Web3Forms error:', result);
+      showErrorScreen(result.message || 'Submission failed. Please call us at (737) 271-7668.');
+    }
+  } catch(err) {
+    console.error('Submission error:', err);
+    showErrorScreen('Network error. Please check your connection and try again, or call us at (737) 271-7668.');
   }
+}
 
-  setTimeout(()=>{ window.location.href = mailto; }, 200);
+function showSuccessScreen(data){
+  const overlay = document.getElementById('summaryOverlay');
+  const box = overlay.querySelector('.summary-box');
+  box.innerHTML = `
+    <div style="text-align:center;padding:40px 20px">
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:64px;color:var(--gold-deep);margin-bottom:16px">✓</div>
+      <div class="summary-eyebrow">Submission Received</div>
+      <div class="summary-title" style="margin-bottom:20px">Thank you, ${data.primary.first}.</div>
+      <p style="font-size:17px;color:var(--ink-soft);max-width:500px;margin:0 auto 28px;line-height:1.6">
+        Your travel intake has been sent to our bookings team. A Signature Elite advisor will be in touch within one business day to begin shaping your trip.
+      </p>
+      <p style="font-size:15px;color:var(--ink-muted);font-style:italic;max-width:500px;margin:0 auto 32px">
+        Confirmation will arrive at <strong style="color:var(--ink)">${data.primary.email}</strong>.
+      </p>
+      <div class="diamond-rule" style="color:var(--gold-deep);margin:24px 0">◆ ◆ ◆</div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;color:var(--gold-deep);margin-bottom:6px">Signature Elite Travel</div>
+      <div style="font-size:14px;color:var(--ink-muted)">(737) 271-7668 · bookings@signatureelitetravel.com</div>
+      <div style="margin-top:32px">
+        <button class="btn-secondary" style="border-color:var(--ink-muted);color:var(--ink-muted)" onclick="window.print()">🖨 Print a Copy for Your Records</button>
+      </div>
+    </div>
+  `;
+  overlay.scrollTop = 0;
+}
+
+function showErrorScreen(msg){
+  showToast('Submission failed');
+  alert(`We couldn't send your form:\n\n${msg}\n\nPlease try again or contact us directly:\n(737) 271-7668\nbookings@signatureelitetravel.com`);
 }
 
 /* =========== Toast =========== */
