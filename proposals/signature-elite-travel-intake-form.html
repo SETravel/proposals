@@ -1017,13 +1017,6 @@ body{
 
     <div class="field-row full">
       <div class="field">
-        <label>How Did You Hear About Signature Elite?</label>
-        <input type="text" id="referral" placeholder="Referral from..., social media, returning client, etc.">
-      </div>
-    </div>
-
-    <div class="field-row full">
-      <div class="field">
         <label>Anything Else We Should Know</label>
         <textarea id="other_notes" placeholder="Surprise elements for a partner, family dynamics, prior travel experience, anything that helps us understand the picture."></textarea>
       </div>
@@ -1238,7 +1231,6 @@ function collectData(){
     logistics: {
       addons: getCheckedValues('addon'),
       mobility: val('mobility'),
-      referral: val('referral'),
       other: val('other_notes')
     }
   };
@@ -1371,7 +1363,6 @@ function buildSummaryHTML(d){
   html += sec('Logistics & Add-Ons', [
     ['Add-Ons', d.logistics.addons],
     ['Mobility / Health', d.logistics.mobility],
-    ['Referral Source', d.logistics.referral],
     ['Other Notes', d.logistics.other]
   ]);
 
@@ -1464,7 +1455,6 @@ function buildEmailBody(d){
   head('Logistics & Add-Ons');
   line('Add-Ons', d.logistics.addons);
   line('Mobility / Health', d.logistics.mobility);
-  line('Referral Source', d.logistics.referral);
   line('Other Notes', d.logistics.other);
 
   return L.join('\n');
