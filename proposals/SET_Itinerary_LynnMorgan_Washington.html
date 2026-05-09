@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lynn Morgan — Washington Stay · June 2–4, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+ :root {
+ --navy: #0d1f35;
+ --gold: #c8a96e;
+ --gold-light: #e2c99a;
+ --gold-pale: #f5edd8;
+ --cream: #faf7f2;
+ --warm-white: #fffdf9;
+ --muted: #6b7a8d;
+ --border: #d6ccbb;
+ --green: #2c4a3e;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body { background: var(--cream); color: var(--navy); font-family: 'Libre Baskerville', Georgia, serif; font-size: 15px; }
+
+ /* MASTHEAD */
+ .masthead {
+ background: var(--navy);
+ padding: 48px 60px 40px;
+ position: relative;
+ overflow: hidden;
+ }
+ .masthead::before {
+ content: '';
+ position: absolute; inset: 0;
+ background:
+ radial-gradient(ellipse at 85% 0%, rgba(200,169,110,0.18) 0%, transparent 55%),
+ radial-gradient(ellipse at 10% 100%, rgba(200,169,110,0.10) 0%, transparent 45%);
+ }
+ .masthead-inner { position: relative; z-index: 1; }
+ .trip-label {
+ font-family: 'DM Mono', monospace;
+ font-size: 12px;
+ letter-spacing: 0.25em;
+ color: var(--gold);
+ text-transform: uppercase;
+ margin-bottom: 14px;
+ }
+ hr.rule-top { border: none; border-top: 1px solid var(--gold); margin-bottom: 6px; }
+ hr.rule-bot { border: none; border-top: 1px solid rgba(200,169,110,0.35); margin-top: 6px; }
+ .trip-title {
+ font-family: 'Playfair Display', serif;
+ font-size: 46px;
+ font-weight: 700;
+ color: var(--warm-white);
+ line-height: 1.1;
+ margin-bottom: 6px;
+ }
+ .trip-subtitle {
+ font-family: 'Playfair Display', serif;
+ font-style: italic;
+ font-size: 22px;
+ color: var(--gold-light);
+ margin-bottom: 28px;
+ }
+ .masthead-meta { display: flex; gap: 48px; flex-wrap: wrap; margin-top: 20px; }
+ .meta-item label {
+ font-family: 'DM Mono', monospace;
+ font-size: 11px;
+ letter-spacing: 0.2em;
+ text-transform: uppercase;
+ color: var(--gold);
+ display: block;
+ margin-bottom: 4px;
+ }
+ .meta-item span { font-size: 16px; color: rgba(255,255,255,0.88); }
+
+ /* CONTENT */
+ .content { max-width: 780px; margin: 0 auto; padding: 52px 40px 80px; }
+
+ /* CONF BADGE — large and unmissable */
+ .conf-badge {
+ background: var(--gold);
+ border: 3px solid var(--gold-light);
+ border-radius: 8px;
+ padding: 18px 28px;
+ margin-bottom: 32px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ flex-wrap: wrap;
+ gap: 12px;
+ }
+ .conf-badge-label {
+ font-family: 'DM Mono', monospace;
+ font-size: 12px;
+ letter-spacing: 0.2em;
+ text-transform: uppercase;
+ color: rgba(13,31,53,0.65);
+ margin-bottom: 4px;
+ }
+ .conf-badge-code {
+ font-family: 'DM Mono', monospace;
+ font-size: 26px;
+ font-weight: 500;
+ color: var(--navy);
+ letter-spacing: 0.12em;
+ }
+ .conf-badge-note {
+ font-family: 'DM Mono', monospace;
+ font-size: 12px;
+ color: rgba(13,31,53,0.6);
+ font-style: italic;
+ }
+
+ /* HOTEL CARD */
+ .hotel-card {
+ background: white;
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ overflow: hidden;
+ box-shadow: 0 2px 12px rgba(13,31,53,0.06);
+ }
+ .hotel-head {
+ background: var(--green);
+ padding: 18px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+ flex-wrap: wrap;
+ gap: 10px;
+ }
+ .hotel-name {
+ font-family: 'Playfair Display', serif;
+ font-size: 24px;
+ color: white;
+ font-weight: 600;
+ }
+ .hotel-location {
+ font-family: 'DM Mono', monospace;
+ font-size: 12px;
+ color: rgba(255,255,255,0.55);
+ margin-top: 4px;
+ letter-spacing: 0.1em;
+ }
+ .hotel-stars {
+ font-size: 18px;
+ margin-top: 4px;
+ letter-spacing: 2px;
+ }
+
+ /* DATES ROW */
+ .dates-row {
+ display: grid;
+ grid-template-columns: 1fr 60px 1fr;
+ align-items: center;
+ padding: 28px 24px;
+ border-bottom: 1px solid var(--border);
+ background: var(--cream);
+ }
+ .date-block { }
+ .date-block .d-label {
+ font-family: 'DM Mono', monospace;
+ font-size: 11px;
+ letter-spacing: 0.18em;
+ text-transform: uppercase;
+ color: var(--muted);
+ margin-bottom: 6px;
+ }
+ .date-block .d-val {
+ font-family: 'Playfair Display', serif;
+ font-size: 26px;
+ font-weight: 600;
+ color: var(--navy);
+ line-height: 1.1;
+ }
+ .date-block .d-day {
+ font-family: 'DM Mono', monospace;
+ font-size: 12px;
+ color: var(--muted);
+ margin-top: 4px;
+ }
+ .dates-arrow {
+ text-align: center;
+ color: var(--gold);
+ font-size: 22px;
+ }
+ .date-block.right { text-align: right; }
+
+ /* DETAILS GRID */
+ .details-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ gap: 0;
+ }
+ .detail-cell {
+ padding: 22px 24px;
+ border-right: 1px solid var(--border);
+ }
+ .detail-cell:last-child { border-right: none; }
+ .detail-cell label {
+ font-family: 'DM Mono', monospace;
+ font-size: 11px;
+ letter-spacing: 0.18em;
+ text-transform: uppercase;
+ color: var(--muted);
+ display: block;
+ margin-bottom: 8px;
+ }
+ .detail-cell .val {
+ font-size: 16px;
+ color: var(--navy);
+ line-height: 1.5;
+ }
+
+ /* INCLUDED NOTE */
+ .included-note {
+ background: #edf5f0;
+ border-top: 1px solid #b5d5c5;
+ padding: 14px 24px;
+ font-family: 'DM Mono', monospace;
+ font-size: 13px;
+ color: #1e4a35;
+ }
+
+ /* QUICK REF */
+ .quick-ref {
+ margin-top: 40px;
+ background: var(--navy);
+ border-radius: 10px;
+ overflow: hidden;
+ }
+ .quick-ref-head {
+ padding: 14px 22px;
+ border-bottom: 1px solid rgba(200,169,110,0.2);
+ }
+ .quick-ref-head span {
+ font-family: 'Playfair Display', serif;
+ font-size: 19px;
+ color: var(--gold-light);
+ }
+ .quick-ref-body { padding: 22px; }
+ .ref-item { border-left: 3px solid var(--gold); padding-left: 16px; }
+ .ref-item .ref-label {
+ font-family: 'DM Mono', monospace;
+ font-size: 11px;
+ letter-spacing: 0.18em;
+ color: var(--gold);
+ text-transform: uppercase;
+ margin-bottom: 8px;
+ }
+ .ref-item .ref-val {
+ font-family: 'DM Mono', monospace;
+ font-size: 28px;
+ color: white;
+ letter-spacing: 0.1em;
+ font-weight: 500;
+ }
+ .ref-item .ref-sub {
+ font-size: 13px;
+ color: rgba(255,255,255,0.45);
+ margin-top: 5px;
+ }
+
+ /* FOOTER */
+ .doc-footer {
+ background: var(--navy);
+ padding: 26px 60px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-wrap: wrap;
+ gap: 12px;
+ margin-top: 56px;
+ }
+ .doc-footer .footer-text {
+ font-family: 'DM Mono', monospace;
+ font-size: 11px;
+ color: rgba(255,255,255,0.35);
+ letter-spacing: 0.1em;
+ }
+ .doc-footer .footer-name {
+ font-family: 'Playfair Display', serif;
+ font-size: 18px;
+ color: var(--gold-light);
+ font-style: italic;
+ }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+ <div class="masthead-inner">
+ <div class="trip-label">✦ Personal Travel Document — Confidential</div>
+ <hr class="rule-top">
+ <h1 class="trip-title">Washington Stay</h1>
+ <p class="trip-subtitle">Lynn Morgan · June 2–4, 2026</p>
+ <hr class="rule-bot">
+ <div class="masthead-meta">
+ <div class="meta-item"><label>Guest</label><span>Lynn Morgan · 2 Adults</span></div>
+ <div class="meta-item"><label>Destination</label><span>Lynnwood / Seattle, WA</span></div>
+ <div class="meta-item"><label>Duration</label><span>2 Nights</span></div>
+ </div>
+ </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+ <!-- CONF BADGE -->
+ <div class="conf-badge">
+ <div>
+ <div class="conf-badge-label">Confirmation Code</div>
+ <div class="conf-badge-code">89392EE094942</div>
+ </div>
+ <div class="conf-badge-note">La Quinta Inn Lynnwood · Wyndham Hotels</div>
+ </div>
+
+ <!-- HOTEL CARD -->
+ <div class="hotel-card">
+ <div class="hotel-head">
+ <div>
+ <div class="hotel-name">La Quinta Inn Lynnwood</div>
+ <div class="hotel-location">LYNNWOOD · SEATTLE / WA</div>
+ <div class="hotel-stars">★★★</div>
+ </div>
+ </div>
+
+ <!-- CHECK IN / OUT -->
+ <div class="dates-row">
+ <div class="date-block">
+ <div class="d-label">Check-In</div>
+ <div class="d-val">June 2</div>
+ <div class="d-day">Tuesday, 2026</div>
+ </div>
+ <div class="dates-arrow">→</div>
+ <div class="date-block right">
+ <div class="d-label">Check-Out</div>
+ <div class="d-val">June 4</div>
+ <div class="d-day">Thursday, 2026</div>
+ </div>
+ </div>
+
+ <!-- DETAILS -->
+ <div class="details-grid">
+ <div class="detail-cell">
+ <label>Room Type</label>
+ <div class="val">1 × Double King Size Bed</div>
+ </div>
+ <div class="detail-cell">
+ <label>Guests</label>
+ <div class="val">2 Adults</div>
+ </div>
+ <div class="detail-cell">
+ <label>Length of Stay</label>
+ <div class="val">2 Nights</div>
+ </div>
+ </div>
+
+ <!-- INCLUDED -->
+ <div class="included-note">
+ ☕ &nbsp;<strong>Bed &amp; Breakfast included</strong> — breakfast is provided for both guests each morning of the stay
+ </div>
+ </div>
+
+ <!-- QUICK REF -->
+ <div class="quick-ref">
+ <div class="quick-ref-head"><span>Confirmation Quick Reference</span></div>
+ <div class="quick-ref-body">
+ <div class="ref-item">
+ <div class="ref-label">Hotel Confirmation</div>
+ <div class="ref-val">89392EE094942</div>
+ <div class="ref-sub">La Quinta Inn Lynnwood · Wyndham Hotels</div>
+ </div>
+ </div>
+ </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+ <div class="footer-text">PREPARED FROM BOOKING DOCUMENTS · MORGAN WASHINGTON STAY · JUNE 2026</div>
+ <div class="footer-name">Lynn Morgan</div>
+</div>
+
+</body>
+</html>
