@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schaefer — Nashville to Memphis — June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+ --parchment: #F5F0E8;
+ --parchment-dk: #EDE6D6;
+ --parchment-dkr: #E0D8C4;
+ --ink: #1A1610;
+ --ink-soft: #3A342A;
+ --ink-muted: #5A5248;
+ --gold: #B8963E;
+ --gold-lt: #D4AF6A;
+ --gold-pale: #F0E4C4;
+ --gold-deep: #7A5E1E;
+ --white: #FDFAF4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+ background: var(--parchment);
+ color: var(--ink-soft);
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 300;
+ font-size: 17px;
+ line-height: 1.6;
+}
+
+/* ── PROGRESS NAV ── */
+.pnav {
+ position: fixed; top: 0; left: 0; right: 0;
+ background: var(--ink);
+ z-index: 1000;
+ display: flex; align-items: center;
+ padding: 0 16px; height: 52px;
+ overflow-x: auto; gap: 4px;
+ -webkit-overflow-scrolling: touch;
+}
+.pnav a {
+ display: flex; flex-direction: column; align-items: center; gap: 3px;
+ text-decoration: none; padding: 6px 8px; cursor: pointer;
+ flex-shrink: 0; min-width: 48px;
+}
+.pnav .dot {
+ width: 10px; height: 10px; border-radius: 50%;
+ background: var(--ink-muted); transition: background .3s;
+}
+.pnav .lbl {
+ font-size: 9px; font-weight: 500; letter-spacing: .05em;
+ color: var(--ink-muted); text-transform: uppercase; white-space: nowrap;
+ transition: color .3s;
+}
+.pnav a.active .dot { background: var(--gold); }
+.pnav a.active .lbl { color: var(--gold); }
+.pnav a.visited .dot { background: var(--gold-deep); }
+.pnav a.visited .lbl { color: var(--gold-deep); }
+
+/* ── AGENT BAR ── */
+.abar {
+ position: fixed; bottom: 0; left: 0; right: 0;
+ background: var(--ink); z-index: 1000;
+ display: flex; align-items: center; justify-content: space-between;
+ padding: 10px 20px; gap: 16px;
+}
+.abar-txt { font-size: 13px; font-weight: 400; color: var(--gold-lt); }
+.abar-btn {
+ background: var(--gold); color: var(--ink);
+ font-weight: 600; font-size: 13px; text-decoration: none;
+ padding: 10px 20px; border-radius: 4px; white-space: nowrap;
+ min-height: 48px; display: flex; align-items: center;
+}
+
+/* ── LAYOUT ── */
+main { padding-top: 52px; padding-bottom: 70px; }
+section { padding: 60px 20px; max-width: 780px; margin: 0 auto; }
+
+/* ── WELCOME / HERO ── */
+#welcome {
+ background: var(--ink); max-width: 100%;
+ padding: 80px 20px 60px; text-align: center;
+ position: relative; overflow: hidden;
+}
+#welcome::before {
+ content: ''; position: absolute; inset: 0;
+ background: repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,150,62,.03) 40px,rgba(184,150,62,.03) 80px);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+.agency-eyebrow {
+ font-size: 10px; font-weight: 600; letter-spacing: .2em;
+ color: var(--gold); text-transform: uppercase; margin-bottom: 20px;
+}
+.logo { font-family:'Cormorant Garamond',serif; font-size: 36px; font-weight: 300; color: var(--white); margin-bottom: 20px; }
+.logo em { color: var(--gold-lt); font-style: italic; }
+.triple-diamond { color: var(--gold); font-size: 14px; letter-spacing: 8px; margin: 20px 0; }
+
+.hero-client {
+ font-family: 'Cormorant Garamond', serif; font-size: 52px;
+ font-style: italic; font-weight: 400; color: var(--white); margin-bottom: 10px;
+}
+.hero-occasion {
+ font-family: 'Cormorant Garamond', serif; font-size: 24px;
+ font-style: italic; font-weight: 300; color: var(--gold-lt); margin-bottom: 30px;
+}
+.hero-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+.pill {
+ background: rgba(184,150,62,.15); border: 1px solid rgba(184,150,62,.3);
+ color: var(--gold-lt); font-size: 12px; font-weight: 500; letter-spacing: .1em;
+ padding: 8px 18px; border-radius: 40px; text-transform: uppercase;
+}
+
+/* ── GUIDE BUBBLE ── */
+.guide { margin-bottom: 32px; }
+.guide-bubble {
+ background: var(--gold-pale); border-left: 4px solid var(--gold-deep);
+ padding: 20px 24px; font-size: 18px; font-weight: 300;
+ color: var(--ink-soft); border-radius: 0 8px 8px 0; line-height: 1.6;
+}
+.guide-bubble em { font-style: italic; color: var(--gold-deep); font-weight: 500; }
+
+/* ── AT A GLANCE ── */
+.section-eyebrow {
+ font-size: 10px; font-weight: 600; letter-spacing: .2em;
+ color: var(--gold); text-transform: uppercase; margin-bottom: 8px;
+}
+.section-title {
+ font-family: 'Cormorant Garamond', serif; font-size: 38px;
+ font-weight: 400; color: var(--ink); margin-bottom: 28px; line-height: 1.2;
+}
+.gold-rule { width: 60px; height: 2px; background: var(--gold); margin-bottom: 24px; }
+
+.glance-grid {
+ display: grid; grid-template-columns: repeat(3,1fr);
+ gap: 1px; background: var(--parchment-dkr);
+ border: 1px solid var(--parchment-dkr); border-radius: 8px;
+ overflow: hidden; margin-bottom: 28px;
+}
+.glance-cell { background: var(--white); padding: 18px 16px; text-align: center; }
+.glance-label {
+ font-size: 9px; font-weight: 600; letter-spacing: .15em;
+ color: var(--gold-deep); text-transform: uppercase; margin-bottom: 8px;
+}
+.glance-val {
+ font-family: 'Cormorant Garamond', serif; font-size: 17px;
+ font-weight: 400; color: var(--ink); line-height: 1.3;
+}
+
+.checklist {
+ background: var(--gold-pale); border-radius: 8px;
+ padding: 20px 24px; display: flex; flex-direction: column; gap: 10px;
+}
+.check-item { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 400; color: var(--ink-soft); }
+.check-circle {
+ width: 24px; height: 24px; border-radius: 50%; background: var(--gold-deep);
+ color: var(--white); display: flex; align-items: center; justify-content: center;
+ font-size: 12px; flex-shrink: 0;
+}
+
+/* ── ROUTE CARD ── */
+.route-card {
+ background: var(--white); border: 1px solid var(--parchment-dkr);
+ border-radius: 10px; overflow: hidden; margin-bottom: 20px;
+}
+.route-body { padding: 28px 24px; }
+.route-step { display: flex; gap: 16px; margin-bottom: 0; align-items: flex-start; }
+.route-dot {
+ width: 36px; height: 36px; border-radius: 50%;
+ background: var(--gold-pale); border: 2px solid var(--gold);
+ display: flex; align-items: center; justify-content: center;
+ font-size: 12px; font-weight: 600; color: var(--gold-deep);
+ flex-shrink: 0; margin-top: 2px;
+}
+.route-place { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.route-detail { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.5; }
+.route-connector { width: 2px; height: 22px; background: var(--gold-lt); margin: 6px 0 6px 17px; }
+
+.route-stats {
+ display: grid; grid-template-columns: repeat(3,1fr);
+ gap: 1px; background: var(--parchment-dkr);
+ border-top: 1px solid var(--parchment-dkr);
+}
+.route-stat { background: var(--parchment-dk); padding: 14px 12px; text-align: center; }
+.route-stat-val {
+ display: block; font-family: 'Cormorant Garamond', serif;
+ font-size: 22px; font-weight: 600; color: var(--gold-deep);
+}
+.route-stat-lbl {
+ font-size: 9px; font-weight: 600; letter-spacing: .12em;
+ text-transform: uppercase; color: var(--ink-muted);
+}
+
+/* ── VEHICLE HERO IMAGE ── */
+.hh { width:100%; height:420px; position:relative; overflow:hidden; border-radius: 10px 10px 0 0; }
+.hh img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; }
+.hh-ov {
+ position:absolute; bottom:0; left:0; right:0;
+ background:linear-gradient(transparent,rgba(26,22,16,.92));
+ padding:40px 28px 28px; z-index:2;
+}
+.hh-badge {
+ font-size: 10px; font-weight: 600; letter-spacing: .15em;
+ text-transform: uppercase; color: var(--gold);
+ background: rgba(26,22,16,.7); display: inline-block;
+ padding: 6px 14px; border-radius: 4px; margin-bottom: 10px;
+}
+.hh-name {
+ font-family: 'Cormorant Garamond', serif; font-size: 38px;
+ font-weight: 400; color: var(--white); line-height: 1.1;
+}
+.hh-addr { font-size: 12px; font-weight: 400; color: var(--gold-lt); margin-top: 6px; }
+
+/* ── VEHICLE CARD ── */
+.vehicle-card {
+ background: var(--white); border: 1px solid var(--parchment-dkr);
+ border-radius: 10px; overflow: hidden; margin-bottom: 20px;
+}
+
+/* ── PRICE BAR ── */
+.price-bar {
+ background: var(--ink); padding: 20px 28px;
+ display: flex; justify-content: space-between; align-items: center;
+ cursor: pointer; transition: background .3s; min-height: 80px;
+}
+.price-bar-label {
+ font-size: 10px; font-weight: 600; letter-spacing: .15em;
+ text-transform: uppercase; color: var(--gold-lt); margin-bottom: 6px;
+}
+.tap-prompt {
+ font-size: 16px; font-weight: 600; text-transform: uppercase;
+ letter-spacing: .05em; color: var(--white);
+ animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
+.price-bar-amt {
+ font-family: 'Cormorant Garamond', serif; font-size: 42px;
+ font-weight: 600; color: var(--white); text-align: right;
+}
+.price-bar-amt .from { font-size: 16px; font-weight: 300; margin-right: 4px; }
+.price-bar-per { font-size: 11px; color: var(--gold-lt); text-align: right; }
+.price-bar.selected { background: #2d6a2e; }
+.price-bar.selected .tap-prompt { animation: none; }
+
+/* ── VEHICLE BODY ── */
+.vehicle-body { padding: 24px 28px; }
+
+.room-facts {
+ display: grid; grid-template-columns: repeat(2,1fr);
+ gap: 1px; background: var(--parchment-dkr);
+ border: 1px solid var(--parchment-dkr); border-radius: 8px;
+ overflow: hidden; margin-bottom: 20px;
+}
+.fact-cell { background: var(--parchment-dk); padding: 14px 16px; }
+.fact-label {
+ font-size: 9px; font-weight: 600; letter-spacing: .12em;
+ text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px;
+}
+.fact-val { font-size: 14px; font-weight: 500; color: var(--ink); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.tag {
+ background: var(--gold-pale); color: var(--gold-deep);
+ font-size: 11px; font-weight: 500; padding: 6px 14px;
+ border-radius: 20px; letter-spacing: .04em;
+}
+
+.rental-badge {
+ display: inline-flex; align-items: center; gap: 8px;
+ background: var(--parchment-dk); border: 1px solid var(--parchment-dkr);
+ border-radius: 6px; padding: 8px 16px; margin-bottom: 20px;
+}
+.rental-badge-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+.rental-badge-rating { font-size: 12px; font-weight: 400; color: var(--ink-muted); }
+
+.vehicle-desc { font-size: 17px; font-weight: 300; color: var(--ink-soft); margin-bottom: 20px; line-height: 1.6; }
+
+.agent-note {
+ background: var(--gold-pale); border-left: 4px solid var(--gold);
+ padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 8px;
+}
+.agent-note-label {
+ font-size: 9px; font-weight: 600; letter-spacing: .15em;
+ text-transform: uppercase; color: var(--gold-deep); margin-bottom: 6px;
+}
+.agent-note p { font-size: 14px; font-weight: 400; color: var(--ink-soft); line-height: 1.6; }
+
+/* ── EXPLORE / ROAD STOPS ── */
+.flight-group-label {
+ font-size: 10px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+ color: var(--gold-deep); padding: 10px 0 6px;
+ border-bottom: 1px solid var(--parchment-dkr); margin-bottom: 12px;
+}
+.fopt {
+ display: flex; align-items: flex-start; gap: 14px;
+ padding: 16px 18px; background: var(--white);
+ border: 1px solid var(--parchment-dkr); border-radius: 8px;
+ cursor: pointer; transition: border-color .2s, background .2s; margin-bottom: 10px;
+}
+.fopt:hover { border-color: var(--gold); }
+.fopt.sel { border-color: var(--gold-deep); background: var(--gold-pale); }
+.radio {
+ width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--gold);
+ flex-shrink: 0; margin-top: 2px; transition: background .2s;
+}
+.fopt.sel .radio { background: var(--gold-deep); border-color: var(--gold-deep); }
+.ftime { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+.fdetail { font-size: 13px; font-weight: 300; color: var(--ink-muted); }
+
+/* ── COST SUMMARY ── */
+.cost-table {
+ border: 1px solid var(--parchment-dkr); border-radius: 10px;
+ overflow: hidden; margin-bottom: 20px;
+}
+.cost-row {
+ display: flex; justify-content: space-between; align-items: center;
+ padding: 14px 20px; border-bottom: 1px solid var(--parchment-dkr);
+ background: var(--white); transition: background .3s, opacity .3s;
+}
+.cost-row:last-child { border-bottom: none; }
+.cost-row.header { background: var(--ink); }
+.cost-row.header .cost-label, .cost-row.header .cost-val { color: var(--gold-lt); font-weight: 600; }
+.cost-row.active { background: var(--gold-pale); }
+.cost-row.inactive { opacity: .4; text-decoration: line-through; }
+.cost-label { font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+.cost-val { font-size: 14px; font-weight: 600; color: var(--gold-deep); }
+
+.total-bar {
+ background: var(--ink); padding: 20px 28px;
+ display: flex; justify-content: space-between; align-items: center;
+ border-radius: 8px; margin-bottom: 16px;
+}
+.total-label {
+ font-size: 11px; font-weight: 600; letter-spacing: .15em;
+ text-transform: uppercase; color: var(--gold-lt);
+}
+.total-amt { font-family:'Cormorant Garamond',serif; font-size: 46px; font-weight: 600; color: var(--white); }
+.total-amt .from { font-size: 18px; font-weight: 300; margin-right: 4px; }
+.cost-disclaimer { font-size: 12px; font-style: italic; color: var(--ink-muted); line-height: 1.6; }
+
+/* ── CONTACT ── */
+#contact {
+ background: var(--ink); max-width: 100%;
+ padding: 60px 20px; text-align: center;
+ position: relative; overflow: hidden;
+}
+#contact::before {
+ content:''; position:absolute; inset:0;
+ background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,150,62,.03) 40px,rgba(184,150,62,.03) 80px);
+}
+.contact-inner { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; }
+.contact-heading {
+ font-family:'Cormorant Garamond',serif; font-size: 42px;
+ font-style: italic; font-weight: 400; color: var(--white); margin-bottom: 12px;
+}
+.contact-sub { font-size: 15px; font-weight: 300; color: var(--gold-lt); margin-bottom: 36px; }
+.contact-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+.contact-btn {
+ display: flex; align-items: center; gap: 8px; padding: 16px 28px;
+ border-radius: 6px; font-weight: 600; font-size: 15px; text-decoration: none;
+ min-height: 56px; min-width: 180px; justify-content: center;
+}
+.contact-btn-call { background: var(--gold); color: var(--ink); }
+.contact-btn-email { background: transparent; border: 2px solid var(--gold); color: var(--gold); }
+.footer-disclaimer { font-size: 11px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; margin-top: 24px; }
+
+/* ── SCROLL CUE ── */
+.cue { text-align: center; padding: 24px 0 8px; cursor: pointer; }
+.cue-txt {
+ display: block; font-size: 11px; font-weight: 500; letter-spacing: .12em;
+ text-transform: uppercase; color: var(--gold-deep); margin-bottom: 10px;
+}
+.cue-ring {
+ display: inline-block; width: 44px; height: 44px;
+ border: 2px solid var(--gold); border-radius: 50%;
+ position: relative; animation: bounce 1.6s ease-in-out infinite;
+}
+.cue-ring::after {
+ content:'↓'; position:absolute; inset:0;
+ display:flex; align-items:center; justify-content:center;
+ color:var(--gold); font-size:18px;
+}
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* ── FADE IN ── */
+.fade-in { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+
+/* ── TOAST ── */
+.toast {
+ position:fixed; bottom:80px; left:50%;
+ transform:translateX(-50%) translateY(20px);
+ background:var(--ink); color:var(--gold-lt);
+ font-size:13px; font-weight:500; padding:12px 24px;
+ border-radius:40px; border:1px solid var(--gold);
+ opacity:0; transition:opacity .3s,transform .3s;
+ z-index:2000; white-space:nowrap;
+}
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ── TRACKER ── */
+.tracker {
+ position:fixed; bottom:80px; right:20px;
+ background:var(--ink); border:1px solid var(--gold);
+ border-radius:10px; padding:16px; width:240px;
+ z-index:900;
+}
+.tracker-title {
+ font-size:10px; font-weight:600; letter-spacing:.15em;
+ text-transform:uppercase; color:var(--gold); margin-bottom:12px;
+}
+.tracker-item {
+ font-size:12px; font-weight:400; color:var(--gold-lt);
+ padding:6px 0; border-bottom:1px solid rgba(184,150,62,.2); line-height:1.4;
+}
+.tracker-item:last-child { border-bottom:none; }
+.tracker-item em { color:var(--white); font-style:normal; font-weight:600; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+ .hh{height:300px}
+ .hero-client{font-size:36px}
+ .section-title{font-size:28px}
+ .glance-grid{grid-template-columns:repeat(2,1fr)}
+ .abar-txt{display:none}
+ .tracker{display:none}
+ .price-bar{flex-direction:column;align-items:flex-start;gap:8px}
+ .total-bar{flex-direction:column;gap:8px;text-align:center}
+ .contact-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS NAV -->
+<nav class="pnav">
+ <a href="javascript:void(0)" data-section="welcome" onclick="smoothScroll('welcome')"> <div class="dot"></div><div class="lbl">Welcome</div></a>
+ <a href="javascript:void(0)" data-section="glance" onclick="smoothScroll('glance')"> <div class="dot"></div><div class="lbl">At a Glance</div></a>
+ <a href="javascript:void(0)" data-section="route" onclick="smoothScroll('route')"> <div class="dot"></div><div class="lbl">Route</div></a>
+ <a href="javascript:void(0)" data-section="compact" onclick="smoothScroll('compact')"> <div class="dot"></div><div class="lbl">Compact</div></a>
+ <a href="javascript:void(0)" data-section="midsize" onclick="smoothScroll('midsize')"> <div class="dot"></div><div class="lbl">Midsize</div></a>
+ <a href="javascript:void(0)" data-section="suv" onclick="smoothScroll('suv')"> <div class="dot"></div><div class="lbl">Compact SUV</div></a>
+ <a href="javascript:void(0)" data-section="fullsize" onclick="smoothScroll('fullsize')"><div class="dot"></div><div class="lbl">Full-Size</div></a>
+ <a href="javascript:void(0)" data-section="stops" onclick="smoothScroll('stops')"> <div class="dot"></div><div class="lbl">Road Stops</div></a>
+ <a href="javascript:void(0)" data-section="summary" onclick="smoothScroll('summary')"> <div class="dot"></div><div class="lbl">Cost</div></a>
+ <a href="javascript:void(0)" data-section="contact" onclick="smoothScroll('contact')"> <div class="dot"></div><div class="lbl">Contact</div></a>
+</nav>
+
+<!-- AGENT BAR -->
+<div class="abar">
+ <span class="abar-txt">Ready to book? We're here to help.</span>
+ <a href="tel:+17372717668" class="abar-btn">☎ Call (737) 271-7668</a>
+</div>
+
+<main>
+
+<!-- ══════════════════ WELCOME ══════════════════ -->
+<section id="welcome">
+ <div class="hero-inner">
+ <div class="agency-eyebrow">Signature Elite Travel · Curated Journeys</div>
+ <div class="logo"><em>Signature</em> Elite</div>
+ <div class="triple-diamond">◆ &nbsp; ◆ &nbsp; ◆</div>
+ <div class="hero-client">Schaefer</div>
+ <div class="hero-occasion">Nashville to Memphis · Your Road Trip Awaits</div>
+ <div class="hero-pills">
+ <span class="pill">June 28 – June 29, 2026</span>
+ <span class="pill">Nashville → Memphis</span>
+ <span class="pill">One-Way Rental</span>
+ <span class="pill">4 Vehicle Options</span>
+ </div>
+ <div class="cue" onclick="smoothScroll('glance')" style="margin-top:40px;">
+ <span class="cue-txt">See your trip overview</span>
+ <span class="cue-ring"></span>
+ </div>
+ </div>
+</section>
+
+<!-- ══════════════════ AT A GLANCE ══════════════════ -->
+<section id="glance">
+ <div class="section-eyebrow">Trip Overview</div>
+ <div class="section-title">At a Glance</div>
+ <div class="gold-rule"></div>
+ <div class="guide fade-in">
+ <div class="guide-bubble">
+ Schaefer, here's your complete rental car overview for the Nashville–Memphis leg of your journey. I've pulled four options arranged from least to most expensive — scroll through each one, then <em>tap the big black price bar</em> on the vehicle you'd like to select it.
+ </div>
+ </div>
+ <div class="glance-grid fade-in">
+ <div class="glance-cell">
+ <div class="glance-label">Pick-Up Date</div>
+ <div class="glance-val">June 28, 2026<br><small style="font-size:13px;color:var(--ink-muted);">8:00–9:00 AM</small></div>
+ </div>
+ <div class="glance-cell">
+ <div class="glance-label">Pick-Up Location</div>
+ <div class="glance-val">BNA Airport<br><small style="font-size:13px;color:var(--ink-muted);">Nashville, TN</small></div>
+ </div>
+ <div class="glance-cell">
+ <div class="glance-label">Drop-Off Date</div>
+ <div class="glance-val">June 29, 2026<br><small style="font-size:13px;color:var(--ink-muted);">Before your flight</small></div>
+ </div>
+ <div class="glance-cell">
+ <div class="glance-label">Drop-Off Location</div>
+ <div class="glance-val">MEM Airport<br><small style="font-size:13px;color:var(--ink-muted);">Memphis, TN</small></div>
+ </div>
+ <div class="glance-cell">
+ <div class="glance-label">Drive Distance</div>
+ <div class="glance-val">~210 Miles<br><small style="font-size:13px;color:var(--ink-muted);">I-40 West</small></div>
+ </div>
+ <div class="glance-cell">
+ <div class="glance-label">Current Hotel</div>
+ <div class="glance-val">Best Western<br><small style="font-size:13px;color:var(--ink-muted);">201 Music City Cir.</small></div>
+ </div>
+ </div>
+ <div class="checklist fade-in">
+ <div class="check-item"><div class="check-circle">✓</div><span>Free cancellation on all four options — pay only at pick-up</span></div>
+ <div class="check-item"><div class="check-circle">✓</div><span>Unlimited mileage included on every vehicle</span></div>
+ <div class="check-item"><div class="check-circle">✓</div><span>Automatic transmission across the board</span></div>
+ <div class="check-item"><div class="check-circle">✓</div><span>One-way drop-off at Memphis International Airport (MEM)</span></div>
+ <div class="check-item"><div class="check-circle">✓</div><span>All options seat up to 5 passengers</span></div>
+ <div class="check-item"><div class="check-circle">✓</div><span>BNA pick-up is ~15 min from your Best Western hotel</span></div>
+ </div>
+ <div class="cue" onclick="smoothScroll('route')">
+ <span class="cue-txt">See your driving route</span>
+ <span class="cue-ring"></span>
+ </div>
+</section>
+
+<!-- ══════════════════ ROUTE ══════════════════ -->
+<section id="route">
+ <div class="section-eyebrow">Hotel to Airport</div>
+ <div class="section-title">Getting to BNA</div>
+ <div class="gold-rule"></div>
+ <div class="guide fade-in">
+ <div class="guide-bubble">
+ You're in great shape, Schaefer — your Best Western is just a short drive from the airport. Pull out of the hotel, and in about 15 minutes you'll be at the BNA rental counter picking up your car and hitting the road.
+ </div>
+ </div>
+ <div class="route-card fade-in">
+ <div class="route-body">
+ <div class="route-step">
+ <div class="route-dot" style="font-size:14px;">🏨</div>
+ <div>
+ <div class="route-place">Best Western Suites — 201 Music City Circle, Nashville</div>
+ <div class="route-detail">Your starting point · Give yourself about 30–40 minutes before your pick-up window to account for the drive and counter check-in</div>
+ </div>
+ </div>
+ <div class="route-connector"></div>
+ <div class="route-step">
+ <div class="route-dot" style="font-size:14px;">✈</div>
+ <div>
+ <div class="route-place">Nashville International Airport (BNA) — Car Rental Counter</div>
+ <div class="route-detail">~15 min from your hotel · Counter and car are in-terminal — no shuttle needed · Pick-up window 8:00–9:00 AM</div>
+ </div>
+ </div>
+ </div>
+ <div class="route-stats">
+ <div class="route-stat"><span class="route-stat-val">~5 mi</span><span class="route-stat-lbl">Hotel to BNA</span></div>
+ <div class="route-stat"><span class="route-stat-val">~15 min</span><span class="route-stat-lbl">Drive Time</span></div>
+ <div class="route-stat"><span class="route-stat-val">In-Terminal</span><span class="route-stat-lbl">BNA Pick-Up</span></div>
+ </div>
+ </div>
+ <div class="cue" onclick="smoothScroll('compact')">
+ <span class="cue-txt">Compare your vehicle options</span>
+ <span class="cue-ring"></span>
+ </div>
+</section>
+
+<!-- ══════════════════ VEHICLE 1 — COMPACT ══════════════════ -->
+<section id="compact">
+ <div class="section-eyebrow">Vehicle Option 1 of 4 · Lowest Rate</div>
+ <div class="section-title">Compact</div>
+ <div class="gold-rule"></div>
+ <div class="guide fade-in">
+ <div class="guide-bubble">
+ The most affordable choice of the four — smart, efficient, and perfectly sized for a solo traveler on a straight highway run. <em>Tap the big black price bar below to select this vehicle — it will turn green.</em>
+ </div>
+ </div>
+ <div class="vehicle-card fade-in">
+ <div class="hh">
+ <div style="position:absolute;inset:0;background:linear-gradient(145deg,#3a3a3a 0%,#606060 50%,#909090 100%);"></div>
+ </div>
+ <div class="hh-ov">
+ <div class="hh-badge">Vehicle Option 1</div>
+ <div class="hh-name">Compact Sedan</div>
+ <div class="hh-addr">Smart & Efficient · Perfect for Solo Travelers</div>
+ </div>
+ </div>
+
+ <div class="vehicle-body">
+ <div class="room-facts">
+ <div class="fact-cell"><div class="fact-label">Transmission</div><div class="fact-val">Automatic</div></div>
+ <div class="fact-cell"><div class="fact-label">Passengers</div><div class="fact-val">Up to 5</div></div>
+ <div class="fact-cell"><div class="fact-label">Doors</div><div class="fact-val">4</div></div>
+ <div class="fact-cell"><div class="fact-label">Luggage</div><div class="fact-val">2 Large Bags</div></div>
+ </div>
+
+ <div class="tags">
+ <span class="tag">Free Cancellation</span>
+ <span class="tag">Unlimited Mileage</span>
+ <span class="tag">Insurance Included</span>
+ </div>
+
+ <div class="rental-badge">
+ <div>
+ <div class="rental-badge-name">Hertz Rental</div>
+ <div class="rental-badge-rating">Rating: 4.6 ⭐</div>
+ </div>
+ </div>
+
+ <div class="vehicle-desc">
+ Great for single travelers or pairs on a budget. This compact sedan offers excellent fuel efficiency for your 210-mile drive, nimble handling, and comfortable seating for two with room for luggage in the trunk.
+ </div>
+
+ <div class="agent-note">
+ <div class="agent-note-label">From Your Agent</div>
+ <p>This is my most recommended option for you, Schaefer. You'll save on rental and fuel costs, and the car is more than adequate for a highway drive across Tennessee. Reserve this if you want to maximize value.</p>
+ </div>
+
+ <div class="price-bar" onclick="this.classList.add('selected')">
+ <div>
+ <div class="price-bar-label">Daily Rate</div>
+ <div class="tap-prompt">Select This Vehicle</div>
+ </div>
+ <div>
+ <div class="price-bar-amt">$48<span class="from">from</span></div>
+ <div class="price-bar-per">per day</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="cue" onclick="smoothScroll('midsize')">
+ <span class="cue-txt">See the next option</span>
+ <span class="cue-ring"></span>
+ </div>
+</section>
+
+<!-- ══════════════════ VEHICLE 2 — MIDSIZE ══════════════════ -->
+<section id="midsize">
+ <div class="section-eyebrow">Vehicle Option 2 of 4 · Mid-Range</div>
+ <div class="section-title">Midsize</div>
+ <div class="gold-rule"></div>
+ <div class="guide fade-in">
+ <div class="guide-bubble">
+ A step up in comfort and space — ideal for travelers who want extra legroom and trunk capacity without the premium cost. <em>Tap the price bar to select.</em>
+ </div>
+ </div>
+ <div class="vehicle-card fade-in">
+ <div class="hh">
+ <div style="position:absolute;inset:0;background:linear-gradient(145deg,#4a4a4a 0%,#707070 50%,#a0a0a0 100%);"></div>
+ </div>
+ <div class="hh-ov">
+ <div class="hh-badge">Vehicle Option 2</div>
+ <div class="hh-name">Midsize Sedan</div>
+ <div class="hh-addr">More Space & Comfort · Best Value</div>
+ </div>
+ </div>
+
+ <div class="vehicle-body">
+ <div class="room-facts">
+ <div class="fact-cell"><div class="fact-label">Transmission</div><div class="fact-val">Automatic</div></div>
+ <div class="fact-cell"><div class="fact-label">Passengers</div><div class="fact-val">Up to 5</div></div>
+ <div class="fact-cell"><div class="fact-label">Doors</div><div class="fact-val">4</div></div>
+ <div class="fact-cell"><div class="fact-label">Luggage</div><div class="fact-val">3 Large Bags</div></div>
+ </div>
+
+ <div class="tags">
+ <span class="tag">Free Cancellation</span>
+ <span class="tag">Unlimited Mileage</span>
+ <span class="tag">Insurance Included</span>
+ </div>
+
+ <div class="rental-badge">
+ <div>
+ <div class="rental-badge-name">Avis Rental</div>
+ <div class="rental-badge-rating">Rating: 4.8 ⭐</div>
+ </div>
+ </div>
+
+ <div class="vehicle-desc">
+ Perfect for pairs or small groups. This midsize sedan offers more interior space, a larger trunk, and excellent comfort for highway driving. You'll enjoy extra legroom and storage without breaking the budget.
+ </div>
+
+ <div class="agent-note">
+ <div class="agent-note-label">From Your Agent</div>
+ <p>This strikes the best balance between comfort and cost. Slightly more spacious than the Compact, with better trunk capacity if you're carrying luggage, and only a modest daily rate increase.</p>
+ </div>
+
+ <div class="price-bar" onclick="this.classList.add('selected')">
+ <div>
+ <div class="price-bar-label">Daily Rate</div>
+ <div class="tap-prompt">Select This Vehicle</div>
+ </div>
+ <div>
+ <div class="price-bar-amt">$62<span class="from">from</span></div>
+ <div class="price-bar-per">per day</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="cue" onclick="smoothScroll('suv')">
+ <span class="cue-txt">See the next option</span>
+ <span class="cue-ring"></span>
+ </div>
+</section>
+
+<!-- ══════════════════ VEHICLE 3 — COMPACT SUV ══════════════════ -->
+<section id="suv">
+ <div class="section-eyebrow">Vehicle Option 3 of 4 · Elevated Comfort</div>
+ <div class="section-title">Compact SUV</div>
+ <div class="gold-rule"></div>
+ <div class="guide fade-in">
+ <div class="guide-bubble">
+ Enjoy premium comfort and commanding road visibility with our compact SUV. Higher driving position, more storage, and a smoother ride on the highway. <em>Tap to select.</em>
+ </div>
+ </div>
+ <div class="vehicle-card fade-in">
+ <div class="hh">
+ <div style="position:absolute;inset:0;background:linear-gradient(145deg,#5a5a5a 0%,#808080 50%,#b0b0b0 100%);"></div>
+ </div>
+ <div class="hh-ov">
+ <div class="hh-badge">Vehicle Option 3</div>
+ <div class="hh-name">Compact SUV</div>
+ <div class="hh-addr">Premium Comfort · Commanding Views</div>
+ </div>
+ </div>
+
+ <div class="vehicle-body">
+ <div class="room-facts">
+ <div class="fact-cell"><div class="fact-label">Transmission</div><div class="fact-val">Automatic</div></div>
+ <div class="fact-cell"><div class="fact-label">Passengers</div><div class="fact-val">Up to 5</div></div>
+ <div class="fact-cell"><div class="fact-label">Doors</div><div class="fact-val">4</div></div>
+ <div class="fact-cell"><div class="fact-label">Luggage</div><div class="fact-val">4 Large Bags</div></div>
+ </div>
+
+ <div class="tags">
+ <span class="tag">Free Cancellation</span>
+ <span class="tag">Unlimited Mileage</span>
+ <span class="tag">Insurance Included</span>
+ </div>
+
+ <div class="rental-badge">
+ <div>
+ <div class="rental-badge-name">Budget Rental</div>
+ <div class="rental-badge-rating">Rating: 4.5 ⭐</div>
+ </div>
+ </div>
+
+ <div class="vehicle-desc">
+ Elevated comfort for your journey. This compact SUV provides a higher seating position for better road visibility, a spacious cargo area, and superior comfort on long highways. Great for those who prefer the SUV driving experience.
+ </div>
+
+ <div class="agent-note">
+ <div class="agent-note-label">From Your Agent</div>
+ <p>If you appreciate the higher driving position and extra cargo space, this is a fantastic choice. The SUV feels more commanding on the highway and offers genuine comfort upgrades over the sedans.</p>
+ </div>
+
+ <div class="price-bar" onclick="this.classList.add('selected')">
+ <div>
+ <div class="price-bar-label">Daily Rate</div>
+ <div class="tap-prompt">Select This Vehicle</div>
+ </div>
+ <div>
+ <div class="price-bar-amt">$79<span class="from">from</span></div>
+ <div class="price-bar-per">per day</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="cue" onclick="smoothScroll('fullsize')">
+ <span class="cue-txt">See the premium option</span>
+ <span class="cue-ring"></span>
+ </div>
+</section>
+
+<!-- ══════════════════ VEHICLE 4 — FULL-SIZE ══════════════════ -->
+<section id="fullsize">
+ <div class="section-eyebrow">Vehicle Option 4 of 4 · Premium Option</div>
+ <div class="section-title">Full-Size SUV</div>
+ <div class="gold-rule"></div>
+ <div class="guide fade-in">
+ <div class="guide-bubble">
+ The ultimate in space and luxury for your road trip. This full-size SUV is our premium option—ideal for travelers who want maximum comfort, storage, and prestige for their journey. <em>Tap to select.</em>
+ </div>
+ </div>
+ <div class="vehicle-card fade-in">
+ <div class="hh">
+ <div style="position:absolute;inset:0;background:linear-gradient(145deg,#6a6a6a 0%,#909090 50%,#c0c0c0 100%);"></div>
+ </div>
+ <div class="hh-ov">
+ <div class="hh-badge">Vehicle Option 4</div>
+ <div class="hh-name">Full-Size SUV</div>
+ <div class="hh-addr">Luxury & Space · Premium Experience</div>
+ </div>
+ </div>
+
+ <div class="vehicle-body">
+ <div class="room-facts">
+ <div class="fact-cell"><div class="fact-label">Transmission</div><div class="fact-val">Automatic</div></div>
+ <div class="fact-cell"><div class="fact-label">Passengers</div><div class="fact-val">Up to 8</div></div>
+ <div class="fact-cell"><div class="fact-label">Doors</div><div class="fact-val">4</div></div>
+ <div class="fact-cell"><div class="fact-label">Luggage</div><div class="fact-val">6+ Large Bags</div></div>
+ </div>
+
+ <div class="tags">
+ <span class="tag">Free Cancellation</span>
+ <span class="tag">Unlimited Mileage</span>
+ <span class="tag">Insurance Included</span>
+ </div>
+
+ <div class="rental-badge">
+ <div>
+ <div class="rental-badge-name">Enterprise Rental</div>
+ <div class="rental-badge-rating">Rating: 4.9 ⭐</div>
+ </div>
+ </div>
+
+ <div class="vehicle-desc">
+ Our premium choice. This full-size SUV offers maximum space, luxury amenities, and an elevated driving experience. Perfect for those who want the best of everything—abundant cargo space, premium comfort, and impressive road presence on your Tennessee drive.
+ </div>
+
+ <div class="agent-note">
+ <div class="agent-note-label">From Your Agent</div>
+ <p>If comfort and space are your top priorities, this is our premium recommendation. It's the most spacious option, has the highest passenger capacity, and delivers a genuinely luxury feel for your 200+ mile journey.</p>
+ </div>
+
+ <div class="price-bar" onclick="this.classList.add('selected')">
+ <div>
+ <div class="price-bar-label">Daily Rate</div>
+ <div class="tap-prompt">Select This Vehicle</div>
+ </div>
+ <div>
+ <div class="price-bar-amt">$118<span class="from">from</span></div>
+ <div class="price-bar-per">per day</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="cue" onclick="smoothScroll('summary')">
+ <span class="cue-txt">See cost summary</span>
+ <span class="cue-ring"></span>
+ </div>
+</section>
+
+<!-- ══════════════════ SUMMARY ══════════════════ -->
+<section id="summary">
+ <div class="section-eyebrow">Your Booking</div>
+ <div class="section-title">Cost Summary</div>
+ <div class="gold-rule"></div>
+
+ <div class="cost-table">
+ <div class="cost-row header">
+ <div class="cost-label">Compact</div>
+ <div class="cost-val">$48/day</div>
+ </div>
+ <div class="cost-row">
+ <div class="cost-label">2 days × $48</div>
+ <div class="cost-val">$96</div>
+ </div>
+ </div>
+
+ <div class="cost-table" style="margin-top: 20px;">
+ <div class="cost-row header">
+ <div class="cost-label">Taxes & Fees</div>
+ <div class="cost-val">Estimated</div>
+ </div>
+ <div class="cost-row">
+ <div class="cost-label">Sales Tax (9.55%)</div>
+ <div class="cost-val">$9.17</div>
+ </div>
+ <div class="cost-row">
+ <div class="cost-label">Facility Fee</div>
+ <div class="cost-val">$5.00</div>
+ </div>
+ </div>
+
+ <div class="total-bar">
+ <div>
+ <div class="total-label">Total for 2 Days</div>
+ </div>
+ <div>
+ <div class="total-amt"><span class="from">from</span> $110.17</div>
+ </div>
+ </div>
+
+ <div class="cost-disclaimer">
+ Rates shown are estimated based on standard rental agreements. Final cost may vary based on your selected vehicle, rental company policies, and any optional insurance or add-ons you choose at pickup. Free cancellation applies to all options up until 24 hours before your rental date.
+ </div>
+
+ <div class="cue" onclick="smoothScroll('contact')">
+ <span class="cue-txt">Ready to book?</span>
+ <span class="cue-ring"></span>
+ </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section id="contact">
+ <div class="contact-inner">
+ <div class="contact-heading">Ready to Confirm Your Rental?</div>
+ <div class="contact-sub">Reply to your agent or call our booking line</div>
+
+ <div class="contact-btns">
+ <a href="tel:+17372717668" class="contact-btn contact-btn-call">☎ Call Us</a>
+ </div>
+
+ <div class="footer-disclaimer">
+ All rates include unlimited mileage, free cancellation, and standard insurance. Taxes and facility fees are estimates only. Your rental confirmation will be sent via email within one business day. If you have any questions, our team is standing by.
+ </div>
+ </div>
+</section>
+
+</main>
+
+<script>
+function smoothScroll(id) {
+ const el = document.getElementById(id);
+ if (el) el.scrollIntoView({ behavior: 'smooth' });
+ updateNav();
+}
+
+function updateNav() {
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('.pnav a');
+ let current = '';
+
+ sections.forEach(section => {
+ const sectionTop = section.offsetTop;
+ const sectionHeight = section.clientHeight;
+ if (window.pageYOffset >= sectionTop - 200) {
+ current = section.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active', 'visited');
+ if (link.dataset.section === current) {
+ link.classList.add('active');
+ } else if (window.pageYOffset > 0) {
+ link.classList.add('visited');
+ }
+ });
+}
+
+document.addEventListener('scroll', updateNav);
+document.addEventListener('DOMContentLoaded', () => {
+ document.querySelectorAll('.fade-in').forEach(el => {
+ if (el.offsetTop < window.innerHeight + window.pageYOffset) {
+ el.classList.add('visible');
+ }
+ });
+});
+</script>
+
+</body>
+</html>
