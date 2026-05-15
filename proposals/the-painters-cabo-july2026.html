@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Painters — Cabo San Lucas — June/July 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment: #F5F0E8;
+  --parchment-dk: #EDE6D6;
+  --parchment-dkr: #E0D8C4;
+  --ink: #1A1610;
+  --ink-soft: #3A342A;
+  --ink-muted: #5A5248;
+  --gold: #B8963E;
+  --gold-lt: #D4AF6A;
+  --gold-pale: #F0E4C4;
+  --gold-deep: #7A5E1E;
+  --white: #FDFAF4;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Montserrat',sans-serif;background:var(--parchment);color:var(--ink-soft);font-size:17px;font-weight:300;line-height:1.65;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;}
+
+/* NAV */
+.pnav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--ink);display:flex;align-items:center;padding:0 16px;height:52px;overflow-x:auto;gap:2px;}
+.pnav::-webkit-scrollbar{display:none;}
+.pnav a{display:flex;align-items:center;gap:7px;padding:8px 10px;text-decoration:none;color:rgba(255,255,255,0.45);font-size:10px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;white-space:nowrap;transition:color .2s;cursor:pointer;}
+.pnav a:hover{color:rgba(255,255,255,.8);}
+.pnav a.active{color:var(--gold);}
+.pnav a.visited{color:var(--gold-deep);}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0;transition:background .2s;}
+
+/* AGENT BAR */
+.abar{position:fixed;bottom:0;left:0;right:0;z-index:1000;background:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:8px 20px;height:54px;}
+.abar-txt{color:rgba(255,255,255,.55);font-size:13px;font-weight:400;}
+.abar-btn{background:var(--gold);color:var(--ink);text-decoration:none;padding:10px 22px;font-size:12px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;border-radius:2px;white-space:nowrap;}
+
+/* SECTIONS */
+section{padding:76px 24px 56px;max-width:740px;margin:0 auto;}
+
+/* WELCOME */
+.welcome-sec{background:var(--ink);max-width:100%;padding:110px 24px 80px;position:relative;overflow:hidden;}
+.welcome-sec::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 30px,rgba(255,255,255,.015) 30px,rgba(255,255,255,.015) 60px);pointer-events:none;}
+.welcome-inner{max-width:740px;margin:0 auto;position:relative;}
+.eyebrow{color:var(--gold);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px;}
+.logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:300;color:white;margin-bottom:10px;}
+.logo em{font-style:italic;}
+.diamond-rule{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--gold);}
+.diamond-rule::before,.diamond-rule::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.35;}
+.diamond-rule span{font-size:11px;letter-spacing:.25em;}
+.client-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:50px;font-style:italic;font-weight:300;color:white;line-height:1.15;margin-bottom:10px;}
+.occasion-txt{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-style:italic;color:var(--gold-lt);margin-bottom:26px;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:38px;}
+.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.8);padding:8px 16px;font-size:12px;font-weight:500;letter-spacing:.04em;border-radius:2px;}
+
+/* CUE */
+.cue{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:16px;margin-top:20px;}
+.cue-txt{color:var(--gold-deep);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;}
+.cue-ring{width:48px;height:48px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:bounce 2s infinite;color:var(--gold);font-size:20px;}
+.cue-ring::after{content:'↓';}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+.cue-welcome .cue-txt{color:rgba(255,255,255,.45);}
+.cue-welcome .cue-ring{border-color:var(--gold-lt);color:var(--gold-lt);}
+
+/* GUIDE */
+.guide{margin-bottom:28px;}
+.guide-bubble{background:var(--gold-pale);border-left:4px solid var(--gold-deep);padding:18px 22px;font-size:18px;font-weight:300;color:var(--ink-soft);line-height:1.65;border-radius:0 4px 4px 0;}
+
+/* SECTION HEADER */
+.sec-label{color:var(--gold);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px;}
+.sec-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:38px;font-weight:400;color:var(--ink);margin-bottom:6px;}
+.gold-rule{width:56px;height:2px;background:var(--gold);margin-bottom:30px;}
+
+/* GLANCE GRID */
+.glance-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--parchment-dkr);border:1px solid var(--parchment-dkr);margin-bottom:26px;}
+.glance-cell{background:var(--white);padding:18px 20px;}
+.gc-label{font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.gc-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:400;color:var(--ink);line-height:1.3;}
+.gc-sub{font-size:12px;color:var(--ink-muted);margin-top:2px;}
+
+/* INCLUDED BOX */
+.included-box{background:var(--gold-pale);border:1px solid var(--parchment-dkr);padding:20px 22px;margin-bottom:30px;}
+.included-title{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;}
+.check-list{list-style:none;}
+.check-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;font-weight:400;color:var(--ink-soft);padding:5px 0;}
+.check-circle{width:22px;height:22px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:white;font-size:11px;margin-top:1px;}
+
+/* FLIGHT LABELS & CARDS */
+.flight-group-label{background:var(--parchment-dk);border-left:4px solid var(--gold);padding:12px 16px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:8px;margin-top:28px;}
+.fopt{display:flex;align-items:flex-start;gap:14px;background:var(--white);border:2px solid var(--parchment-dkr);padding:18px 20px;margin-bottom:8px;cursor:pointer;transition:all .2s;position:relative;}
+.fopt:hover{border-color:var(--gold);}
+.fopt.selected{border-color:#2d6a2e;background:#f0faf0;}
+.radio{width:22px;height:22px;border:2px solid var(--parchment-dkr);border-radius:50%;flex-shrink:0;margin-top:3px;transition:all .2s;position:relative;}
+.fopt.selected .radio{border-color:#2d6a2e;background:#2d6a2e;}
+.fopt.selected .radio::after{content:'';position:absolute;inset:4px;background:white;border-radius:50%;}
+.fopt-inner{flex:1;}
+.airline-name{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--gold-deep);text-transform:uppercase;margin-bottom:8px;}
+.f-time-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+.ftime{font-size:18px;font-weight:500;color:var(--ink);}
+.farrow{color:var(--gold);font-size:20px;flex-shrink:0;}
+.fdetail{font-size:13px;color:var(--ink-muted);font-weight:400;line-height:1.5;}
+.fbadge{flex-shrink:0;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:5px 10px;border-radius:2px;margin-top:2px;}
+.fbadge.green{background:#d4edda;color:#155724;}
+.fbadge.amber{background:#fff3cd;color:#856404;}
+.fbadge.blue{background:#d1ecf1;color:#0c5460;}
+.fbadge.neutral{background:var(--parchment-dk);color:var(--ink-muted);}
+.warn-box{background:#fff3cd;border-left:4px solid #ffc107;padding:12px 16px 12px 14px;font-size:14px;color:#856404;line-height:1.5;margin-top:-4px;margin-bottom:8px;}
+
+/* PRICE BAR */
+.price-bar{background:var(--ink);color:white;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;margin-top:24px;transition:background .3s;min-height:56px;}
+.price-bar.bar-live{background:#2d6a2e;}
+.price-bar-left .pbl-label{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px;}
+.tap-prompt{font-size:15px;font-weight:600;color:white;animation:puls 1.6s ease-in-out infinite;}
+@keyframes puls{0%,100%{opacity:.55;}50%{opacity:1;}}
+.price-bar-right{text-align:right;}
+.pb-amount{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:400;color:white;line-height:1;}
+.pb-amount .pfrom{font-size:17px;font-weight:300;opacity:.65;margin-right:4px;}
+.pb-per{font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;}
+
+/* AGENT NOTE */
+.agent-note{background:var(--gold-pale);border:1px solid var(--parchment-dkr);padding:18px 20px;margin-top:18px;}
+.an-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px;}
+.agent-note p{font-size:15px;color:var(--ink-soft);line-height:1.65;}
+
+.f-price-strip{margin-top:8px;padding:7px 10px;background:var(--parchment-dk);font-size:13px;font-weight:500;color:var(--gold-deep);border-left:3px solid var(--gold);}
+.f-price-strip.f-price-base{background:var(--gold-pale);}
+.fopt.selected .f-price-strip{background:rgba(45,106,46,.1);border-left-color:#2d6a2e;color:#155724;}
+
+/* TRANSFER CARDS */
+.transfer-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.tc{background:var(--white);border:1px solid var(--parchment-dkr);padding:22px 20px;}
+.tc-icon{font-size:26px;margin-bottom:10px;}
+.tc-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:5px;}
+.tc-price{font-size:14px;font-weight:600;color:var(--gold-deep);margin-bottom:8px;}
+.tc-desc{font-size:13px;color:var(--ink-muted);line-height:1.55;}
+
+/* COST TABLE */
+.cost-table{width:100%;border-collapse:collapse;margin-bottom:4px;}
+.cost-table th{background:var(--ink);color:white;padding:14px 16px;text-align:left;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;}
+.cost-table td{padding:14px 16px;border-bottom:1px solid var(--parchment-dkr);font-size:15px;}
+.cost-table tr.row-normal td{background:var(--white);}
+.cost-table tr.row-active td{background:var(--gold-pale);font-weight:500;}
+.cost-table tr.row-dim td{background:var(--parchment-dk);color:var(--ink-muted);text-decoration:line-through;opacity:.48;}
+.total-bar{background:var(--ink);color:white;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;}
+.tb-label{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.tb-sub{font-size:12px;color:rgba(255,255,255,.35);margin-top:3px;}
+.tb-amount{font-family:'Cormorant Garamond',Georgia,serif;font-size:38px;font-weight:400;color:white;}
+.tb-amount .tfrom{font-size:19px;font-weight:300;opacity:.65;margin-right:4px;}
+.disclaimer{font-size:13px;color:var(--ink-muted);font-style:italic;margin-top:16px;line-height:1.65;}
+
+/* CONTACT */
+.contact-sec{background:var(--ink);max-width:100%;padding:80px 24px 90px;position:relative;overflow:hidden;}
+.contact-sec::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 30px,rgba(255,255,255,.015) 30px,rgba(255,255,255,.015) 60px);pointer-events:none;}
+.contact-inner{max-width:740px;margin:0 auto;position:relative;}
+.contact-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:44px;font-weight:300;font-style:italic;color:white;margin-bottom:8px;}
+.contact-sub{color:var(--gold-lt);font-size:16px;font-weight:300;margin-bottom:32px;}
+.contact-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+.cbtn{display:inline-flex;align-items:center;gap:9px;padding:16px 30px;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;min-height:56px;}
+.cbtn-call{background:var(--gold);color:var(--ink);}
+.cbtn-email{background:transparent;color:white;border:1px solid rgba(255,255,255,.28);}
+.footer-disc{font-size:12px;color:rgba(255,255,255,.28);line-height:1.75;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;margin-top:30px;}
+
+/* TRACKER */
+.tracker{position:fixed;bottom:66px;right:18px;background:var(--ink);border-top:3px solid var(--gold);padding:15px 17px;min-width:195px;z-index:900;font-size:12px;}
+.tr-title{font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.tr-row{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:11px;}
+.tr-row:last-child{border-bottom:none;}
+.tr-key{color:rgba(255,255,255,.45);}
+.tr-val{color:white;font-weight:500;text-align:right;max-width:130px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%) translateY(16px);background:#2d6a2e;color:white;padding:11px 22px;font-size:14px;font-weight:600;z-index:2000;opacity:0;transition:all .28s;pointer-events:none;white-space:nowrap;border-radius:2px;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s;}
+.fade-in.visible{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .client-name{font-size:36px;}
+  .pnav a .lbl{display:none;}
+  .abar-txt{display:none;}
+  .glance-grid{grid-template-columns:1fr;}
+  .transfer-grid{grid-template-columns:1fr;}
+  .tracker{display:none;}
+  section{padding:68px 16px 48px;}
+  .welcome-sec{padding:96px 16px 68px;}
+  .f-time-row{gap:6px;}
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS NAV -->
+<nav class="pnav" id="pnav">
+  <a href="javascript:void(0)" data-section="welcome" onclick="smoothScroll('welcome')"><div class="dot"></div><div class="lbl">Welcome</div></a>
+  <a href="javascript:void(0)" data-section="glance" onclick="smoothScroll('glance')"><div class="dot"></div><div class="lbl">At a Glance</div></a>
+  <a href="javascript:void(0)" data-section="flights" onclick="smoothScroll('flights')"><div class="dot"></div><div class="lbl">Flights</div></a>
+  <a href="javascript:void(0)" data-section="transfers" onclick="smoothScroll('transfers')"><div class="dot"></div><div class="lbl">Transfers</div></a>
+  <a href="javascript:void(0)" data-section="summary" onclick="smoothScroll('summary')"><div class="dot"></div><div class="lbl">Cost Summary</div></a>
+  <a href="javascript:void(0)" data-section="contact" onclick="smoothScroll('contact')"><div class="dot"></div><div class="lbl">Contact</div></a>
+</nav>
+
+<!-- AGENT BAR -->
+<div class="abar">
+  <span class="abar-txt">Questions? We're here to help.</span>
+  <a href="tel:+17372717668" class="abar-btn">☎ Call (737) 271-7668</a>
+</div>
+
+<!-- SELECTIONS TRACKER -->
+<div class="tracker" id="tracker">
+  <div class="tr-title">Your Selections</div>
+  <div class="tr-row"><span class="tr-key">Outbound</span><span class="tr-val" id="tr-out">— Not selected</span></div>
+  <div class="tr-row"><span class="tr-key">Return</span><span class="tr-val" id="tr-ret">— Not selected</span></div>
+  <div class="tr-row"><span class="tr-key">Est. Total</span><span class="tr-val" id="tr-total">—</span></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ================================ -->
+<!-- WELCOME -->
+<!-- ================================ -->
+<section class="welcome-sec" id="welcome">
+  <div class="welcome-inner">
+    <div class="eyebrow">Signature Elite Travel · Curated Journeys</div>
+    <div class="logo"><em>Signature</em> Elite</div>
+    <div class="diamond-rule"><span>✦ ✦ ✦</span></div>
+    <div class="client-name">Wayne &amp; Rita Painter</div>
+    <div class="occasion-txt">Cabo San Lucas · Airfare &amp; Transfers</div>
+    <div class="hero-pills">
+      <div class="pill">✈ June 29 – July 7, 2026</div>
+      <div class="pill">AUS → SJD · Nonstop Flights</div>
+      <div class="pill">2 Passengers</div>
+      <div class="pill">Villa del Palmar Beach Resort &amp; Spa</div>
+    </div>
+    <div class="cue cue-welcome" onclick="smoothScroll('glance')">
+      <span class="cue-txt">See your trip overview</span>
+      <span class="cue-ring"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ -->
+<!-- AT A GLANCE -->
+<!-- ================================ -->
+<section id="glance">
+  <div class="fade-in">
+    <div class="sec-label">Overview</div>
+    <div class="sec-title">At a Glance</div>
+    <div class="gold-rule"></div>
+  </div>
+
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Wayne and Rita, here's everything in one place. Both flights from Austin to Cabo are nonstop — below you'll choose your preferred departure time outbound, and your ideal return option. The priority is getting there early and leaving as late as possible.
+    </div>
+  </div>
+
+  <div class="glance-grid fade-in">
+    <div class="glance-cell">
+      <div class="gc-label">Departure Day</div>
+      <div class="gc-val">Sunday, June 29</div>
+      <div class="gc-sub">Austin (AUS) → San José del Cabo (SJD)</div>
+    </div>
+    <div class="glance-cell">
+      <div class="gc-label">Return Day</div>
+      <div class="gc-val">Monday, July 7</div>
+      <div class="gc-sub">San José del Cabo (SJD) → Austin (AUS)</div>
+    </div>
+    <div class="glance-cell">
+      <div class="gc-label">Duration</div>
+      <div class="gc-val">8 Days · 7 Nights</div>
+      <div class="gc-sub">Late June into early July</div>
+    </div>
+    <div class="glance-cell">
+      <div class="gc-label">Passengers</div>
+      <div class="gc-val">2 Travelers</div>
+      <div class="gc-sub">Wayne Painter &amp; Rita Painter</div>
+    </div>
+    <div class="glance-cell">
+      <div class="gc-label">Your Hotel</div>
+      <div class="gc-val">Villa del Palmar</div>
+      <div class="gc-sub">Beach Resort &amp; Spa · Cabo San Lucas</div>
+    </div>
+    <div class="glance-cell">
+      <div class="gc-label">Airport → Resort</div>
+      <div class="gc-val">~30–40 Min</div>
+      <div class="gc-sub">28 miles · options below</div>
+    </div>
+  </div>
+
+  <div class="included-box fade-in">
+    <div class="included-title">What This Proposal Covers</div>
+    <ul class="check-list">
+      <li><div class="check-circle">✓</div>Two outbound flight options — both nonstop AUS to SJD, prioritizing earliest possible arrival</li>
+      <li><div class="check-circle">✓</div>Three return flight options — prioritizing latest possible departure from Cabo</li>
+      <li><div class="check-circle">✓</div>Full pricing breakdown for 2 passengers including taxes &amp; fees</li>
+      <li><div class="check-circle">✓</div>Four airport transfer options SJD ↔ Villa del Palmar, both directions</li>
+    </ul>
+  </div>
+
+  <div class="cue fade-in" onclick="smoothScroll('flights')">
+    <span class="cue-txt">Next: Choose Your Flights</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<!-- ================================ -->
+<!-- FLIGHTS -->
+<!-- ================================ -->
+<section id="flights">
+  <div class="fade-in">
+    <div class="sec-label">Airfare · AUS ↔ SJD</div>
+    <div class="sec-title">Your Flight Options</div>
+    <div class="gold-rule"></div>
+  </div>
+
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Both outbound flights are nonstop from Austin — no connections, no layovers. The difference is purely departure time. On the way back, there are three options, each with different tradeoffs between departure time and total travel length. <em>Tap any flight card to select it.</em> Your cost estimate updates automatically as you choose.
+    </div>
+  </div>
+
+  <!-- ─── OUTBOUND ─── -->
+  <div class="fade-in">
+    <div class="flight-group-label">✈ OUTBOUND — Sunday, June 29 · Austin (AUS) → San José del Cabo (SJD) · Priority: Arrive Early</div>
+
+    <div class="fopt" data-grp="out" data-val="aa" onclick="selFlight(this,'out','American Airlines')">
+      <div class="radio"></div>
+      <div class="fopt-inner">
+        <div class="airline-name">American Airlines · Flight 2578 · Boeing 737-800 · Economy/Coach</div>
+        <div class="f-time-row">
+          <div>
+            <div class="ftime">7:05 AM</div>
+            <div class="fdetail">Austin–Bergstrom (AUS)</div>
+          </div>
+          <div class="farrow">→</div>
+          <div>
+            <div class="ftime">7:33 AM</div>
+            <div class="fdetail">Los Cabos Intl. (SJD)</div>
+          </div>
+        </div>
+        <div class="fdetail">2h 28m · Nonstop · On the ground by 7:33 AM — maximum time at Villa del Palmar</div>
+        <div class="f-price-strip">Same base fare as Southwest · return leg determines your total</div>
+      </div>
+      <div class="fbadge green">⭐ Arrives Earliest</div>
+    </div>
+
+    <div class="fopt" data-grp="out" data-val="sw" onclick="selFlight(this,'out','Southwest Airlines')">
+      <div class="radio"></div>
+      <div class="fopt-inner">
+        <div class="airline-name">Southwest Airlines · Nonstop · Economy</div>
+        <div class="f-time-row">
+          <div>
+            <div class="ftime">9:55 AM</div>
+            <div class="fdetail">Austin–Bergstrom (AUS)</div>
+          </div>
+          <div class="farrow">→</div>
+          <div>
+            <div class="ftime">10:20 AM</div>
+            <div class="fdetail">Los Cabos Intl. (SJD)</div>
+          </div>
+        </div>
+        <div class="fdetail">2h 25m · Nonstop · Arriving mid-morning</div>
+        <div class="f-price-strip">Same base fare as American · return leg determines your total</div>
+      </div>
+      <div class="fbadge neutral">Later Departure</div>
+    </div>
+
+    <div class="agent-note" style="margin-top:6px;">
+      <div class="an-label">Our Recommendation — Outbound</div>
+      <p>With your priority being early arrival, the <strong>American Airlines 7:05 AM</strong> is the clear choice. You'll be at Villa del Palmar by mid-morning — enough time to check in (or at least drop luggage), get settled, and be poolside well before noon. Both options carry the same base fare, so there's no cost penalty for going earlier.</p>
+    </div>
+  </div>
+
+  <!-- ─── RETURN ─── -->
+  <div class="fade-in">
+    <div class="flight-group-label">✈ RETURN — Monday, July 7 · San José del Cabo (SJD) → Austin (AUS) · Priority: Leave Cabo Late</div>
+
+    <!-- Aeromexico -->
+    <div class="fopt" data-grp="ret" data-val="aeromexico" data-price="1202.84" onclick="selFlight(this,'ret','Aeromexico')">
+      <div class="radio"></div>
+      <div class="fopt-inner">
+        <div class="airline-name">Aeromexico · Flights 387 &amp; 1684 · 1 Stop · Boeing 737 MAX 9 · Economy/Coach</div>
+        <div class="f-time-row">
+          <div>
+            <div class="ftime">7:42 PM</div>
+            <div class="fdetail">Los Cabos Intl. (SJD)</div>
+          </div>
+          <div class="farrow">→</div>
+          <div>
+            <div class="ftime" style="color:#856404;">12:25 PM <sup style="font-size:11px;">+1</sup></div>
+            <div class="fdetail">Austin–Bergstrom (AUS) · Wed, July 8</div>
+          </div>
+        </div>
+        <div class="fdetail">14h 43m total · 9h 45m overnight layover in Mexico City (MEX) · Arrives home July 8</div>
+        <div class="f-price-strip f-price-base">from $1,202.84 for 2 passengers · ~$601.42 per traveler · incl. taxes &amp; fees</div>
+      </div>
+      <div class="fbadge amber">⚠ Overnight Trip</div>
+    </div>
+    <div class="warn-box">
+      <strong>⚠ Important:</strong> This is the latest Cabo departure at 7:42 PM, but the 9h 45m layover in Mexico City is overnight — you'd arrive back in Austin the following day (July 8). No added fare above the base price, but it's a long, broken journey home. Best if squeezing every hour in Cabo matters most and overnight travel doesn't bother you.
+    </div>
+
+    <!-- American Airlines Return -->
+    <div class="fopt" data-grp="ret" data-val="aa_ret" data-price="1274.84" onclick="selFlight(this,'ret','American Airlines')">
+      <div class="radio"></div>
+      <div class="fopt-inner">
+        <div class="airline-name">American Airlines · 1 Stop via Dallas/Fort Worth (DFW) · Economy/Coach</div>
+        <div class="f-time-row">
+          <div>
+            <div class="ftime">2:10 PM</div>
+            <div class="fdetail">Los Cabos Intl. (SJD)</div>
+          </div>
+          <div class="farrow">→</div>
+          <div>
+            <div class="ftime">9:37 PM</div>
+            <div class="fdetail">Austin–Bergstrom (AUS)</div>
+          </div>
+        </div>
+        <div class="fdetail">5h 27m total · 1h 23m layover in DFW · Home same day, July 7</div>
+        <div class="f-price-strip">from $1,274.84 for 2 passengers · ~$637.42 per traveler · incl. taxes &amp; fees</div>
+      </div>
+      <div class="fbadge blue">+$36 per person · Home July 7</div>
+    </div>
+
+    <!-- Alaska Airlines Return -->
+    <div class="fopt" data-grp="ret" data-val="alaska" data-price="1416.84" onclick="selFlight(this,'ret','Alaska/Skywest')">
+      <div class="radio"></div>
+      <div class="fopt-inner">
+        <div class="airline-name">Alaska Airlines · Operated by Skywest · 1 Stop via San Diego (SAN) · Economy/Coach</div>
+        <div class="f-time-row">
+          <div>
+            <div class="ftime">2:02 PM</div>
+            <div class="fdetail">Los Cabos Intl. (SJD)</div>
+          </div>
+          <div class="farrow">→</div>
+          <div>
+            <div class="ftime">11:00 PM</div>
+            <div class="fdetail">Austin–Bergstrom (AUS)</div>
+          </div>
+        </div>
+        <div class="fdetail">6h 58m total · 1h 34m layover in SAN · Home same day, July 7 but arriving late</div>
+        <div class="f-price-strip">from $1,416.84 for 2 passengers · ~$708.42 per traveler · incl. taxes &amp; fees</div>
+      </div>
+      <div class="fbadge neutral">+$107 per person · Home July 7</div>
+    </div>
+
+    <div class="agent-note" style="margin-top:6px;">
+      <div class="an-label">Our Recommendation — Return</div>
+      <p>If arriving home July 7 matters, the <strong>American Airlines 2:10 PM</strong> is the sweet spot — short layover in DFW, home by 9:37 PM, and only $36/person above base. The Aeromexico technically departs latest but lands you in a Mexico City airport overnight, which isn't the relaxing end to a vacation most people want. The Alaska option departs 8 minutes earlier than American but costs significantly more and gets you home near midnight.</p>
+    </div>
+  </div>
+
+  <!-- PRICE BAR -->
+  <div class="price-bar fade-in" id="mainPriceBar">
+    <div class="price-bar-left">
+      <div class="pbl-label">Estimated Starting From · 2 Passengers</div>
+      <div><span class="tap-prompt" id="tapPromptTxt">☝ Select a return flight above to see your total</span></div>
+    </div>
+    <div class="price-bar-right">
+      <div class="pb-amount"><span class="pfrom">from</span><span id="mainAmt">—</span></div>
+      <div class="pb-per" id="mainPer">Includes taxes &amp; fees</div>
+    </div>
+  </div>
+
+  <div class="cue fade-in" onclick="smoothScroll('transfers')">
+    <span class="cue-txt">Next: Airport Transfers</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<!-- ================================ -->
+<!-- TRANSFERS -->
+<!-- ================================ -->
+<section id="transfers">
+  <div class="fade-in">
+    <div class="sec-label">Ground Transport</div>
+    <div class="sec-title">SJD Airport ↔ Villa del Palmar</div>
+    <div class="gold-rule"></div>
+  </div>
+
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Villa del Palmar is 28 miles from SJD — a 30 to 40 minute drive along the Transpeninsular Highway. One thing worth knowing upfront: <em>Uber is not reliably available for airport pickups at SJD.</em> Local taxi associations restrict ride-share access at the terminal, so pre-booking a transfer is the way to go.
+    </div>
+  </div>
+
+  <div class="transfer-grid fade-in">
+    <div class="tc">
+      <div class="tc-icon">🏨</div>
+      <div class="tc-name">Resort Transfer</div>
+      <div class="tc-price">Pricing on request</div>
+      <div class="tc-desc">Villa del Palmar offers their own round-trip airport transfer service. Book through the resort directly — the smoothest option for a stress-free start. Their team can arrange to match your flight arrival.</div>
+    </div>
+    <div class="tc">
+      <div class="tc-icon">🚐</div>
+      <div class="tc-name">Private Shuttle · SJD Taxi</div>
+      <div class="tc-price">~$100 one-way · ~$190 round-trip</div>
+      <div class="tc-desc">Private SUV for up to 4 passengers. Driver meets you at arrivals with a sign, handles all luggage, and includes cold water and beverages. Flight tracking means they know when you land.</div>
+    </div>
+    <div class="tc">
+      <div class="tc-icon">🚕</div>
+      <div class="tc-name">Airport Taxi Kiosk</div>
+      <div class="tc-price">~$80–$100 one-way (up to 4)</div>
+      <div class="tc-desc">Regulated taxi kiosks inside the SJD terminal. Flat zone-based fare paid before reaching the vehicle. No pre-booking required — convenient but no meet-and-greet or luggage help.</div>
+    </div>
+    <div class="tc">
+      <div class="tc-icon">🚌</div>
+      <div class="tc-name">Shared Shuttle</div>
+      <div class="tc-price">~$20–$40 per person one-way</div>
+      <div class="tc-desc">Most economical option. English-speaking drivers and air-conditioned vehicles. Makes multiple stops along the hotel corridor — adds 15–30 minutes but a solid value for two.</div>
+    </div>
+  </div>
+
+  <div class="agent-note fade-in">
+    <div class="an-label">About Uber in Los Cabos</div>
+    <p>Uber is available <em>within</em> Cabo San Lucas for getting around town once you're settled — and it works well for restaurants, marina trips, and excursions. However, Uber drivers are not permitted to pick up at SJD airport (local taxi unions actively enforce this). For airport arrivals and your July 7 departure, pre-book one of the options above. We can arrange any of these on your behalf.</p>
+  </div>
+
+  <div class="cue fade-in" onclick="smoothScroll('summary')">
+    <span class="cue-txt">Next: Cost Summary</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<!-- ================================ -->
+<!-- COST SUMMARY -->
+<!-- ================================ -->
+<section id="summary">
+  <div class="fade-in">
+    <div class="sec-label">Your Investment</div>
+    <div class="sec-title">Cost Summary</div>
+    <div class="gold-rule"></div>
+  </div>
+
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Your estimated flight total below reflects whichever return leg you selected. Both outbound options (American and Southwest) carry the same base fare — so your total is driven entirely by the return flight you choose. All figures are for 2 passengers and include taxes and fees.
+    </div>
+  </div>
+
+  <div class="fade-in">
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>Flight Combination</th>
+          <th style="text-align:right;">2 Passengers · Incl. Taxes &amp; Fees</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="row-aeromexico" class="row-normal">
+          <td>
+            <strong>Aeromexico Return</strong> (Overnight · Arrives July 8)<br>
+            <span style="font-size:12px;color:var(--ink-muted);">~$601.42 per traveler</span>
+          </td>
+          <td style="text-align:right;font-weight:500;">from $1,202.84</td>
+        </tr>
+        <tr id="row-aa_ret" class="row-normal">
+          <td>
+            <strong>American Airlines Return</strong> (+$36/person · Home July 7)<br>
+            <span style="font-size:12px;color:var(--ink-muted);">~$637.42 per traveler</span>
+          </td>
+          <td style="text-align:right;font-weight:500;">from $1,274.84</td>
+        </tr>
+        <tr id="row-alaska" class="row-normal">
+          <td>
+            <strong>Alaska/Skywest Return</strong> (+$107/person · Home July 7 late)<br>
+            <span style="font-size:12px;color:var(--ink-muted);">~$708.42 per traveler</span>
+          </td>
+          <td style="text-align:right;font-weight:500;">from $1,416.84</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="font-size:13px;color:var(--ink-muted);padding:12px 16px;font-style:italic;background:var(--parchment-dk);">
+            Airport transfer pricing varies by provider — see options above. Resort transfer pricing is available upon request from Villa del Palmar directly.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-bar">
+      <div>
+        <div class="tb-label">Estimated Starting From · 2 Passengers</div>
+        <div class="tb-sub" id="total-sub">Select a return flight in the section above</div>
+      </div>
+      <div class="tb-amount"><span class="tfrom">from</span><span id="totalDisp">—</span></div>
+    </div>
+
+    <p class="disclaimer">All prices shown are starting estimates based on Economy/Coach class for 2 passengers. The base fare breakdown shown in booking reference is $376.00 flight + $225.42 taxes &amp; fees = $601.42 per traveler for the base combination. Final pricing confirmed at booking and subject to availability. Prices may vary based on seat selection and applicable surcharges at time of booking.</p>
+  </div>
+
+  <div class="cue fade-in" onclick="smoothScroll('contact')">
+    <span class="cue-txt">Next: Let's Book This</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<!-- ================================ -->
+<!-- CONTACT -->
+<!-- ================================ -->
+<section class="contact-sec" id="contact">
+  <div class="contact-inner">
+    <div class="diamond-rule" style="color:var(--gold);"><span>✦ ✦ ✦</span></div>
+    <div class="contact-title">Let's Make This Happen</div>
+    <div class="contact-sub">Ready to lock in your Cabo flights? Reach out and we'll take care of everything.</div>
+    <div class="contact-btns">
+      <a href="tel:+17372717668" class="cbtn cbtn-call">☎ Call (737) 271-7668</a>
+      <a href="mailto:bookings@signatureelitetravel.com" class="cbtn cbtn-email">✉ bookings@signatureelitetravel.com</a>
+    </div>
+    <div class="diamond-rule" style="color:var(--gold);"><span>✦ ✦ ✦</span></div>
+    <div class="footer-disc">
+      <strong>Signature Elite Travel</strong> · (737) 271-7668 · bookings@signatureelitetravel.com<br><br>
+      All prices shown are starting estimates based on the quoted cabin class (Economy/Coach) for 2 passengers and include applicable taxes, fees, and charges as presented in the booking reference. Final pricing is confirmed at the time of booking and may vary based on seat selection, current availability, and applicable fees. Airport transfer pricing is approximate and subject to provider availability at time of booking. Signature Elite Travel acts as an independent travel agent and is not responsible for pricing changes between proposal and booking.
+    </div>
+  </div>
+</section>
+
+<script>
+// ── STATE ──
+let outSel = null, retSel = null;
+const prices = { aeromexico: 1202.84, aa_ret: 1274.84, alaska: 1416.84 };
+const perPax = { aeromexico: '601.42', aa_ret: '637.42', alaska: '708.42' };
+const retDisplayLabels = { aeromexico: 'Aeromexico · Overnight · July 8', aa_ret: 'American Airlines · DFW · July 7', alaska: 'Alaska/Skywest · SAN · July 7' };
+const retShortLabels = { aeromexico: 'Aeromexico', aa_ret: 'American', alaska: 'Alaska/Skywest' };
+
+function smoothScroll(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function selFlight(el, grp, label) {
+  document.querySelectorAll(`.fopt[data-grp="${grp}"]`).forEach(f => f.classList.remove('selected'));
+  el.classList.add('selected');
+
+  if (grp === 'out') {
+    outSel = el.dataset.val;
+    document.getElementById('tr-out').textContent = label;
+    showToast('✓ Outbound: ' + label);
+  } else {
+    retSel = el.dataset.val;
+    document.getElementById('tr-ret').textContent = retDisplayLabels[retSel];
+    showToast('✓ Return: ' + label);
+    updatePricing();
+  }
+}
+
+function updatePricing() {
+  if (!retSel) return;
+  const total = prices[retSel];
+  const pp = perPax[retSel];
+  const fmtTotal = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  // Main price bar
+  document.getElementById('mainAmt').textContent = '$' + fmtTotal;
+  document.getElementById('mainPer').textContent = '~$' + pp + ' per traveler · includes taxes & fees';
+  document.getElementById('tapPromptTxt').style.display = 'none';
+  document.getElementById('mainPriceBar').classList.add('bar-live');
+
+  // Total bar
+  document.getElementById('totalDisp').textContent = '$' + fmtTotal;
+  document.getElementById('total-sub').textContent = retDisplayLabels[retSel] + ' · ~$' + pp + '/traveler';
+
+  // Table rows
+  ['aeromexico','aa_ret','alaska'].forEach(k => {
+    document.getElementById('row-' + k).className = (k === retSel) ? 'row-active' : 'row-normal';
+  });
+
+  // Tracker total
+  document.getElementById('tr-total').textContent = 'from $' + fmtTotal;
+}
+
+let _toast;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(_toast); _toast = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// FADE IN
+const fObs = new IntersectionObserver(e => {
+  e.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); fObs.unobserve(en.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => fObs.observe(el));
+
+// SCROLL SPY
+const secs = ['welcome','glance','flights','transfers','summary','contact'];
+const navAs = document.querySelectorAll('.pnav a');
+const spyObs = new IntersectionObserver(e => {
+  e.forEach(en => {
+    if (!en.isIntersecting) return;
+    const lnk = document.querySelector(`.pnav a[data-section="${en.target.id}"]`);
+    if (!lnk) return;
+    navAs.forEach(a => { a.classList.remove('active'); if (!a.classList.contains('active')) a.classList.add('visited'); });
+    navAs.forEach(a => a.classList.remove('active'));
+    lnk.classList.add('active');
+  });
+}, { threshold: 0.35 });
+secs.forEach(id => { const el = document.getElementById(id); if (el) spyObs.observe(el); });
+</script>
+</body>
+</html>
