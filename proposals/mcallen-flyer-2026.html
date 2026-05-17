@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature Elite Travel — McAllen, Texas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+ --parchment: #F5F0E8;
+ --parchment-dk: #EDE6D6;
+ --parchment-dkr:#E0D8C4;
+ --ink: #1A1610;
+ --ink-soft: #3A342A;
+ --ink-muted: #5A5248;
+ --gold: #B8963E;
+ --gold-lt: #D4AF6A;
+ --gold-pale: #F0E4C4;
+ --gold-deep: #7A5E1E;
+ --white: #FDFAF4;
+ --taupe: #9A8B7A;
+ --taupe-dk: #6B5E52;
+}
+
+body {
+ font-family: 'Montserrat', sans-serif;
+ background: var(--parchment);
+ color: var(--ink);
+ max-width: 900px;
+ margin: 0 auto;
+ box-shadow: 0 4px 40px rgba(0,0,0,0.18);
+}
+
+/* ── HERO ── */
+.hero {
+ position: relative;
+ height: 520px;
+ overflow: hidden;
+ background: linear-gradient(160deg, #1A1610 0%, #2a2018 50%, #1e1a12 100%);
+}
+
+.hero-content {
+ position: absolute;
+ inset: 0;
+ z-index: 2;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ padding: 48px;
+ text-align: center;
+}
+
+.hero-slogan {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 76px;
+ font-weight: 300;
+ color: #FDFAF4;
+ line-height: 1.0;
+ letter-spacing: -0.5px;
+ margin-bottom: 14px;
+ text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.hero-sub {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 15px;
+ font-weight: 300;
+ color: var(--gold-lt);
+ letter-spacing: 0.12em;
+ margin-bottom: 36px;
+ text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+
+/* Logo reconstruction */
+.logo-lockup {
+ display: inline-flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.logo-circle {
+ width: 148px;
+ height: 148px;
+ border: 1.5px solid var(--gold-lt);
+ border-radius: 50%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ position: relative;
+ box-shadow: 0 0 0 4px rgba(184,150,62,0.12);
+ background: rgba(20,15,10,0.2);
+ backdrop-filter: blur(2px);
+}
+
+.logo-plane {
+ position: absolute;
+ top: -16px;
+ left: -12px;
+ font-size: 26px;
+ transform: rotate(-35deg);
+ filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+}
+
+.logo-script {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 34px;
+ font-weight: 400;
+ font-style: italic;
+ color: var(--gold-lt);
+ line-height: 1;
+ letter-spacing: 1px;
+}
+
+.logo-elite {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 8.5px;
+ font-weight: 600;
+ color: var(--gold);
+ letter-spacing: 0.4em;
+ margin-top: 5px;
+ text-indent: 0.4em;
+}
+
+.logo-travel {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 8.5px;
+ font-weight: 600;
+ color: var(--gold);
+ letter-spacing: 0.4em;
+ margin-top: 2px;
+ text-indent: 0.4em;
+}
+
+/* ── EVENT BAND ── */
+.event-band {
+ background: var(--gold);
+ padding: 0;
+ display: grid;
+ grid-template-columns: 1fr auto 1fr;
+ align-items: center;
+}
+
+.event-side {
+ padding: 22px 32px;
+ text-align: center;
+}
+
+.event-divider {
+ width: 1px;
+ background: rgba(26,22,16,0.25);
+ align-self: stretch;
+}
+
+.event-eyebrow {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 9px;
+ font-weight: 600;
+ letter-spacing: 0.32em;
+ color: var(--ink-soft);
+ text-transform: uppercase;
+ margin-bottom: 6px;
+}
+
+.event-main {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 28px;
+ font-weight: 400;
+ color: var(--ink);
+ line-height: 1.1;
+}
+
+.event-detail {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 11px;
+ font-weight: 400;
+ color: var(--ink-soft);
+ letter-spacing: 0.08em;
+ margin-top: 4px;
+}
+
+/* ── ABOUT ── */
+.about {
+ background: var(--parchment);
+ padding: 52px 80px;
+ text-align: center;
+ border-bottom: 1px solid var(--parchment-dkr);
+}
+
+.section-eyebrow {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 9.5px;
+ font-weight: 600;
+ letter-spacing: 0.35em;
+ color: var(--gold);
+ text-transform: uppercase;
+ margin-bottom: 14px;
+ text-indent: 0.35em;
+}
+
+.about-heading {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 46px;
+ font-weight: 300;
+ color: var(--ink);
+ line-height: 1.15;
+ margin-bottom: 20px;
+}
+
+.gold-rule {
+ width: 52px;
+ height: 1px;
+ background: var(--gold);
+ margin: 0 auto 24px;
+}
+
+.about-body {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 16px;
+ font-weight: 300;
+ color: var(--ink-soft);
+ line-height: 1.85;
+ max-width: 580px;
+ margin: 0 auto;
+}
+
+/* ── SERVICES ── */
+.services {
+ background: var(--parchment-dk);
+ padding: 48px 48px 52px;
+}
+
+.services-header {
+ text-align: center;
+ margin-bottom: 32px;
+}
+
+.services-heading {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 36px;
+ font-weight: 400;
+ color: var(--ink);
+ margin-bottom: 8px;
+}
+
+.services-sub {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 13px;
+ font-weight: 300;
+ color: var(--ink-muted);
+ letter-spacing: 0.06em;
+}
+
+.services-grid {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 12px;
+}
+
+.service-card {
+ background: var(--white);
+ border: 1px solid var(--parchment-dkr);
+ padding: 28px 14px 24px;
+ text-align: center;
+ transition: border-color 0.2s;
+}
+
+.service-icon {
+ font-size: 42px;
+ margin-bottom: 14px;
+ display: block;
+ line-height: 1;
+}
+
+.service-name {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 17px;
+ font-weight: 400;
+ color: var(--ink);
+ line-height: 1.3;
+ margin-bottom: 10px;
+}
+
+.service-rule {
+ width: 24px;
+ height: 1px;
+ background: var(--gold);
+ margin: 0 auto;
+}
+
+/* ── QUOTE BAND ── */
+.quote-band {
+ background: linear-gradient(135deg, #28201a 0%, #3e3028 50%, #28201a 100%);
+ padding: 48px 80px;
+ text-align: center;
+ position: relative;
+ overflow: hidden;
+}
+
+.quote-band::before {
+ content: 'C';
+ position: absolute;
+ top: -20px;
+ left: 50%;
+ transform: translateX(-50%);
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 200px;
+ color: rgba(184,150,62,0.07);
+ line-height: 1;
+ pointer-events: none;
+}
+
+.quote-text {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 34px;
+ font-weight: 300;
+ font-style: italic;
+ color: var(--white);
+ line-height: 1.5;
+ max-width: 580px;
+ margin: 0 auto 18px;
+ position: relative;
+}
+
+.quote-attr {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 9px;
+ font-weight: 600;
+ letter-spacing: 0.35em;
+ color: var(--gold);
+ text-transform: uppercase;
+ text-indent: 0.35em;
+}
+
+.triple-diamond {
+ color: var(--gold);
+ font-size: 10px;
+ letter-spacing: 10px;
+ margin: 16px 0 0;
+ text-indent: 10px;
+}
+
+/* ── CONTACT ── */
+.contact {
+ background: var(--ink);
+ padding: 52px 48px 44px;
+ text-align: center;
+}
+
+.contact-cta {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 46px;
+ font-weight: 300;
+ color: var(--white);
+ line-height: 1.1;
+ margin-bottom: 8px;
+}
+
+.contact-sub {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 12px;
+ font-weight: 300;
+ color: var(--gold-lt);
+ letter-spacing: 0.1em;
+ margin-bottom: 36px;
+}
+
+.contact-grid {
+ display: grid;
+ grid-template-columns: 1fr 1px 1fr;
+ gap: 0;
+ max-width: 640px;
+ margin: 0 auto 36px;
+ border: 1px solid rgba(184,150,62,0.25);
+}
+
+.contact-divider {
+ background: rgba(184,150,62,0.25);
+}
+
+.contact-item {
+ padding: 28px 32px;
+}
+
+.contact-label {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 9px;
+ font-weight: 600;
+ letter-spacing: 0.35em;
+ color: var(--gold);
+ text-transform: uppercase;
+ margin-bottom: 10px;
+ text-indent: 0.35em;
+}
+
+.contact-value {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 22px;
+ font-weight: 400;
+ color: var(--white);
+ line-height: 1.3;
+}
+
+.footer-rule {
+ border-top: 1px solid rgba(184,150,62,0.2);
+ padding-top: 28px;
+}
+
+.footer-script {
+ font-family: 'Cormorant Garamond', Georgia, serif;
+ font-size: 22px;
+ font-weight: 400;
+ font-style: italic;
+ color: var(--gold-lt);
+ letter-spacing: 2px;
+ margin-bottom: 6px;
+}
+
+.footer-caps {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 9px;
+ font-weight: 500;
+ letter-spacing: 0.35em;
+ color: var(--ink-muted);
+ text-transform: uppercase;
+ text-indent: 0.35em;
+}
+
+@media print {
+ body { max-width: 100%; box-shadow: none; }
+ * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+<div class="hero-content">
+ <div class="hero-slogan">Private Travel. Elevated.</div>
+ <div class="hero-sub">Concierge travel advisory &amp; planning services tailored to your lifestyle.</div>
+ <div class="logo-lockup">
+ <div class="logo-circle">
+ <span class="logo-plane">✈</span>
+ <div class="logo-script">Signature</div>
+ <div class="logo-elite">ELITE</div>
+ <div class="logo-travel">TRAVEL</div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- ══ DINNER BANNER ══ -->
+<div style="background:var(--gold-pale);border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);padding:22px 48px;text-align:center;">
+ <div style="font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:0.35em;color:var(--gold-deep);text-transform:uppercase;margin-bottom:8px;text-indent:0.35em;">Exclusive Invitation</div>
+ <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:400;color:var(--ink);line-height:1.15;">
+ Join us for a <em>complimentary dinner</em> — on us.
+ </div>
+ <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:var(--ink-soft);margin-top:8px;letter-spacing:0.04em;">
+ As our guest, enjoy a fully hosted dinner while we walk you through what Signature Elite Travel can do for you.
+ </div>
+</div>
+
+<!-- ══ EVENT BAND ══ -->
+<div class="event-band">
+ <div class="event-side">
+ <div class="event-eyebrow">You're Invited</div>
+ <div class="event-main">Join Us in McAllen, Texas</div>
+ </div>
+ <div class="event-divider"></div>
+ <div class="event-side">
+ <div class="event-eyebrow">Dates</div>
+ <div class="event-main">May 20 &amp; 21, 2026</div>
+ <div class="event-detail">Wednesday &amp; Thursday</div>
+ </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="about">
+ <div class="section-eyebrow">Who We Are</div>
+ <div class="about-heading">Creating Thoughtfully Designed<br>Travel Experiences</div>
+ <div class="gold-rule"></div>
+ <div class="about-body">
+ Welcome to Signature Elite Travel, where we provide travel advisory, planning, and concierge coordination services designed to create seamless, personalized experiences. Clients engage our services through a Private Client Concierge Engagement — allowing us to thoughtfully design, source, and coordinate travel on their behalf.
+ </div>
+</div>
+
+<!-- ══ SERVICES ══ -->
+<div class="services">
+ <div class="services-header">
+ <div class="section-eyebrow">What We Offer</div>
+ <div class="services-heading">A Full Suite of Private Travel Services</div>
+ <div class="services-sub">Designed around your life — from first call to final destination</div>
+ </div>
+ <div class="services-grid">
+ <div class="service-card">
+ <span class="service-icon">🧭</span>
+ <div class="service-name">Personal Travel Consultation</div>
+ <div class="service-rule"></div>
+ </div>
+ <div class="service-card">
+ <span class="service-icon">💍</span>
+ <div class="service-name">Destination Weddings</div>
+ <div class="service-rule"></div>
+ </div>
+ <div class="service-card">
+ <span class="service-icon">🗺</span>
+ <div class="service-name">Custom Itinerary Design</div>
+ <div class="service-rule"></div>
+ </div>
+ <div class="service-card">
+ <span class="service-icon">🛳</span>
+ <div class="service-name">Cruise &amp; Luxury Travel Planning</div>
+ <div class="service-rule"></div>
+ </div>
+ <div class="service-card">
+ <span class="service-icon">✈</span>
+ <div class="service-name">Air &amp; Transportation Coordination</div>
+ <div class="service-rule"></div>
+ </div>
+ <div class="service-card">
+ <span class="service-icon">🏨</span>
+ <div class="service-name">Accommodations &amp; Destination Sourcing</div>
+ <div class="service-rule"></div>
+ </div>
+ <div class="service-card">
+ <span class="service-icon">🦌</span>
+ <div class="service-name">Hunting Packages</div>
+ <div class="service-rule"></div>
+ </div>
+ <div class="service-card">
+ <span class="service-icon">🤝</span>
+ <div class="service-name">Ongoing Concierge Support</div>
+ <div class="service-rule"></div>
+ </div>
+ </div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<div class="contact">
+ <div class="contact-cta">Ready to Experience It?</div>
+ <div class="contact-sub">Let's craft your next journey</div>
+</div>
+
+</body>
+</html>
