@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbara's LA Trip · June 26 – July 1, 2026 · Signature Elite Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment: #F5F0E8;
+  --parchment-dk: #EDE6D6;
+  --parchment-dkr: #E0D8C4;
+  --ink: #1A1610;
+  --ink-soft: #3A342A;
+  --ink-muted: #5A5248;
+  --gold: #B8963E;
+  --gold-lt: #D4AF6A;
+  --gold-pale: #F0E4C4;
+  --gold-deep: #7A5E1E;
+  --white: #FDFAF4;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--parchment);
+  color: var(--ink-soft);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ─── PROGRESS NAV ─── */
+.pnav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--ink);
+  display: flex; align-items: center; gap: 0;
+  height: 52px; overflow-x: auto;
+}
+.pnav-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 16px; height: 52px; cursor: pointer;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  white-space: nowrap; transition: color 0.3s;
+  border: none; background: none;
+}
+.pnav-item:hover { color: rgba(255,255,255,0.85); }
+.pnav-item.active { color: var(--gold-lt); }
+.pnav-item.visited { color: rgba(255,255,255,0.65); }
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.2); flex-shrink: 0;
+  transition: background 0.3s;
+}
+.pnav-item.active .dot { background: var(--gold); }
+.pnav-item.visited .dot { background: rgba(255,255,255,0.4); }
+
+/* ─── AGENT BAR ─── */
+.agent-bar {
+  background: var(--gold-deep); color: var(--gold-pale);
+  text-align: center; padding: 10px 20px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
+  margin-top: 52px;
+}
+.agent-bar a { color: var(--gold-pale); }
+
+/* ─── MASTHEAD ─── */
+.masthead {
+  background: var(--ink);
+  padding: 64px 24px 56px;
+  text-align: center;
+}
+.mast-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+}
+.mast-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 7vw, 62px);
+  font-weight: 300; color: var(--white);
+  line-height: 1.1; margin-bottom: 12px;
+}
+.mast-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-style: italic;
+  color: var(--gold-lt); margin-bottom: 28px;
+}
+.gold-rule { width: 80px; height: 1px; background: var(--gold); margin: 0 auto 28px; }
+.mast-meta {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;
+}
+.meta-pill {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold-lt); padding: 6px 14px;
+  border: 1px solid rgba(184,150,62,0.3);
+  border-radius: 2px;
+}
+
+/* ─── SECTIONS ─── */
+.section { padding: 60px 24px; max-width: 860px; margin: 0 auto; }
+.section-label {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 400; color: var(--ink);
+  margin-bottom: 6px; line-height: 1.15;
+}
+.section-divider {
+  width: 100%; height: 1px; background: var(--parchment-dkr);
+  margin: 0 0 32px;
+}
+
+/* ─── GUIDE BUBBLE ─── */
+.guide {
+  background: var(--gold-pale);
+  border-left: 3px solid var(--gold);
+  padding: 18px 22px; border-radius: 0 4px 4px 0;
+  margin-bottom: 28px;
+  font-size: 18px; line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+/* ─── AT A GLANCE GRID ─── */
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 32px;
+}
+.glance-card {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  padding: 20px; border-radius: 2px;
+}
+.glance-icon { font-size: 22px; margin-bottom: 8px; }
+.glance-label {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold-deep); margin-bottom: 4px;
+}
+.glance-val {
+  font-size: 16px; font-weight: 500;
+  color: var(--ink); line-height: 1.3;
+}
+.glance-note {
+  font-size: 12px; color: var(--ink-muted); margin-top: 4px;
+}
+
+/* ─── RENTAL CAR CARD ─── */
+.car-card {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 2px; overflow: hidden;
+  margin-bottom: 24px;
+}
+.car-hh {
+  height: 260px; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #2c3e50, #4a6fa5);
+  display: flex; align-items: center; justify-content: center;
+}
+.car-hh-icon { font-size: 80px; opacity: 0.4; }
+.car-hh-ov {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  padding: 20px 24px;
+}
+.car-hh-badge {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold-lt);
+  margin-bottom: 4px;
+}
+.car-hh-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 400; color: white;
+}
+.car-body { padding: 24px; }
+.car-specs {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin-bottom: 20px;
+}
+.spec {
+  text-align: center;
+  border: 1px solid var(--parchment-dkr);
+  padding: 12px 8px; border-radius: 2px;
+}
+.spec-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px;
+}
+.spec-val { font-size: 14px; font-weight: 500; color: var(--ink); }
+.agent-note {
+  background: var(--parchment-dk);
+  border-left: 2px solid var(--gold);
+  padding: 12px 16px; margin: 16px 0;
+  font-size: 14px; color: var(--ink-muted); line-height: 1.6;
+}
+.agent-note strong { color: var(--gold-deep); }
+
+/* ─── PRICE BAR ─── */
+.price-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--ink); color: white;
+  padding: 18px 24px; cursor: default;
+}
+.price-bar-label {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 4px;
+}
+.price-bar-note { font-size: 13px; color: rgba(255,255,255,0.6); }
+.price-bar-amt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 400; text-align: right;
+}
+.price-bar-amt .from {
+  font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,0.5); margin-right: 3px;
+}
+.price-bar-per {
+  font-size: 12px; color: rgba(255,255,255,0.5);
+  text-align: right; margin-top: 2px;
+}
+
+/* ─── GAME / EVENT CARD ─── */
+.event-card {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 2px; overflow: hidden;
+  margin-bottom: 24px;
+}
+.event-banner {
+  background: linear-gradient(135deg, #C41E3A, #8B1A1A);
+  padding: 32px 28px;
+  display: flex; align-items: center; gap: 20px;
+}
+.event-logo { font-size: 60px; }
+.event-banner-info {}
+.event-eyebrow {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.6);
+  margin-bottom: 6px;
+}
+.event-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 400; color: white;
+  line-height: 1.1;
+}
+.event-sub { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 6px; }
+.event-body { padding: 24px; }
+.event-details {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px; margin-bottom: 20px;
+}
+.ev-detail {
+  border: 1px solid var(--parchment-dkr); padding: 14px;
+}
+.ev-detail-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px;
+}
+.ev-detail-val { font-size: 14px; font-weight: 500; color: var(--ink); }
+
+/* ─── TICKET BUDGET VISUAL ─── */
+.ticket-budget {
+  background: var(--parchment-dk);
+  border: 1px solid var(--parchment-dkr);
+  padding: 20px 24px; border-radius: 2px;
+  margin: 16px 0;
+}
+.ticket-budget-title {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold-deep); margin-bottom: 12px;
+}
+.ticket-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid var(--parchment-dkr);
+  font-size: 15px;
+}
+.ticket-row:last-child { border-bottom: none; font-weight: 600; }
+.ticket-row.target { color: var(--gold-deep); }
+
+/* ─── ITINERARY ─── */
+.itin-day {
+  background: var(--parchment-dk);
+  padding: 12px 18px; margin-bottom: 2px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ink); border-left: 3px solid var(--gold);
+}
+.itin-row {
+  display: flex; gap: 20px;
+  background: var(--white); padding: 14px 18px;
+  margin-bottom: 2px; align-items: flex-start;
+  border-left: 3px solid transparent;
+}
+.itin-row.highlight { border-left-color: var(--gold); }
+.itin-time {
+  font-size: 12px; font-weight: 600; color: var(--gold-deep);
+  min-width: 55px; padding-top: 2px;
+}
+.itin-content {}
+.itin-what { font-size: 15px; font-weight: 500; color: var(--ink); }
+.itin-detail { font-size: 13px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ─── COST SUMMARY ─── */
+.cost-table {
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 2px; overflow: hidden;
+  margin-bottom: 16px;
+}
+.cost-header {
+  background: var(--ink); color: var(--gold-lt);
+  display: grid; grid-template-columns: 1fr auto;
+  padding: 12px 20px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+.cost-row {
+  display: grid; grid-template-columns: 1fr auto;
+  padding: 14px 20px; border-bottom: 1px solid var(--parchment-dkr);
+  background: var(--white); font-size: 15px;
+}
+.cost-row:last-child { border-bottom: none; }
+.cost-row .amt { font-weight: 500; color: var(--gold-deep); }
+.cost-total {
+  display: grid; grid-template-columns: 1fr auto;
+  padding: 18px 20px;
+  background: var(--ink); color: white;
+}
+.cost-total-label {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold-lt);
+}
+.cost-total-note { font-size: 12px; color: rgba(255,255,255,0.5); }
+.cost-total-amt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; text-align: right;
+}
+.cost-total-amt .from { font-size: 14px; color: rgba(255,255,255,0.5); margin-right: 4px; }
+
+/* ─── CONTACT ─── */
+.contact-section {
+  background: var(--ink);
+  padding: 60px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.015) 40px,
+    rgba(255,255,255,0.015) 80px
+  );
+}
+.contact-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.contact-eyebrow {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+}
+.contact-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 6vw, 52px); font-weight: 300;
+  color: white; margin-bottom: 28px;
+}
+.contact-buttons {
+  display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+  margin-bottom: 36px;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 18px 32px; min-height: 56px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border-radius: 2px;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.88; }
+.btn-primary { background: var(--gold); color: var(--ink); }
+.btn-secondary {
+  background: transparent; color: var(--gold-lt);
+  border: 1px solid rgba(184,150,62,0.5);
+}
+.triple-rule {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin: 28px 0;
+  color: var(--gold);
+}
+.triple-rule::before, .triple-rule::after {
+  content: ''; flex: 1; height: 1px; background: rgba(184,150,62,0.3);
+}
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.35);
+  text-align: center; padding: 24px;
+  font-size: 11px; line-height: 1.7;
+  border-top: 1px solid rgba(184,150,62,0.15);
+}
+
+/* ─── FADE IN ─── */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 700px) {
+  .pnav-item span { display: none; }
+  .car-specs { grid-template-columns: repeat(2, 1fr); }
+  .event-details { grid-template-columns: 1fr 1fr; }
+  .car-hh { height: 200px; }
+  .contact-buttons { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS NAV -->
+<nav class="pnav" id="pnav">
+  <button class="pnav-item active" onclick="smoothScroll('overview')"><span class="dot"></span><span>Overview</span></button>
+  <button class="pnav-item" onclick="smoothScroll('rental-car')"><span class="dot"></span><span>Rental Car</span></button>
+  <button class="pnav-item" onclick="smoothScroll('game-day')"><span class="dot"></span><span>Game Day</span></button>
+  <button class="pnav-item" onclick="smoothScroll('itinerary')"><span class="dot"></span><span>Itinerary</span></button>
+  <button class="pnav-item" onclick="smoothScroll('cost-summary')"><span class="dot"></span><span>Costs</span></button>
+  <button class="pnav-item" onclick="smoothScroll('contact')"><span class="dot"></span><span>Contact</span></button>
+</nav>
+
+<!-- AGENT BAR -->
+<div class="agent-bar">
+  Your SET Travel Advisor &nbsp;·&nbsp; <a href="tel:7372717668">(737) 271-7668</a> &nbsp;·&nbsp; <a href="mailto:bookings@signatureelitetravel.com">bookings@signatureelitetravel.com</a>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="mast-eyebrow">Signature Elite Travel · Crafted for</div>
+  <div class="mast-title">Barbara's LA Trip</div>
+  <div class="mast-sub">June 26 – July 1, 2026</div>
+  <div class="gold-rule"></div>
+  <div class="mast-meta">
+    <div class="meta-pill">Los Angeles, CA</div>
+    <div class="meta-pill">5 Nights · 6 Days</div>
+    <div class="meta-pill">Angels vs. Athletics · June 28</div>
+    <div class="meta-pill">Midsize Sedan</div>
+  </div>
+</div>
+
+<!-- ═══ OVERVIEW ═══ -->
+<div id="overview" style="background: var(--parchment);">
+  <div class="section">
+    <div class="section-label fade-in">Your Trip at a Glance</div>
+    <div class="section-title fade-in">Everything in One Place</div>
+    <div class="section-divider"></div>
+
+    <div class="guide fade-in">
+      Barbara, here's your complete LA trip summary — rental car pickup, the game on the 28th, and estimated costs all in one place. Review everything below and reach out when you're ready to lock anything in.
+    </div>
+
+    <div class="glance-grid fade-in">
+      <div class="glance-card">
+        <div class="glance-icon">🚗</div>
+        <div class="glance-label">Car Pickup</div>
+        <div class="glance-val">Fri, June 26</div>
+        <div class="glance-note">1:00 PM · LAX</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">⚾</div>
+        <div class="glance-label">Game Day</div>
+        <div class="glance-val">Sun, June 28</div>
+        <div class="glance-note">12:15 PM · Angel Stadium</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">🎟️</div>
+        <div class="glance-label">Tickets</div>
+        <div class="glance-val">6 Tickets</div>
+        <div class="glance-note">Target: ~$265 total</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">🔁</div>
+        <div class="glance-label">Car Return</div>
+        <div class="glance-val">Wed, July 1</div>
+        <div class="glance-note">1:15 PM · LAX</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">📅</div>
+        <div class="glance-label">Rental Duration</div>
+        <div class="glance-val">5 Days</div>
+        <div class="glance-note">Midsize Sedan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ RENTAL CAR ═══ -->
+<div id="rental-car" style="background: var(--white);">
+  <div class="section">
+    <div class="section-label fade-in">Transportation</div>
+    <div class="section-title fade-in">Rental Car · LAX</div>
+    <div class="section-divider"></div>
+
+    <div class="guide fade-in">
+      Midsize sedan for 5 days — pickup at LAX on June 26 at 1:00 PM, return July 1 at 1:15 PM. Perfect size for navigating LA, getting to Anaheim for the game, and everything in between.
+    </div>
+
+    <div class="car-card fade-in">
+      <div class="car-hh">
+        <div class="car-hh-icon">🚘</div>
+        <div class="car-hh-ov">
+          <div class="car-hh-badge">Recommended · Best Rated at LAX</div>
+          <div class="car-hh-name">Midsize Sedan · 5-Day Rental</div>
+        </div>
+      </div>
+      <div class="car-body">
+        <div class="car-specs">
+          <div class="spec">
+            <div class="spec-label">Pickup</div>
+            <div class="spec-val">June 26 · 1:00 PM</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Return</div>
+            <div class="spec-val">July 1 · 1:15 PM</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Duration</div>
+            <div class="spec-val">5 Days</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Location</div>
+            <div class="spec-val">LAX CONRAC</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Class</div>
+            <div class="spec-val">Intermediate / Midsize</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Recommended</div>
+            <div class="spec-val">Alamo · 8.7/10</div>
+          </div>
+        </div>
+
+        <div class="agent-note">
+          <strong>Agent Notes:</strong> Late June is summer peak at LAX — daily rates run higher than spring/fall. Your best bet is booking 2–4 weeks out through Alamo (top-rated on-airport provider), Hertz, or National. All LAX rental companies operate from the off-terminal CONRAC — free shuttle, about 10 minutes from any terminal. Confirm pick-up hours in advance. Taxes, airport fees, and the California CFC add roughly $50–$80 on top of the base rate for a 5-day rental — always compare the final total, not the daily headline rate.
+        </div>
+      </div>
+      <div class="price-bar">
+        <div>
+          <div class="price-bar-label">Estimated · 5 Days · Midsize</div>
+          <div class="price-bar-note">LAX on-airport, taxes &amp; fees included</div>
+        </div>
+        <div>
+          <div class="price-bar-amt"><span class="from">~</span>$175–$265</div>
+          <div class="price-bar-per">~$35–$53/day + taxes &amp; fees</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agent-note fade-in" style="margin-top:0;">
+      💡 <strong>Book tip:</strong> Alamo, Hertz, and National consistently lead LAX ratings and have transparent pricing. Avoid smaller off-airport operators if return hours overlap with your flight window — some close by 8PM. Confirm return availability for 1:15 PM on July 1.
+    </div>
+  </div>
+</div>
+
+<!-- ═══ GAME DAY ═══ -->
+<div id="game-day" style="background: var(--parchment);">
+  <div class="section">
+    <div class="section-label fade-in">The Main Event</div>
+    <div class="section-title fade-in">Angels vs. Athletics · June 28</div>
+    <div class="section-divider"></div>
+
+    <div class="guide fade-in">
+      Barbara, this is a nationally televised Peacock game — Athletics visiting the Angels at Angel Stadium in Anaheim. A Sunday afternoon matinee with 6 people. Here's the full picture on the game and your ticket budget.
+    </div>
+
+    <div class="event-card fade-in">
+      <div class="event-banner">
+        <div class="event-logo">⚾</div>
+        <div class="event-banner-info">
+          <div class="event-eyebrow">MLB · American League West</div>
+          <div class="event-name">Athletics at Los Angeles Angels</div>
+          <div class="event-sub">Sunday, June 28, 2026 · Angel Stadium of Anaheim</div>
+        </div>
+      </div>
+      <div class="event-body">
+        <div class="event-details">
+          <div class="ev-detail">
+            <div class="ev-detail-label">Date</div>
+            <div class="ev-detail-val">Sunday, June 28</div>
+          </div>
+          <div class="ev-detail">
+            <div class="ev-detail-label">First Pitch</div>
+            <div class="ev-detail-val">12:15 PM PT</div>
+          </div>
+          <div class="ev-detail">
+            <div class="ev-detail-label">Venue</div>
+            <div class="ev-detail-val">Angel Stadium, Anaheim</div>
+          </div>
+          <div class="ev-detail">
+            <div class="ev-detail-label">Broadcast</div>
+            <div class="ev-detail-val">Peacock (National)</div>
+          </div>
+          <div class="ev-detail">
+            <div class="ev-detail-label">Drive from LA</div>
+            <div class="ev-detail-val">~35 min (off-peak)</div>
+          </div>
+          <div class="ev-detail">
+            <div class="ev-detail-label">Capacity</div>
+            <div class="ev-detail-val">45,517 · "The Big A"</div>
+          </div>
+        </div>
+
+        <div class="ticket-budget">
+          <div class="ticket-budget-title">🎟️ Ticket Budget Breakdown · 6 People</div>
+          <div class="ticket-row">
+            <span>Barbara's target total</span>
+            <span style="font-weight:600; color:var(--gold-deep);">$265</span>
+          </div>
+          <div class="ticket-row">
+            <span>Per-ticket budget</span>
+            <span>~$44/ticket</span>
+          </div>
+          <div class="ticket-row">
+            <span>Market floor (upper sections, SeatGeek)</span>
+            <span>from $11/ticket</span>
+          </div>
+          <div class="ticket-row">
+            <span>Average market price</span>
+            <span>~$95/ticket</span>
+          </div>
+          <div class="ticket-row target">
+            <span>✓ Budget is achievable in upper/reserved sections</span>
+            <span>~$44 or under</span>
+          </div>
+        </div>
+
+        <div class="agent-note">
+          <strong>Ticket Sourcing Notes:</strong> At ~$44/ticket, you have solid options in the upper reserved and outfield sections — well within the market floor of $11–$34 for this game. StubHub, SeatGeek, and Vivid Seats are all options. For 6 seats together, filter by group quantity when searching. Recommend buying 3–4 weeks out for the best seat-together availability. This is a Peacock matinee (12:15 PM first pitch) — arrive by 11:30 AM from LA for comfortable parking and entry. Parking at Angel Stadium runs $15–$25 depending on lot — factor that in separately.
+        </div>
+      </div>
+      <div class="price-bar">
+        <div>
+          <div class="price-bar-label">Target · 6 Tickets · Upper/Reserved Sections</div>
+          <div class="price-bar-note">Based on SeatGeek &amp; Vivid Seats market data · June 28, 2026</div>
+        </div>
+        <div>
+          <div class="price-bar-amt"><span class="from">~</span>$265</div>
+          <div class="price-bar-per">~$44/ticket before fees</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ITINERARY ═══ -->
+<div id="itinerary" style="background: var(--white);">
+  <div class="section">
+    <div class="section-label fade-in">Day by Day</div>
+    <div class="section-title fade-in">Trip Itinerary</div>
+    <div class="section-divider"></div>
+
+    <div class="guide fade-in">
+      A suggested day-by-day view of your trip. The game on the 28th is the anchor — everything else is yours to shape. Let me know if you'd like restaurant or activity suggestions for the other days.
+    </div>
+
+    <div class="fade-in">
+
+      <div class="itin-day">Friday, June 26 · Arrival Day</div>
+      <div class="itin-row highlight">
+        <div class="itin-time">1:00 PM</div>
+        <div class="itin-content">
+          <div class="itin-what">🚗 Rental Car Pickup · LAX CONRAC</div>
+          <div class="itin-detail">Shuttle from terminal → rental center. Midsize sedan. Allow 30–45 min.</div>
+        </div>
+      </div>
+      <div class="itin-row">
+        <div class="itin-time">AFT</div>
+        <div class="itin-content">
+          <div class="itin-what">Check In · Hotel / Accommodation</div>
+          <div class="itin-detail">Drive to your accommodation (ask your SET advisor for hotel options)</div>
+        </div>
+      </div>
+      <div class="itin-row">
+        <div class="itin-time">EVE</div>
+        <div class="itin-content">
+          <div class="itin-what">First evening in LA</div>
+          <div class="itin-detail">Settle in, dinner, explore your neighborhood</div>
+        </div>
+      </div>
+
+      <div class="itin-day" style="margin-top:8px;">Saturday, June 27 · Explore Day</div>
+      <div class="itin-row">
+        <div class="itin-time">ALL DAY</div>
+        <div class="itin-content">
+          <div class="itin-what">Los Angeles Free Day</div>
+          <div class="itin-detail">Hollywood, Santa Monica, Beverly Hills, Griffith Observatory — ask for curated recommendations</div>
+        </div>
+      </div>
+
+      <div class="itin-day" style="margin-top:8px;">Sunday, June 28 · Game Day ⚾</div>
+      <div class="itin-row">
+        <div class="itin-time">10:30 AM</div>
+        <div class="itin-content">
+          <div class="itin-what">Depart for Anaheim</div>
+          <div class="itin-detail">~35 min drive from central LA (I-5 S). Allow extra time on Sunday mornings.</div>
+        </div>
+      </div>
+      <div class="itin-row highlight">
+        <div class="itin-time">11:30 AM</div>
+        <div class="itin-content">
+          <div class="itin-what">⚾ Arrive Angel Stadium · Gate Open</div>
+          <div class="itin-detail">Gates open 90 min before first pitch. Stadium is cashless.</div>
+        </div>
+      </div>
+      <div class="itin-row highlight">
+        <div class="itin-time">12:15 PM</div>
+        <div class="itin-content">
+          <div class="itin-what">First Pitch · Athletics at Angels</div>
+          <div class="itin-detail">National TV · Peacock. AL West divisional game. ~3 hours.</div>
+        </div>
+      </div>
+      <div class="itin-row">
+        <div class="itin-time">~3:30 PM</div>
+        <div class="itin-content">
+          <div class="itin-what">Post-Game · Head Back to LA</div>
+          <div class="itin-detail">Or explore Anaheim / Disneyland District area if the group wants to extend</div>
+        </div>
+      </div>
+
+      <div class="itin-day" style="margin-top:8px;">Monday, June 29 · Tuesday, June 30 · Flex Days</div>
+      <div class="itin-row">
+        <div class="itin-time">ALL DAY</div>
+        <div class="itin-content">
+          <div class="itin-what">LA at Your Pace</div>
+          <div class="itin-detail">Beach, museums, day trips — Malibu, Pasadena, Long Beach. Ask SET for curated plans.</div>
+        </div>
+      </div>
+
+      <div class="itin-day" style="margin-top:8px;">Wednesday, July 1 · Departure Day</div>
+      <div class="itin-row">
+        <div class="itin-time">AM</div>
+        <div class="itin-content">
+          <div class="itin-what">Final Morning in LA</div>
+          <div class="itin-detail">Allow time to pack, check out of accommodations</div>
+        </div>
+      </div>
+      <div class="itin-row highlight">
+        <div class="itin-time">1:15 PM</div>
+        <div class="itin-content">
+          <div class="itin-what">🚗 Car Return · LAX CONRAC</div>
+          <div class="itin-detail">Return midsize sedan. Allow 45 min for return + shuttle back to terminal.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══ COST SUMMARY ═══ -->
+<div id="cost-summary" style="background: var(--parchment);">
+  <div class="section">
+    <div class="section-label fade-in">Estimated Investment</div>
+    <div class="section-title fade-in">Cost Summary</div>
+    <div class="section-divider"></div>
+
+    <div class="guide fade-in">
+      Here's a rollup of the two main bookable items — rental car and game tickets. Hotel is not yet included in this proposal. Reach out and we'll layer that in.
+    </div>
+
+    <div class="cost-table fade-in">
+      <div class="cost-header">
+        <span>Item</span>
+        <span>Estimated Cost</span>
+      </div>
+      <div class="cost-row">
+        <div>
+          <div style="font-weight:500;">Midsize Sedan Rental · 5 Days</div>
+          <div style="font-size:13px; color:var(--ink-muted);">LAX pickup June 26 · Return July 1 · Taxes &amp; fees incl.</div>
+        </div>
+        <div class="amt">~$175–$265</div>
+      </div>
+      <div class="cost-row">
+        <div>
+          <div style="font-weight:500;">Angels vs. Athletics Tickets · 6 Seats</div>
+          <div style="font-size:13px; color:var(--ink-muted);">June 28 · Upper/Reserved sections · Before service fees</div>
+        </div>
+        <div class="amt">~$265</div>
+      </div>
+      <div class="cost-row">
+        <div>
+          <div style="font-weight:500;">Angel Stadium Parking</div>
+          <div style="font-size:13px; color:var(--ink-muted);">Not included — plan $15–$25 per car</div>
+        </div>
+        <div class="amt">~$15–$25</div>
+      </div>
+      <div class="cost-row" style="background:var(--parchment-dk);">
+        <div>
+          <div style="font-weight:500; color:var(--ink-muted);">Hotel (Not yet in proposal)</div>
+          <div style="font-size:13px; color:var(--ink-muted);">Contact SET to add hotel recommendations</div>
+        </div>
+        <div style="color:var(--ink-muted);">TBD</div>
+      </div>
+      <div class="cost-total">
+        <div>
+          <div class="cost-total-label">Estimated Starting From</div>
+          <div class="cost-total-note">Car + tickets · excludes hotel &amp; parking</div>
+        </div>
+        <div class="cost-total-amt"><span class="from">from </span>$440</div>
+      </div>
+    </div>
+
+    <p class="fade-in" style="font-size:13px; color:var(--ink-muted); font-style:italic; line-height:1.7;">
+      All estimates based on current market data for the specific dates. Final rental car pricing confirmed at booking and will vary by provider, availability, and rate class. Ticket prices are secondary market estimates and are subject to change. Service fees from ticket platforms (typically 15–25%) are not reflected in the ticket total above.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ CONTACT ═══ -->
+<div id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-eyebrow fade-in">Ready When You Are</div>
+    <div class="contact-title fade-in">Let's Make This Happen, Barbara</div>
+    <div class="contact-buttons fade-in">
+      <a href="tel:7372717668" class="btn btn-primary">📞 &nbsp; Call (737) 271-7668</a>
+      <a href="mailto:bookings@signatureelitetravel.com?subject=Barbara%20Green%20LA%20Trip%20-%20June%2026" class="btn btn-secondary">✉️ &nbsp; Email Your Advisor</a>
+    </div>
+    <div class="triple-rule">✦ &nbsp; ✦ &nbsp; ✦</div>
+  </div>
+</div>
+
+<footer>
+  <strong>Signature Elite Travel</strong> &nbsp;·&nbsp; (737) 271-7668 &nbsp;·&nbsp; bookings@signatureelitetravel.com<br>
+  All prices shown are starting estimates based on current secondary market data and published rate ranges. Final pricing confirmed at booking and may vary based on availability, service fees, and applicable taxes. Ticket prices from secondary markets do not include platform service fees. Rental car rates are subject to seasonal demand and vary by provider.
+</footer>
+
+<script>
+// ─── Smooth Scroll
+function smoothScroll(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ─── Scroll Spy
+const sections = ['overview','rental-car','game-day','itinerary','cost-summary','contact'];
+const navItems = document.querySelectorAll('.pnav-item');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      const idx = sections.indexOf(id);
+      navItems.forEach((item, i) => {
+        item.classList.remove('active', 'visited');
+        if (i === idx) item.classList.add('active');
+        else if (i < idx) item.classList.add('visited');
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+
+// ─── Fade-in Observer
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+</script>
+</body>
+</html>

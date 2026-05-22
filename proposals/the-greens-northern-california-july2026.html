@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Greens — Northern California — July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment: #F5F0E8;
+  --parchment-dk: #EDE6D6;
+  --parchment-dkr: #E0D8C4;
+  --ink: #1A1610;
+  --ink-soft: #3A342A;
+  --ink-muted: #5A5248;
+  --gold: #B8963E;
+  --gold-lt: #D4AF6A;
+  --gold-pale: #F0E4C4;
+  --gold-deep: #7A5E1E;
+  --white: #FDFAF4;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  background: var(--parchment);
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.7;
+  padding-top: 64px;
+  padding-bottom: 70px;
+}
+.pnav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: var(--ink); z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 12px 20px; gap: 8px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  border-bottom: 1px solid var(--gold-deep);
+}
+.pnav a {
+  flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center;
+  text-decoration: none; padding: 4px 12px;
+  cursor: pointer;
+}
+.pnav .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--ink-muted); transition: all 0.3s;
+  margin-bottom: 4px;
+}
+.pnav a.active .dot { background: var(--gold); transform: scale(1.4); }
+.pnav a.visited .dot { background: var(--gold-deep); }
+.pnav .lbl {
+  font-size: 10px; font-weight: 500;
+  color: var(--ink-muted); letter-spacing: 0.08em;
+  text-transform: uppercase; transition: color 0.3s;
+}
+.pnav a.active .lbl { color: var(--gold-lt); }
+.pnav a.visited .lbl { color: var(--gold); }
+.abar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--ink); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; padding: 12px 20px; z-index: 1000;
+  border-top: 1px solid var(--gold-deep);
+}
+.abar-txt {
+  font-size: 14px; font-weight: 400; color: var(--gold-lt);
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+}
+.abar-btn {
+  background: var(--gold); color: var(--ink);
+  padding: 10px 20px; border-radius: 4px;
+  text-decoration: none; font-weight: 600;
+  font-size: 14px; letter-spacing: 0.04em;
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px;
+}
+section {
+  padding: 80px 24px;
+  max-width: 1100px; margin: 0 auto;
+}
+.fade-in {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+#welcome {
+  background: var(--ink); color: var(--white);
+  max-width: 100%; margin: 0; padding: 100px 24px 80px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+#welcome::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(135deg,
+    transparent 0px, transparent 40px,
+    rgba(212, 175, 106, 0.04) 40px, rgba(212, 175, 106, 0.04) 41px);
+  pointer-events: none;
+}
+.welcome-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+.eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.32em;
+  color: var(--gold-lt); text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.logo-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 400; color: var(--white);
+  margin-bottom: 12px; letter-spacing: 0.02em;
+}
+.logo-line em {
+  font-style: italic; color: var(--gold-lt); font-weight: 400;
+}
+.diamonds {
+  font-size: 14px; color: var(--gold); letter-spacing: 0.6em;
+  margin: 28px 0;
+}
+.client-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-style: italic; font-weight: 400;
+  color: var(--white); margin: 0 0 16px;
+  line-height: 1.1;
+}
+.occasion {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-style: italic; font-weight: 300;
+  color: var(--gold-lt); margin-bottom: 36px;
+}
+.hero-pills {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  margin-top: 32px;
+}
+.pill {
+  background: rgba(184, 150, 62, 0.15);
+  border: 1px solid var(--gold-deep);
+  color: var(--gold-lt);
+  padding: 10px 20px; border-radius: 24px;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.guide { margin-bottom: 40px; max-width: 720px; margin-left: auto; margin-right: auto; }
+.guide-bubble {
+  background: var(--gold-pale);
+  border-left: 4px solid var(--gold-deep);
+  padding: 22px 28px;
+  font-size: 18px; line-height: 1.6;
+  color: var(--ink-soft); font-weight: 400;
+  border-radius: 0 8px 8px 0;
+}
+.guide-bubble em {
+  font-style: italic; color: var(--gold-deep);
+  font-weight: 600;
+}
+.guide-bubble strong { color: var(--ink); font-weight: 600; }
+.section-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.32em;
+  color: var(--gold-deep); text-transform: uppercase;
+  text-align: center; margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px; font-weight: 400; font-style: italic;
+  color: var(--ink); text-align: center;
+  margin-bottom: 12px; line-height: 1.1;
+}
+.section-rule {
+  width: 60px; height: 2px; background: var(--gold);
+  margin: 24px auto 48px;
+}
+.glance-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-bottom: 40px;
+}
+.glance-cell {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  padding: 22px 20px;
+  border-radius: 6px;
+}
+.glance-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+  color: var(--gold-deep); text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.glance-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400; color: var(--ink);
+  line-height: 1.3;
+}
+.glance-sub {
+  font-size: 13px; color: var(--ink-muted); margin-top: 4px;
+  font-weight: 400;
+}
+.included {
+  background: var(--gold-pale); padding: 28px 32px;
+  border-radius: 6px;
+}
+.included-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-style: italic; color: var(--gold-deep);
+  margin-bottom: 16px; font-weight: 600;
+}
+.included ul { list-style: none; }
+.included li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 8px 0; font-size: 15px; color: var(--ink-soft);
+}
+.included li::before {
+  content: '✓';
+  flex-shrink: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--gold-deep); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 14px;
+  margin-top: 2px;
+}
+.flight-card {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 8px;
+  padding: 32px; margin-bottom: 28px;
+}
+.flight-route {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; margin-bottom: 20px;
+}
+.flight-airport {
+  text-align: center; flex: 1;
+}
+.flight-code {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; font-weight: 400; color: var(--ink);
+  line-height: 1;
+}
+.flight-city {
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-muted); margin-top: 4px;
+}
+.flight-arrow-line {
+  width: 100%; max-width: 200px;
+  border-top: 2px solid var(--gold);
+  position: relative; margin: 8px auto;
+}
+.flight-arrow-line::after {
+  content: '✈'; position: absolute; right: -4px; top: -16px;
+  background: var(--white); padding: 0 8px; color: var(--gold-deep);
+  font-size: 18px;
+}
+.flight-times {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px; padding-top: 20px;
+  border-top: 1px solid var(--parchment-dkr);
+}
+.flight-time-block { text-align: center; }
+.flight-time-label {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-deep); font-weight: 600; margin-bottom: 6px;
+}
+.flight-time-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; color: var(--ink); font-weight: 400;
+}
+.flight-time-date {
+  font-size: 13px; color: var(--ink-muted); margin-top: 2px;
+}
+.flight-meta {
+  display: flex; gap: 24px; justify-content: center;
+  margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--parchment-dkr);
+  flex-wrap: wrap;
+}
+.flight-meta-item {
+  font-size: 13px; color: var(--ink-muted);
+  display: flex; align-items: center; gap: 6px;
+}
+.flight-meta-item strong { color: var(--ink-soft); font-weight: 500; }
+.flight-badge {
+  display: inline-block;
+  background: var(--ink); color: var(--gold-lt);
+  padding: 8px 16px; border-radius: 4px;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 600; margin-bottom: 16px;
+}
+.car-section { padding: 60px 24px; }
+.hh {
+  width: 100%; height: 280px; position: relative;
+  overflow: hidden; border-radius: 8px 8px 0 0;
+  max-width: 1100px; margin: 0 auto;
+}
+.hh-bg-sfo {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #2d4a3e 0%, #5a7c5a 50%, #b0c898 100%);
+}
+.hh-ov {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(26,22,16,0.85) 0%, rgba(26,22,16,0.3) 60%, transparent 100%);
+  padding: 60px 32px 28px;
+  color: var(--white);
+}
+.hh-badge {
+  display: inline-block;
+  background: var(--gold); color: var(--ink);
+  padding: 6px 14px; border-radius: 4px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.hh-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px; font-weight: 400; font-style: italic;
+  line-height: 1.1; margin-bottom: 6px;
+}
+.hh-addr {
+  font-size: 14px; color: var(--gold-lt);
+  letter-spacing: 0.04em;
+}
+.car-body {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 32px;
+  max-width: 1100px; margin: 0 auto 40px;
+}
+.price-bar {
+  background: var(--ink);
+  color: var(--white);
+  padding: 24px 28px;
+  border-radius: 6px;
+  margin: 28px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+  min-height: 96px;
+}
+.price-bar-label {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-lt); font-weight: 600; margin-bottom: 4px;
+}
+.price-bar-right { text-align: right; }
+.price-bar-amt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 400; color: var(--white);
+  line-height: 1;
+}
+.price-bar-amt .from {
+  font-size: 13px; color: var(--gold-lt);
+  font-family: 'Montserrat', sans-serif; font-style: normal;
+  font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  margin-right: 6px; vertical-align: middle;
+}
+.price-bar-per {
+  font-size: 12px; color: var(--gold-lt); margin-top: 4px;
+}
+.price-bar-note {
+  font-size: 14px; color: var(--gold-lt);
+  font-style: italic; font-family: 'Cormorant Garamond', serif;
+}
+.car-facts {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 12px; margin: 28px 0;
+}
+.fact-cell {
+  background: var(--parchment);
+  padding: 16px 18px; border-radius: 4px;
+  border-left: 3px solid var(--gold);
+}
+.fact-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  color: var(--gold-deep); text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.fact-value {
+  font-size: 15px; color: var(--ink-soft); font-weight: 400;
+}
+.tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 20px 0;
+}
+.tag {
+  background: var(--gold-pale); color: var(--gold-deep);
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.agent-note {
+  background: var(--gold-pale);
+  border-left: 4px solid var(--gold-deep);
+  padding: 20px 24px; margin-top: 24px;
+  border-radius: 0 6px 6px 0;
+}
+.agent-note-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+  color: var(--gold-deep); text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.agent-note-text {
+  font-size: 15px; line-height: 1.65; color: var(--ink-soft);
+  font-weight: 400;
+}
+.agent-note-text strong { color: var(--ink); font-weight: 600; }
+.car-desc {
+  font-size: 16px; line-height: 1.7; color: var(--ink-soft);
+  margin: 20px 0;
+}
+.cost-table {
+  background: var(--white);
+  border: 1px solid var(--parchment-dkr);
+  border-radius: 6px; overflow: hidden;
+  max-width: 800px; margin: 0 auto;
+}
+.cost-header {
+  background: var(--ink); color: var(--gold-lt);
+  padding: 16px 24px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px; align-items: center;
+}
+.cost-row {
+  padding: 18px 24px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px; align-items: center;
+  border-bottom: 1px solid var(--parchment-dkr);
+}
+.cost-row:last-child { border-bottom: none; }
+.cost-item { font-size: 15px; color: var(--ink-soft); }
+.cost-item strong { color: var(--ink); font-weight: 600; }
+.cost-detail { font-size: 13px; color: var(--ink-muted); }
+.cost-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; color: var(--ink); font-weight: 400;
+  text-align: right;
+}
+.total-bar {
+  background: var(--ink); color: var(--white);
+  padding: 24px 32px; margin-top: 24px;
+  border-radius: 6px; max-width: 800px; margin-left: auto; margin-right: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.total-label {
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-lt); font-weight: 600;
+}
+.total-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px; font-weight: 400; color: var(--white);
+  line-height: 1;
+}
+.total-amount .from {
+  font-size: 14px; color: var(--gold-lt);
+  font-family: 'Montserrat', sans-serif; font-style: normal;
+  font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  margin-right: 8px; vertical-align: middle;
+}
+.cost-disclaimer {
+  max-width: 800px; margin: 24px auto 0;
+  font-size: 13px; color: var(--ink-muted);
+  font-style: italic; line-height: 1.6;
+  font-family: 'Cormorant Garamond', serif;
+}
+.cue {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; margin: 60px auto 0;
+  cursor: pointer; padding: 20px;
+  min-height: 48px;
+}
+.cue-txt {
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-deep); font-weight: 600;
+}
+.cue-ring {
+  width: 32px; height: 32px;
+  border: 2px solid var(--gold-deep); border-radius: 50%;
+  position: relative;
+  animation: bounce 2s ease-in-out infinite;
+}
+.cue-ring::after {
+  content: '↓';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold-deep); font-size: 16px;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+#contact {
+  background: var(--ink); color: var(--white);
+  max-width: 100%; margin: 0; padding: 100px 24px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+#contact::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(135deg,
+    transparent 0px, transparent 40px,
+    rgba(212, 175, 106, 0.04) 40px, rgba(212, 175, 106, 0.04) 41px);
+  pointer-events: none;
+}
+.contact-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.contact-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px; font-style: italic; font-weight: 400;
+  color: var(--white); margin-bottom: 12px;
+}
+.contact-sub {
+  font-size: 15px; color: var(--gold-lt);
+  margin-bottom: 40px; line-height: 1.6;
+}
+.contact-btns {
+  display: flex; gap: 16px; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 40px;
+}
+.contact-btn {
+  background: var(--gold); color: var(--ink);
+  padding: 18px 32px; border-radius: 6px;
+  text-decoration: none; font-weight: 600;
+  font-size: 15px; letter-spacing: 0.04em;
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 56px;
+  transition: transform 0.2s;
+}
+.contact-btn:hover { transform: translateY(-2px); }
+.contact-btn.outline {
+  background: transparent; color: var(--gold-lt);
+  border: 2px solid var(--gold-deep);
+}
+.voucher-note {
+  background: rgba(184, 150, 62, 0.1);
+  border: 1px solid var(--gold-deep);
+  padding: 20px 28px; border-radius: 6px;
+  font-size: 14px; color: var(--gold-lt);
+  margin-bottom: 32px; line-height: 1.6;
+}
+.footer-disclaimer {
+  margin-top: 40px; padding-top: 32px;
+  border-top: 1px solid var(--gold-deep);
+  font-size: 12px; color: var(--ink-muted);
+  line-height: 1.6;
+}
+.footer-disclaimer .agency {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-style: italic;
+  color: var(--gold-lt); margin-bottom: 8px;
+  display: block;
+}
+@media (max-width: 700px) {
+  body { font-size: 16px; padding-top: 56px; }
+  .pnav { padding: 10px 12px; justify-content: flex-start; }
+  .pnav .lbl { font-size: 9px; }
+  .pnav a { padding: 4px 8px; }
+  .abar-txt { display: none; }
+  section { padding: 60px 16px; }
+  .section-title { font-size: 32px; }
+  .client-name { font-size: 38px; }
+  .glance-grid { grid-template-columns: 1fr; }
+  .hh { height: 220px; border-radius: 8px 8px 0 0; }
+  .hh-name { font-size: 28px; }
+  .hh-ov { padding: 40px 20px 20px; }
+  .car-body { padding: 24px 20px; }
+  .car-facts { grid-template-columns: 1fr; }
+  .flight-card { padding: 24px 20px; }
+  .flight-code { font-size: 36px; }
+  .flight-time-value { font-size: 20px; }
+  .price-bar {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 22px 20px;
+  }
+  .price-bar-right { text-align: center; }
+  .price-bar-amt { font-size: 32px; }
+  .total-bar {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .total-amount { font-size: 36px; }
+  .cost-header, .cost-row {
+    grid-template-columns: 1fr;
+    text-align: left;
+    gap: 4px;
+  }
+  .cost-amount { text-align: left; }
+  .contact-title { font-size: 32px; }
+  .contact-btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="pnav">
+  <a href="javascript:void(0)" data-section="welcome" onclick="smoothScroll('welcome')" class="active">
+    <div class="dot"></div><div class="lbl">Welcome</div>
+  </a>
+  <a href="javascript:void(0)" data-section="glance" onclick="smoothScroll('glance')">
+    <div class="dot"></div><div class="lbl">Overview</div>
+  </a>
+  <a href="javascript:void(0)" data-section="flights" onclick="smoothScroll('flights')">
+    <div class="dot"></div><div class="lbl">Flights</div>
+  </a>
+  <a href="javascript:void(0)" data-section="car" onclick="smoothScroll('car')">
+    <div class="dot"></div><div class="lbl">Rental Car</div>
+  </a>
+  <a href="javascript:void(0)" data-section="costs" onclick="smoothScroll('costs')">
+    <div class="dot"></div><div class="lbl">Costs</div>
+  </a>
+  <a href="javascript:void(0)" data-section="contact" onclick="smoothScroll('contact')">
+    <div class="dot"></div><div class="lbl">Contact</div>
+  </a>
+</nav>
+
+<section id="welcome">
+  <div class="welcome-inner">
+    <div class="eyebrow">Signature Elite Travel · Curated Journeys</div>
+    <div class="logo-line"><em>Signature</em> Elite</div>
+    <div class="diamonds">◆ ◆ ◆</div>
+    <h1 class="client-name">Barbara &amp; David Green</h1>
+    <div class="occasion">Three Weeks in Northern California</div>
+    <div class="hero-pills">
+      <span class="pill">Jul 29 — Aug 19, 2026</span>
+      <span class="pill">Austin → San Francisco</span>
+      <span class="pill">2 Travelers</span>
+    </div>
+    <div class="cue" onclick="smoothScroll('glance')" style="margin-top: 50px;">
+      <span class="cue-txt">Begin Your Journey</span>
+      <span class="cue-ring"></span>
+    </div>
+  </div>
+</section>
+
+<section id="glance">
+  <div class="section-label fade-in">Trip Overview</div>
+  <h2 class="section-title fade-in">At a Glance</h2>
+  <div class="section-rule fade-in"></div>
+
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Welcome Barbara and David! Here is everything we have lined up for your three weeks in California. Your accommodations are already taken care of — what we are sorting out together is your <strong>flights</strong> and your <strong>rental car</strong>. Take your time scrolling through, and <em>give us a call when you are ready to confirm</em>.
+    </div>
+  </div>
+
+  <div class="glance-grid fade-in">
+    <div class="glance-cell">
+      <div class="glance-label">Travel Dates</div>
+      <div class="glance-value">Jul 29 — Aug 19</div>
+      <div class="glance-sub">21 nights · 2026</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-label">Route</div>
+      <div class="glance-value">Austin ⇄ San Francisco</div>
+      <div class="glance-sub">Nonstop · United Airlines</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-label">Travelers</div>
+      <div class="glance-value">Barbara &amp; David</div>
+      <div class="glance-sub">2 adults</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-label">Accommodations</div>
+      <div class="glance-value">Already Booked</div>
+      <div class="glance-sub">Arranged separately</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-label">Rental Car</div>
+      <div class="glance-value">Mid-Size Sedan</div>
+      <div class="glance-sub">21 days · SFO pickup &amp; return</div>
+    </div>
+    <div class="glance-cell">
+      <div class="glance-label">Booking Window</div>
+      <div class="glance-value">Lock In Soon</div>
+      <div class="glance-sub">Late July is peak season</div>
+    </div>
+  </div>
+
+  <div class="included fade-in">
+    <div class="included-title">What This Proposal Covers</div>
+    <ul>
+      <li>Round-trip nonstop flights on United Airlines, Austin to San Francisco</li>
+      <li>21-day mid-size sedan rental from San Francisco International</li>
+      <li>All pricing verified live for your exact travel dates</li>
+      <li>Personal support from your travel advisor through the entire trip</li>
+    </ul>
+  </div>
+
+  <div class="cue fade-in" onclick="smoothScroll('flights')">
+    <span class="cue-txt">Next: Your Flight Itinerary</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<section id="flights">
+  <div class="section-label fade-in">Your Flights</div>
+  <h2 class="section-title fade-in">United Airlines · Nonstop Both Ways</h2>
+  <div class="section-rule fade-in"></div>
+
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Great news — United runs <strong>direct flights</strong> between Austin and San Francisco both directions, no connections, around 3 hours and 45 minutes in the air. Pricing is currently <strong>$172.80 per person round-trip</strong>, which is a substantial savings versus connecting routes. <em>One important note in the agent comments below about baggage.</em>
+    </div>
+  </div>
+
+  <div class="flight-card fade-in">
+    <span class="flight-badge">Outbound · Wednesday, July 29</span>
+    <div class="flight-route">
+      <div class="flight-airport">
+        <div class="flight-code">AUS</div>
+        <div class="flight-city">Austin</div>
+      </div>
+      <div class="flight-arrow-line"></div>
+      <div class="flight-airport">
+        <div class="flight-code">SFO</div>
+        <div class="flight-city">San Francisco</div>
+      </div>
+    </div>
+    <div class="flight-times">
+      <div class="flight-time-block">
+        <div class="flight-time-label">Departs</div>
+        <div class="flight-time-value">7:00 AM</div>
+        <div class="flight-time-date">Wed, Jul 29</div>
+      </div>
+      <div class="flight-time-block">
+        <div class="flight-time-label">Arrives</div>
+        <div class="flight-time-value">8:45 AM</div>
+        <div class="flight-time-date">Wed, Jul 29</div>
+      </div>
+    </div>
+    <div class="flight-meta">
+      <div class="flight-meta-item"><strong>United UA 694</strong></div>
+      <div class="flight-meta-item">Nonstop · <strong>3h 45m</strong></div>
+      <div class="flight-meta-item">Full day ahead</div>
+    </div>
+  </div>
+
+  <div class="flight-card fade-in">
+    <span class="flight-badge">Return · Wednesday, August 19</span>
+    <div class="flight-route">
+      <div class="flight-airport">
+        <div class="flight-code">SFO</div>
+        <div class="flight-city">San Francisco</div>
+      </div>
+      <div class="flight-arrow-line"></div>
+      <div class="flight-airport">
+        <div class="flight-code">AUS</div>
+        <div class="flight-city">Austin</div>
+      </div>
+    </div>
+    <div class="flight-times">
+      <div class="flight-time-block">
+        <div class="flight-time-label">Departs</div>
+        <div class="flight-time-value">6:25 PM</div>
+        <div class="flight-time-date">Wed, Aug 19</div>
+      </div>
+      <div class="flight-time-block">
+        <div class="flight-time-label">Arrives</div>
+        <div class="flight-time-value">11:59 PM</div>
+        <div class="flight-time-date">Wed, Aug 19</div>
+      </div>
+    </div>
+    <div class="flight-meta">
+      <div class="flight-meta-item"><strong>United UA 2332</strong></div>
+      <div class="flight-meta-item">Nonstop · <strong>3h 34m</strong></div>
+      <div class="flight-meta-item">Earlier return option available</div>
+    </div>
+  </div>
+
+  <div class="agent-note fade-in">
+    <div class="agent-note-label">Agent's Note</div>
+    <div class="agent-note-text">
+      The <strong>$172.80 per-person fare is United's Basic Economy</strong>. Couple things to know about this fare class: it does <strong>not include a full-size carry-on bag</strong> (personal item only — small bag that fits under the seat), checked bags run $50 each way per person, and seats are assigned at check-in so you may not be seated together on the plane. For a three-week trip we typically recommend upgrading to <strong>Main Cabin</strong> (United Economy), which adds roughly $60–$100 per person each way but allows carry-ons, advance seat selection, and standard baggage rules. <strong>Just say the word and we can re-price at the Main Cabin tier before you book.</strong> Return flight also has an earlier 8:25 AM departure option if you prefer arriving home earlier in the day instead of just before midnight.
+    </div>
+  </div>
+
+  <div class="cue fade-in" onclick="smoothScroll('car')">
+    <span class="cue-txt">Next: Your Rental Car</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<section id="car" class="car-section">
+  <div class="hh fade-in">
+    <div class="hh-bg-sfo"></div>
+    <div class="hh-ov">
+      <div class="hh-badge">Standard Sedan · 21 Days</div>
+      <div class="hh-name">Pick Up at San Francisco (SFO)</div>
+      <div class="hh-addr">Walk off the plane, walk to the car</div>
+    </div>
+  </div>
+
+  <div class="car-body fade-in">
+    <div class="guide-bubble" style="margin-bottom: 24px;">
+      We are recommending a <strong>standard sedan</strong> in the Toyota Camry or Nissan Altima class — comfortable for long California drives, plenty of trunk space for a three-week trip, and easy to park. <strong>Pickup and return at SFO</strong> keeps your travel days simple: walk off the plane, AirTrain to the rental center, drive away. Same in reverse on the way home.
+    </div>
+
+    <div class="price-bar">
+      <div>
+        <div class="price-bar-label">Starting From · 21 Days</div>
+        <div class="price-bar-note">Standard sedan · before taxes &amp; fees</div>
+      </div>
+      <div class="price-bar-right">
+        <div class="price-bar-amt"><span class="from">from</span>$1,155</div>
+        <div class="price-bar-per">~$55/day · est. all-in ~$1,420</div>
+      </div>
+    </div>
+
+    <div class="car-facts">
+      <div class="fact-cell">
+        <div class="fact-label">Vehicle Class</div>
+        <div class="fact-value">Standard Sedan (Toyota Camry or Nissan Altima class)</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Pickup &amp; Return</div>
+        <div class="fact-value">San Francisco International Airport (SFO)</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Suppliers Available</div>
+        <div class="fact-value">Enterprise, Hertz, National, Avis, Budget, Alamo</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Rental Duration</div>
+        <div class="fact-value">21 days · Jul 29 – Aug 19, 2026</div>
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">No Transfers</span>
+      <span class="tag">All Major Suppliers On-Site</span>
+      <span class="tag">Automatic Transmission</span>
+      <span class="tag">AirTrain Access</span>
+      <span class="tag">24-Hour Pickup</span>
+    </div>
+
+    <div class="car-desc">
+      SFO has the largest rental car center in Northern California with every major supplier on-site. After landing, the AirTrain from the terminal to the rental center takes about 8 minutes, then you are in your car and on your way. Return is just as easy — drop the car, AirTrain to your departure terminal. Three full weeks of unrestricted Northern California exploration: city, coast, wine country, redwoods, whatever the itinerary calls for.
+    </div>
+
+    <div class="agent-note">
+      <div class="agent-note-label">Agent's Note</div>
+      <div class="agent-note-text">
+        Late July is peak rental season at SFO so the published rates run higher than other times of year — current daily rates for a standard sedan run around <strong>$55/day base</strong>. California airport rentals carry roughly 22–25% in concession fees, customer facility charges, and state tax on top, so the realistic all-in for 21 days lands around <strong>$1,400–$1,450.</strong> The exact final number depends on which supplier we book — <strong>we will run the rate through our agency channels before we confirm to get you the best available price</strong>, which is typically better than what shows up on the public booking sites. One Bay Area note: rental car break-ins at airport lots and tourist parking are common — never leave anything visible in the car when parked.
+      </div>
+    </div>
+
+    <div class="cue" onclick="smoothScroll('costs')">
+      <span class="cue-txt">Next: Your Estimated Total</span>
+      <span class="cue-ring"></span>
+    </div>
+  </div>
+</section>
+
+<section id="costs">
+  <div class="section-label fade-in">Estimated Investment</div>
+  <h2 class="section-title fade-in">Your Trip Total</h2>
+  <div class="section-rule fade-in"></div>
+
+  <div class="guide fade-in">
+    <div class="guide-bubble">
+      Here is what your flights and rental car will run, starting from the rates we are seeing today. <strong>Accommodations are not shown here since they were booked separately.</strong> The car number is a starting estimate before California's roughly 25% in taxes and airport fees — we will lock in the actual best rate at booking.
+    </div>
+  </div>
+
+  <div class="cost-table fade-in">
+    <div class="cost-header">
+      <div>Item</div>
+      <div>Detail</div>
+      <div style="text-align:right;">Starting From</div>
+    </div>
+    <div class="cost-row">
+      <div class="cost-item"><strong>Flights</strong></div>
+      <div class="cost-detail">United · AUS ⇄ SFO · 2 adults<br>Basic Economy</div>
+      <div class="cost-amount">$345.60</div>
+    </div>
+    <div class="cost-row">
+      <div class="cost-item"><strong>Rental Car</strong></div>
+      <div class="cost-detail">SFO · 21 days · standard sedan<br><em>before ~25% CA taxes &amp; fees</em></div>
+      <div class="cost-amount">$1,155.00</div>
+    </div>
+  </div>
+
+  <div class="total-bar fade-in">
+    <div>
+      <div class="total-label">Estimated Starting From</div>
+      <div style="font-size: 12px; color: var(--gold-lt); margin-top: 4px;">
+        Flights confirmed · car base before CA taxes/fees
+      </div>
+    </div>
+    <div class="total-amount">
+      <span class="from">from</span>$1,500
+    </div>
+  </div>
+
+  <div class="cost-disclaimer fade-in">
+    All prices shown are starting estimates based on the quoted vehicle class and current published rates. Final pricing is confirmed at booking and may vary based on supplier selection, vehicle availability, and applicable fees and taxes. California airport rental cars carry roughly 22–25% in concession fees, customer facility charges, and state/local tax above the base rental rate — realistic all-in for the car is approximately $1,400–$1,450. Flight pricing in United Basic Economy excludes checked baggage fees. We will lock in the best available rates via our agency channels at the time of booking.
+  </div>
+
+  <div class="cue fade-in" onclick="smoothScroll('contact')">
+    <span class="cue-txt">Ready to Book?</span>
+    <span class="cue-ring"></span>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="eyebrow" style="color: var(--gold-lt);">Next Step</div>
+    <h2 class="contact-title">Let's Make This Happen</h2>
+    <div class="contact-sub">
+      A quick phone call is usually fastest — we will confirm the fare class on the flights (Basic Economy vs. Main Cabin upgrade), lock in the rental car at our best available rate, and send confirmations the same day.
+    </div>
+
+    <div class="contact-btns">
+      <a href="tel:+17372717668" class="contact-btn">
+        ☎ Call (737) 271-7668
+      </a>
+      <a href="mailto:bookings@signatureelitetravel.com" class="contact-btn outline">
+        ✉ Email Us
+      </a>
+    </div>
+
+    <div class="voucher-note">
+      <strong style="color: var(--gold-lt);">Time-sensitive:</strong> Late July is peak Bay Area travel season and these flight fares can move quickly. We recommend confirming within the next 7–10 days to lock in the current pricing.
+    </div>
+
+    <div class="diamonds" style="color: var(--gold);">◆ ◆ ◆</div>
+
+    <div class="footer-disclaimer">
+      <span class="agency">Signature Elite Travel</span>
+      (737) 271-7668 · bookings@signatureelitetravel.com<br><br>
+      All prices shown are starting estimates based on the quoted vehicle class and current published rates. Final pricing confirmed at booking and may vary based on supplier selection, availability, and applicable fees.
+    </div>
+  </div>
+</section>
+
+<div class="abar">
+  <span class="abar-txt">Questions? We're here to help.</span>
+  <a href="tel:+17372717668" class="abar-btn">☎ Call (737) 271-7668</a>
+</div>
+
+<script>
+function smoothScroll(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+const fadeObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(function(el) {
+  fadeObserver.observe(el);
+});
+
+const sections = ['welcome', 'glance', 'flights', 'car', 'costs', 'contact'];
+const navLinks = {};
+sections.forEach(function(id) {
+  const link = document.querySelector('.pnav a[data-section="' + id + '"]');
+  if (link) navLinks[id] = link;
+});
+
+function updateScrollSpy() {
+  const scrollPos = window.scrollY + 100;
+  let currentSection = sections[0];
+  sections.forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollPos) {
+      currentSection = id;
+    }
+  });
+  Object.keys(navLinks).forEach(function(id) {
+    const link = navLinks[id];
+    link.classList.remove('active', 'visited');
+    const idx = sections.indexOf(id);
+    const currentIdx = sections.indexOf(currentSection);
+    if (id === currentSection) {
+      link.classList.add('active');
+    } else if (idx < currentIdx) {
+      link.classList.add('visited');
+    }
+  });
+}
+
+window.addEventListener('scroll', updateScrollSpy, { passive: true });
+updateScrollSpy();
+</script>
+
+</body>
+</html>
