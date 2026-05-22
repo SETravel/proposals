@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flight Options — Carol & Claire Wolfe · Europe · Sept 11–25, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:     #F5F0E8;
+  --parchment-dk:  #EDE6D6;
+  --parchment-dkr: #E0D8C4;
+  --ink:           #1A1610;
+  --ink-soft:      #3A342A;
+  --ink-muted:     #5A5248;
+  --gold:          #B8963E;
+  --gold-lt:       #D4AF6A;
+  --gold-pale:     #F0E4C4;
+  --gold-deep:     #7A5E1E;
+  --white:         #FDFAF4;
+  --carol-dark:    #2A1F0A;
+  --carol-mid:     #3D2E12;
+  --claire-dark:   #0A1A28;
+  --claire-mid:    #1A3A4A;
+  --claire-accent: #8BBFDF;
+  --claire-border: #5A9ABF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--parchment);color:var(--ink-soft);font-family:'Montserrat',sans-serif;font-size:17px;line-height:1.65;}
+
+/* NAV */
+.pnav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--ink);padding:0 16px;display:flex;align-items:center;gap:0;height:52px;box-shadow:0 2px 14px rgba(0,0,0,0.45);}
+.pnav-logo{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:400;color:var(--gold-lt);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;margin-right:16px;flex-shrink:0;}
+.pnav-items{display:flex;gap:0;flex:1;overflow-x:auto;}
+.pnav-item{display:flex;align-items:center;padding:0 12px;height:52px;cursor:pointer;color:rgba(255,255,255,0.4);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;border-bottom:3px solid transparent;transition:all 0.3s;}
+.pnav-item.active{color:var(--gold-lt);border-bottom-color:var(--gold);}
+.pnav-item:hover{color:rgba(255,255,255,0.75);}
+
+/* MASTHEAD */
+.masthead{background:var(--ink);min-height:320px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 40px 60px;}
+.masthead::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,150,62,0.025) 40px,rgba(184,150,62,0.025) 80px);}
+.masthead-inner{position:relative;z-index:1;}
+.m-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.m-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,54px);font-weight:400;color:white;line-height:1.15;margin-bottom:10px;}
+.m-title em{color:var(--gold-lt);font-style:italic;}
+.m-sub{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--gold-lt);margin-bottom:22px;}
+.m-dates{display:inline-flex;gap:16px;align-items:center;font-size:13px;font-weight:500;letter-spacing:0.07em;color:rgba(255,255,255,0.65);}
+.m-dates strong{color:var(--gold-lt);}
+.triple{display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0;}
+.triple .d{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+.gold-rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px auto;max-width:300px;}
+
+/* SECTIONS */
+section{padding:68px 0;}
+.container{max-width:820px;margin:0 auto;padding:0 24px;}
+.bg-white{background:var(--white);}
+.bg-parch{background:var(--parchment);}
+.s-eye{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:400;color:var(--ink);line-height:1.2;margin-bottom:10px;}
+.s-rule{height:1px;background:var(--gold);margin:20px 0 32px;}
+
+/* BUBBLE */
+.bubble{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:28px;font-size:18px;line-height:1.7;color:var(--ink-soft);}
+.bubble strong{color:var(--ink);}
+.bubble .note{font-size:14px;margin-top:10px;color:var(--ink-muted);}
+
+/* OVERVIEW CARDS */
+.ov-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.ov-card{border-radius:6px;padding:24px;}
+.ov-card.carol{background:linear-gradient(150deg,var(--carol-dark),var(--carol-mid));}
+.ov-card.claire{background:linear-gradient(150deg,var(--claire-dark),var(--claire-mid));}
+.ov-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px;}
+.carol .ov-label{color:var(--gold);}
+.claire .ov-label{color:var(--claire-accent);}
+.ov-name{font-family:'Cormorant Garamond',serif;font-size:23px;color:white;margin-bottom:10px;}
+.ov-meta{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.9;}
+
+/* INFO BOX */
+.ibox{background:var(--parchment-dk);border:1px solid var(--parchment-dkr);border-left:4px solid var(--gold);border-radius:0 6px 6px 0;padding:14px 18px;font-size:14px;color:var(--ink-muted);margin:16px 0;line-height:1.6;}
+.ibox strong{color:var(--ink-soft);}
+
+/* TRAVELER WRAPPER */
+.t-section{border:1.5px solid var(--parchment-dkr);border-radius:6px;overflow:hidden;margin-bottom:0;}
+
+/* TRAVELER BANNER */
+.t-banner{padding:26px 32px;position:relative;overflow:hidden;}
+.t-banner::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(255,255,255,0.015) 20px,rgba(255,255,255,0.015) 40px);}
+.t-banner.carol{background:linear-gradient(135deg,var(--carol-dark),var(--carol-mid));}
+.t-banner.claire{background:linear-gradient(135deg,var(--claire-dark),var(--claire-mid));}
+.t-banner-inner{position:relative;z-index:1;}
+.t-tag{display:inline-block;padding:4px 14px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;}
+.carol .t-tag{background:rgba(184,150,62,0.22);color:var(--gold-lt);border:1px solid rgba(184,150,62,0.38);}
+.claire .t-tag{background:rgba(100,160,210,0.18);color:var(--claire-accent);border:1px solid rgba(100,160,210,0.3);}
+.t-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;color:white;margin-bottom:4px;}
+.t-meta{font-size:13px;color:rgba(255,255,255,0.5);letter-spacing:0.03em;}
+.carol .t-meta strong{color:var(--gold-lt);}
+.claire .t-meta strong{color:var(--claire-accent);}
+
+/* DIRECTION HEADER */
+.dir-hdr{padding:13px 24px;font-size:11px;font-weight:600;letter-spacing:0.17em;text-transform:uppercase;display:flex;align-items:center;gap:10px;}
+.dir-hdr.out{background:var(--parchment-dk);color:var(--gold-deep);border-top:2px solid var(--gold);}
+.dir-hdr.ret{background:var(--ink);color:var(--gold-lt);}
+
+/* STEPS */
+.steps{background:var(--white);}
+.step{padding:26px 24px;border-bottom:1px solid var(--parchment-dkr);display:grid;grid-template-columns:46px 1fr;gap:18px;align-items:start;}
+.step:last-child{border-bottom:none;}
+.step-num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;margin-top:3px;}
+.carol .step-num,.carol-num{background:var(--gold-pale);color:var(--gold-deep);border:2px solid var(--gold);}
+.claire .step-num,.claire-num{background:#E8F2F9;color:#1A3A4A;border:2px solid var(--claire-border);}
+.step-lbl{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:7px;}
+.step-route{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--ink);margin-bottom:7px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.arr{color:var(--gold);font-size:16px;}
+.fmeta{font-size:14px;color:var(--ink-muted);margin-bottom:10px;line-height:1.6;}
+.fmeta strong{color:var(--ink-soft);}
+
+/* SHARED BADGE */
+.shared{display:inline-flex;align-items:center;gap:6px;background:var(--gold-pale);border:1px solid var(--gold);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--gold-deep);margin-bottom:14px;}
+
+/* CABIN CARDS */
+.cabin-opts{margin-top:14px;}
+.cabin-lbl{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:10px;}
+.ccard{border:2px solid var(--parchment-dkr);border-radius:8px;padding:16px 18px;margin-bottom:10px;cursor:pointer;transition:all 0.2s;background:var(--parchment);display:grid;grid-template-columns:26px 1fr 90px;gap:14px;align-items:start;}
+.ccard:hover{border-color:var(--gold);background:var(--gold-pale);}
+.ccard.sel{border-color:#2d6a2e;background:#f0f8f0;}
+.ccard .radio{width:22px;height:22px;border-radius:50%;border:2px solid var(--parchment-dkr);background:white;flex-shrink:0;transition:all 0.2s;margin-top:1px;}
+.ccard.sel .radio{background:#2d6a2e;border-color:#2d6a2e;box-shadow:inset 0 0 0 4px white;}
+.ccard-name{font-weight:600;font-size:15px;color:var(--ink);margin-bottom:4px;}
+.ccard-detail{font-size:13px;color:var(--ink-muted);line-height:1.55;}
+.ccard-warn{font-size:12px;color:#8B4513;margin-top:6px;font-weight:500;}
+.ccard-note{font-size:12px;color:var(--ink-muted);margin-top:6px;font-style:italic;}
+.ccard-price{text-align:right;}
+.ccard-price .fr{font-size:10px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.1em;display:block;}
+.ccard-price .amt{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold-deep);font-weight:600;white-space:nowrap;}
+.ccard-price .pp{font-size:11px;color:var(--ink-muted);}
+
+/* HOME OPTS */
+.home-opts{margin-top:12px;}
+.hopt{border:1.5px solid var(--parchment-dkr);border-radius:6px;padding:14px 18px;margin-bottom:8px;cursor:pointer;background:var(--parchment);display:flex;align-items:center;gap:14px;transition:all 0.2s;}
+.hopt:hover{border-color:var(--gold);}
+.hopt.sel{border-color:#2d6a2e;background:#f0f8f0;}
+.hopt .radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--parchment-dkr);background:white;flex-shrink:0;transition:all 0.2s;}
+.hopt.sel .radio{background:#2d6a2e;border-color:#2d6a2e;box-shadow:inset 0 0 0 3px white;}
+.hopt-t{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--ink);}
+.hopt-d{font-size:13px;color:var(--ink-muted);margin-top:2px;}
+.hopt-p{margin-left:auto;font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold-deep);font-weight:600;white-space:nowrap;flex-shrink:0;}
+
+/* MEET SECTION */
+.meet-section{background:var(--ink);padding:64px 0;}
+.meet-hdr{text-align:center;margin-bottom:30px;}
+.meet-hdr .eye{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.meet-hdr h2{font-family:'Cormorant Garamond',serif;font-size:36px;color:white;}
+.meet-card{background:rgba(184,150,62,0.08);border:1px solid rgba(184,150,62,0.25);border-radius:8px;padding:32px;text-align:center;}
+.meet-card h3{font-family:'Cormorant Garamond',serif;font-size:26px;color:white;margin-bottom:8px;}
+.meet-card p{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7;}
+.meet-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px;}
+.mbox{background:rgba(255,255,255,0.06);border-radius:6px;padding:18px;text-align:left;}
+.mbox-lbl{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:8px;}
+.mbox-lbl.carol-c{color:var(--gold-lt);}
+.mbox-lbl.claire-c{color:var(--claire-accent);}
+.mbox-fn{font-family:'Cormorant Garamond',serif;font-size:19px;color:white;}
+.mbox-sub{font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px;}
+.shared-box{background:rgba(184,150,62,0.14);border:1px solid rgba(184,150,62,0.32);border-radius:6px;padding:22px;margin-top:16px;text-align:center;}
+.shared-box .s-eye-sm{font-size:11px;font-weight:600;letter-spacing:0.17em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.shared-box .fn{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold-lt);font-weight:600;}
+.shared-box .fd{font-size:14px;color:rgba(255,255,255,0.65);margin-top:6px;line-height:1.6;}
+.meet-note{background:rgba(255,255,255,0.05);border-radius:6px;padding:20px;margin-top:22px;text-align:left;}
+.meet-note-lbl{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.meet-note p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;}
+.meet-ibox{background:rgba(240,228,196,0.08);border:1px solid rgba(184,150,62,0.3);border-left:4px solid rgba(184,150,62,0.5);border-radius:0 6px 6px 0;padding:14px 18px;font-size:14px;color:rgba(255,255,255,0.6);margin-top:20px;line-height:1.6;}
+.meet-ibox strong{color:var(--gold-lt);}
+
+/* COSTS */
+.cost-banner{padding:16px 24px;border-radius:4px 4px 0 0;}
+.cost-banner.carol{background:linear-gradient(90deg,var(--carol-dark),var(--carol-mid));}
+.cost-banner.claire{background:linear-gradient(90deg,var(--claire-dark),var(--claire-mid));}
+.cost-banner h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:white;}
+.cost-banner p{font-size:13px;margin-top:4px;}
+.carol .cost-banner p{color:var(--gold-lt);}
+.claire .cost-banner p{color:var(--claire-accent);}
+.cost-t{width:100%;border-collapse:collapse;}
+.cost-t thead tr{background:var(--ink);}
+.cost-t thead th{padding:13px 16px;font-size:11px;font-weight:600;letter-spacing:0.11em;text-transform:uppercase;color:var(--gold-lt);text-align:left;}
+.cost-t thead th:last-child{text-align:right;}
+.cost-t tbody tr{border-bottom:1px solid var(--parchment-dkr);}
+.cost-t tbody tr:nth-child(even){background:var(--parchment-dk);}
+.cost-t tbody td{padding:13px 16px;font-size:14px;color:var(--ink-muted);}
+.cost-t tbody td:last-child{text-align:right;font-weight:500;color:var(--ink-soft);}
+.cost-t tbody td strong{color:var(--ink);}
+.cost-foot{padding:16px 20px;font-size:13px;line-height:1.6;border:1px solid;border-top:none;border-radius:0 0 4px 4px;}
+.cost-foot.carol{background:var(--gold-pale);border-color:var(--gold);color:var(--ink-muted);}
+.cost-foot.claire{background:#EEF4F9;border-color:#5A9ABF40;color:var(--ink-muted);}
+
+/* CONTACT */
+.contact-section{background:var(--ink);padding:70px 0;position:relative;overflow:hidden;}
+.contact-section::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 30px,rgba(184,150,62,0.025) 30px,rgba(184,150,62,0.025) 60px);}
+.contact-inner{position:relative;z-index:1;text-align:center;}
+.c-eye{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.c-title{font-family:'Cormorant Garamond',serif;font-size:38px;color:white;margin-bottom:10px;}
+.c-sub{font-size:15px;color:rgba(255,255,255,0.55);margin-bottom:36px;}
+.c-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:40px;}
+.btn-call,.btn-email{display:inline-flex;align-items:center;gap:10px;padding:18px 32px;border-radius:4px;font-size:15px;font-weight:600;letter-spacing:0.04em;cursor:pointer;text-decoration:none;min-height:56px;transition:all 0.2s;}
+.btn-call{background:var(--gold);color:var(--ink);}
+.btn-call:hover{background:var(--gold-lt);}
+.btn-email{background:transparent;color:var(--gold-lt);border:2px solid var(--gold);}
+.btn-email:hover{background:rgba(184,150,62,0.12);}
+.footer-txt{font-size:13px;color:rgba(255,255,255,0.3);line-height:1.8;margin-top:30px;}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* UTILS */
+.mt8{margin-top:8px;} .mt16{margin-top:16px;} .mt24{margin-top:24px;} .mt32{margin-top:32px;} .mb24{margin-bottom:24px;} .mb32{margin-bottom:32px;} .mb40{margin-bottom:40px;}
+
+@media(max-width:700px){
+  .masthead{padding:70px 20px 48px;}
+  .ov-grid{grid-template-columns:1fr;}
+  .step{grid-template-columns:40px 1fr;gap:14px;}
+  .ccard{grid-template-columns:24px 1fr;}
+  .ccard-price{display:none;}
+  .meet-grid{grid-template-columns:1fr;}
+  .c-btns{flex-direction:column;align-items:center;}
+  .container{padding:0 16px;}
+  section{padding:48px 0;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="pnav">
+  <div class="pnav-logo">Signature Elite</div>
+  <div class="pnav-items">
+    <div class="pnav-item active" onclick="goTo('overview')" data-s="overview">Overview</div>
+    <div class="pnav-item" onclick="goTo('carol')" data-s="carol">Carol</div>
+    <div class="pnav-item" onclick="goTo('claire')" data-s="claire">Claire</div>
+    <div class="pnav-item" onclick="goTo('together')" data-s="together">Together</div>
+    <div class="pnav-item" onclick="goTo('costs')" data-s="costs">Costs</div>
+    <div class="pnav-item" onclick="goTo('contact')" data-s="contact">Contact</div>
+  </div>
+</nav>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="m-eyebrow">Signature Elite Travel · Flight Options</div>
+    <div class="triple"><div class="d"></div><div class="d"></div><div class="d"></div></div>
+    <div class="m-title">Carol &amp; Claire Wolfe<br><em>A Journey to Europe</em></div>
+    <div class="m-sub">Multi-Generational · History · Purpose</div>
+    <div class="gold-rule"></div>
+    <div class="m-dates">
+      <strong>Sept 11, 2026</strong>
+      <span style="color:rgba(255,255,255,0.25)">✦</span>
+      <span>14 Days · 13 Nights</span>
+      <span style="color:rgba(255,255,255,0.25)">✦</span>
+      <strong>Sept 25, 2026</strong>
+    </div>
+    <div style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:0.07em;">London · France · Austria · Germany · Munich</div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section id="overview" class="bg-parch">
+  <div class="container">
+    <div class="fade-in">
+      <div class="s-eye">Your Trip at a Glance</div>
+      <div class="s-title">A Journey Decades in the Making</div>
+      <div class="s-rule"></div>
+      <div class="bubble">
+        <strong>Carol,</strong> you know these places well — and now you'll finally get to see them. We've built two complete, separate flight itineraries — one for each of you — that bring you together in Dallas on September 11th for the crossing to London.
+        <div class="note">📋 Each traveler has her own booking. Carol pays for both. Scroll through to see every cabin option, every step of the journey, and every price — laid out clearly for each of you.</div>
+      </div>
+    </div>
+    <div class="ov-grid fade-in">
+      <div class="ov-card carol">
+        <div class="ov-label">Traveler 1</div>
+        <div class="ov-name">Carol Louise Wolfe</div>
+        <div class="ov-meta">
+          🛫 Lubbock, TX (LBB)<br>
+          DOB: August 22, 1944<br>
+          KTN / PreCheck: 158477920<br>
+          AAdvantage: #57WW164
+        </div>
+      </div>
+      <div class="ov-card claire">
+        <div class="ov-label">Traveler 2</div>
+        <div class="ov-name">Claire Lynnette Wolfe</div>
+        <div class="ov-meta">
+          🛫 San Antonio, TX (SAT)<br>
+          DOB: February 24, 1975<br>
+          KTN / PreCheck: 983400074<br>
+          AAdvantage: #57WW164
+        </div>
+      </div>
+    </div>
+    <div class="ibox fade-in">
+      <strong>Important — Cabin Class &amp; Routing on the Transatlantic Leg:</strong><br>
+      American Airlines operates <strong>Main Cabin Economy</strong> and <strong>Flagship Business</strong> on the DFW → London Heathrow direct route (AA 78). <strong>Premium Economy is only available on an alternate routing via New York JFK</strong> — a 2-stop journey of approximately 14 hours. If either traveler selects Premium Economy, she will be on a different transatlantic flight and the two will not travel together across the Atlantic. Economy and Business share the same direct flight. We have noted this clearly throughout.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CAROL ═══════════════ -->
+<section id="carol" class="bg-white">
+  <div class="container">
+    <div class="fade-in">
+      <div class="s-eye">Traveler 1 · Separate Booking</div>
+      <div class="s-title">Carol's Complete Journey</div>
+      <div class="s-rule"></div>
+      <div class="bubble">
+        You depart Lubbock on the evening of <strong>September 11th</strong>, connect through Dallas — where you'll board together with Claire — and cross the Atlantic overnight, arriving London the afternoon of <strong>September 12th</strong>. You return from Munich on <strong>September 25th</strong>, landing back in Lubbock the same evening.
+      </div>
+    </div>
+
+    <div class="t-section fade-in">
+      <div class="t-banner carol">
+        <div class="t-banner-inner">
+          <div class="t-tag">Booking 1 of 2 · Carol's Flights Only</div>
+          <div class="t-name">Carol Louise Wolfe</div>
+          <div class="t-meta">Departing <strong>Lubbock, TX (LBB)</strong> · Returning to <strong>Lubbock, TX (LBB)</strong> · All American Airlines</div>
+        </div>
+      </div>
+
+      <!-- OUTBOUND -->
+      <div class="dir-hdr out">
+        <span>✈</span>
+        OUTBOUND — SEPTEMBER 11, 2026 · LUBBOCK → LONDON
+      </div>
+
+      <div class="steps">
+
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-num carol-num">1</div>
+          <div>
+            <div class="step-lbl">Step 1 of 2 · Feeder Flight — Lubbock to Dallas</div>
+            <div class="step-route">
+              Lubbock (LBB) <span class="arr">→</span> Dallas/Fort Worth (DFW)
+            </div>
+            <div class="fmeta">
+              <strong>American Airlines · AA 5005</strong> · September 11, 2026<br>
+              Departs 7:58 PM · Arrives ~9:30 PM · Non-Stop · ~1h 32m
+            </div>
+            <div class="ibox" style="margin-top:4px;margin-bottom:0;">
+              ✦ This is your connector to Dallas, where you'll meet Claire at the gate before you both board to London together.
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-num carol-num">2</div>
+          <div>
+            <div class="step-lbl">Step 2 of 2 · Transatlantic — Dallas to London Heathrow</div>
+            <div class="step-route">
+              Dallas/Fort Worth (DFW) <span class="arr">→</span> London Heathrow (LHR)
+            </div>
+            <div class="fmeta">
+              <strong>American Airlines · AA 78</strong> · Departs DFW Late Evening Sept 11 → Arrives 2:25 PM Sept 12<br>
+              Non-Stop · ~10.5 Hours · Overnight Transatlantic Flight
+            </div>
+            <div class="shared">✈ Claire boards this same flight — you depart Dallas together</div>
+            <div class="cabin-opts">
+              <div class="cabin-lbl">Select Your Cabin Class — DFW → London Heathrow</div>
+
+              <div class="ccard" data-grp="carol-out" onclick="selCabin(this,'carol-out')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Main Cabin · Economy</div>
+                  <div class="ccard-detail">Standard seat with recline · Carry-on included · Checked bag ~$35/bag · Seat selection available for a fee · <strong>Direct AA 78 — same flight as Claire</strong></div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$382</div><div class="pp">per person</div></div>
+              </div>
+
+              <div class="ccard" data-grp="carol-out" onclick="selCabin(this,'carol-out')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Premium Economy</div>
+                  <div class="ccard-detail">Wider seat · More recline · Enhanced meal · 2 checked bags included · Priority boarding</div>
+                  <div class="ccard-note">⚠️ Only available via alternate routing: LBB → DFW → JFK → LHR (2 stops, ~14 hrs). Departs 10:23 AM — arriving London 6:25 AM Sept 12. <strong>Claire would not be on the same transatlantic flight</strong> unless she also selects this routing.</div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$1,152</div><div class="pp">per person</div></div>
+              </div>
+
+              <div class="ccard" data-grp="carol-out" onclick="selCabin(this,'carol-out')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Flagship Business</div>
+                  <div class="ccard-detail">Lie-flat seat · Aisle access · Flagship Lounge access at DFW · 2 bags included (up to 70 lbs each) · Priority check-in &amp; boarding · Premium multi-course dining · Amenity kit · <strong>Direct AA 78 — same flight as Claire</strong></div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$3,871</div><div class="pp">per person</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /steps outbound -->
+
+      <!-- RETURN -->
+      <div class="dir-hdr ret">
+        <span>🏠</span>
+        RETURN — SEPTEMBER 25, 2026 · MUNICH → LUBBOCK
+      </div>
+
+      <div class="steps">
+
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-num carol-num">1</div>
+          <div>
+            <div class="step-lbl">Step 1 of 2 · Munich to Dallas — Choose Your Class</div>
+            <div class="step-route">
+              Munich (MUC) <span class="arr">→</span> Dallas/Fort Worth (DFW)
+            </div>
+            <div class="fmeta">September 25, 2026 · All options arrive DFW the same day</div>
+            <div class="shared">✈ Claire is on this same Munich departure — returning to Dallas together</div>
+            <div class="cabin-opts">
+              <div class="cabin-lbl">Select Your Return Option — Munich to Dallas</div>
+
+              <div class="ccard" data-grp="carol-ret" onclick="selCabin(this,'carol-ret')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Main Cabin · Via Frankfurt — Best Value ★</div>
+                  <div class="ccard-detail"><strong>Lufthansa LH 125</strong> MUC → FRA, departs 7:00 AM · <strong>American Airlines AA 71</strong> FRA → DFW · 1 Stop · 14h 25m total · <strong>Arrives Dallas 2:25 PM</strong></div>
+                  <div class="ccard-detail mt8">1 checked bag included · Seat selection included · Lufthansa + American Airlines partnership</div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$801</div><div class="pp">per person</div></div>
+              </div>
+
+              <div class="ccard" data-grp="carol-ret" onclick="selCabin(this,'carol-ret')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Main Cabin · Via Charlotte — All American Airlines</div>
+                  <div class="ccard-detail"><strong>American Airlines AA 785</strong> MUC → CLT, departs 9:10 AM · <strong>AA 2815</strong> CLT → DFW · 1 Stop · 17h 55m total · <strong>Arrives Dallas 8:05 PM</strong></div>
+                  <div class="ccard-detail mt8">Entirely on American Airlines · Longer travel day · No partner airline</div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$1,138</div><div class="pp">per person</div></div>
+              </div>
+
+              <div class="ccard" data-grp="carol-ret" onclick="selCabin(this,'carol-ret')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Flagship Business · Via Frankfurt</div>
+                  <div class="ccard-detail"><strong>Lufthansa LH 125</strong> MUC → FRA, departs 7:00 AM · <strong>American Airlines AA 71</strong> FRA → DFW Business · 1 Stop · 14h 25m · <strong>Arrives Dallas 2:25 PM</strong></div>
+                  <div class="ccard-detail mt8">Lie-flat seat on the long haul · 2 bags included · Flagship Lounge access at DFW upon arrival · Premium dining</div>
+                  <div class="ccard-warn">⚠️ Limited availability — only a small number of seats shown at this fare. Please verify 2-seat availability directly with American Airlines before booking.</div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$3,560</div><div class="pp">per person</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-num carol-num">2</div>
+          <div>
+            <div class="step-lbl">Step 2 of 2 · Home to Lubbock</div>
+            <div class="step-route">
+              Dallas/Fort Worth (DFW) <span class="arr">→</span> Lubbock (LBB)
+            </div>
+            <div class="fmeta">
+              <strong>American Airlines</strong> · September 25, 2026 · Non-Stop · ~1h 18m<br>
+              Select the departure that pairs with your Munich return option above
+            </div>
+            <div class="home-opts">
+              <div class="hopt" data-grp="carol-h" onclick="selHome(this,'carol-h')">
+                <div class="radio"></div>
+                <div>
+                  <div class="hopt-t">8:26 PM → 9:44 PM</div>
+                  <div class="hopt-d">AA 4299 · Non-Stop · 1h 18m · Recommended if arriving DFW at 2:25 PM (Frankfurt option)</div>
+                </div>
+                <div class="hopt-p">from $178</div>
+              </div>
+              <div class="hopt" data-grp="carol-h" onclick="selHome(this,'carol-h')">
+                <div class="radio"></div>
+                <div>
+                  <div class="hopt-t">10:37 PM → 11:55 PM</div>
+                  <div class="hopt-d">AA 4056 · Non-Stop · 1h 18m · Best option if arriving DFW at 8:05 PM (Charlotte option)</div>
+                </div>
+                <div class="hopt-p">from $178</div>
+              </div>
+            </div>
+            <div class="ibox mt16">💡 After an international flight, customs and baggage claim at DFW typically takes 1.5–2 hours. If arriving at 2:25 PM on the Frankfurt option, we strongly recommend the 8:26 PM departure — giving you a comfortable buffer for immigration and bags.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps return -->
+    </div><!-- /t-section carol -->
+  </div>
+</section>
+
+<!-- ═══════════════ CLAIRE ═══════════════ -->
+<section id="claire" class="bg-parch">
+  <div class="container">
+    <div class="fade-in">
+      <div class="s-eye">Traveler 2 · Separate Booking</div>
+      <div class="s-title">Claire's Complete Journey</div>
+      <div class="s-rule"></div>
+      <div class="bubble">
+        Claire departs San Antonio on <strong>September 11th</strong>, connects through Dallas — where she boards the same transatlantic flight as Carol — and arrives in London together on <strong>September 12th</strong>. The return from Munich mirrors Carol's path home.
+      </div>
+    </div>
+
+    <div class="t-section fade-in">
+      <div class="t-banner claire">
+        <div class="t-banner-inner">
+          <div class="t-tag">Booking 2 of 2 · Claire's Flights Only</div>
+          <div class="t-name">Claire Lynnette Wolfe</div>
+          <div class="t-meta">Departing <strong>San Antonio, TX (SAT)</strong> · Returning to <strong>San Antonio, TX (SAT)</strong> · All American Airlines</div>
+        </div>
+      </div>
+
+      <!-- OUTBOUND -->
+      <div class="dir-hdr out">
+        <span>✈</span>
+        OUTBOUND — SEPTEMBER 11, 2026 · SAN ANTONIO → LONDON
+      </div>
+
+      <div class="steps">
+
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-num claire-num">1</div>
+          <div>
+            <div class="step-lbl">Step 1 of 2 · Feeder Flight — San Antonio to Dallas</div>
+            <div class="step-route">
+              San Antonio (SAT) <span class="arr">→</span> Dallas/Fort Worth (DFW)
+            </div>
+            <div class="fmeta">
+              <strong>American Airlines · AA 2368</strong> · September 11, 2026<br>
+              Departs 8:26 PM · ~1h 10m · Non-Stop
+            </div>
+            <div class="ibox" style="margin-top:4px;margin-bottom:0;">
+              ✦ This connects Claire to Dallas, where she'll meet Carol at the gate before they board to London together.
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-num claire-num">2</div>
+          <div>
+            <div class="step-lbl">Step 2 of 2 · Transatlantic — Dallas to London Heathrow</div>
+            <div class="step-route">
+              Dallas/Fort Worth (DFW) <span class="arr">→</span> London Heathrow (LHR)
+            </div>
+            <div class="fmeta">
+              <strong>American Airlines · AA 78</strong> · Departs DFW Late Evening Sept 11 → Arrives 2:25 PM Sept 12<br>
+              Non-Stop · ~10.5 Hours · Overnight Transatlantic Flight
+            </div>
+            <div class="shared">✈ Carol boards this same flight — you depart Dallas together</div>
+            <div class="cabin-opts">
+              <div class="cabin-lbl">Select Your Cabin Class — DFW → London Heathrow</div>
+
+              <div class="ccard" data-grp="claire-out" onclick="selCabin(this,'claire-out')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Main Cabin · Economy</div>
+                  <div class="ccard-detail">Standard seat with recline · Carry-on included · Checked bag ~$35/bag · Seat selection available for a fee · <strong>Direct AA 78 — same flight as Carol</strong></div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$382</div><div class="pp">per person</div></div>
+              </div>
+
+              <div class="ccard" data-grp="claire-out" onclick="selCabin(this,'claire-out')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Premium Economy</div>
+                  <div class="ccard-detail">Wider seat · More recline · Enhanced meal · 2 checked bags included · Priority boarding</div>
+                  <div class="ccard-note">⚠️ Only available via alternate routing: SAT → DFW → JFK → LHR (2 stops, ~14 hrs). <strong>Carol would not be on the same transatlantic flight</strong> unless she also selects this routing. Both travelers would need to choose this option to fly together.</div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$1,152</div><div class="pp">per person</div></div>
+              </div>
+
+              <div class="ccard" data-grp="claire-out" onclick="selCabin(this,'claire-out')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Flagship Business</div>
+                  <div class="ccard-detail">Lie-flat seat · Aisle access · Flagship Lounge access at DFW · 2 bags included (up to 70 lbs each) · Priority check-in &amp; boarding · Premium multi-course dining · Amenity kit · <strong>Direct AA 78 — same flight as Carol</strong></div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$3,871</div><div class="pp">per person</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /steps outbound -->
+
+      <!-- RETURN -->
+      <div class="dir-hdr ret">
+        <span>🏠</span>
+        RETURN — SEPTEMBER 25, 2026 · MUNICH → SAN ANTONIO
+      </div>
+
+      <div class="steps">
+
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-num claire-num">1</div>
+          <div>
+            <div class="step-lbl">Step 1 of 2 · Munich to Dallas — Choose Your Class</div>
+            <div class="step-route">
+              Munich (MUC) <span class="arr">→</span> Dallas/Fort Worth (DFW)
+            </div>
+            <div class="fmeta">September 25, 2026 · All options arrive DFW the same day</div>
+            <div class="shared">✈ Carol is on this same Munich departure — returning to Dallas together</div>
+            <div class="cabin-opts">
+              <div class="cabin-lbl">Select Your Return Option — Munich to Dallas</div>
+
+              <div class="ccard" data-grp="claire-ret" onclick="selCabin(this,'claire-ret')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Main Cabin · Via Frankfurt — Best Value ★</div>
+                  <div class="ccard-detail"><strong>Lufthansa LH 125</strong> MUC → FRA, departs 7:00 AM · <strong>American Airlines AA 71</strong> FRA → DFW · 1 Stop · 14h 25m total · <strong>Arrives Dallas 2:25 PM</strong></div>
+                  <div class="ccard-detail mt8">1 checked bag included · Seat selection included · Lufthansa + American Airlines partnership</div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$801</div><div class="pp">per person</div></div>
+              </div>
+
+              <div class="ccard" data-grp="claire-ret" onclick="selCabin(this,'claire-ret')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Main Cabin · Via Charlotte — All American Airlines</div>
+                  <div class="ccard-detail"><strong>American Airlines AA 785</strong> MUC → CLT, departs 9:10 AM · <strong>AA 2815</strong> CLT → DFW · 1 Stop · 17h 55m total · <strong>Arrives Dallas 8:05 PM</strong></div>
+                  <div class="ccard-detail mt8">Entirely on American Airlines · Longer travel day · No partner airline</div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$1,138</div><div class="pp">per person</div></div>
+              </div>
+
+              <div class="ccard" data-grp="claire-ret" onclick="selCabin(this,'claire-ret')">
+                <div class="radio"></div>
+                <div>
+                  <div class="ccard-name">Flagship Business · Via Frankfurt</div>
+                  <div class="ccard-detail"><strong>Lufthansa LH 125</strong> MUC → FRA, departs 7:00 AM · <strong>American Airlines AA 71</strong> FRA → DFW Business · 1 Stop · 14h 25m · <strong>Arrives Dallas 2:25 PM</strong></div>
+                  <div class="ccard-detail mt8">Lie-flat seat on the long haul · 2 bags included · Flagship Lounge access · Premium dining</div>
+                  <div class="ccard-warn">⚠️ Limited availability — only a small number of seats shown at this fare. Please verify 2-seat availability directly with American Airlines before booking.</div>
+                </div>
+                <div class="ccard-price"><span class="fr">from</span><div class="amt">$3,560</div><div class="pp">per person</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-num claire-num">2</div>
+          <div>
+            <div class="step-lbl">Step 2 of 2 · Home to San Antonio</div>
+            <div class="step-route">
+              Dallas/Fort Worth (DFW) <span class="arr">→</span> San Antonio (SAT)
+            </div>
+            <div class="fmeta">
+              <strong>American Airlines</strong> · September 25, 2026 · Non-Stop · ~1h 10m<br>
+              Select the departure that pairs with your Munich return option above
+            </div>
+            <div class="home-opts">
+              <div class="hopt" data-grp="claire-h" onclick="selHome(this,'claire-h')">
+                <div class="radio"></div>
+                <div>
+                  <div class="hopt-t">9:45 PM → 10:55 PM</div>
+                  <div class="hopt-d">AA 3097 · Non-Stop · 1h 10m · Recommended if arriving DFW at 2:25 PM (Frankfurt option)</div>
+                </div>
+                <div class="hopt-p">from $159</div>
+              </div>
+              <div class="hopt" data-grp="claire-h" onclick="selHome(this,'claire-h')">
+                <div class="radio"></div>
+                <div>
+                  <div class="hopt-t">10:50 PM → 11:59 PM</div>
+                  <div class="hopt-d">AA 1599 · Non-Stop · 1h 9m · Works well with either Munich arrival time</div>
+                </div>
+                <div class="hopt-p">from $159</div>
+              </div>
+            </div>
+            <div class="ibox mt16">💡 After an international flight, customs and baggage claim at DFW typically takes 1.5–2 hours. We recommend the 9:45 PM or 10:50 PM departures to give Claire a comfortable buffer regardless of which Munich option is selected.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps return -->
+    </div><!-- /t-section claire -->
+  </div>
+</section>
+
+<!-- ═══════════════ TOGETHER ═══════════════ -->
+<section id="together" class="meet-section">
+  <div class="container">
+    <div class="meet-hdr fade-in">
+      <div class="eye">The Reunion</div>
+      <h2>Where Carol &amp; Claire Fly Together</h2>
+      <div class="gold-rule"></div>
+    </div>
+
+    <div class="meet-card fade-in">
+      <div style="font-size:32px;margin-bottom:14px;">✈</div>
+      <h3>Two Cities. One Flight to London.</h3>
+      <p>Carol boards in Lubbock. Claire boards in San Antonio. They converge at Dallas/Fort Worth — and then cross the Atlantic together on the same American Airlines flight to London Heathrow, arriving September 12th at 2:25 PM.</p>
+
+      <div class="meet-grid">
+        <div class="mbox">
+          <div class="mbox-lbl carol-c">Carol · Lubbock</div>
+          <div class="mbox-fn">AA 5005</div>
+          <div class="mbox-sub">LBB → DFW · Departs 7:58 PM</div>
+        </div>
+        <div class="mbox">
+          <div class="mbox-lbl claire-c">Claire · San Antonio</div>
+          <div class="mbox-fn">AA 2368</div>
+          <div class="mbox-sub">SAT → DFW · Departs 8:26 PM</div>
+        </div>
+      </div>
+
+      <div class="shared-box">
+        <div class="s-eye-sm">Together · Same Aircraft</div>
+        <div class="fn">American Airlines AA 78</div>
+        <div class="fd">Dallas/Fort Worth (DFW) → London Heathrow (LHR)<br>Late Evening September 11 · Arrives 2:25 PM September 12 · Non-Stop Overnight</div>
+      </div>
+
+      <div class="meet-note">
+        <div class="meet-note-lbl">On the Return — September 25</div>
+        <p>Both travelers fly together from <strong style="color:white;">Munich (MUC) to Dallas/Fort Worth (DFW)</strong>. From Dallas, Carol connects to Lubbock and Claire connects to San Antonio — each on her own final leg home, the same evening.</p>
+      </div>
+    </div>
+
+    <div class="meet-ibox fade-in">
+      <strong>Premium Economy Note:</strong> If either traveler selects the Premium Economy option going over, she would route through New York JFK and would not be on the same transatlantic flight as the other. Both Main Cabin Economy and Flagship Business use the AA 78 direct from Dallas — those are the cabin options that keep Carol and Claire together across the Atlantic.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ COSTS ═══════════════ -->
+<section id="costs" class="bg-white">
+  <div class="container">
+    <div class="fade-in">
+      <div class="s-eye">Flight Investment</div>
+      <div class="s-title">Cost Summary — All Options</div>
+      <div class="s-rule"></div>
+      <div class="bubble">
+        Below is a full breakdown of all cabin options and starting prices per traveler. Prices are per person, per leg. The feeder flights (LBB→DFW and SAT→DFW) are included in the overall itinerary price shown by American Airlines and are not broken out separately.
+      </div>
+    </div>
+
+    <!-- CAROL COSTS -->
+    <div class="mb40 fade-in">
+      <div class="cost-banner carol">
+        <h3>Carol's Flight Costs</h3>
+        <p>LBB → DFW → LHR &nbsp;·&nbsp; (14-day trip) &nbsp;·&nbsp; MUC → DFW → LBB</p>
+      </div>
+      <table class="cost-t">
+        <thead><tr>
+          <th>Flight Leg</th>
+          <th>Airline</th>
+          <th>Cabin Option</th>
+          <th>Est. Price</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><strong>Outbound · DFW → LHR</strong></td><td>American Airlines AA 78</td><td>Main Cabin Economy</td><td>from $382</td></tr>
+          <tr><td><strong>Outbound · LBB–DFW–JFK → LHR</strong></td><td>American Airlines</td><td>Premium Economy (via JFK)</td><td>from $1,152</td></tr>
+          <tr><td><strong>Outbound · DFW → LHR</strong></td><td>American Airlines AA 78</td><td>Flagship Business</td><td>from $3,871</td></tr>
+          <tr><td style="padding-top:18px;"><strong>Return · MUC → FRA → DFW</strong></td><td>Lufthansa + AA 71</td><td>Main Cabin — Best Value ★</td><td>from $801</td></tr>
+          <tr><td><strong>Return · MUC → CLT → DFW</strong></td><td>AA 785 + AA 2815</td><td>Main Cabin — All-AA</td><td>from $1,138</td></tr>
+          <tr><td><strong>Return · MUC → FRA → DFW</strong></td><td>Lufthansa + AA 71</td><td>Flagship Business ⚠️ Limited</td><td>from $3,560</td></tr>
+          <tr><td style="padding-top:18px;"><strong>Home · DFW → LBB</strong></td><td>American Airlines</td><td>Main Cabin</td><td>from $178</td></tr>
+        </tbody>
+      </table>
+      <div class="cost-foot carol">
+        <strong>Carol's estimated total ranges:</strong><br>
+        Economy out + Economy return via Frankfurt: ~<strong>$1,361</strong> &nbsp;|&nbsp; Business out + Economy return: ~<strong>$4,650</strong> &nbsp;|&nbsp; Business both ways: ~<strong>$7,609</strong>
+      </div>
+    </div>
+
+    <!-- CLAIRE COSTS -->
+    <div class="mb32 fade-in">
+      <div class="cost-banner claire">
+        <h3>Claire's Flight Costs</h3>
+        <p>SAT → DFW → LHR &nbsp;·&nbsp; (14-day trip) &nbsp;·&nbsp; MUC → DFW → SAT</p>
+      </div>
+      <table class="cost-t">
+        <thead><tr>
+          <th>Flight Leg</th>
+          <th>Airline</th>
+          <th>Cabin Option</th>
+          <th>Est. Price</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><strong>Outbound · DFW → LHR</strong></td><td>American Airlines AA 78</td><td>Main Cabin Economy</td><td>from $382</td></tr>
+          <tr><td><strong>Outbound · SAT–DFW–JFK → LHR</strong></td><td>American Airlines</td><td>Premium Economy (via JFK)</td><td>from $1,152</td></tr>
+          <tr><td><strong>Outbound · DFW → LHR</strong></td><td>American Airlines AA 78</td><td>Flagship Business</td><td>from $3,871</td></tr>
+          <tr><td style="padding-top:18px;"><strong>Return · MUC → FRA → DFW</strong></td><td>Lufthansa + AA 71</td><td>Main Cabin — Best Value ★</td><td>from $801</td></tr>
+          <tr><td><strong>Return · MUC → CLT → DFW</strong></td><td>AA 785 + AA 2815</td><td>Main Cabin — All-AA</td><td>from $1,138</td></tr>
+          <tr><td><strong>Return · MUC → FRA → DFW</strong></td><td>Lufthansa + AA 71</td><td>Flagship Business ⚠️ Limited</td><td>from $3,560</td></tr>
+          <tr><td style="padding-top:18px;"><strong>Home · DFW → SAT</strong></td><td>American Airlines</td><td>Main Cabin</td><td>from $159</td></tr>
+        </tbody>
+      </table>
+      <div class="cost-foot claire">
+        <strong>Claire's estimated total ranges:</strong><br>
+        Economy out + Economy return via Frankfurt: ~<strong>$1,342</strong> &nbsp;|&nbsp; Business out + Economy return: ~<strong>$4,830</strong> &nbsp;|&nbsp; Business both ways: ~<strong>$7,590</strong>
+      </div>
+    </div>
+
+    <div class="fade-in" style="font-size:13px;color:var(--ink-muted);font-style:italic;line-height:1.7;margin-top:8px;">
+      * All prices shown are starting estimates based on the quoted cabin class for the specific dates and routes listed. Final pricing is confirmed at booking and may vary based on seat selection, availability, and applicable fees. Prices are per person and reflect one-way fares per leg as shown. The feeder flights (LBB→DFW outbound and SAT→DFW outbound) are bundled within the overall itinerary fare and are not priced separately above. All fares are subject to change until ticketed.
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-inner fade-in">
+      <div class="c-eye">Ready When You Are</div>
+      <div class="c-title">Let's Make This Happen</div>
+      <div class="c-sub">Once you've reviewed the options, we'll handle both bookings — Carol's and Claire's — in a single call. Just let us know which cabin combination works best.</div>
+      <div class="c-btns">
+        <a href="tel:7372717668" class="btn-call">📞 (737) 271-7668</a>
+        <a href="mailto:bookings@signatureelitetravel.com" class="btn-email">✉ bookings@signatureelitetravel.com</a>
+      </div>
+      <div class="triple"><div class="d"></div><div class="d"></div><div class="d"></div></div>
+      <div class="footer-txt">
+        <strong style="color:rgba(255,255,255,0.55);">Signature Elite Travel</strong><br>
+        (737) 271-7668 · bookings@signatureelitetravel.com<br><br>
+        All prices shown are starting estimates based on the quoted cabin class. Final pricing confirmed at booking and may vary based on availability, seat selection, and applicable fees. Prices are subject to change until ticketed.
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function goTo(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+
+function selCabin(card,grp){
+  document.querySelectorAll('.ccard').forEach(c=>{
+    if(c.getAttribute('data-grp')===grp)c.classList.remove('sel');
+  });
+  card.classList.add('sel');
+  toast('Cabin selected ✓');
+}
+
+function selHome(el,grp){
+  document.querySelectorAll('.hopt').forEach(o=>{
+    if(o.getAttribute('data-grp')===grp)o.classList.remove('sel');
+  });
+  el.classList.add('sel');
+  toast('Flight selected ✓');
+}
+
+function toast(msg){
+  let t=document.getElementById('toast');
+  if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#2d6a2e;color:white;padding:12px 28px;border-radius:24px;font-size:14px;font-weight:600;z-index:9999;opacity:0;transition:opacity 0.3s;pointer-events:none;';document.body.appendChild(t);}
+  t.textContent=msg;t.style.opacity='1';
+  clearTimeout(t._timer);t._timer=setTimeout(()=>{t.style.opacity='0';},2000);
+}
+
+const sections=['overview','carol','claire','together','costs','contact'];
+const navItems=document.querySelectorAll('.pnav-item');
+const secObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      navItems.forEach(n=>{n.classList.remove('active');if(n.getAttribute('data-s')===id)n.classList.add('active');});
+    }
+  });
+},{threshold:0.25});
+sections.forEach(id=>{const el=document.getElementById(id);if(el)secObs.observe(el);});
+
+const fadeObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>fadeObs.observe(el));
+</script>
+
+</body>
+</html>
