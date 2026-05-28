@@ -1293,5 +1293,374 @@ function updateNav() {
 }
 window.addEventListener('scroll', updateNav, {passive:true});
 </script>
+
+<!-- ════════ SET BOOKING SUMMARY · printable line-item record ════════ -->
+<style>
+  .set-print-btn {
+    position: fixed; right: 22px; bottom: 22px; z-index: 800;
+    display: inline-flex; align-items: center; gap: 10px;
+    min-height: 54px; padding: 0 24px;
+    background: var(--ink); color: var(--white);
+    border: 1px solid var(--gold); border-radius: 6px;
+    font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(26,22,16,0.28); transition: background .2s, color .2s;
+  }
+  .set-print-btn:hover { background: var(--gold); color: var(--ink); }
+  .set-print-btn .spb-icon { font-size: 19px; line-height: 1; }
+
+  #set-summary-overlay { display: none; position: fixed; inset: 0; z-index: 9999;
+    background: var(--parchment); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  #set-summary-overlay.open { display: block; }
+  @media screen {
+    html.set-noscroll, body.set-noscroll { overflow: hidden; }
+  }
+
+  .ss-chrome { position: sticky; top: 0; z-index: 2; display: flex; align-items: center;
+    justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    background: var(--ink); color: var(--white); padding: 14px 22px;
+    border-bottom: 1px solid rgba(184,150,62,0.4); }
+  .ss-chrome-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px;
+    font-weight: 400; font-style: italic; color: var(--gold-lt); }
+  .ss-chrome-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .ss-chrome-btn { min-height: 48px; padding: 0 20px; display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; border-radius: 5px; cursor: pointer; border: 1px solid var(--gold); }
+  .ss-chrome-btn.primary { background: var(--gold); color: var(--ink); }
+  .ss-chrome-btn.primary:hover { background: var(--gold-lt); }
+  .ss-chrome-btn.ghost { background: transparent; color: var(--white); border-color: rgba(253,250,244,0.4); }
+  .ss-chrome-btn.ghost:hover { border-color: var(--white); }
+
+  #set-summary-doc { max-width: 780px; margin: 28px auto 60px; background: var(--white);
+    border: 1px solid var(--parchment-dkr); padding: 44px 48px;
+    color: var(--ink-soft); font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.55; }
+
+  .ss-head { border-bottom: 2px solid var(--gold); padding-bottom: 18px; margin-bottom: 6px; }
+  .ss-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-deep); }
+  .ss-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 33px; font-weight: 400;
+    color: var(--ink); line-height: 1.12; margin: 8px 0 6px; }
+  .ss-sub { font-size: 13px; color: var(--ink-muted); letter-spacing: 0.02em; }
+  .ss-travelers { font-size: 13px; color: var(--ink-soft); margin-top: 8px; }
+
+  .ss-seg { padding: 20px 0; border-bottom: 1px solid var(--parchment-dkr); }
+  .ss-seg-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+  .ss-seg-label { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep); }
+  .ss-seg-date { font-size: 12px; color: var(--ink-muted); white-space: nowrap; }
+  .ss-seg-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; color: var(--ink); margin-top: 2px; }
+
+  .ss-confs { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 4px; }
+  .ss-conf { background: var(--parchment-dk); border-left: 3px solid var(--gold); padding: 7px 14px 8px; min-width: 130px; }
+  .ss-conf-label { display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+  .ss-conf-code { display: block; font-size: 17px; font-weight: 600; letter-spacing: 0.14em; color: var(--ink); margin-top: 2px; }
+
+  .ss-leg { border-left: 2px solid var(--parchment-dkr); padding: 8px 0 8px 14px; margin-top: 10px; }
+  .ss-leg-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .ss-leg-flight { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .ss-leg-dur { font-size: 12px; color: var(--ink-muted); white-space: nowrap; }
+  .ss-leg-op { font-size: 12px; font-style: italic; color: var(--ink-muted); }
+  .ss-leg-route { font-size: 14px; color: var(--ink-soft); margin-top: 4px; }
+  .ss-leg-meta { font-size: 12px; color: var(--ink-muted); margin-top: 4px; }
+  .ss-layover { font-size: 11px; font-style: italic; letter-spacing: 0.06em; color: var(--ink-muted); margin: 8px 0 0 14px; }
+
+  .ss-cruise-ship { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 23px; color: var(--ink); margin-top: 6px; }
+  .ss-cruise-line { font-size: 13px; color: var(--ink-muted); }
+  .ss-details { margin-top: 12px; }
+  .ss-detail { display: flex; justify-content: space-between; gap: 14px; padding: 5px 0; border-bottom: 1px dotted var(--parchment-dkr); }
+  .ss-detail-k { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .ss-detail-v { font-size: 13px; color: var(--ink-soft); text-align: right; }
+
+  .ss-hotel-name { font-size: 16px; font-weight: 600; color: var(--ink); margin-top: 8px; }
+  .ss-hotel-addr { font-size: 13px; color: var(--ink-muted); margin-top: 2px; }
+  .ss-hotel-nights { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: var(--gold-deep); margin-top: 6px; text-transform: uppercase; }
+  .ss-room { display: flex; justify-content: space-between; gap: 14px; padding: 5px 0; border-bottom: 1px dotted var(--parchment-dkr); margin-top: 4px; }
+  .ss-room-party { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .ss-room-detail { font-size: 13px; color: var(--ink-muted); text-align: right; }
+
+  .ss-transfer-route { font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
+  .ss-status { margin-top: 8px; }
+  .ss-status-badge { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold-deep); background: var(--gold-pale); border: 1px solid var(--gold); border-radius: 3px; padding: 3px 9px; }
+  .ss-opt { display: flex; justify-content: space-between; gap: 14px; padding: 5px 0; border-bottom: 1px dotted var(--parchment-dkr); margin-top: 4px; }
+  .ss-opt-mode { font-size: 13px; color: var(--ink-soft); }
+  .ss-opt-est { font-size: 13px; font-weight: 600; color: var(--gold-deep); white-space: nowrap; }
+
+  .ss-note { font-size: 12px; font-style: italic; color: var(--ink-muted); background: var(--parchment-dk);
+    border-left: 3px solid var(--parchment-dkr); padding: 8px 12px; margin-top: 12px; }
+
+  .ss-foot { border-top: 2px solid var(--gold); margin-top: 8px; padding-top: 16px; }
+  .ss-foot-agency { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: var(--ink); }
+  .ss-foot-note { font-size: 11px; font-style: italic; color: var(--ink-muted); margin-top: 6px; }
+  .ss-foot-date { font-size: 11px; color: var(--ink-muted); margin-top: 6px; }
+
+  @media (max-width: 700px) {
+    #set-summary-doc { padding: 26px 20px; margin: 16px auto 40px; }
+    .ss-print-label-long { display: none; }
+  }
+
+  @media print {
+    body > *:not(#set-summary-overlay) { display: none !important; }
+    #set-summary-overlay { display: block !important; position: static !important;
+      background: #fff !important; overflow: visible !important; }
+    .ss-chrome, .set-print-btn { display: none !important; }
+    #set-summary-doc { max-width: none !important; width: 100% !important; margin: 0 !important;
+      border: none !important; padding: 0 !important;
+      -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .ss-seg, .ss-head, .ss-foot { page-break-inside: avoid; }
+    @page { margin: 0.6in; }
+  }
+</style>
+
+<button class="set-print-btn" onclick="setOpenSummary()" aria-label="Open printable booking summary">
+  <span class="spb-icon">🖨</span><span>Booking Summary</span>
+</button>
+
+<div id="set-summary-overlay" role="dialog" aria-modal="true" aria-label="Booking summary">
+  <div class="ss-chrome">
+    <div class="ss-chrome-title">Booking Summary</div>
+    <div class="ss-chrome-actions">
+      <button class="ss-chrome-btn primary" onclick="setPrintSummary()">🖨 <span class="ss-print-label-long">Print / Save as&nbsp;</span>PDF</button>
+      <button class="ss-chrome-btn ghost" onclick="setCloseSummary()">✕ Close</button>
+    </div>
+  </div>
+  <div id="set-summary-doc"></div>
+</div>
+
+<script type="application/json" id="set-booking-record">
+{
+  "agency": { "name": "Signature Elite Travel", "phone": "(737) 271-7668", "email": "bookings@signatureelitetravel.com" },
+  "trip": {
+    "title": "Carol Wolfe & Mary Sue Lewis — New Orleans",
+    "dates": "June 17–20, 2026",
+    "route": "Lubbock, TX  ⇄  New Orleans, LA",
+    "travelers": ["Carol Wolfe", "Mary Sue Lewis"]
+  },
+  "segments": [
+    {
+      "type": "flight", "label": "Flights — Carol Wolfe", "title": "Carol's Flights", "date": "June 17 & 20, 2026",
+      "confirmations": [
+        { "label": "Southwest Confirmation", "code": "A86EU8" },
+        { "label": "Ticket Number", "code": "5262162836311" }
+      ],
+      "legs": [
+        { "flight": "WN 2444 → WN 4207", "operatedBy": "Southwest · connect via Austin (AUS)",
+          "from": "LBB · Lubbock · Wed Jun 17 · 7:05 AM", "to": "MSY · New Orleans · 3:15 PM",
+          "duration": "8h 10m total", "checkIn": "Southwest" },
+        { "flight": "WN 2995 → WN 2012", "operatedBy": "Southwest · connect via Houston (HOU)",
+          "from": "MSY · New Orleans · Sat Jun 20 · 8:15 AM", "to": "LBB · Lubbock · 2:25 PM",
+          "duration": "6h 10m total", "checkIn": "Southwest" }
+      ],
+      "note": "Southwest open seating — check in online exactly 24 hours before each flight for best boarding. Rapid Rewards 120484991. Day-of contact: 806-795-5758."
+    },
+    {
+      "type": "flight", "label": "Flights — Mary Sue Lewis", "title": "Mary Sue's Flights", "date": "June 17 & 20, 2026",
+      "confirmations": [
+        { "label": "Southwest Confirmation", "code": "A85OGL" },
+        { "label": "Ticket Number", "code": "5262162836343" }
+      ],
+      "legs": [
+        { "flight": "WN 2444 → WN 4207", "operatedBy": "Southwest · same flights as Carol (booked separately)",
+          "from": "LBB · Lubbock · Wed Jun 17 · 7:05 AM", "to": "MSY · New Orleans · 3:15 PM",
+          "duration": "8h 10m total", "checkIn": "Southwest" },
+        { "flight": "WN 2995 → WN 2012", "operatedBy": "Southwest · connect via Houston (HOU)",
+          "from": "MSY · New Orleans · Sat Jun 20 · 8:15 AM", "to": "LBB · Lubbock · 2:25 PM",
+          "duration": "6h 10m total", "checkIn": "Southwest" }
+      ],
+      "note": "Rapid Rewards 134198584. Day-of contact: 806-787-7553."
+    },
+    {
+      "type": "hotel", "label": "Hotel", "date": "June 17 – 20, 2026",
+      "name": "Omni Royal Orleans", "address": "New Orleans, LA · French Quarter", "nights": "3 Nights · 2 Guests",
+      "confirmations": [ { "label": "Hotel Confirmation", "code": "40064928413" } ],
+      "rooms": [ { "party": "Carol Wolfe (primary)", "room": "Petite Suite · King", "night": "Jun 17 – 20, 2026" } ],
+      "details": [
+        { "k": "Check-In", "v": "Wed, Jun 17 · after 4:00 PM" },
+        { "k": "Check-Out", "v": "Sat, Jun 20 · by 11:00 AM" },
+        { "k": "Includes", "v": "WiFi · A/C · Room Service · 24-hr Fitness" }
+      ],
+      "note": "Up to $130 in complimentary Omni tour credits included (valid through Dec 31, 2026) — call us to book any tours."
+    },
+    {
+      "type": "dining", "label": "Dining Reservation", "date": "Thursday, June 18 · 6:00 PM", "title": "Dinner at Arnaud's",
+      "details": [
+        { "k": "Address", "v": "813 Bienville Street, New Orleans, LA" },
+        { "k": "Date & Time", "v": "Thu, June 18, 2026 · 6:00 PM" },
+        { "k": "Party", "v": "2 Guests" },
+        { "k": "Status", "v": "✓ Confirmed" }
+      ]
+    },
+    {
+      "type": "dining", "label": "Dining Reservation", "date": "Friday, June 19 · 9:00 AM", "title": "Brunch at Brennan's",
+      "details": [
+        { "k": "Address", "v": "417 Royal Street, New Orleans, LA" },
+        { "k": "Brunch Window", "v": "Fri, June 19, 2026 · 9:00 AM – 1:30 PM" },
+        { "k": "Party", "v": "2 Guests" },
+        { "k": "Status", "v": "✓ Confirmed" }
+      ],
+      "note": "Confirmed; Signature Elite is following up with Brennan's to ensure it is recorded under your contact info."
+    },
+    {
+      "type": "attraction", "label": "Tickets", "date": "Thursday, June 18 · 1:00 PM", "title": "National WWII Museum — \"Beyond All Boundaries\" (4-D)",
+      "confirmations": [
+        { "label": "Carol — Booking Ref", "code": "BR-1400738313" },
+        { "label": "Mary Sue — Booking Ref", "code": "BR-1400739475" }
+      ],
+      "details": [
+        { "k": "Carol — Ticket #", "v": "900012050100130663" },
+        { "k": "Mary Sue — Ticket #", "v": "900012050100130666" },
+        { "k": "Show", "v": "Campus Pass + 4-D film · Thu Jun 18 · 1:00 PM" }
+      ],
+      "note": "Mobile QR tickets accepted at the door — have your QR codes ready on your phone."
+    }
+  ]
+}
+</script>
+
+<script>
+  (function () {
+    var raw = document.getElementById('set-booking-record');
+    var doc = document.getElementById('set-summary-doc');
+    if (!raw || !doc) return;
+    var data;
+    try { data = JSON.parse(raw.textContent); }
+    catch (e) { console.error('SET booking record failed to parse:', e); return; }
+
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text != null && text !== '') n.textContent = text;
+      return n;
+    }
+    function add(parent, child) { if (child) parent.appendChild(child); return child; }
+
+    var head = el('div', 'ss-head');
+    if (data.agency && data.agency.name) add(head, el('div', 'ss-eyebrow', data.agency.name));
+    if (data.trip) {
+      if (data.trip.title) add(head, el('div', 'ss-title', data.trip.title));
+      var meta = [data.trip.dates, data.trip.route].filter(Boolean).join('     ·     ');
+      if (meta) add(head, el('div', 'ss-sub', meta));
+      if (data.trip.travelers && data.trip.travelers.length) {
+        add(head, el('div', 'ss-travelers', 'Travelers:   ' + data.trip.travelers.join('     ·     ')));
+      }
+    }
+    doc.appendChild(head);
+
+    (data.segments || []).forEach(function (seg) {
+      var s = el('div', 'ss-seg ss-' + (seg.type || 'item'));
+      var sh = el('div', 'ss-seg-head');
+      add(sh, el('span', 'ss-seg-label', seg.label || seg.type || ''));
+      if (seg.date) add(sh, el('span', 'ss-seg-date', seg.date));
+      s.appendChild(sh);
+
+      if (seg.title) add(s, el('div', 'ss-seg-title', seg.title));
+      if (seg.type === 'cruise') {
+        if (seg.ship) add(s, el('div', 'ss-cruise-ship', seg.ship));
+        if (seg.line) add(s, el('div', 'ss-cruise-line', seg.line));
+      }
+
+      if (seg.confirmations && seg.confirmations.length) {
+        var cw = el('div', 'ss-confs');
+        seg.confirmations.forEach(function (c) {
+          var chip = el('div', 'ss-conf');
+          add(chip, el('span', 'ss-conf-label', c.label || ''));
+          add(chip, el('span', 'ss-conf-code', c.code || ''));
+          cw.appendChild(chip);
+        });
+        s.appendChild(cw);
+      }
+
+      if (seg.legs && seg.legs.length) {
+        seg.legs.forEach(function (leg) {
+          if (leg.layover) { add(s, el('div', 'ss-layover', 'Layover · ' + leg.layover)); return; }
+          var lr = el('div', 'ss-leg');
+          var top = el('div', 'ss-leg-top');
+          add(top, el('span', 'ss-leg-flight', leg.flight || ''));
+          if (leg.duration) add(top, el('span', 'ss-leg-dur', leg.duration));
+          lr.appendChild(top);
+          if (leg.operatedBy) add(lr, el('div', 'ss-leg-op', leg.operatedBy));
+          var route = [leg.from, leg.to].filter(Boolean).join('     →     ');
+          if (route) add(lr, el('div', 'ss-leg-route', route));
+          var lm = [];
+          if (leg.seats) lm.push('Seats: ' + leg.seats);
+          if (leg.checkIn) lm.push('Check-in: ' + leg.checkIn);
+          if (lm.length) add(lr, el('div', 'ss-leg-meta', lm.join('       ·       ')));
+          s.appendChild(lr);
+        });
+      }
+
+      if (seg.type === 'hotel') {
+        if (seg.name) add(s, el('div', 'ss-hotel-name', seg.name));
+        if (seg.address) add(s, el('div', 'ss-hotel-addr', seg.address));
+        if (seg.nights) add(s, el('div', 'ss-hotel-nights', seg.nights));
+        (seg.rooms || []).forEach(function (r) {
+          var row = el('div', 'ss-room');
+          add(row, el('span', 'ss-room-party', r.party || ''));
+          add(row, el('span', 'ss-room-detail', [r.room, r.night].filter(Boolean).join(' · ')));
+          s.appendChild(row);
+        });
+      }
+
+      if (seg.type === 'transfer') {
+        if (seg.route) add(s, el('div', 'ss-transfer-route', seg.route));
+        if (seg.status) {
+          var st = el('div', 'ss-status');
+          add(st, el('span', 'ss-status-badge', seg.status));
+          s.appendChild(st);
+        }
+        (seg.options || []).forEach(function (o) {
+          var row = el('div', 'ss-opt');
+          add(row, el('span', 'ss-opt-mode', o.mode || ''));
+          add(row, el('span', 'ss-opt-est', o.est || ''));
+          s.appendChild(row);
+        });
+      }
+
+      if (seg.details && seg.details.length) {
+        var dg = el('div', 'ss-details');
+        seg.details.forEach(function (d) {
+          var row = el('div', 'ss-detail');
+          add(row, el('span', 'ss-detail-k', d.k || ''));
+          add(row, el('span', 'ss-detail-v', d.v || ''));
+          dg.appendChild(row);
+        });
+        s.appendChild(dg);
+      }
+
+      if (seg.note) add(s, el('div', 'ss-note', seg.note));
+      doc.appendChild(s);
+    });
+
+    var ft = el('div', 'ss-foot');
+    if (data.agency) {
+      var contact = [data.agency.name, data.agency.phone, data.agency.email].filter(Boolean).join('     ·     ');
+      add(ft, el('div', 'ss-foot-agency', contact));
+    }
+    add(ft, el('div', 'ss-foot-note', 'All bookings confirmed as shown. Check in with Southwest online 24 hours before each flight (open seating). All times shown are local.'));
+    try {
+      add(ft, el('div', 'ss-foot-date', 'Prepared ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })));
+    } catch (e) {}
+    doc.appendChild(ft);
+  })();
+
+  function setOpenSummary() {
+    var o = document.getElementById('set-summary-overlay');
+    if (o) {
+      o.classList.add('open');
+      document.documentElement.classList.add('set-noscroll');
+      document.body.classList.add('set-noscroll');
+      o.scrollTop = 0;
+    }
+  }
+  function setCloseSummary() {
+    var o = document.getElementById('set-summary-overlay');
+    if (o) {
+      o.classList.remove('open');
+      document.documentElement.classList.remove('set-noscroll');
+      document.body.classList.remove('set-noscroll');
+    }
+  }
+  function setPrintSummary() { window.print(); }
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setCloseSummary(); });
+</script>
+<!-- ════════ /SET BOOKING SUMMARY ════════ -->
 </body>
 </html>
